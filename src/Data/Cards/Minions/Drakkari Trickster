@@ -1,0 +1,11 @@
+{
+"hp":4,
+"attack":3,
+"name":"Drakkari Trickster",
+"rarity":"Epic",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"It’s an illusion, Malacrass!\n  Battlecry: Give a copy of a random card from deck.",
+"mana":3,
+"price":5
+}

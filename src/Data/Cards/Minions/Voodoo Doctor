@@ -1,0 +1,11 @@
+{
+"hp":1,
+"attack":2,
+"name":"Voodoo Doctor",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Voodoo is an oft-misunderstood art. But it is art.\n  Battlecry: Restore 2 Health.",
+"mana":1,
+"price":1
+}

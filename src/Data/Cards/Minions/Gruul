@@ -1,0 +1,11 @@
+{
+"hp":7,
+"attack":7,
+"name":"Gruul",
+"rarity":"Legendary",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"He's Gruul ,the Dragonkiller. He just wanted to cuddle them. He never meant to.\n  At the end of each turn, gain +1/+1 .",
+"mana":8,
+"price":10
+}

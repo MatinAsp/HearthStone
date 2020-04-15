@@ -1,0 +1,9 @@
+{
+"name":"Polymorph",
+"rarity":"Common",
+"heroClass":"Mage",
+"type":"Spell",
+"description":"There was going to be a pun in this flavor text, but it just came out baa-d.\n  Transform a minion into a 1/1 Sheep.",
+"mana":4,
+"price":3
+}

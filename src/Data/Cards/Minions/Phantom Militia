@@ -1,0 +1,11 @@
+{
+"hp":4,
+"attack":2,
+"name":"Phantom Militia",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Recruited from the Gilnean opera house\n  Echo Taunt",
+"mana":3,
+"price":2
+}
