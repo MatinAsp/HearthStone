@@ -1,7 +1,7 @@
 # Hearthstone
 java version:
  
-    11
+    1.8
 
 extra lib:
 
