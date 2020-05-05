@@ -1,0 +1,11 @@
+{
+"hp":6,
+"attack":6,
+"name":"Stormwind Champion",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Your other minions have +1/+1.",
+"mana":7,
+"price":6
+}

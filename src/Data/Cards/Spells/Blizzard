@@ -1,9 +1,0 @@
-{
-"name":"Blizzard",
-"rarity":"Rare",
-"heroClass":"Mage",
-"type":"Spell",
-"description":"This spell can be very Entertaining.\n  Deal 2 damage to all enemy minions and Freeze them.",
-"mana":6,
-"price":7
-}

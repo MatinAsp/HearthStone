@@ -1,79 +1,163 @@
 package Logic;
 
 
-import org.apache.log4j.*;
+import Data.GameConstants;
+import Exceptions.GameOverException;
+import Models.Cards.Card;
+import Models.Cards.Minion;
+import Models.Deck;
+import Models.Hero;
 
 import java.io.*;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
-    static public boolean run;
-    static public Store store;
-    static public Collections collections;
-    static public PlayersManager playersManager;
-    public static void main(String[] arg) throws IOException {
-        System.out.println("Welcome To Hearthstone.");
-        run = true;
-        store = Store.getInstance();
-        collections = Collections.getInstance();
-        playersManager = PlayersManager.getInstance();
-        mainCLI();
+    private Competitor[] competitor = new Competitor[2];
+    private int turn, winner = 0;
+
+    public Game(){
+        competitor[0] = new Competitor();
+        competitor[1] = new Competitor();
+        turn = 0;
     }
-    static void mainCLI() throws IOException {
-        System.out.print("already have an account?(y/n) ");
-        Scanner scanner = new Scanner(System.in);
-        String answer = null;
-        while(true){
-            answer = scanner.nextLine();
-            if(!answer.equals("y") && !answer.equals("n")){
-                System.out.println("wrong command! please try again.");
-                continue;
+
+    public void changeTurn() throws GameOverException, IOException {
+        turn = (turn+1)%2;
+        if(competitor[turn].getFullMana() < GameConstants.getInstance().getInteger("manaMax")){
+            competitor[turn].setFullMana(competitor[turn].getFullMana()+1);
+        }
+        competitor[turn].setLeftMana(competitor[turn].getFullMana());
+        try {
+            competitor[turn].putCardFromDeckToHand();
+        } catch (Exception e) {
+            competitor[turn].damageToHero(GameConstants.getInstance().getInteger("DeckEmptyLifeDecrease"));
+        }
+    }
+
+    public void playCard(Card card) throws Exception {
+        if(!competitor[turn].haveCard(card) || card.getMana() > competitor[turn].getLeftMana()) {
+            throw new Exception("can't play the card.");
+        }
+        competitor[turn].playCard(card);
+        competitor[turn].setLeftMana(competitor[turn].getLeftMana() - card.getMana());
+    }
+
+    public void setTurn(int turn){
+        this.turn = turn%2;
+    }
+
+    public int getTurn(){
+        return turn;
+    }
+
+    public Competitor getCompetitor(int index){
+        return competitor[index%2];
+    }
+
+    private void engGame() throws GameOverException {
+        if(competitor[(turn+1)%2].getHero().getHp() <= 0){
+            winner = turn;
+            competitor[turn].deck.setWinsNumber(competitor[turn].deck.getWinsNumber() + 1);
+        }
+        else {
+            winner = (turn+1)%2;
+            competitor[(turn+1)%2].deck.setWinsNumber(competitor[(turn+1)%2].deck.getWinsNumber() + 1);
+        }
+        competitor[0].deck.setPlaysNumber(competitor[0].deck.getPlaysNumber() + 1);
+        competitor[1].deck.setPlaysNumber(competitor[1].deck.getPlaysNumber() + 1);
+        turn = -1;
+        throw new GameOverException();
+    }
+
+    public int getWinner() {
+        return winner;
+    }
+
+    public class Competitor{
+        private int fullMana = 0, leftMana = 0;
+        private Deck deck;
+        private Hero hero;
+        private ArrayList<Card> inDeckCards, inHandCards, onBoardCards;
+
+        Competitor(){
+            inDeckCards = new ArrayList<>();
+            inHandCards = new ArrayList<>();
+            onBoardCards = new ArrayList<>();
+        }
+
+        public void putCardFromDeckToHand() throws Exception {
+            if (inDeckCards.size() == 0) throw new Exception("Deck is empty.");
+            Random random = new Random();
+            Card card = inDeckCards.get(random.nextInt(inDeckCards.size()));
+            if(inHandCards.size() < GameConstants.getInstance().getInteger("handMaxCard")){
+                inHandCards.add(card);
             }
-            break;
+            inDeckCards.remove(card);
         }
-        if(answer.equals("y")){
-            playersManager.login();
+
+        public int getFullMana() {
+            return fullMana;
         }
-        else{
-            playersManager.singin();
+
+        public void setFullMana(int fullMana) {
+            this.fullMana = fullMana;
         }
-        System.out.println("Main Menu:");
-        LogCenter logCenter = LogCenter.getInstance();
-        Logger logger = logCenter.getLogger();
-        while (true){
-            answer = (scanner.nextLine()).trim();
-            switch (answer){
-                case "exit":
-                    logger.info("exit_mainMenu");
-                    mainCLI();
-                    return;
-                case "exit -a":
-                    logger.info("exit_game");
-                    return;
-                case "collections":
-                    logger.info("navigate_collections");
-                    collections.CLI();
-                    break;
-                case  "store":
-                    logger.info("navigate_store");
-                    store.CLI();
-                    break;
-                case "hearthstone --help":
-                    logger.info("get_help");
-                    Scanner sc = new Scanner(new File("src"+File.separator+"Data"+File.separator+"General"+File.separator+"Main Menu Help"));
-                    while (sc.hasNext()){
-                        System.out.println(sc.nextLine());
-                    }
-                    sc.close();
-                    break;
-                case "delete-player":
-                    logger.info("deleteUser_attempt");
-                    playersManager.deleteCurrentPlayer();
-                    mainCLI();
-                    return;
-                default:
-                    logger.error("wrong_command");
-                    System.out.println("command not found. \"hearthstone --help\" for more help.");
+
+        public int getLeftMana() {
+            return leftMana;
+        }
+
+        public void setLeftMana(int leftMana) {
+            this.leftMana = leftMana;
+        }
+
+        public Deck getDeck() {
+            return deck;
+        }
+
+        public void setDeck(Deck deck) {
+            this.deck = deck;
+        }
+
+        public Hero getHero() {
+            return hero;
+        }
+
+        public void setHero(Hero hero) {
+            this.hero = hero;
+        }
+
+        public ArrayList<Card> getInDeckCards() {
+            return inDeckCards;
+        }
+
+        public ArrayList<Card> getInHandCards() {
+            return inHandCards;
+        }
+
+        public ArrayList<Card> getOnBoardCards() {
+            return onBoardCards;
+        }
+
+        public boolean haveCard(Card card){
+            return inHandCards.contains(card);
+        }
+
+        public void playCard(Card card) throws IOException {
+            deck.playCard(card.getName());
+            inHandCards.remove(card);
+            if(card instanceof Minion){
+                if(onBoardCards.size() < GameConstants.getInstance().getInteger("groundMaxCard")){
+                    onBoardCards.add(card);
+                }
+            }
+        }
+
+        public void damageToHero(int damage) throws GameOverException {
+            hero.setHp(competitor[turn].getHero().getHp() - damage);
+            if (hero.getHp() <= 0) {
+                engGame();
             }
         }
     }

@@ -1,0 +1,14 @@
+{
+"name":"Priest",
+"hp":30,
+"deckMax":30,
+"heroPower":
+	{
+	"name":"PriestHeroPower",
+	"rarity":"Legendary",
+	"heroClass":"Priest",
+	"type":"Spell",
+	"description":"Restore 4 Health.",
+	"mana":2
+	}
+}

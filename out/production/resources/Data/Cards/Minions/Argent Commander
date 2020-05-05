@@ -1,0 +1,11 @@
+{
+"hp":2,
+"attack":4,
+"name":"Argent Commander",
+"rarity":"Rare",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Charge Divine Shield",
+"mana":6,
+"price":4
+}

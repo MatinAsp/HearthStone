@@ -1,0 +1,11 @@
+{
+"durability":2,
+"attack":5,
+"name":"Dragon Claw",
+"rarity":"Legendary",
+"heroClass":"Neutral",
+"type":"Weapon",
+"description":"",
+"mana":5,
+"price":9
+}

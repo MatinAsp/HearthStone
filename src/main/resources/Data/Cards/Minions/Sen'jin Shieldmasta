@@ -1,0 +1,11 @@
+{
+"hp":5,
+"attack":3,
+"name":"Sen'jin Shieldmasta",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Taunt",
+"mana":4,
+"price":3
+}

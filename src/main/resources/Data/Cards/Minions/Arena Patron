@@ -1,0 +1,11 @@
+{
+"hp":3,
+"attack":3,
+"name":"Arena Patron",
+"rarity":"Rare",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Overkill: Summon another Arena Patron.",
+"mana":5,
+"price":5
+}

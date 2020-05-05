@@ -1,0 +1,37 @@
+USER: matin
+ID: 1163607418
+CREATED_AT: 2020/05/05 22:32:21
+PASSWORD: 103668357
+
+INFO    2020-05-05 22:32:21,733 - sign_in
+INFO    2020-05-05 22:32:21,734 - navigate_from_log_in_to_menu
+INFO    2020-05-05 22:32:23,177 - navigate_from_menu_to_collections
+INFO    2020-05-05 22:32:25,681 - hero_filter_changed
+INFO    2020-05-05 22:32:26,443 - hero_filter_changed
+INFO    2020-05-05 22:32:26,785 - hero_filter_changed
+INFO    2020-05-05 22:32:26,843 - hero_filter_changed
+INFO    2020-05-05 22:32:28,497 - set_current_collections_deck
+INFO    2020-05-05 22:32:29,833 - set_collections_current_deck_null
+INFO    2020-05-05 22:32:38,385 - navigate_from_collections_to_menu
+INFO    2020-05-05 22:32:39,625 - navigate_from_menu_to_settings
+INFO    2020-05-05 22:32:55,593 - navigate_from_settings_to_menu
+INFO    2020-05-05 22:32:55,593 - settings_applied
+INFO    2020-05-05 22:32:56,811 - start_a_game
+INFO    2020-05-05 22:32:58,665 - passive_selected
+INFO    2020-05-05 22:33:00,548 - end_turn_player_1
+INFO    2020-05-05 22:33:00,580 - end_turn_player_2
+INFO    2020-05-05 22:33:05,137 - back_to_menu
+INFO    2020-05-05 22:33:06,601 - navigate_from_menu_to_settings
+INFO    2020-05-05 22:33:09,465 - navigate_from_settings_to_menu
+INFO    2020-05-05 22:33:09,465 - settings_applied
+INFO    2020-05-05 22:33:12,969 - navigate_from_menu_to_store
+INFO    2020-05-05 22:33:16,673 - store_lock_filter_changed
+INFO    2020-05-05 22:33:17,505 - store_lock_filter_changed
+INFO    2020-05-05 22:33:18,753 - store_lock_filter_changed
+INFO    2020-05-05 22:33:19,615 - store_lock_filter_changed
+INFO    2020-05-05 22:33:27,953 - store_lock_filter_changed
+INFO    2020-05-05 22:33:28,894 - store_lock_filter_changed
+INFO    2020-05-05 22:33:39,593 - store_lock_filter_changed
+INFO    2020-05-05 22:33:40,503 - store_lock_filter_changed
+INFO    2020-05-05 22:33:46,992 - navigate_from_store_to_menu
+INFO    2020-05-05 22:33:52,123 - exit

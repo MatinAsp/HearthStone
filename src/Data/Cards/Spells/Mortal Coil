@@ -1,9 +1,0 @@
-{
-"name":"Mortal Coil",
-"rarity":"Common",
-"heroClass":"Warlock",
-"type":"Spell",
-"description":"If your spells look like horrifying skulls, let's be honest, you should get to draw some cards.\n  Deal 1 damage to a minion. If that kills it, draw a card.",
-"mana":1,
-"price":3
-}

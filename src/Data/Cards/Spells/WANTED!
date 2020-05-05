@@ -1,9 +1,0 @@
-{
-"name":"WANTED!",
-"rarity":"Epic",
-"heroClass":"Rogue",
-"type":"Spell",
-"description":"Wanted: Dead or Undead.\n  Deal 3 damage to a minion. If that kills it, add a Coin to your hand.",
-"mana":4,
-"price":4
-}

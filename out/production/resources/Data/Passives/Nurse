@@ -1,0 +1,4 @@
+{
+"name":"Nurse",
+"description":"At the end of your turn, randomly recovers the hp of one of the minions that has a low life."
+}
