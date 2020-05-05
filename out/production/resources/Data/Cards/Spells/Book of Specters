@@ -1,9 +1,0 @@
-{
-"name":"Book of Specters",
-"rarity":"Legendary",
-"heroClass":"Neutral",
-"type":"Spell",
-"description":"Draw 3 cards. Discard any spells drawn.",
-"mana":2,
-"price":5
-}

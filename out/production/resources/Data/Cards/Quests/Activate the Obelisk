@@ -1,9 +1,0 @@
-{
-"name":"Activate the Obelisk",
-"rarity":"Legendary",
-"heroClass":"Neutral",
-"type":"Quest",
-"description":"Quest: Restore 15 Health.\n Reward: Obelisk's Eye.",
-"mana":1,
-"price":7
-}

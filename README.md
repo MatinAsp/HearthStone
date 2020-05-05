@@ -9,11 +9,6 @@ extra lib:
     log4j
     gson
     
-for sure javafx link for gradle:
-
-    // https://mvnrepository.com/artifact/org.openjfx/javafx
-    compile group: 'org.openjfx', name: 'javafx', version: '11', ext: 'pom'
-
 sources:
 
     stackOverflow
