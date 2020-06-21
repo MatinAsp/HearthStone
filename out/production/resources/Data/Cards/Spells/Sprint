@@ -1,0 +1,9 @@
+{
+"name":"Sprint",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Spell",
+"description":"Draw 4 cards.",
+"mana":7,
+"price":4
+}

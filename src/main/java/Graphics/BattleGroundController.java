@@ -30,7 +30,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
-import jdk.nashorn.api.scripting.ScriptObjectMirror;
 
 import java.io.IOException;
 import java.net.URL;

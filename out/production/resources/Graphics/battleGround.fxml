@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@GameStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Graphics.BattleGroundController">
+   <children>
+      <ImageView fx:id="arena" fitHeight="720.0" fitWidth="1280.0">
+         <image>
+            <Image url="@Image/BattleGrounds/basic.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <Button id="endTurn" fx:id="endTurnButton" layoutX="1074.0" layoutY="302.0" mnemonicParsing="false" onAction="#endTurn" />
+            <Label fx:id="manaText1" alignment="CENTER" layoutX="853.0" layoutY="651.0" prefHeight="31.0" prefWidth="83.0" styleClass="gameFont" text="10/10" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="manaText2" alignment="CENTER" layoutX="822.0" layoutY="30.0" prefHeight="31.0" prefWidth="83.0" styleClass="gameFont" text="10/10" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="9.0" layoutY="17.0" mnemonicParsing="false" onAction="#backToMenu" styleClass="leftBackButton" />
+            <Button layoutX="1189.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exit" styleClass="exitButton" />
+            <Label fx:id="cardsNumberLabel1" alignment="CENTER" layoutX="1174.0" layoutY="380.0" prefHeight="99.0" prefWidth="28.0" styleClass="gameFont" text="10/10" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="cardsNumberLabel2" alignment="CENTER" layoutX="1169.0" layoutY="187.0" prefHeight="99.0" prefWidth="28.0" styleClass="gameFont" text="10/10" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000c4" height="271.0" layoutX="20.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
+            <ScrollPane layoutX="23.0" layoutY="197.0" prefHeight="270.0" prefWidth="164.0" style="-fx-background-color: transparent;">
+               <content>
+                  <GridPane fx:id="gameLogGridPane" prefHeight="260.0" prefWidth="153.0" style="-fx-font-size: 12;" styleClass="gameFont">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <StackPane fx:id="heroPowerPlace1" layoutX="737.0" layoutY="493.0" prefHeight="97.0" prefWidth="112.0" />
+            <StackPane fx:id="heroPowerPlace2" layoutX="438.0" layoutY="97.0" prefHeight="97.0" prefWidth="112.0" />
+            <HBox fx:id="manaBar" layoutX="940.0" layoutY="658.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="268.0" />
+            <HBox fx:id="battleGround1" alignment="CENTER" layoutX="188.0" layoutY="340.0" prefHeight="119.0" prefWidth="918.0" />
+            <HBox fx:id="battleGround2" alignment="CENTER" layoutX="210.0" layoutY="213.0" prefHeight="119.0" prefWidth="875.0" />
+            <Pane fx:id="hand1" layoutX="434.0" layoutY="615.0" prefHeight="178.0" prefWidth="430.0" />
+            <Pane fx:id="hand2" layoutX="465.0" layoutY="-134.0" prefHeight="178.0" prefWidth="367.0" />
+         </children>
+      </Pane>
+      <StackPane fx:id="alertBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" visible="false">
+         <children>
+            <ImageView fitHeight="500.0" fitWidth="600.0">
+               <image>
+                  <Image url="@Image/alertBox.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" spacing="50.0">
+               <children>
+                  <Label fx:id="alertMessage" alignment="CENTER" prefHeight="235.0" prefWidth="505.0" styleClass="gameFont" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#backToMenu" text="OK">
+                     <styleClass>
+                        <String fx:value="brightButton" />
+                        <String fx:value="gameFont" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="100.0" />
+               </padding>
+            </VBox>
+         </children>
+      </StackPane>
+      <StackPane fx:id="passiveSelectionPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="720.0" opacity="0.59" stroke="#ffffff00" strokeType="INSIDE" width="1280.0" />
+            <HBox fx:id="passiveSelectionPlace" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" />
+         </children>
+      </StackPane>
+   </children>
+</StackPane>

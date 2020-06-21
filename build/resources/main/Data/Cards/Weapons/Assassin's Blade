@@ -1,0 +1,11 @@
+{
+"durability":4,
+"attack":3,
+"name":"Assassin's Blade",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Weapon",
+"description":"",
+"mana":5,
+"price":5
+}

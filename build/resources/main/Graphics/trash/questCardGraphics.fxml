@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="141.0" style="-fx-background-color: transparent;" stylesheets="@GameStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Graphics.CardGraphicsController">
+   <children>
+      <ImageView fx:id="cardPic" fitHeight="101.0" fitWidth="119.0" layoutX="12.0" layoutY="14.0">
+         <image>
+            <Image url="@Image/hearthstone_murloc_pic_10.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="border" fitHeight="200.0" fitWidth="141.0">
+         <image>
+            <Image url="@Image/CardBorders/questCommon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="96.0" layoutX="23.0" layoutY="102.0">
+         <image>
+            <Image url="@Image/nameTag.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="coin" fitHeight="32.0" fitWidth="32.0" layoutY="96.0">
+         <image>
+            <Image url="@Image/coin.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="description" alignment="CENTER" layoutX="16.0" layoutY="120.0" prefHeight="59.0" prefWidth="108.0" styleClass="description" text="Label" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+      <ImageView fx:id="lock" layoutX="-3.0" visible="false">
+         <image>
+            <Image url="@Image/lock.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="cardName" alignment="CENTER" layoutX="30.0" layoutY="96.0" prefHeight="39.0" prefWidth="80.0" styleClass="description" text="Label" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true" />
+      <Text fx:id="price" fill="WHITE" layoutX="-5.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cardInfo" text="0" textAlignment="CENTER" wrappingWidth="43.33331298828125" />
+      <Text fx:id="mana" fill="WHITE" layoutX="-2.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cardInfo" text="0" textAlignment="CENTER" wrappingWidth="43.33331298828125" />
+   </children>
+</Pane>

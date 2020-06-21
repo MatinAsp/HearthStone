@@ -1,28 +1,25 @@
 package Graphics;
 
-import Log.LogCenter;
 import Logic.PlayersManager;
-import Models.Cards.Card;
-import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Spinner;
-import javafx.scene.layout.StackPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import sun.awt.SunToolkit;
 
 import java.io.File;
-import java.nio.file.Paths;
+import java.net.URL;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        //URL url = new File("src/main/resources/Graphics/Graphics.fxml").toURI().toURL();
+        //primaryStage = FXMLLoader.load(url);
         primaryStage = FXMLLoader.load(getClass().getResource("Graphics.fxml"));
+
+        // primaryStage = FXMLLoader.load(getClass().getClassLoader().getResource("Graphics.fxml"));
+     //   getClass().getClassLoader().getResource("ui_layout.fxml")
+
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }

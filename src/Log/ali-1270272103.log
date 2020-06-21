@@ -1,0 +1,16 @@
+USER: ali
+ID: 1270272103
+CREATED_AT: 2020/06/20 20:05:37
+PASSWORD: 96670
+
+INFO    2020-06-20 20:05:37,051 - sign_in
+INFO    2020-06-20 20:05:37,052 - navigate_from_log_in_to_menu
+INFO    2020-06-20 20:05:39,310 - navigate_from_menu_to_settings
+INFO    2020-06-20 20:05:41,074 - exit
+INFO    2020-06-20 20:06:13,600 - log_in
+INFO    2020-06-20 20:06:13,601 - navigate_from_log_in_to_menu
+INFO    2020-06-20 20:06:14,910 - exit
+INFO    2020-06-20 20:06:24,664 - log_in
+INFO    2020-06-20 20:06:24,665 - navigate_from_log_in_to_menu
+INFO    2020-06-20 20:06:25,618 - navigate_from_menu_to_collections
+INFO    2020-06-20 20:06:33,455 - exit

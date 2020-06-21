@@ -1,0 +1,11 @@
+{
+"hp":1,
+"attack":2,
+"name":"Voodoo Doctor",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Battlecry: Restore 2 Health.",
+"mana":1,
+"price":1
+}

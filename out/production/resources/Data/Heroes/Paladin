@@ -1,0 +1,14 @@
+{
+"name":"Paladin",
+"hp":30,
+"deckMax":30,
+"heroPower":
+	{
+	"name":"PaladinHeroPower",
+	"rarity":"Legendary",
+	"heroClass":"Paladin",
+	"type":"Spell",
+	"description":"Summon two 1/1 Recruits.",
+	"mana":2
+	}
+}

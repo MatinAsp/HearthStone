@@ -11,7 +11,6 @@ import Models.Passive;
 import Models.Player;
 import Models.Cards.Card;
 import com.google.gson.Gson;
-import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Text?>
+
+<Pane style="-fx-background-color: transparent;" stylesheets="@GameStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Graphics.CardGraphicsController">
+   <children>
+      <ImageView fx:id="cardPic" fitHeight="100.0" fitWidth="72.0" layoutX="3.0">
+         <image>
+            <Image url="@Image/hearthstone_murloc_pic_10.jpg" />
+         </image>
+      </ImageView>
+      <Ellipse fx:id="view" fill="#ffffff00" layoutX="39.0" layoutY="50.0" radiusX="34.0" radiusY="50.0" stroke="#464646" strokeType="INSIDE" strokeWidth="5.0" />
+      <ImageView fitHeight="41.0" fitWidth="30.0" layoutX="46.0" layoutY="57.0">
+         <image>
+            <Image url="@Image/hp.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="-2.0" layoutY="58.0">
+         <image>
+            <Image url="@Image/attackValueBack.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="attack" fill="WHITE" layoutX="-1.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30;" styleClass="cardInfo" text="10" textAlignment="CENTER" wrappingWidth="39.00195503234863" />
+      <Text fx:id="hp" fill="WHITE" layoutX="45.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30;" styleClass="cardInfo" text="10" textAlignment="CENTER" wrappingWidth="32.336578369140625" />
+   </children>
+</Pane>

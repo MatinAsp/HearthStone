@@ -1,0 +1,11 @@
+{
+"hp":1,
+"attack":1,
+"name":"Wisp",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"",
+"mana":0,
+"price":2
+}

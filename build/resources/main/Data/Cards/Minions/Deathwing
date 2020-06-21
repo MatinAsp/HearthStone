@@ -1,0 +1,11 @@
+{
+"hp":12,
+"attack":12,
+"name":"Deathwing",
+"rarity":"Legendary",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Battlecry: Destroy all other minions and discard your hand.",
+"mana":10,
+"price":11
+}

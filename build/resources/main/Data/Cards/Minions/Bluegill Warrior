@@ -1,0 +1,11 @@
+{
+"hp":1,
+"attack":2,
+"name":"Bluegill Warrior",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Charge",
+"mana":2,
+"price":2
+}
