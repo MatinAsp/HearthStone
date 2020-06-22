@@ -1,6 +1,7 @@
 package Graphics;
 
 import Data.*;
+import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
 import Graphics.GraphicRender;
 import Log.LogCenter;
@@ -292,6 +293,9 @@ public class BattleGroundController implements Initializable {
             else alertMessage.setText("You Lose.");
         }catch (InterruptedException e){
             LogCenter.getInstance().getLogger().error(e);
+        }catch (EmptyDeckException e){
+            LogCenter.getInstance().getLogger().info(e);
+            gameRender();
         }
         if (game.getTurn() == 0) endTurnButton.setDisable(false);
         else endTurnButton.setDisable(true);

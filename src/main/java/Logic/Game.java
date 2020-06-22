@@ -2,6 +2,7 @@ package Logic;
 
 
 import Data.GameConstants;
+import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
 import Models.Cards.Card;
 import Models.Cards.Minion;
@@ -22,7 +23,7 @@ public class Game {
         turn = 0;
     }
 
-    public void changeTurn() throws GameOverException, IOException {
+    public void changeTurn() throws GameOverException, IOException, EmptyDeckException {
         turn = (turn+1)%2;
         if(competitor[turn].getFullMana() < GameConstants.getInstance().getInteger("manaMax")){
             competitor[turn].setFullMana(competitor[turn].getFullMana()+1);
@@ -32,6 +33,7 @@ public class Game {
             competitor[turn].putCardFromDeckToHand();
         } catch (Exception e) {
             competitor[turn].damageToHero(GameConstants.getInstance().getInteger("DeckEmptyLifeDecrease"));
+            throw new EmptyDeckException();
         }
     }
 

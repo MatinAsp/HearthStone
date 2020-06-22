@@ -19,7 +19,7 @@ javafx {
                 , 'javafx.base']
 }
 
-sourceCompatibility = 13
+sourceCompatibility = 14
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'

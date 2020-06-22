@@ -25,7 +25,7 @@ public class GraphicRender {
         return cardFactory;
     }
 
-    public Pane buildCard(Card card, boolean lock, boolean priceTag, boolean cardBck) throws IOException {
+    public Pane buildCard(Card card, boolean lock, boolean priceTag, boolean cardBack) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 card.getType().toLowerCase()+"CardGraphics.fxml"
         ));
@@ -50,7 +50,7 @@ public class GraphicRender {
         }
         cardGraphicsController.priceVisible(priceTag);
         cardGraphicsController.lockVisible(lock);
-        if (cardBck){
+        if (cardBack){
             GameSettings gameSettings = GameSettings.getInstance();
             cardGraphicsController.setCardBack(AssetManager.getInstance().getCardBack(gameSettings.getCardBack()));
         }
