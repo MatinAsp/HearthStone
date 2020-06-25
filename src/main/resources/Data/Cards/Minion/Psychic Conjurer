@@ -5,7 +5,7 @@
 "rarity":"Common",
 "heroClass":"Priest",
 "type":"Minion",
-"description":"Battlecry: Copy a card in your opponent’s deck and add it to your hand.",
+"description":"Battlecry: Copy a card in your opponent's deck and add it to your hand.",
 "mana":1,
 "price":2
 }

@@ -275,7 +275,7 @@ public class Controller implements Initializable {
 
     private void initializeHeroSelection() throws IOException {
         ArrayList<Node> nodes = new ArrayList<>();
-        for(Hero hero: DataManager.getInstance().getAllHeroes()){
+        for(Hero hero: DataManager.getInstance().getAll(Hero.class)){
             Pane heroPane = GraphicRender.getInstance().buildHeroPlace(hero);
             heroPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                 try {
@@ -322,7 +322,7 @@ public class Controller implements Initializable {
     private void collectionsCardsRender() throws IOException {
         collectionsCardsBoard.getChildren().clear();
         Player player =PlayersManager.getInstance().getCurrentPlayer();
-        ArrayList<Card> filteredCards =collectionsFilterer.filterCards(DataManager.getInstance().getAllCards(), player);
+        ArrayList<Card> filteredCards =collectionsFilterer.filterCards(DataManager.getInstance().getAll(Card.class), player);
         ArrayList<Node> nodes = new ArrayList<>();
         for(Card card: filteredCards){
             Pane cardGraphic =
@@ -376,7 +376,7 @@ public class Controller implements Initializable {
         storeCardsBoard.getChildren().clear();
         Player player =PlayersManager.getInstance().getCurrentPlayer();
         playerCoin.setText(Integer.toString(player.getWallet()));
-        ArrayList<Card> filteredCards =storeFilterer.filterCards(DataManager.getInstance().getAllCards(), player);
+        ArrayList<Card> filteredCards =storeFilterer.filterCards(DataManager.getInstance().getAll(Card.class), player);
         ArrayList<Node> nodes = new ArrayList<>();
         for(Card card: filteredCards){
             Pane cardGraphic =

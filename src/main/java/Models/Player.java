@@ -37,7 +37,7 @@ public class Player {
         if(name == null || name.equals("")) throw new Exception("You didn't enter the name.");
         if(!haveHero(heroName)) throw new Exception("Don't have this hero.");
         if(haveDeck(name)) throw new Exception("This name is for another deck.");
-        allDecks.add(new Deck(name, DataManager.getInstance().getHero(heroName)));
+        allDecks.add(new Deck(name, DataManager.getInstance().getObject(Hero.class, heroName)));
     }
 
     public void removeDeck(String name){
@@ -106,7 +106,7 @@ public class Player {
     }
 
     public void addToCards(String card) throws IOException {
-        allCards.add(DataManager.getInstance().getCard(card));
+        allCards.add(DataManager.getInstance().getObject(Card.class, card));
     }
 
     public void removeCard(Card card) throws IOException {

@@ -61,7 +61,7 @@ public class Deck implements Comparable {
 
     public void addCard(String card) throws Exception {
         if(cards.size() == hero.getDeckMax()) throw new Exception("Deck is full!");
-        Card cardToAdd = DataManager.getInstance().getCard(card);
+        Card cardToAdd = DataManager.getInstance().getObject(Card.class, card);
         if (!isForDeck(cardToAdd)) throw new Exception("This card is not for this hero.");
         if(getUseNumber(card) >= GameConstants.getInstance().getInteger("cardMaxInDeck"))
             throw new Exception("You can't add more of this card.");
@@ -93,7 +93,7 @@ public class Deck implements Comparable {
                 throw new Exception("Can't change the hero.");
             }
         }
-        hero = DataManager.getInstance().getHero(heroName);
+        hero = DataManager.getInstance().getObject(Hero.class, heroName);
         resetRecord();
     }
 

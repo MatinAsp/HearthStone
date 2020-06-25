@@ -3,6 +3,7 @@ package Logic;
 import Data.DataManager;
 import Data.GameConstants;
 import Models.Cards.Card;
+import Models.Hero;
 import Models.Player;
 
 public class GameFactory {
@@ -30,13 +31,13 @@ public class GameFactory {
     private void setCompetitor(Game.Competitor competitor, Player player) throws Exception {
         competitor.setDeck(player.getDeck(player.getCurrentDeckName()));
         for(Card card: player.getDeck(player.getCurrentDeckName()).getCards()){
-            competitor.getInDeckCards().add(DataManager.getInstance().getCard(card.getName()));
+            competitor.getInDeckCards().add(DataManager.getInstance().getObject(Card.class, card.getName()));
         }
         for(int i = 0; i < Math.min(competitor.getDeck().getCards().size(), GameConstants.getInstance().getInteger("HandsFirstCardsNumber")); i++){
             competitor.putCardFromDeckToHand();
         }
         competitor.setHero(
-                DataManager.getInstance().getHero(player.getDeck(player.getCurrentDeckName()).getHero().getName())
+                DataManager.getInstance().getObject(Hero.class, player.getDeck(player.getCurrentDeckName()).getHero().getName())
         );
     }
 }

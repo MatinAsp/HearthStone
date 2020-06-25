@@ -1,7 +1,0 @@
-buy [Card's name]                                                     Buy a card
-wallet                                                                Show your wallet
-sell [Card's name]                                                    Sell a card
-ls -s                                                                 Show your sellable cards
-ls -b                                                                 Show purchaseable cards
-exit                                                                  Enter the log in section
-exit -a                                                               Exit the game

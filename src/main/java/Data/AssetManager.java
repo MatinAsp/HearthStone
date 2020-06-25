@@ -2,15 +2,15 @@ package Data;
 
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.shape.Path;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.HashMap;
 
 public class AssetManager {
     static private AssetManager assetManager = null;
+    private HashMap<String, Image> imageMap = new HashMap<>();
     private String assetsAddress = GameConstants.getInstance().getString("assetsAddress");
     private AssetManager() throws IOException {}
 
@@ -21,49 +21,26 @@ public class AssetManager {
         return assetManager;
     }
 
-    public Image getImage(String name) throws IOException {
-        Image image = new Image(Paths.get(
-                assetsAddress+File.separator+name+".png"
-        ).toUri().toString());
-        return image;
+    public Image getImage(String name){
+        if(!imageMap.containsKey(name)){
+            imageMap.put(name, searchImage(name, assetsAddress));
+        }
+        return imageMap.get(name);
     }
 
-    public Image getCard(String name) throws IOException {
-        Image card = new Image(Paths.get(
-                assetsAddress+File.separator+"Cards"+File.separator+name+".png"
-        ).toUri().toString());
-        return card;
-    }
-    public Image getHeroImage(String name){
-        Image hero = new Image(Paths.get(
-                assetsAddress+File.separator+"Heroes"+File.separator+name+".png"
-        ).toUri().toString());
-        return hero;
-    }
-    public Image getCardBorder(String name) throws IOException {
-        Image border = new Image(Paths.get(
-                assetsAddress+File.separator+"CardBorders"+File.separator+name+".png"
-        ).toUri().toString());
-        return border;
-    }
-    public Image getPassive(String name){
-        Image passive = new Image(Paths.get(
-                assetsAddress+File.separator+"Passives"+File.separator+name+".png"
-        ).toUri().toString());
-        return passive;
-    }
-
-    public Image getBattleGround(String name) {
-        Image arena = new Image(Paths.get(
-                assetsAddress+File.separator+"BattleGrounds"+File.separator+name+".png"
-        ).toUri().toString());
-        return arena;
-    }
-
-    public Image getCardBack(String name) {
-        Image cardBack = new Image(Paths.get(
-                assetsAddress+File.separator+"CardsBack"+File.separator+name+".png"
-        ).toUri().toString());
-        return cardBack;
+    public Image searchImage(String name, String address){
+        File dir = new File(address);
+        for(File file: dir.listFiles()){
+            if(file.isDirectory()){
+                Image image = searchImage(name, file.getAbsolutePath());
+                if(image != null) return image;
+            }
+            else{
+                if(file.getName().equalsIgnoreCase(name+".png")){
+                    return new Image(Paths.get(file.getAbsolutePath()).toUri().toString());
+                }
+            }
+        }
+        return null;
     }
 }

@@ -163,4 +163,10 @@ public class Game {
             }
         }
     }
+
+    class Controller{
+        void draw(){
+
+        }
+    }
 }

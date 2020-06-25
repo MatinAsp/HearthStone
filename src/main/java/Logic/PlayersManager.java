@@ -16,7 +16,7 @@ public class PlayersManager {
     private PlayersManager() throws IOException {
         DataManager dataManager = DataManager.getInstance();
         allPlayers = new ArrayList<>();
-        allPlayers.addAll(dataManager.getAllPlayers());
+        allPlayers.addAll(dataManager.getAll(Player.class));
     }
 
     public Player getCurrentPlayer(){
@@ -65,7 +65,7 @@ public class PlayersManager {
         Player player = PlayerFactory.getInstance().build(username, password);
         allPlayers.add(player);
         currentPlayer = player;
-        DataManager.getInstance().addPlayer(player);
+        DataManager.getInstance().savePlayer(player);
         LogCenter logCenter = LogCenter.getInstance();
         logCenter.createLogFile(player);
         logCenter.setLogFile(currentPlayer);

@@ -6,15 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.File;
-import java.net.URL;
-
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         primaryStage = FXMLLoader.load(getClass().getResource("Graphics.fxml"));
-
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }

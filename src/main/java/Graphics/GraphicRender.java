@@ -32,13 +32,13 @@ public class GraphicRender {
         Pane graphicCard = fxmlLoader.load();
         CardGraphicsController cardGraphicsController = fxmlLoader.getController();
         cardGraphicsController.setCard(card);
-        cardGraphicsController.setCardPic(assetManager.getCard(card.getName()));
+        cardGraphicsController.setCardPic(assetManager.getImage(card.getName()));
         cardGraphicsController.setMana(card.getMana());
         cardGraphicsController.setCardName(card.getName());
         cardGraphicsController.setPrice(card.getPrice());
         cardGraphicsController.setDescription(card.getDescription());
         cardGraphicsController.setBorder(
-                assetManager.getCardBorder(card.getType().toLowerCase()+card.getRarity())
+                assetManager.getImage(card.getType().toLowerCase()+card.getRarity())
         );
         if(card instanceof Minion){
             cardGraphicsController.setAttack(((Minion) card).getAttack());
@@ -52,7 +52,7 @@ public class GraphicRender {
         cardGraphicsController.lockVisible(lock);
         if (cardBack){
             GameSettings gameSettings = GameSettings.getInstance();
-            cardGraphicsController.setCardBack(AssetManager.getInstance().getCardBack(gameSettings.getCardBack()));
+            cardGraphicsController.setCardBack(AssetManager.getInstance().getImage(gameSettings.getCardBack()));
         }
         return graphicCard;
     }
@@ -61,7 +61,7 @@ public class GraphicRender {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("collectionsDeckGraphic.fxml"));
         Pane graphicDeck = fxmlLoader.load();
         CollectionsDeckGraphic collectionsDeckGraphic = fxmlLoader.getController();
-        collectionsDeckGraphic.setImage(AssetManager.getInstance().getHeroImage(deck.getHero().getName()));
+        collectionsDeckGraphic.setImage(AssetManager.getInstance().getImage(deck.getHero().getName()));
         collectionsDeckGraphic.setDeckName(deck.getName());
         return graphicDeck;
     }
@@ -70,7 +70,7 @@ public class GraphicRender {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("collectionsDeckGraphic.fxml"));
         Pane graphicDeck = fxmlLoader.load();
         CollectionsDeckGraphic collectionsDeckGraphic = fxmlLoader.getController();
-        collectionsDeckGraphic.setImage(AssetManager.getInstance().getCard(cardName));
+        collectionsDeckGraphic.setImage(AssetManager.getInstance().getImage(cardName));
         collectionsDeckGraphic.setDeckName(cardName);
         return graphicDeck;
     }
@@ -79,7 +79,7 @@ public class GraphicRender {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("heroPlace.fxml"));
         Pane heroPlace = fxmlLoader.load();
         HeroPlaceController heroPlaceController  = fxmlLoader.getController();
-        heroPlaceController.setHeroImage(AssetManager.getInstance().getHeroImage(hero.getName()+"Place"));
+        heroPlaceController.setHeroImage(AssetManager.getInstance().getImage(hero.getName()+"Place"));
         heroPlaceController.setHp(hero.getHp());
         return heroPlace;
     }
@@ -91,7 +91,7 @@ public class GraphicRender {
         cardGraphicsController.setCard(minion);
         cardGraphicsController.setAttack(minion.getAttack());
         cardGraphicsController.setHp(minion.getHp());
-        cardGraphicsController.setCardPic(AssetManager.getInstance().getCard(minion.getName()));
+        cardGraphicsController.setCardPic(AssetManager.getInstance().getImage(minion.getName()));
         return battleGroundMinion;
     }
 
@@ -101,7 +101,7 @@ public class GraphicRender {
         CardGraphicsController passiveGraphicsController  = fxmlLoader.getController();
         passiveGraphicsController.setCardName(passive.getName());
         passiveGraphicsController.setDescription(passive.getDescription());
-        passiveGraphicsController.setCardPic(AssetManager.getInstance().getPassive(passive.getName()));
+        passiveGraphicsController.setCardPic(AssetManager.getInstance().getImage(passive.getName()));
         return passiveGraphics;
     }
 
@@ -110,7 +110,7 @@ public class GraphicRender {
         Pane heroPowerGraphics = fxmlLoader.load();
         HeroPowerController heroPowerController  = fxmlLoader.getController();
         heroPowerController.setMana(heroPower.getMana());
-        heroPowerController.setHeroPowerImage(AssetManager.getInstance().getCard(heroPower.getName()));
+        heroPowerController.setHeroPowerImage(AssetManager.getInstance().getImage(heroPower.getName()));
         return heroPowerGraphics;
     }
 

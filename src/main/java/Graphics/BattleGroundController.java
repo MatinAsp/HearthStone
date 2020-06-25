@@ -35,7 +35,6 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -71,6 +70,8 @@ public class BattleGroundController implements Initializable {
     @FXML
     private GridPane gameLogGridPane;
 
+    private Parent selected = null;
+
     private Pane hero1,hero2;
 
     private Game game = null;
@@ -90,7 +91,7 @@ public class BattleGroundController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             renderPassives();
-            arena.setImage(AssetManager.getInstance().getBattleGround(GameSettings.getInstance().getBattleGroundArena()));
+            arena.setImage(AssetManager.getInstance().getImage(GameSettings.getInstance().getBattleGroundArena()));
         } catch (IOException e) {
             LogCenter.getInstance().getLogger().error(e);
             e.printStackTrace();
@@ -358,7 +359,7 @@ public class BattleGroundController implements Initializable {
 
     public void renderPassives() throws IOException {
         passiveSelectionPane.setVisible(true);
-        ArrayList<Passive> passives = DataManager.getInstance().getAllPassives();
+        ArrayList<Passive> passives = DataManager.getInstance().getAll(Passive.class);
         int passivesNumber = GameConstants.getInstance().getInteger("passivesOnGamesStar");
         while (passivesNumber-- > 0){
             Random random = new Random();

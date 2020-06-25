@@ -2,19 +2,14 @@ package Models;
 
 import Models.Cards.Card;
 
-public class Hero {
-    private String name;
+public class Hero extends Character {
     private int hp,deckMax;
     private Card heroPower;
 
     public Hero(){ }
 
-    public String getName(){
-        return name;
-    }
-
     public boolean isForHero(Card card){
-        if(card.getHeroClass().equals("Neutral") || card.getHeroClass().equals(name)){
+        if(card.getHeroClass().equals("Neutral") || card.getHeroClass().equals(super.getName())){
             return true;
         }
         return false;

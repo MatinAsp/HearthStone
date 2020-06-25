@@ -20,4 +20,5 @@ public class Minion extends Card {
     public int getAttack() {
         return attack;
     }
+
 }

@@ -1,13 +1,17 @@
 package Models;
 
-public class Passive {
-    private String name, description;
+public class Passive extends Character {
+    private String description;
 
     public Passive() {}
 
-    public String getName() {
-        return name;
+    @Override
+    public Passive clone() {
+        return new Passive(this);
     }
+     private Passive(Passive passive){
+        description = passive.getDescription();
+     }
 
     public String getDescription() {
         return description;
