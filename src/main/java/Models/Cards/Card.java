@@ -1,5 +1,6 @@
 package Models.Cards;
 
+import Interfaces.Cloneable;
 import Models.Character;
 
 public class Card extends Character {
@@ -11,6 +12,7 @@ public class Card extends Character {
 
     }
     public Card(Card card){
+        super(card.getName());
         rarity = card.getRarity();
         heroClass = card.getHeroClass();
         type = card.getType();
@@ -53,4 +55,8 @@ public class Card extends Character {
         return mana;
     }
 
+    @Override
+    public Card newOne() {
+        return new Card(this);
+    }
 }

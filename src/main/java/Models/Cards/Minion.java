@@ -1,8 +1,17 @@
 package Models.Cards;
 
+import Interfaces.Cloneable;
+import Models.Character;
+
 public class Minion extends Card {
     private int hp,attack;
     public Minion(){ }
+
+    private Minion(Minion minion) {
+        super(minion);
+        hp = minion.getHp();
+        attack = minion.getAttack();
+    }
 
     @Override
     public String toString() {
@@ -21,4 +30,8 @@ public class Minion extends Card {
         return attack;
     }
 
+    @Override
+    public Minion newOne() {
+        return new Minion(this);
+    }
 }

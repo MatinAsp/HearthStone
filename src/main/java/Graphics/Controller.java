@@ -15,6 +15,7 @@ import Logic.PlayerFactory;
 import Logic.PlayersManager;
 import Logic.Store;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
@@ -261,6 +264,18 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+       /* EventHandler<KeyEvent> keyEvenHandler = new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER){
+                    try {
+                        logInAction(new ActionEvent());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };*/
         try {
             initializeHeroSelection();
         } catch (IOException e) {
@@ -275,7 +290,7 @@ public class Controller implements Initializable {
 
     private void initializeHeroSelection() throws IOException {
         ArrayList<Node> nodes = new ArrayList<>();
-        for(Hero hero: DataManager.getInstance().getAll(Hero.class)){
+        for(Hero hero: DataManager.getInstance().getAllCharacter(Hero.class)){
             Pane heroPane = GraphicRender.getInstance().buildHeroPlace(hero);
             heroPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                 try {
@@ -322,7 +337,7 @@ public class Controller implements Initializable {
     private void collectionsCardsRender() throws IOException {
         collectionsCardsBoard.getChildren().clear();
         Player player =PlayersManager.getInstance().getCurrentPlayer();
-        ArrayList<Card> filteredCards =collectionsFilterer.filterCards(DataManager.getInstance().getAll(Card.class), player);
+        ArrayList<Card> filteredCards =collectionsFilterer.filterCards(DataManager.getInstance().getAllCharacter(Card.class), player);
         ArrayList<Node> nodes = new ArrayList<>();
         for(Card card: filteredCards){
             Pane cardGraphic =
@@ -376,7 +391,7 @@ public class Controller implements Initializable {
         storeCardsBoard.getChildren().clear();
         Player player =PlayersManager.getInstance().getCurrentPlayer();
         playerCoin.setText(Integer.toString(player.getWallet()));
-        ArrayList<Card> filteredCards =storeFilterer.filterCards(DataManager.getInstance().getAll(Card.class), player);
+        ArrayList<Card> filteredCards =storeFilterer.filterCards(DataManager.getInstance().getAllCharacter(Card.class), player);
         ArrayList<Node> nodes = new ArrayList<>();
         for(Card card: filteredCards){
             Pane cardGraphic =

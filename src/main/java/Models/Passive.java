@@ -1,17 +1,21 @@
 package Models;
 
-public class Passive extends Character {
+import Interfaces.Cloneable;
+
+public class Passive extends Character{
     private String description;
+
+    private Passive(Passive passive){
+        super(passive.getName());
+        description = passive.getDescription();
+    }
 
     public Passive() {}
 
     @Override
-    public Passive clone() {
+    public Passive newOne() {
         return new Passive(this);
     }
-     private Passive(Passive passive){
-        description = passive.getDescription();
-     }
 
     public String getDescription() {
         return description;

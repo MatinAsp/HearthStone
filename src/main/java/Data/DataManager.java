@@ -1,9 +1,9 @@
 package Data;
 
+import Models.Cards.*;
 import Models.Character;
 import Models.Hero;
 import Models.Player;
-import Models.Cards.Card;
 import com.google.gson.Gson;
 
 import java.io.*;
@@ -20,20 +20,41 @@ public class DataManager {
 
     private DataManager() throws IOException {
         GameConstants gameConstants = GameConstants.getInstance();
-        playersPath = gameConstants.getString("playersPath");
+        playersPath = gameConstants.getString("playerPath");
         generalPath = gameConstants.getString("generalPath");
         gson = new Gson();
         dataMap = new HashMap<>();
+        initialize();
     }
 
-    private <T> ArrayList<T> loadData(Class<T> tClass, String address, String specialOne) throws IOException, ClassNotFoundException {
+    private void initialize() {
+        try {
+            GameConstants gameConstants = GameConstants.getInstance();
+            Scanner scanner = new Scanner(new File(gameConstants.getString("classToLoadPath")));
+            while (scanner.hasNext()){
+                String className = scanner.next();
+                dataMap.put(
+                    Class.forName(className),
+                    loadData(Class.forName(className),gameConstants.getString(Class.forName(className).getSimpleName().toLowerCase()+"Path"))
+                );
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private <T> ArrayList<T> loadData(Class<T> tClass, String address) throws IOException, ClassNotFoundException {
         ArrayList<T> arr = new ArrayList<>();
         File[] dir = (new File(address)).listFiles();
         for(File file: dir){
             if(file.isDirectory()){
-                arr.addAll((ArrayList<T>) loadData(Class.forName(GameConstants.getInstance().getString(file.getName()+"Class")), file.getAbsolutePath(), specialOne));
+                arr.addAll((ArrayList<T>) loadData(Class.forName(GameConstants.getInstance().getString(file.getName()+"Class")), file.getAbsolutePath()));
             }
-            else if(specialOne == null || specialOne.equalsIgnoreCase(file.getName())){
+                else{
                 FileReader fileReader = new FileReader(file);
                 arr.add(gson.fromJson(fileReader,tClass));
                 fileReader.close();
@@ -49,29 +70,29 @@ public class DataManager {
         return dataManager;
     }
 
-    public <T> ArrayList<T> getAll(Class<T> tClass){
-        try {
-            return loadData(tClass, GameConstants.getInstance().getString(tClass.getSimpleName().toLowerCase()+"Path"), null);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+    public  <T extends Character> ArrayList<T> getAllCharacter(Class<T> tClass){
+        ArrayList<T> arr = new ArrayList<>();
+        for(T t: (ArrayList<T>) dataMap.get(tClass)){
+            arr.add((T) t.newOne());
         }
-        return null;
+        return arr;
     }
 
     public <T extends Character> T getObject(Class<T> tClass, String name){
-        try {
-            return loadData(tClass, GameConstants.getInstance().getString(tClass.getSimpleName().toLowerCase()+"Path"), name).get(0);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        for(T obj: (ArrayList<T>) dataMap.get(tClass)){
+            if((obj.getName()).equals(name))
+                return (T) obj.newOne();
         }
         return null;
     }
 
-    public Player getPlayer(String username) {
-        for(Player player: (ArrayList<Player>) dataMap.get(Player.class)){
-            if(player.getUsername().equals(username)){
-                return player;
-            }
+    public ArrayList<Player> getAllPlayers() {
+        try {
+            return loadData(Player.class, playersPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }

@@ -16,7 +16,7 @@ public class PlayersManager {
     private PlayersManager() throws IOException {
         DataManager dataManager = DataManager.getInstance();
         allPlayers = new ArrayList<>();
-        allPlayers.addAll(dataManager.getAll(Player.class));
+        allPlayers.addAll(dataManager.getAllPlayers());
     }
 
     public Player getCurrentPlayer(){

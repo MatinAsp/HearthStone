@@ -1,10 +1,21 @@
 package Models.Cards;
 
-public class Spell extends Card {
+import Interfaces.Cloneable;
+
+public class Spell extends Card implements Cloneable {
     public Spell(){}
+
+    private Spell(Spell spell) {
+        super(spell);
+    }
 
     @Override
     public String toString() {
         return super.toString()+"\n";
+    }
+
+    @Override
+    public Spell newOne() {
+        return new Spell(this);
     }
 }

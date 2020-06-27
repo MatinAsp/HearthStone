@@ -228,7 +228,6 @@ public class BattleGroundController implements Initializable {
                 graphicCard.setLayoutY(graphicCard.getLayoutY() + event.getSceneY() - mouseFirstPosition[1]);
             }
         });
-
     }
 
     private void cardPlaySound(Card card) throws IOException {
@@ -308,22 +307,21 @@ public class BattleGroundController implements Initializable {
         int duration = 2;
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(duration), cardPane);
         double fromX, fromY, toX, toY;
-        Pane hand ;
         if(isForOwn){
             fromX = cardsNumberLabel1.getLayoutX();
             fromY = cardsNumberLabel1.getLayoutY();
             toX = hand1.getLayoutX();
             toY = hand1.getLayoutY();
-            hand = hand1;
         }
         else {
             fromX = cardsNumberLabel2.getLayoutX();
             fromY = cardsNumberLabel2.getLayoutY();
             toX = hand2.getLayoutX();
             toY = hand2.getLayoutY();
-            hand = hand2;
         }
-        hand.setDisable(true);
+        hand1.setDisable(true);
+        hand2.setDisable(true);
+        System.out.println(endTurnButton.isDisable());
         translateTransition.setFromX(fromX);
         translateTransition.setFromY(fromY);
         translateTransition.setToX(toX);
@@ -335,7 +333,8 @@ public class BattleGroundController implements Initializable {
                 rootPane.getChildren().remove(translateTransition.getNode());
                 try {
                     gameRender();
-                    hand.setDisable(false);
+                    hand1.setDisable(false);
+                    hand2.setDisable(false);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -359,7 +358,7 @@ public class BattleGroundController implements Initializable {
 
     public void renderPassives() throws IOException {
         passiveSelectionPane.setVisible(true);
-        ArrayList<Passive> passives = DataManager.getInstance().getAll(Passive.class);
+        ArrayList<Passive> passives = DataManager.getInstance().getAllCharacter(Passive.class);
         int passivesNumber = GameConstants.getInstance().getInteger("passivesOnGamesStar");
         while (passivesNumber-- > 0){
             Random random = new Random();

@@ -1,6 +1,8 @@
 package Models;
 
-public abstract class Character {
+import Interfaces.Cloneable;
+
+public abstract class Character implements Cloneable {
     private String name;
 
     public Character(){ }
@@ -12,4 +14,5 @@ public abstract class Character {
     public String getName() {
         return name;
     }
+
 }
