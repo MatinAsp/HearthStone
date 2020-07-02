@@ -9,6 +9,10 @@
 	"heroClass":"Warlock",
 	"type":"Spell",
 	"description":"It reduces the hero's life by 2 and randomly add 1 attack and 1 attack to one of the minions Or he draw a card.",
-	"mana":2
+	"mana":2,
+	"rush":false,
+    "charge":false,
+    "divineShield":false,
+    "taunt":false
 	}
 }

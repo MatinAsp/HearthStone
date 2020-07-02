@@ -1,0 +1,16 @@
+{
+"hp":7,
+"attack":8,
+"name":"Mech",
+"rarity":"Legendary",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"",
+"mana":7,
+"price":7,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
+}

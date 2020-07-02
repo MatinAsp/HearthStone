@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Overkill: Summon another Arena Patron.",
 "mana":5,
-"price":5
+"price":5,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

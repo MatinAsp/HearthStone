@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Battlecry: Restore 2 Health.",
 "mana":1,
-"price":1
+"price":1,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

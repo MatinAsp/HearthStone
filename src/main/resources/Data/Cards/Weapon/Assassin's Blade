@@ -7,5 +7,6 @@
 "type":"Weapon",
 "description":"",
 "mana":5,
-"price":5
+"price":5,
+"charge":true
 }

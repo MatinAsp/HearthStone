@@ -55,6 +55,10 @@ public class Card extends Character {
         return mana;
     }
 
+    public void setDescription(String description){
+        this.description = description;
+    }
+
     @Override
     public Card newOne() {
         return new Card(this);

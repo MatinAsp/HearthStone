@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"",
 "mana":0,
-"price":2
+"price":2,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

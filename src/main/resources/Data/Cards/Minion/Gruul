@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"At the end of each turn, gain +1/+1 .",
 "mana":8,
-"price":10
+"price":10,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

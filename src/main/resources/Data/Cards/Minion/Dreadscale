@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"At the end of your turn, deal 1 damage to all other minions.",
 "mana":3,
-"price":4
+"price":4,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

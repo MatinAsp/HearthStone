@@ -9,6 +9,10 @@
 	"heroClass":"Priest",
 	"type":"Spell",
 	"description":"Restore 4 Health.",
-	"mana":2
+	"mana":2,
+	"rush":false,
+    "charge":false,
+    "divineShield":false,
+    "taunt":false
 	}
 }

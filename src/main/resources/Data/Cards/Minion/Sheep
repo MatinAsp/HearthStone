@@ -1,0 +1,16 @@
+{
+"hp":1,
+"attack":1,
+"name":"Sheep",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"",
+"mana":1,
+"price":1,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
+}

@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Battlecry: Choose a friendly minion. Add a copy of it to your hand, deck, and battlefield.",
 "mana":9,
-"price":10
+"price":10,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

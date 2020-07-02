@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Echo Taunt",
 "mana":3,
-"price":2
+"price":2,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":true,
+"stealth":false
 }

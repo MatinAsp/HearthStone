@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Battlecry: Destroy all other minions and discard your hand.",
 "mana":10,
-"price":11
+"price":11,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

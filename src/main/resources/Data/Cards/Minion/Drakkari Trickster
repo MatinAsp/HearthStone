@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Battlecry: Give a copy of a random card from deck.",
 "mana":3,
-"price":5
+"price":5,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

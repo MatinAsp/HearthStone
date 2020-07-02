@@ -3,7 +3,7 @@
 "rarity":"Legendary",
 "heroClass":"Neutral",
 "type":"Quest",
-"description":"Quest: Restore 15 Health.\n Reward: Obelisk's Eye.",
+"description":"Quest: Spend 6 Mana on Weapons. Reward: Discard all cards of your enemy's hand.",
 "mana":1,
 "price":7
 }

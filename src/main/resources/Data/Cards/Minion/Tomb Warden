@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Taunt\n Battlecry: Summon a copy of this minion.",
 "mana":8,
-"price":7
+"price":7,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":true,
+"stealth":false
 }

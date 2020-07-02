@@ -5,7 +5,12 @@
 "rarity":"Rare",
 "heroClass":"Neutral",
 "type":"Minion",
-"description":"Charge Divine Shield",
+"description":"Charge, Divine Shield",
 "mana":6,
-"price":4
+"price":4,
+"rush":false,
+"charge":true,
+"divineShield":true,
+"taunt":false,
+"stealth":false
 }

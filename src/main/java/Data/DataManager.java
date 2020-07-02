@@ -18,7 +18,7 @@ public class DataManager {
     private String generalPath;
     private Gson gson;
 
-    private DataManager() throws IOException {
+    private DataManager(){
         GameConstants gameConstants = GameConstants.getInstance();
         playersPath = gameConstants.getString("playerPath");
         generalPath = gameConstants.getString("generalPath");
@@ -47,23 +47,32 @@ public class DataManager {
         }
     }
 
-    private <T> ArrayList<T> loadData(Class<T> tClass, String address) throws IOException, ClassNotFoundException {
+    private <T> ArrayList<T> loadData(Class<T> tClass, String address) {
         ArrayList<T> arr = new ArrayList<>();
         File[] dir = (new File(address)).listFiles();
         for(File file: dir){
             if(file.isDirectory()){
-                arr.addAll((ArrayList<T>) loadData(Class.forName(GameConstants.getInstance().getString(file.getName()+"Class")), file.getAbsolutePath()));
+                try {
+                    arr.addAll((ArrayList<T>) loadData(Class.forName(GameConstants.getInstance().getString(file.getName()+"Class")), file.getAbsolutePath()));
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
                 else{
-                FileReader fileReader = new FileReader(file);
-                arr.add(gson.fromJson(fileReader,tClass));
-                fileReader.close();
+                FileReader fileReader = null;
+                try {
+                    fileReader = new FileReader(file);
+                    arr.add(gson.fromJson(fileReader,tClass));
+                    fileReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return arr;
     }
 
-    public static DataManager getInstance() throws IOException {
+    public static DataManager getInstance() {
         if(dataManager == null){
             dataManager = new DataManager();
         }
@@ -87,29 +96,32 @@ public class DataManager {
     }
 
     public ArrayList<Player> getAllPlayers() {
-        try {
-            return loadData(Player.class, playersPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return loadData(Player.class, playersPath);
     }
 
     public void deletePlayer(String username) {
         (new File(playersPath+File.separator+username)).delete();
     }
 
-    public void savePlayer(Player player) throws IOException {
-        FileWriter fileWriter = new FileWriter(playersPath+File.separator+player.getUsername());
-        gson.toJson(player,fileWriter);
-        fileWriter.flush();
-        fileWriter.close();
+    public void savePlayer(Player player) {
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(playersPath+ File.separator+player.getUsername());
+            gson.toJson(player,fileWriter);
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public ArrayList<Card> getDefaultCards() throws IOException {
-        Scanner scanner = new Scanner(new File(generalPath+File.separator+"Default Cards"));
+    public ArrayList<Card> getDefaultCards() {
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File(generalPath+File.separator+"Default Cards"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         ArrayList<Card> defaultCards = new ArrayList<>();
         while (scanner.hasNext()){
             String str=scanner.nextLine();
@@ -118,8 +130,13 @@ public class DataManager {
         return defaultCards;
     }
 
-    public ArrayList<Hero> getDefaultHeroes() throws IOException {
-        Scanner scanner = new Scanner(new File(generalPath+File.separator+"Default Heroes"));
+    public ArrayList<Hero> getDefaultHeroes() {
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File(generalPath+File.separator+"Default Heroes"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         ArrayList<Hero> defaultHeroes = new ArrayList<>();
         while (scanner.hasNext()){
             String str=scanner.nextLine();

@@ -3,7 +3,7 @@
 "rarity":"Rare",
 "heroClass":"Mage",
 "type":"Spell",
-"description":"Deal 2 damage to all enemy minions and Freeze them.",
+"description":"Deal 2 damage to all enemy minions.",
 "mana":6,
 "price":7
 }

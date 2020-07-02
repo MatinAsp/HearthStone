@@ -1,0 +1,16 @@
+{
+"hp":1,
+"attack":1,
+"name":"Locust",
+"rarity":"Common",
+"heroClass":"Neutral",
+"type":"Minion",
+"description":"Rush",
+"mana":1,
+"price":3,
+"rush":true,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
+}

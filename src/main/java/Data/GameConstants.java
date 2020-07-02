@@ -9,16 +9,20 @@ public class GameConstants {
             "src"+File.separator+"main"+File.separator+"resources"+File.separator+"Configs.properties";
     private Configs configs;
 
-    private GameConstants(String address) throws IOException {
+    private GameConstants(String address) {
         configs = new Configs();
-        configs.load(new FileReader(new File(address)));
+        try {
+            configs.load(new FileReader(new File(address)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static GameConstants getInstance() throws IOException {
+    public static GameConstants getInstance() {
         return getInstance("default");
     }
 
-    public static GameConstants getInstance(String address) throws IOException {
+    public static GameConstants getInstance(String address) {
         if(gameConstants == null){
             if(address.equals("default")){
                 address = defaultAddress;

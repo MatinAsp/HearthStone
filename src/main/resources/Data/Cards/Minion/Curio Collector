@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Whenever you draw a card, gain +1/+1.",
 "mana":5,
-"price":6
+"price":6,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

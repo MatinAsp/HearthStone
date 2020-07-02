@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Whenever this minion takes damage, summon a 2/3 Mech with Taunt.",
 "mana":6,
-"price":7
+"price":7,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

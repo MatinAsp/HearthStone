@@ -9,6 +9,10 @@
 	"heroClass":"Mage",
 	"type":"Spell",
 	"description":"Deal 1 damage.",
-	"mana":2
+	"mana":2,
+	"rush":false,
+    "charge":false,
+    "divineShield":false,
+    "taunt":false
 	}
 }

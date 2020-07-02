@@ -4,45 +4,50 @@ package Logic;
 import Data.GameConstants;
 import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
+import Exceptions.InvalidChoiceException;
+import Exceptions.SelectionNeededException;
 import Models.Cards.Card;
 import Models.Cards.Minion;
-import Models.Deck;
-import Models.Hero;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Random;
+import Models.InfoPack;
 
 public class Game {
     private Competitor[] competitor = new Competitor[2];
     private int turn, winner = 0;
+    private Actions actions;
 
     public Game(){
+        actions = new Actions(this);
         competitor[0] = new Competitor();
         competitor[1] = new Competitor();
         turn = 0;
     }
 
-    public void changeTurn() throws GameOverException, IOException, EmptyDeckException {
+    public Competitor[] getCompetitors(){
+        return competitor;
+    }
+
+    public void performAction(InfoPack[] parameter) throws SelectionNeededException, InvalidChoiceException, GameOverException, EmptyDeckException {
+        actions.performAction(parameter);
+    }
+
+    public void changeTurn() throws EmptyDeckException, GameOverException {
         turn = (turn+1)%2;
         if(competitor[turn].getFullMana() < GameConstants.getInstance().getInteger("manaMax")){
             competitor[turn].setFullMana(competitor[turn].getFullMana()+1);
         }
         competitor[turn].setLeftMana(competitor[turn].getFullMana());
-        try {
-            competitor[turn].putCardFromDeckToHand();
-        } catch (Exception e) {
-            competitor[turn].damageToHero(GameConstants.getInstance().getInteger("DeckEmptyLifeDecrease"));
-            throw new EmptyDeckException();
-        }
+        ActionRequest.DRAW_CARD.execute();
     }
 
-    public void playCard(Card card) throws Exception {
-        if(!competitor[turn].haveCard(card) || card.getMana() > competitor[turn].getLeftMana()) {
-            throw new Exception("can't play the card.");
+    public void playCard(Card card, int side) {
+        competitor[side].playCard(card);
+        competitor[side].setLeftMana(competitor[side].getLeftMana() - card.getMana());
+    }
+
+    public void checkForMana(Card card, int side) throws InvalidChoiceException {
+        if(card.getMana() > competitor[side].getLeftMana()) {
+            throw new InvalidChoiceException();
         }
-        competitor[turn].playCard(card);
-        competitor[turn].setLeftMana(competitor[turn].getLeftMana() - card.getMana());
     }
 
     public void setTurn(int turn){
@@ -57,116 +62,36 @@ public class Game {
         return competitor[index%2];
     }
 
-    private void engGame() throws GameOverException {
+    private void engGame(){
         if(competitor[(turn+1)%2].getHero().getHp() <= 0){
             winner = turn;
-            competitor[turn].deck.setWinsNumber(competitor[turn].deck.getWinsNumber() + 1);
+            competitor[turn].getDeck().setWinsNumber(competitor[turn].getDeck().getWinsNumber() + 1);
         }
         else {
             winner = (turn+1)%2;
-            competitor[(turn+1)%2].deck.setWinsNumber(competitor[(turn+1)%2].deck.getWinsNumber() + 1);
+            competitor[(turn+1)%2].getDeck().setWinsNumber(competitor[(turn+1)%2].getDeck().getWinsNumber() + 1);
         }
-        competitor[0].deck.setPlaysNumber(competitor[0].deck.getPlaysNumber() + 1);
-        competitor[1].deck.setPlaysNumber(competitor[1].deck.getPlaysNumber() + 1);
+        competitor[0].getDeck().setPlaysNumber(competitor[0].getDeck().getPlaysNumber() + 1);
+        competitor[1].getDeck().setPlaysNumber(competitor[1].getDeck().getPlaysNumber() + 1);
         turn = -1;
-        throw new GameOverException();
     }
 
     public int getWinner() {
         return winner;
     }
 
-    public class Competitor{
-        private int fullMana = 0, leftMana = 0;
-        private Deck deck;
-        private Hero hero;
-        private ArrayList<Card> inDeckCards, inHandCards, onBoardCards;
-
-        Competitor(){
-            inDeckCards = new ArrayList<>();
-            inHandCards = new ArrayList<>();
-            onBoardCards = new ArrayList<>();
-        }
-
-        public void putCardFromDeckToHand() throws Exception {
-            if (inDeckCards.size() == 0) throw new Exception("Deck is empty.");
-            Random random = new Random();
-            Card card = inDeckCards.get(random.nextInt(inDeckCards.size()));
-            if(inHandCards.size() < GameConstants.getInstance().getInteger("handMaxCard")){
-                inHandCards.add(card);
-            }
-            inDeckCards.remove(card);
-        }
-
-        public int getFullMana() {
-            return fullMana;
-        }
-
-        public void setFullMana(int fullMana) {
-            this.fullMana = fullMana;
-        }
-
-        public int getLeftMana() {
-            return leftMana;
-        }
-
-        public void setLeftMana(int leftMana) {
-            this.leftMana = leftMana;
-        }
-
-        public Deck getDeck() {
-            return deck;
-        }
-
-        public void setDeck(Deck deck) {
-            this.deck = deck;
-        }
-
-        public Hero getHero() {
-            return hero;
-        }
-
-        public void setHero(Hero hero) {
-            this.hero = hero;
-        }
-
-        public ArrayList<Card> getInDeckCards() {
-            return inDeckCards;
-        }
-
-        public ArrayList<Card> getInHandCards() {
-            return inHandCards;
-        }
-
-        public ArrayList<Card> getOnBoardCards() {
-            return onBoardCards;
-        }
-
-        public boolean haveCard(Card card){
-            return inHandCards.contains(card);
-        }
-
-        public void playCard(Card card) throws IOException {
-            deck.playCard(card.getName());
-            inHandCards.remove(card);
-            if(card instanceof Minion){
-                if(onBoardCards.size() < GameConstants.getInstance().getInteger("groundMaxCard")){
-                    onBoardCards.add(card);
-                }
-            }
-        }
-
-        public void damageToHero(int damage) throws GameOverException {
-            hero.setHp(competitor[turn].getHero().getHp() - damage);
-            if (hero.getHp() <= 0) {
-                engGame();
-            }
+    public void drawCard() throws GameOverException, EmptyDeckException {
+        try {
+            competitor[turn].drawCard();
+        } catch (EmptyDeckException e) {
+            competitor[turn].damageToHero(GameConstants.getInstance().getInteger("DeckEmptyLifeDecrease"));
+            throw new EmptyDeckException();
         }
     }
 
-    class Controller{
-        void draw(){
-
+    public void summon(Minion minion, int side) {
+        if(competitor[side].getOnBoardCards().size() < GameConstants.getInstance().getInteger("groundMaxCard")){
+            competitor[side].addCardOnBoard(minion);
         }
     }
 }

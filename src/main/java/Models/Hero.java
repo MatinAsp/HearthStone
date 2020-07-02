@@ -6,6 +6,7 @@ import Models.Cards.Card;
 public class Hero extends Character{
     private int hp,deckMax;
     private Card heroPower;
+    private boolean divineShield;
 
     public Hero(){ }
 
@@ -42,5 +43,22 @@ public class Hero extends Character{
     @Override
     public Hero newOne() {
         return new Hero(this);
+    }
+
+    public boolean isDivineShield() {
+        return divineShield;
+    }
+
+    public void setDivineShield(boolean divineShield) {
+        this.divineShield = divineShield;
+    }
+
+    public void getDamage(int damage){
+        if(divineShield){
+            divineShield = false;
+        }
+        else {
+            hp -= damage;
+        }
     }
 }

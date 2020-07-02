@@ -7,5 +7,10 @@
 "type":"Minion",
 "description":"Your other minions have +1/+1.",
 "mana":7,
-"price":6
+"price":6,
+"rush":false,
+"charge":false,
+"divineShield":false,
+"taunt":false,
+"stealth":false
 }

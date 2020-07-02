@@ -9,6 +9,10 @@
 	"heroClass":"Rogue",
 	"type":"Spell",
 	"description":"Steals a card from an enemy card and add it to your hand.",
-	"mana":3
+	"mana":3,
+	"rush":false,
+    "charge":false,
+    "divineShield":false,
+    "taunt":false
 	}
 }

@@ -3,14 +3,14 @@ package Graphics;
 import Data.*;
 import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
-import Graphics.GraphicRender;
 import Log.LogCenter;
+import Logic.ActionRequest;
 import Logic.Game;
 import Models.Cards.Card;
 import Models.Cards.Minion;
 import Logic.PlayersManager;
+import Logic.Competitor;
 import Models.Passive;
-import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,9 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -29,7 +27,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -105,7 +102,7 @@ public class BattleGroundController implements Initializable {
     public void gameRender() throws IOException {
         rootPane.getChildren().removeAll(hero1, hero2);
         GraphicRender graphicRender = GraphicRender.getInstance();
-        Game.Competitor competitor1 = game.getCompetitor(0), competitor2 = game.getCompetitor(1);
+        Competitor competitor1 = game.getCompetitor(0), competitor2 = game.getCompetitor(1);
         hero1 = graphicRender.buildHeroPlace(competitor1.getHero());
         hero1.setLayoutX(GameConstants.getInstance().getInteger("player1HeroPlaceX"));
         hero1.setLayoutY(GameConstants.getInstance().getInteger("player1HeroPlaceY"));
@@ -135,7 +132,7 @@ public class BattleGroundController implements Initializable {
         );
     }
 
-    private String getCardsNumberString(Game.Competitor competitor){
+    private String getCardsNumberString(Competitor competitor){
         return competitor.getInDeckCards().size() + "\n/\n" + competitor.getHero().getDeckMax();
     }
 
@@ -158,14 +155,9 @@ public class BattleGroundController implements Initializable {
         graphicCard.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                try {
-                    graphicCard.setLayoutY(
-                            graphicCard.getLayoutY()-GameConstants.getInstance().getInteger("liftUpCardInHad")
-                    );
-                } catch (IOException e) {
-                    LogCenter.getInstance().getLogger().error(e);
-                    e.printStackTrace();
-                }
+                graphicCard.setLayoutY(
+                        graphicCard.getLayoutY()-GameConstants.getInstance().getInteger("liftUpCardInHad")
+                );
                 graphicCard.toFront();
             }
         });
@@ -280,9 +272,9 @@ public class BattleGroundController implements Initializable {
         LogCenter.getInstance().getLogger().info("end_turn_player_"+(game.getTurn()+1));
         addGameLog("end_turn_player_"+(game.getTurn()+1));
         try {
-            game.changeTurn();
+            ActionRequest.END_TURN.execute();
             int turn = game.getTurn();
-            Game.Competitor competitor = game.getCompetitor(turn);
+            Competitor competitor = game.getCompetitor(turn);
             boolean isForOwn = (turn == 0)? true:false;
             putCardToHandAnimation(competitor.getInHandCards().get(competitor.getInHandCards().size()-1), isForOwn);
         } catch (GameOverException e) {

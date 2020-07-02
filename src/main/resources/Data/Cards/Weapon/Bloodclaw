@@ -7,5 +7,6 @@
 "type":"Weapon",
 "description":"Battlecry: Deal 5 damage to your hero.",
 "mana":1,
-"price":4
+"price":4,
+"charge":true
 }
