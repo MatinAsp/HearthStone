@@ -95,9 +95,15 @@ public enum ActionRequest {
                     game.getCompetitor(i).setHeroWeapon(null);
                 }
             } catch (NullPointerException e){}
-            for(Minion minion: game.getCompetitor(i).getOnBoardCards()){
+            for(int j = 0; j < game.getCompetitor(i).getOnBoardCards().size(); j++){
+                Minion minion = game.getCompetitor(i).getOnBoardCards().get(j);
                 if(minion.getHp() <= 0){
                     game.getCompetitor(i).getOnBoardCards().remove(minion);
+                    j--;
+                }
+                else {
+                    minion.setRush(false);
+                    minion.setCharge(true);
                 }
             }
         }

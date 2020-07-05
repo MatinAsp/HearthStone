@@ -81,6 +81,7 @@ public class BattleGroundController implements Initializable {
     private Pane[] hero = new Pane[2];
     private Game game = null;
     private ArrayList<InfoPack> infoPacks = new ArrayList<>();
+    Object lock = new Object();
 
     @FXML
     private void exit(){
@@ -115,27 +116,29 @@ public class BattleGroundController implements Initializable {
     }
 
     public synchronized void gameRender() {
-        GraphicRender graphicRender = GraphicRender.getInstance();
-        for(int i = 0; i < 2; i++){
-            rootPane.getChildren().removeAll(hero[i]);
-            Competitor competitor = game.getCompetitor(i);
-            hero[i] = graphicRender.buildHeroPlace(competitor.getHero());
-            hero[i].setLayoutX(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceX"));
-            hero[i].setLayoutY(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceY"));
-            rootPane.getChildren().add(hero[i]);
-            hero[i].toBack();
-            setForPerformAction(hero[i], competitor.getHero(), i, true);
-            renderHand(competitor.getInHandCards(), hand[i], ((i == 0) ? true : false));
-            renderBattleGround(competitor.getOnBoardCards(), battleGround[i], i);
-            manaText[i].setText(competitor.getLeftMana()+"/"+competitor.getFullMana());
-            if(i == 0)
-                renderManaBar(competitor.getLeftMana(), competitor.getFullMana());
-            cardsNumberLabel[i].setText(getCardsNumberString(competitor));
-            heroPowerPlace[i].getChildren().clear();
-            Parent parent =  GraphicRender.getInstance().buildHeroPower(competitor.getHero().getHeroPower());
-            setForPerformAction(parent, competitor.getHero().getHeroPower(),i, true);
-            heroPowerPlace[i].getChildren().add(parent);
-        }
+        //synchronized (lock){
+            GraphicRender graphicRender = GraphicRender.getInstance();
+            for(int i = 0; i < 2; i++){
+                rootPane.getChildren().removeAll(hero[i]);
+                Competitor competitor = game.getCompetitor(i);
+                hero[i] = graphicRender.buildHeroPlace(competitor.getHero());
+                hero[i].setLayoutX(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceX"));
+                hero[i].setLayoutY(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceY"));
+                rootPane.getChildren().add(hero[i]);
+                hero[i].toBack();
+                setForPerformAction(hero[i], competitor.getHero(), i, true);
+                renderHand(competitor.getInHandCards(), hand[i], ((i == 0) ? true : false));
+                renderBattleGround(competitor.getOnBoardCards(), battleGround[i], i);
+                manaText[i].setText(competitor.getLeftMana()+"/"+competitor.getFullMana());
+                if(i == 0)
+                    renderManaBar(competitor.getLeftMana(), competitor.getFullMana());
+                cardsNumberLabel[i].setText(getCardsNumberString(competitor));
+                heroPowerPlace[i].getChildren().clear();
+                Parent parent =  GraphicRender.getInstance().buildHeroPower(competitor.getHero().getHeroPower());
+                setForPerformAction(parent, competitor.getHero().getHeroPower(),i, true);
+                heroPowerPlace[i].getChildren().add(parent);
+            }
+        //}
     }
 
     private String getCardsNumberString(Competitor competitor){
@@ -168,14 +171,14 @@ public class BattleGroundController implements Initializable {
             }
         });
         int cnt = hand[side].getChildren().indexOf(graphicCard);
-        Object object = new Object();
         graphicCard.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                synchronized (object){
+                synchronized (lock){
                     if(hand[side].getChildren().contains(graphicCard)){
-                        hand[side].getChildren().remove(graphicCard);
-                        hand[side].getChildren().add(cnt, graphicCard);
+                      //  System.out.println(hand[side].getChildren().size());
+                    //    hand[side].getChildren().remove(graphicCard);
+                       // hand[side].getChildren().add(cnt, graphicCard);
                         graphicCard.setLayoutY(
                                 graphicCard.getLayoutY() + ((side == 0)? 1:-1)*GameConstants.getInstance().getInteger("liftUpCardInHad")
                         );
@@ -202,14 +205,12 @@ public class BattleGroundController implements Initializable {
                 graphicCard.setLayoutY(graphicCard.getLayoutY() + event.getSceneY() - mousePosition[1]);
                 mousePosition[0] = event.getSceneX();
                 mousePosition[1] = event.getSceneY();
-               // System.out.println(mouseFirstPosition[0]);
-             //   System.out.println(mouseFirstPosition[1]);
             }
         });
         graphicCard.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                synchronized (object){
+                synchronized (lock){
                     LogCenter.getInstance().getLogger().info("drag_ended");
                     try {
                         int maxYForPlayCard = GameConstants.getInstance().getInteger("maxYForPlayCard");
@@ -373,16 +374,17 @@ public class BattleGroundController implements Initializable {
         GridPane.setConstraints(logLabel, 0, 0);
         gameLogGridPane.getChildren().add(logLabel);
     }
-    private void performAction(Character character, int side, boolean isOnGround){
+    private synchronized void performAction(Character character, int side, boolean isOnGround){
         Logger logger = LogCenter.getInstance().getLogger();
         infoPacks.add(new InfoPack(character, side, isOnGround));
         InfoPack[] parameters = new InfoPack[infoPacks.size()];
         for(int i = 0; i < infoPacks.size(); i++){
-        parameters[i] = infoPacks.get(i);
+             parameters[i] = infoPacks.get(i);
         }
         try {
             ActionRequest.PERFORM_ACTION.execute(parameters);
-         //   gameRender();
+            gameRender();
+            infoPacks.clear();
         } catch (Exception e) {
             logger.error(e);
             try {

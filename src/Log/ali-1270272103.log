@@ -1659,3 +1659,233 @@ INFO    2020-07-06 01:54:18,716 - drag_ended
 INFO    2020-07-06 01:54:19,754 - drag_detected
 INFO    2020-07-06 01:54:20,340 - drag_ended
 INFO    2020-07-06 01:54:25,045 - exit
+INFO    2020-07-06 01:55:50,939 - start_a_game
+INFO    2020-07-06 01:55:52,947 - passive_selected
+INFO    2020-07-06 01:55:54,302 - end_turn_player_1
+INFO    2020-07-06 01:55:55,592 - end_turn_player_2
+INFO    2020-07-06 01:56:06,510 - end_turn_player_1
+INFO    2020-07-06 01:56:08,011 - end_turn_player_2
+INFO    2020-07-06 01:56:17,253 - end_turn_player_1
+INFO    2020-07-06 01:56:18,342 - end_turn_player_2
+INFO    2020-07-06 01:56:22,425 - drag_detected
+INFO    2020-07-06 01:56:23,657 - drag_ended
+ERROR   2020-07-06 01:56:23,682 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+ERROR   2020-07-06 01:56:23,682 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+INFO    2020-07-06 01:58:56,883 - exit
+INFO    2020-07-06 01:59:05,786 - start_a_game
+INFO    2020-07-06 01:59:08,856 - passive_selected
+INFO    2020-07-06 01:59:10,128 - end_turn_player_1
+INFO    2020-07-06 01:59:11,232 - end_turn_player_2
+INFO    2020-07-06 01:59:14,858 - end_turn_player_1
+INFO    2020-07-06 01:59:15,880 - end_turn_player_2
+INFO    2020-07-06 01:59:19,433 - drag_detected
+INFO    2020-07-06 01:59:20,181 - drag_ended
+INFO    2020-07-06 01:59:20,181 - play_Minion
+INFO    2020-07-06 01:59:43,763 - end_turn_player_1
+INFO    2020-07-06 02:00:04,075 - drag_detected
+INFO    2020-07-06 02:00:05,161 - drag_ended
+INFO    2020-07-06 02:00:07,127 - drag_detected
+INFO    2020-07-06 02:00:07,728 - drag_ended
+INFO    2020-07-06 02:00:11,597 - drag_detected
+INFO    2020-07-06 02:00:12,212 - drag_ended
+INFO    2020-07-06 02:00:13,859 - drag_detected
+INFO    2020-07-06 02:00:14,517 - drag_ended
+INFO    2020-07-06 02:00:24,471 - exit
+INFO    2020-07-06 02:06:17,563 - start_a_game
+INFO    2020-07-06 02:06:19,610 - passive_selected
+INFO    2020-07-06 02:06:20,876 - end_turn_player_1
+INFO    2020-07-06 02:06:21,825 - end_turn_player_2
+INFO    2020-07-06 02:06:22,779 - end_turn_player_1
+INFO    2020-07-06 02:06:26,241 - end_turn_player_2
+INFO    2020-07-06 02:06:29,831 - end_turn_player_1
+INFO    2020-07-06 02:06:31,223 - end_turn_player_2
+INFO    2020-07-06 02:06:36,634 - drag_detected
+INFO    2020-07-06 02:06:37,382 - drag_ended
+ERROR   2020-07-06 02:06:37,397 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+ERROR   2020-07-06 02:06:37,398 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+INFO    2020-07-06 02:17:05,940 - start_a_game
+INFO    2020-07-06 02:17:08,247 - passive_selected
+INFO    2020-07-06 02:17:09,696 - drag_detected
+INFO    2020-07-06 02:17:11,325 - drag_ended
+ERROR   2020-07-06 02:17:11,355 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+ERROR   2020-07-06 02:17:11,355 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+INFO    2020-07-06 02:18:50,921 - start_a_game
+INFO    2020-07-06 02:18:53,560 - passive_selected
+INFO    2020-07-06 02:18:55,225 - end_turn_player_1
+INFO    2020-07-06 02:18:56,368 - end_turn_player_2
+INFO    2020-07-06 02:18:57,543 - end_turn_player_1
+INFO    2020-07-06 02:18:58,226 - end_turn_player_2
+INFO    2020-07-06 02:19:02,766 - drag_detected
+INFO    2020-07-06 02:19:03,990 - drag_ended
+INFO    2020-07-06 02:19:04,229 - play_Minion
+INFO    2020-07-06 02:21:27,901 - start_a_game
+INFO    2020-07-06 02:21:30,988 - passive_selected
+INFO    2020-07-06 02:21:42,985 - exit
+INFO    2020-07-06 02:21:49,803 - start_a_game
+INFO    2020-07-06 02:26:28,615 - passive_selected
+INFO    2020-07-06 02:26:47,610 - end_turn_player_1
+INFO    2020-07-06 02:26:48,782 - end_turn_player_2
+INFO    2020-07-06 02:26:52,882 - drag_detected
+INFO    2020-07-06 02:26:54,029 - drag_ended
+ERROR   2020-07-06 02:26:54,047 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+ERROR   2020-07-06 02:26:54,047 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+INFO    2020-07-06 02:29:23,084 - start_a_game
+INFO    2020-07-06 02:29:25,445 - passive_selected
+INFO    2020-07-06 02:29:27,262 - drag_detected
+INFO    2020-07-06 02:29:28,969 - drag_ended
+ERROR   2020-07-06 02:29:28,999 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+ERROR   2020-07-06 02:29:28,999 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+INFO    2020-07-06 02:43:01,799 - start_a_game
+INFO    2020-07-06 02:43:04,794 - passive_selected
+INFO    2020-07-06 02:43:07,846 - end_turn_player_1
+INFO    2020-07-06 02:43:08,755 - end_turn_player_2
+INFO    2020-07-06 02:43:12,734 - end_turn_player_1
+INFO    2020-07-06 02:43:16,290 - end_turn_player_2
+INFO    2020-07-06 02:43:21,460 - drag_detected
+INFO    2020-07-06 02:43:22,739 - drag_ended
+INFO    2020-07-06 02:43:22,957 - play_Minion
+INFO    2020-07-06 02:43:24,830 - end_turn_player_1
+INFO    2020-07-06 02:43:31,835 - drag_detected
+INFO    2020-07-06 02:43:34,308 - drag_ended
+INFO    2020-07-06 02:43:37,184 - drag_detected
+INFO    2020-07-06 02:43:38,967 - drag_ended
+INFO    2020-07-06 02:43:40,437 - drag_detected
+INFO    2020-07-06 02:43:42,169 - drag_ended
+INFO    2020-07-06 02:43:42,421 - play_Minion
+INFO    2020-07-06 02:43:47,223 - end_turn_player_2
+ERROR   2020-07-06 02:43:51,239 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-06 02:43:53,506 - java.util.ConcurrentModificationException
+INFO    2020-07-06 02:43:56,872 - end_turn_player_1
+INFO    2020-07-06 02:44:01,541 - end_turn_player_2
+INFO    2020-07-06 02:44:19,160 - drag_detected
+INFO    2020-07-06 02:44:20,335 - drag_ended
+INFO    2020-07-06 02:44:20,740 - play_Minion
+INFO    2020-07-06 02:44:23,394 - drag_detected
+INFO    2020-07-06 02:44:25,245 - drag_ended
+ERROR   2020-07-06 02:44:25,246 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-06 02:44:25,247 - play_Minion
+INFO    2020-07-06 02:44:27,900 - end_turn_player_1
+INFO    2020-07-06 02:44:33,587 - drag_detected
+INFO    2020-07-06 02:44:36,410 - drag_ended
+INFO    2020-07-06 02:44:36,854 - play_Minion
+INFO    2020-07-06 02:44:39,266 - end_turn_player_2
+ERROR   2020-07-06 02:44:43,599 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-06 02:44:46,225 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-06 02:45:11,733 - end_turn_player_1
+ERROR   2020-07-06 02:45:26,245 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-06 02:45:27,843 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-06 02:47:18,476 - start_a_game
+INFO    2020-07-06 02:47:22,332 - passive_selected
+INFO    2020-07-06 02:47:24,570 - end_turn_player_1
+INFO    2020-07-06 02:47:26,007 - end_turn_player_2
+INFO    2020-07-06 02:47:35,784 - end_turn_player_1
+INFO    2020-07-06 02:47:39,712 - drag_detected
+INFO    2020-07-06 02:47:40,832 - drag_ended
+INFO    2020-07-06 02:47:41,166 - play_Minion
+INFO    2020-07-06 02:47:42,062 - end_turn_player_2
+INFO    2020-07-06 02:47:47,681 - drag_detected
+INFO    2020-07-06 02:47:49,224 - drag_ended
+INFO    2020-07-06 02:47:49,635 - play_Minion
+ERROR   2020-07-06 02:47:51,094 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-06 02:47:51,855 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-06 02:47:53,476 - end_turn_player_1
+ERROR   2020-07-06 02:47:57,345 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-06 02:47:58,106 - java.util.ConcurrentModificationException
+INFO    2020-07-06 02:48:50,377 - end_turn_player_2
+INFO    2020-07-06 02:48:53,363 - end_turn_player_1
+INFO    2020-07-06 02:49:09,705 - drag_detected
+INFO    2020-07-06 02:49:10,235 - drag_ended
+ERROR   2020-07-06 02:49:10,654 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-06 02:49:11,836 - drag_detected
+INFO    2020-07-06 02:49:13,147 - drag_ended
+ERROR   2020-07-06 02:49:13,148 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-06 02:49:13,149 - play_Minion
+INFO    2020-07-06 02:49:15,334 - end_turn_player_2
+INFO    2020-07-06 02:49:19,000 - drag_detected
+INFO    2020-07-06 02:49:19,760 - drag_ended
+INFO    2020-07-06 02:49:20,103 - play_Minion
+INFO    2020-07-06 02:49:21,002 - end_turn_player_1
+INFO    2020-07-06 02:49:26,266 - drag_detected
+INFO    2020-07-06 02:49:27,257 - drag_ended
+INFO    2020-07-06 02:49:27,321 - drag_detected
+INFO    2020-07-06 02:49:28,162 - drag_ended
+INFO    2020-07-06 02:49:29,728 - drag_detected
+INFO    2020-07-06 02:49:31,195 - drag_ended
+INFO    2020-07-06 02:49:32,865 - drag_detected
+INFO    2020-07-06 02:49:34,422 - drag_ended
+INFO    2020-07-06 02:49:34,980 - play_Minion
+ERROR   2020-07-06 02:49:36,721 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-06 02:49:37,721 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-06 02:50:42,072 - start_a_game
+INFO    2020-07-06 02:50:45,261 - passive_selected
+INFO    2020-07-06 02:50:47,530 - end_turn_player_1
+INFO    2020-07-06 02:50:48,625 - end_turn_player_2
+INFO    2020-07-06 02:50:52,688 - end_turn_player_1
+INFO    2020-07-06 02:50:55,504 - end_turn_player_2
+INFO    2020-07-06 02:51:06,935 - drag_detected
+INFO    2020-07-06 02:51:08,195 - drag_ended
+INFO    2020-07-06 02:51:08,555 - play_Minion
+INFO    2020-07-06 02:51:09,100 - end_turn_player_1
+INFO    2020-07-06 02:51:15,024 - drag_detected
+INFO    2020-07-06 02:51:16,105 - drag_ended
+INFO    2020-07-06 02:51:17,216 - drag_detected
+INFO    2020-07-06 02:51:21,128 - drag_ended
+INFO    2020-07-06 02:51:21,441 - play_Minion
+INFO    2020-07-06 02:51:23,708 - end_turn_player_2
+ERROR   2020-07-06 02:51:28,179 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-06 02:51:28,815 - java.util.ConcurrentModificationException
+INFO    2020-07-06 02:52:56,518 - drag_detected
+INFO    2020-07-06 02:52:57,434 - drag_ended
+ERROR   2020-07-06 02:52:57,435 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-06 02:52:57,435 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-06 02:52:58,525 - end_turn_player_1
+INFO    2020-07-06 02:53:54,447 - drag_detected
+INFO    2020-07-06 02:53:55,277 - drag_ended
+ERROR   2020-07-06 02:53:55,277 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-06 02:53:55,279 - play_Minion
+INFO    2020-07-06 02:53:56,447 - drag_detected
+INFO    2020-07-06 02:53:57,495 - drag_ended
+ERROR   2020-07-06 02:53:57,496 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-06 02:53:57,497 - play_Minion
+INFO    2020-07-06 02:53:58,521 - end_turn_player_2
+INFO    2020-07-06 02:54:03,206 - drag_detected
+INFO    2020-07-06 02:54:04,280 - drag_ended
+INFO    2020-07-06 02:54:04,713 - play_Minion
+INFO    2020-07-06 02:54:22,397 - end_turn_player_1
+INFO    2020-07-06 02:54:26,143 - drag_detected
+INFO    2020-07-06 02:54:27,420 - drag_ended
+INFO    2020-07-06 02:54:28,559 - drag_detected
+INFO    2020-07-06 02:54:29,649 - drag_ended
+INFO    2020-07-06 02:54:30,029 - play_Minion
+INFO    2020-07-06 02:54:30,804 - end_turn_player_2
+ERROR   2020-07-06 02:54:34,257 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-06 02:54:34,941 - java.util.ConcurrentModificationException
+INFO    2020-07-06 02:54:38,714 - end_turn_player_1
+INFO    2020-07-06 02:54:40,375 - end_turn_player_2
+INFO    2020-07-06 02:54:45,225 - exit
+INFO    2020-07-06 03:00:22,648 - start_a_game
+INFO    2020-07-06 03:00:25,170 - passive_selected
+INFO    2020-07-06 03:00:27,732 - drag_detected
+INFO    2020-07-06 03:00:28,555 - drag_ended
+INFO    2020-07-06 03:00:28,836 - play_Minion
+INFO    2020-07-06 03:00:29,887 - end_turn_player_1
+INFO    2020-07-06 03:00:40,083 - end_turn_player_2
+INFO    2020-07-06 03:00:49,292 - end_turn_player_1
+INFO    2020-07-06 03:00:56,748 - end_turn_player_2
+INFO    2020-07-06 03:01:01,297 - end_turn_player_1
+INFO    2020-07-06 03:01:05,268 - drag_detected
+INFO    2020-07-06 03:01:05,952 - drag_ended
+ERROR   2020-07-06 03:01:05,952 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-06 03:01:05,954 - play_Minion
+INFO    2020-07-06 03:01:08,233 - drag_detected
+INFO    2020-07-06 03:01:09,623 - drag_ended
+ERROR   2020-07-06 03:01:09,624 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-06 03:01:09,629 - play_Minion
+INFO    2020-07-06 03:01:10,765 - end_turn_player_2
+INFO    2020-07-06 03:01:13,724 - end_turn_player_1
+INFO    2020-07-06 03:01:17,394 - drag_detected
+INFO    2020-07-06 03:01:18,111 - drag_ended
+INFO    2020-07-06 03:01:18,458 - play_Minion
+INFO    2020-07-06 03:01:21,140 - end_turn_player_2
+ERROR   2020-07-06 03:01:24,863 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-06 03:02:05,593 - exit
