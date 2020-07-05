@@ -146,7 +146,7 @@ public class BattleGroundController implements Initializable {
         hand.getChildren().clear();
         int counter = 0;
         for(Card card: cards){
-            Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, !isForOwn);
+            Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, (!isForOwn && game.isWithBot()));
             hand.getChildren().add(graphicCard);
             if(isForOwn || !game.isWithBot()){
                 handCardSetAction(graphicCard, card, isForOwn ? 0 : 1);
@@ -168,15 +168,19 @@ public class BattleGroundController implements Initializable {
             }
         });
         int cnt = hand[side].getChildren().indexOf(graphicCard);
-        System.out.println(cnt);
+        Object object = new Object();
         graphicCard.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                hand[side].getChildren().remove(graphicCard);
-                hand[side].getChildren().add(cnt, graphicCard);
-                graphicCard.setLayoutY(
-                        graphicCard.getLayoutY() + ((side == 0)? 1:-1)*GameConstants.getInstance().getInteger("liftUpCardInHad")
-                );
+                synchronized (object){
+                    if(hand[side].getChildren().contains(graphicCard)){
+                        hand[side].getChildren().remove(graphicCard);
+                        hand[side].getChildren().add(cnt, graphicCard);
+                        graphicCard.setLayoutY(
+                                graphicCard.getLayoutY() + ((side == 0)? 1:-1)*GameConstants.getInstance().getInteger("liftUpCardInHad")
+                        );
+                    }
+                }
             }
         });
         final double[] mousePosition = {0,0};
@@ -198,27 +202,31 @@ public class BattleGroundController implements Initializable {
                 graphicCard.setLayoutY(graphicCard.getLayoutY() + event.getSceneY() - mousePosition[1]);
                 mousePosition[0] = event.getSceneX();
                 mousePosition[1] = event.getSceneY();
+               // System.out.println(mouseFirstPosition[0]);
+             //   System.out.println(mouseFirstPosition[1]);
             }
         });
         graphicCard.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                LogCenter.getInstance().getLogger().info("drag_ended");
-                try {
-                    int maxYForPlayCard = GameConstants.getInstance().getInteger("maxYForPlayCard");
-                    int minYForPlayCard = GameConstants.getInstance().getInteger("minYForPlayCard");
-                    if ((side == 0 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() < maxYForPlayCard) ||
-                            (side == 1 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() + ((Pane) graphicCard).getHeight() > minYForPlayCard)){
-                        performAction(card, side, false);
-                        LogCenter.getInstance().getLogger().info("play_"+card.getType());
-                        addGameLog("play_"+card.getType());
+                synchronized (object){
+                    LogCenter.getInstance().getLogger().info("drag_ended");
+                    try {
+                        int maxYForPlayCard = GameConstants.getInstance().getInteger("maxYForPlayCard");
+                        int minYForPlayCard = GameConstants.getInstance().getInteger("minYForPlayCard");
+                        if ((side == 0 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() < maxYForPlayCard) ||
+                                (side == 1 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() + ((Pane) graphicCard).getHeight() > minYForPlayCard)){
+                            performAction(card, side, false);
+                            LogCenter.getInstance().getLogger().info("play_"+card.getType());
+                            addGameLog("play_"+card.getType());
+                        }
+                    } catch (Exception e) {
+                        LogCenter.getInstance().getLogger().error(e);
+                        e.printStackTrace();
                     }
-                } catch (Exception e) {
-                    LogCenter.getInstance().getLogger().error(e);
-                    e.printStackTrace();
+                    graphicCard.setLayoutX(graphicCard.getLayoutX() - event.getSceneX() + mouseFirstPosition[0]);
+                    graphicCard.setLayoutY(graphicCard.getLayoutY() - event.getSceneY() + mouseFirstPosition[1]);
                 }
-                graphicCard.setLayoutX(graphicCard.getLayoutX() + event.getSceneX() - mouseFirstPosition[0]);
-                graphicCard.setLayoutY(graphicCard.getLayoutY() + event.getSceneY() - mouseFirstPosition[1]);
             }
         });
     }
@@ -374,8 +382,7 @@ public class BattleGroundController implements Initializable {
         }
         try {
             ActionRequest.PERFORM_ACTION.execute(parameters);
-            gameRender();
-
+         //   gameRender();
         } catch (Exception e) {
             logger.error(e);
             try {

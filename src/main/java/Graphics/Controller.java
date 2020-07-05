@@ -277,6 +277,16 @@ public class Controller implements Initializable {
             }
         };*/
         try {
+            PlayersManager.getInstance().logIn("ali", "ali");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            startGame();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
             initializeHeroSelection();
         } catch (IOException e) {
             e.printStackTrace();
