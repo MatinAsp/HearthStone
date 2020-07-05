@@ -1269,3 +1269,134 @@ INFO    2020-07-05 18:15:32,447 - start_a_game
 INFO    2020-07-05 18:15:33,351 - passive_selected
 INFO    2020-07-05 18:15:38,747 - end_turn_player_1
 INFO    2020-07-05 18:16:06,470 - exit
+INFO    2020-07-05 20:15:14,990 - log_in
+INFO    2020-07-05 20:15:14,994 - navigate_from_log_in_to_menu
+INFO    2020-07-05 20:15:17,566 - start_a_game
+INFO    2020-07-05 20:15:18,422 - passive_selected
+INFO    2020-07-05 20:15:26,093 - drag_detected
+INFO    2020-07-05 20:15:27,849 - drag_ended
+INFO    2020-07-05 20:15:27,850 - play_Minion
+INFO    2020-07-05 20:15:36,696 - drag_detected
+INFO    2020-07-05 20:15:37,414 - drag_ended
+INFO    2020-07-05 20:15:37,415 - play_Minion
+INFO    2020-07-05 20:15:38,750 - drag_detected
+INFO    2020-07-05 20:15:39,290 - drag_ended
+INFO    2020-07-05 20:15:39,291 - play_Minion
+INFO    2020-07-05 20:15:40,314 - drag_detected
+INFO    2020-07-05 20:15:40,892 - drag_ended
+INFO    2020-07-05 20:15:40,893 - play_Weapon
+INFO    2020-07-05 20:15:42,887 - drag_detected
+INFO    2020-07-05 20:15:43,667 - drag_ended
+INFO    2020-07-05 20:15:43,667 - play_Minion
+INFO    2020-07-05 20:15:44,830 - drag_detected
+INFO    2020-07-05 20:15:46,055 - drag_detected
+INFO    2020-07-05 20:15:47,875 - drag_detected
+INFO    2020-07-05 20:15:48,575 - drag_ended
+INFO    2020-07-05 20:15:48,576 - play_Weapon
+INFO    2020-07-05 20:15:50,980 - exit
+INFO    2020-07-05 20:16:52,738 - log_in
+INFO    2020-07-05 20:16:52,744 - navigate_from_log_in_to_menu
+INFO    2020-07-05 20:17:00,117 - start_a_game
+INFO    2020-07-05 20:17:01,171 - passive_selected
+INFO    2020-07-05 20:17:01,721 - drag_detected
+INFO    2020-07-05 20:17:02,230 - drag_ended
+INFO    2020-07-05 20:17:02,232 - play_Weapon
+INFO    2020-07-05 20:17:09,452 - drag_detected
+INFO    2020-07-05 20:17:10,000 - drag_ended
+INFO    2020-07-05 20:17:10,001 - play_Spell
+INFO    2020-07-05 20:17:13,199 - exit
+INFO    2020-07-05 20:17:55,809 - log_in
+INFO    2020-07-05 20:17:55,812 - navigate_from_log_in_to_menu
+INFO    2020-07-05 20:17:57,883 - start_a_game
+INFO    2020-07-05 20:17:58,805 - passive_selected
+INFO    2020-07-05 20:17:59,679 - drag_detected
+INFO    2020-07-05 20:18:00,237 - drag_ended
+ERROR   2020-07-05 20:18:00,322 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+INFO    2020-07-05 20:18:06,575 - end_turn_player_1
+INFO    2020-07-05 20:18:12,400 - back_to_menu
+INFO    2020-07-05 20:18:13,786 - start_a_game
+INFO    2020-07-05 20:18:14,668 - passive_selected
+INFO    2020-07-05 20:18:16,600 - drag_detected
+INFO    2020-07-05 20:18:17,722 - drag_ended
+ERROR   2020-07-05 20:18:17,779 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+INFO    2020-07-05 20:18:24,350 - drag_detected
+INFO    2020-07-05 20:18:24,950 - drag_ended
+INFO    2020-07-05 20:18:26,795 - exit
+INFO    2020-07-05 21:19:18,713 - log_in
+INFO    2020-07-05 21:19:18,717 - navigate_from_log_in_to_menu
+INFO    2020-07-05 21:19:22,039 - start_a_game
+INFO    2020-07-05 21:19:23,182 - passive_selected
+INFO    2020-07-05 21:19:31,921 - drag_detected
+INFO    2020-07-05 21:19:32,893 - drag_ended
+ERROR   2020-07-05 21:19:32,893 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-05 21:19:32,896 - play_Minion
+INFO    2020-07-05 21:20:58,439 - back_to_menu
+INFO    2020-07-05 21:20:59,701 - start_a_game
+INFO    2020-07-05 21:21:01,481 - passive_selected
+INFO    2020-07-05 21:21:04,732 - end_turn_player_1
+INFO    2020-07-05 21:21:07,826 - end_turn_player_2
+INFO    2020-07-05 21:21:12,176 - exit
+INFO    2020-07-05 21:22:36,231 - log_in
+INFO    2020-07-05 21:22:36,234 - navigate_from_log_in_to_menu
+INFO    2020-07-05 21:22:43,630 - start_a_game
+INFO    2020-07-05 21:22:49,601 - passive_selected
+INFO    2020-07-05 21:22:51,730 - end_turn_player_1
+INFO    2020-07-05 21:22:58,029 - end_turn_player_2
+INFO    2020-07-05 21:22:59,168 - drag_detected
+INFO    2020-07-05 21:22:59,957 - drag_ended
+ERROR   2020-07-05 21:22:59,958 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-05 21:22:59,960 - play_Weapon
+INFO    2020-07-05 21:23:06,881 - end_turn_player_1
+INFO    2020-07-05 21:23:09,716 - exit
+INFO    2020-07-05 21:26:23,096 - log_in
+INFO    2020-07-05 21:26:23,101 - navigate_from_log_in_to_menu
+INFO    2020-07-05 21:26:25,705 - start_a_game
+INFO    2020-07-05 21:26:26,777 - passive_selected
+INFO    2020-07-05 21:26:28,289 - end_turn_player_1
+INFO    2020-07-05 21:28:33,348 - log_in
+INFO    2020-07-05 21:28:33,351 - navigate_from_log_in_to_menu
+INFO    2020-07-05 21:28:36,427 - start_a_game
+INFO    2020-07-05 21:28:37,853 - passive_selected
+INFO    2020-07-05 21:28:51,703 - end_turn_player_1
+INFO    2020-07-05 21:29:02,708 - drag_detected
+INFO    2020-07-05 21:29:04,083 - drag_ended
+ERROR   2020-07-05 21:29:04,084 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-05 21:29:04,085 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+INFO    2020-07-05 21:29:23,729 - exit
+INFO    2020-07-05 21:30:19,574 - log_in
+INFO    2020-07-05 21:30:19,579 - navigate_from_log_in_to_menu
+INFO    2020-07-05 21:30:22,175 - start_a_game
+INFO    2020-07-05 21:30:23,423 - passive_selected
+INFO    2020-07-05 21:30:24,642 - end_turn_player_1
+INFO    2020-07-05 21:30:28,357 - end_turn_player_2
+INFO    2020-07-05 21:30:56,609 - drag_detected
+INFO    2020-07-05 21:30:57,586 - drag_ended
+ERROR   2020-07-05 21:30:57,586 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-05 21:30:57,587 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+INFO    2020-07-05 21:36:30,416 - log_in
+INFO    2020-07-05 21:36:30,419 - navigate_from_log_in_to_menu
+INFO    2020-07-05 21:36:33,982 - start_a_game
+INFO    2020-07-05 21:36:35,141 - passive_selected
+INFO    2020-07-05 21:36:38,376 - end_turn_player_1
+INFO    2020-07-05 21:36:42,416 - end_turn_player_2
+INFO    2020-07-05 21:36:48,296 - end_turn_player_1
+INFO    2020-07-05 21:36:49,827 - end_turn_player_2
+INFO    2020-07-05 21:36:53,421 - end_turn_player_1
+INFO    2020-07-05 21:36:53,626 - end_turn_player_2
+INFO    2020-07-05 21:37:00,153 - drag_detected
+INFO    2020-07-05 21:37:01,087 - drag_ended
+ERROR   2020-07-05 21:37:01,154 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+ERROR   2020-07-05 21:37:01,154 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+INFO    2020-07-05 21:38:58,003 - end_turn_player_1
+INFO    2020-07-05 21:39:12,838 - back_to_menu
+INFO    2020-07-05 21:39:14,386 - start_a_game
+INFO    2020-07-05 21:39:16,431 - passive_selected
+INFO    2020-07-05 21:39:19,844 - drag_detected
+INFO    2020-07-05 21:39:21,010 - drag_ended
+INFO    2020-07-05 21:39:23,326 - drag_detected
+INFO    2020-07-05 21:39:24,060 - drag_ended
+INFO    2020-07-05 21:39:29,368 - drag_detected
+INFO    2020-07-05 21:39:30,018 - drag_ended
+ERROR   2020-07-05 21:39:30,114 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+ERROR   2020-07-05 21:39:30,114 - java.lang.IllegalArgumentException: Children: duplicate children added: parent = Pane[id=hand1]
+INFO    2020-07-05 21:39:31,996 - end_turn_player_1

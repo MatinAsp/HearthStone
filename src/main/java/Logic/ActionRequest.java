@@ -90,9 +90,11 @@ public enum ActionRequest {
         game.getCompetitor(0).runQuestRewards();
         game.getCompetitor(1).runQuestRewards();
         for(int i = 0; i < 2; i++){
-            if(game.getCompetitor(i).getHeroWeapon().getDurability() <= 0){
-                game.getCompetitor(i).setHeroWeapon(null);
-            }
+            try {
+                if(game.getCompetitor(i).getHeroWeapon().getDurability() <= 0){
+                    game.getCompetitor(i).setHeroWeapon(null);
+                }
+            } catch (NullPointerException e){}
             for(Minion minion: game.getCompetitor(i).getOnBoardCards()){
                 if(minion.getHp() <= 0){
                     game.getCompetitor(i).getOnBoardCards().remove(minion);

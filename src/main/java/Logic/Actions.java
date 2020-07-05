@@ -51,9 +51,11 @@ public class Actions {
         ActionRequest.PERFORM_ACTION.addBeforeAction(new PerformActionHandler() {
             @Override
             public void runAction(InfoPack[] infoPacks) throws InvalidChoiceException {
-                if(infoPacks[1].getCharacter() instanceof Minion && infoPacks[0].getSide() != infoPacks[1].getSide() && ((Minion) infoPacks[1].getCharacter()).isStealth()){
-                    throw new InvalidChoiceException();
-                }
+                try{
+                    if(infoPacks[1].getCharacter() instanceof Minion && infoPacks[0].getSide() != infoPacks[1].getSide() && ((Minion) infoPacks[1].getCharacter()).isStealth()){
+                        throw new InvalidChoiceException();
+                    }
+                }catch (ArrayIndexOutOfBoundsException e){}
             }
 
             @Override
@@ -74,7 +76,7 @@ public class Actions {
             if(!controlVersion(methodParameters[1]) || !methodParameters[1].isOnGround()){
                 throw new InvalidChoiceException();
             }
-        }catch (NullPointerException e){}
+        }catch (ArrayIndexOutOfBoundsException e){}
         try {
             for(CardName annotation: methodMap.keySet()){
                 if(annotation.value().equals(cardName) && annotation.isForOnBoard() == methodParameters[0].isOnGround()){

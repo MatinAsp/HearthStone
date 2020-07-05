@@ -96,4 +96,8 @@ public class Game {
             competitor[side].addCardOnBoard(minion);
         }
     }
+
+    public boolean isWithBot() {
+        return isWithBot;
+    }
 }

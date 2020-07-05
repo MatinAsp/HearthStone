@@ -22,8 +22,8 @@ public class GameFactory {
         Game game = new Game(setCompetitor(player1), setCompetitor(player2), isWithBot);
         game.getCompetitor(0).setFullMana(GameConstants.getInstance().getInteger("manaForStart"));
         game.getCompetitor(0).setLeftMana(GameConstants.getInstance().getInteger("manaForStart"));
-        game.getCompetitor(0).setFullMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
-        game.getCompetitor(0).setLeftMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
+        game.getCompetitor(1).setFullMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
+        game.getCompetitor(1).setLeftMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
         ActionRequest.setCurrentGame(game);
         return game;
     }

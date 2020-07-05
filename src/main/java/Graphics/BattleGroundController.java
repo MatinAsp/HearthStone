@@ -32,6 +32,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import org.apache.log4j.Logger;
 
 import java.awt.event.WindowStateListener;
 import java.io.IOException;
@@ -101,6 +102,7 @@ public class BattleGroundController implements Initializable {
         hand[1] = hand2;
         manaText[0] = manaText1;
         manaText[1] = manaText2;
+
         cardsNumberLabel[0] = cardsNumberLabel1;
         cardsNumberLabel[1] = cardsNumberLabel2;
         heroPowerPlace[0] = heroPowerPlace1;
@@ -118,8 +120,8 @@ public class BattleGroundController implements Initializable {
             rootPane.getChildren().removeAll(hero[i]);
             Competitor competitor = game.getCompetitor(i);
             hero[i] = graphicRender.buildHeroPlace(competitor.getHero());
-            hero[i].setLayoutX(GameConstants.getInstance().getInteger("player1HeroPlaceX"));
-            hero[i].setLayoutY(GameConstants.getInstance().getInteger("player1HeroPlaceY"));
+            hero[i].setLayoutX(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceX"));
+            hero[i].setLayoutY(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceY"));
             rootPane.getChildren().add(hero[i]);
             hero[i].toBack();
             setForPerformAction(hero[i], competitor.getHero(), i, true);
@@ -145,7 +147,7 @@ public class BattleGroundController implements Initializable {
         int counter = 0;
         for(Card card: cards){
             Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, !isForOwn);
-            if(isForOwn){
+            if(isForOwn || !game.isWithBot()){
                 handCardSetAction(graphicCard, card, isForOwn ? 0 : 1);
             }
             if(cards.size() == 1) graphicCard.setLayoutX(0);
@@ -160,7 +162,7 @@ public class BattleGroundController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 graphicCard.setLayoutY(
-                        graphicCard.getLayoutY()-GameConstants.getInstance().getInteger("liftUpCardInHad")
+                        graphicCard.getLayoutY()-((side == 0)? 1:-1)*GameConstants.getInstance().getInteger("liftUpCardInHad")
                 );
                 graphicCard.toFront();
             }
@@ -172,7 +174,7 @@ public class BattleGroundController implements Initializable {
                 hand[side].getChildren().remove(graphicCard);
                 hand[side].getChildren().add(cnt, graphicCard);
                 graphicCard.setLayoutY(
-                        graphicCard.getLayoutY() + GameConstants.getInstance().getInteger("liftUpCardInHad")
+                        graphicCard.getLayoutY() + ((side == 0)? 1:-1)*GameConstants.getInstance().getInteger("liftUpCardInHad")
                 );
             }
         });
@@ -203,8 +205,10 @@ public class BattleGroundController implements Initializable {
                 LogCenter.getInstance().getLogger().info("drag_ended");
                 try {
                     int maxYForPlayCard = GameConstants.getInstance().getInteger("maxYForPlayCard");
-                    if (graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() < maxYForPlayCard){
-                        performAction(card, 0, false);
+                    int minYForPlayCard = GameConstants.getInstance().getInteger("minYForPlayCard");
+                    if ((side == 0 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() < maxYForPlayCard) ||
+                            (side == 1 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() + ((Pane) graphicCard).getHeight() > minYForPlayCard)){
+                        performAction(card, side, false);
                         LogCenter.getInstance().getLogger().info("play_"+card.getType());
                         addGameLog("play_"+card.getType());
                     }
@@ -261,6 +265,7 @@ public class BattleGroundController implements Initializable {
     private Button endTurnButton;
     @FXML
     private void endTurn() {
+        infoPacks.clear();
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("endTurnSoundTrack"), 1);
         changeTurn();
     }
@@ -277,7 +282,7 @@ public class BattleGroundController implements Initializable {
         } catch (GameOverException e) {
             endGame();
         }
-        if (game.getTurn() == 0) endTurnButton.setDisable(false);
+        if (game.getTurn() == 0 || !game.isWithBot()) endTurnButton.setDisable(false);
         else endTurnButton.setDisable(true);
     }
 
@@ -291,24 +296,17 @@ public class BattleGroundController implements Initializable {
 
     private void putCardToHandAnimation(Card card, boolean isForOwn) {
         Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, !isForOwn);
+        int side = isForOwn? 0:1;
         rootPane.getChildren().add(cardPane);
         int duration = 2;
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(duration), cardPane);
         double fromX, fromY, toX, toY;
-        if(isForOwn){
-            fromX = cardsNumberLabel1.getLayoutX();
-            fromY = cardsNumberLabel1.getLayoutY();
-            toX = hand1.getLayoutX();
-            toY = hand1.getLayoutY();
-        }
-        else {
-            fromX = cardsNumberLabel2.getLayoutX();
-            fromY = cardsNumberLabel2.getLayoutY();
-            toX = hand2.getLayoutX();
-            toY = hand2.getLayoutY();
-        }
-        hand1.setDisable(true);
-        hand2.setDisable(true);
+        fromX = cardsNumberLabel[side].getLayoutX();
+        fromY = cardsNumberLabel[side].getLayoutY();
+        toX = hand[side].getLayoutX();
+        toY = hand[side].getLayoutY();
+        hand[0].setDisable(true);
+        hand[1].setDisable(true);
         System.out.println(endTurnButton.isDisable());
         translateTransition.setFromX(fromX);
         translateTransition.setFromY(fromY);
@@ -320,8 +318,8 @@ public class BattleGroundController implements Initializable {
             public void handle(ActionEvent event) {
                 rootPane.getChildren().remove(translateTransition.getNode());
                 gameRender();
-                hand1.setDisable(false);
-                hand2.setDisable(false);
+                hand[0].setDisable(false);
+                hand[1].setDisable(false);
             }
         });
         translateTransition.play();
@@ -370,28 +368,39 @@ public class BattleGroundController implements Initializable {
         GridPane.setConstraints(logLabel, 0, 0);
         gameLogGridPane.getChildren().add(logLabel);
     }
-     private void performAction(Character character, int side, boolean isOnGround){
+    private void performAction(Character character, int side, boolean isOnGround){
+        Logger logger = LogCenter.getInstance().getLogger();
         infoPacks.add(new InfoPack(character, side, isOnGround));
         InfoPack[] parameters = new InfoPack[infoPacks.size()];
         for(int i = 0; i < infoPacks.size(); i++){
-            parameters[i] = infoPacks.get(i);
+        parameters[i] = infoPacks.get(i);
         }
-         try {
-             ActionRequest.PERFORM_ACTION.execute(parameters);
-         } catch (SelectionNeededException e) {
-//             jhhj
-         } catch (InvalidChoiceException e) {
-             infoPacks.clear();
-         } catch (GameOverException e) {
-             endGame();
-         }
-     }
-     private void setForPerformAction(Parent parent, Character character, int side, boolean isOnGround){
-        parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                performAction(character, side, isOnGround);
+        try {
+            ActionRequest.PERFORM_ACTION.execute(parameters);
+            gameRender();
+
+        } catch (Exception e) {
+            logger.error(e);
+            try {
+                throw e;
+            } catch (SelectionNeededException selectionNeededException) {
+                selectionNeededException.printStackTrace();
+                //kjslkfdjs
+            } catch (InvalidChoiceException invalidChoiceException) {
+                invalidChoiceException.printStackTrace();
+                infoPacks.clear();
+            } catch (GameOverException gameOverException) {
+                gameOverException.printStackTrace();
+                endGame();
             }
-        });
-     }
+        }
+    }
+    private void setForPerformAction(Parent parent, Character character, int side, boolean isOnGround){
+    parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            performAction(character, side, isOnGround);
+        }
+    });
+}
 }
