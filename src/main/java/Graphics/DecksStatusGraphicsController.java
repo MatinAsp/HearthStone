@@ -30,7 +30,7 @@ public class DecksStatusGraphicsController {
     @FXML
     private StackPane heroPlace;
 
-    public void loadDeck(Deck deck) throws IOException {
+    public void loadDeck(Deck deck) {
         name.setText(deck.getName());
         wins.setText(Integer.toString(deck.getWinsNumber()));
         plays.setText(Integer.toString(deck.getPlaysNumber()));

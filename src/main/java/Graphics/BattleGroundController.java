@@ -3,6 +3,8 @@ package Graphics;
 import Data.*;
 import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
+import Exceptions.InvalidChoiceException;
+import Exceptions.SelectionNeededException;
 import Log.LogCenter;
 import Logic.ActionRequest;
 import Logic.Game;
@@ -10,6 +12,8 @@ import Models.Cards.Card;
 import Models.Cards.Minion;
 import Logic.PlayersManager;
 import Logic.Competitor;
+import Models.Character;
+import Models.InfoPack;
 import Models.Passive;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -29,6 +33,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.awt.event.WindowStateListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -44,34 +49,37 @@ public class BattleGroundController implements Initializable {
     private HBox battleGround1;
     @FXML
     private HBox battleGround2;
+    private HBox[] battleGround = new HBox[2];
     @FXML
     private Label manaText1;
     @FXML
     private Label manaText2;
+    private Label[] manaText = new Label[2];
     @FXML
     private HBox manaBar;
     @FXML
     private Pane hand1;
     @FXML
     private Pane hand2;
+    private Pane[] hand = new Pane[2];
     @FXML
     private Label cardsNumberLabel1;
     @FXML
     private Label cardsNumberLabel2;
+    private Label[] cardsNumberLabel = new Label[2];
     @FXML
     private StackPane heroPowerPlace1;
     @FXML
     private StackPane heroPowerPlace2;
+    private StackPane[] heroPowerPlace = new StackPane[2];
     @FXML
     private ImageView arena;
     @FXML
     private GridPane gameLogGridPane;
-
     private Parent selected = null;
-
-    private Pane hero1,hero2;
-
+    private Pane[] hero = new Pane[2];
     private Game game = null;
+    private ArrayList<InfoPack> infoPacks = new ArrayList<>();
 
     @FXML
     private void exit(){
@@ -86,63 +94,59 @@ public class BattleGroundController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            renderPassives();
-            arena.setImage(AssetManager.getInstance().getImage(GameSettings.getInstance().getBattleGroundArena()));
-        } catch (IOException e) {
-            LogCenter.getInstance().getLogger().error(e);
-            e.printStackTrace();
-        }
+        renderPassives();
+        battleGround[0] = battleGround1;
+        battleGround[1] = battleGround2;
+        hand[0] = hand1;
+        hand[1] = hand2;
+        manaText[0] = manaText1;
+        manaText[1] = manaText2;
+        cardsNumberLabel[0] = cardsNumberLabel1;
+        cardsNumberLabel[1] = cardsNumberLabel2;
+        heroPowerPlace[0] = heroPowerPlace1;
+        heroPowerPlace[1] = heroPowerPlace2;
+        arena.setImage(AssetManager.getInstance().getImage(GameSettings.getInstance().getBattleGroundArena()));
     }
 
     public void setGame(Game game){
         this.game = game;
     }
 
-    public void gameRender() throws IOException {
-        rootPane.getChildren().removeAll(hero1, hero2);
+    public synchronized void gameRender() {
         GraphicRender graphicRender = GraphicRender.getInstance();
-        Competitor competitor1 = game.getCompetitor(0), competitor2 = game.getCompetitor(1);
-        hero1 = graphicRender.buildHeroPlace(competitor1.getHero());
-        hero1.setLayoutX(GameConstants.getInstance().getInteger("player1HeroPlaceX"));
-        hero1.setLayoutY(GameConstants.getInstance().getInteger("player1HeroPlaceY"));
-        rootPane.getChildren().add(hero1);
-        hero1.toBack();
-        hero2 = graphicRender.buildHeroPlace(competitor2.getHero());
-        hero2.setLayoutX(GameConstants.getInstance().getInteger("player2HeroPlaceX"));
-        hero2.setLayoutY(GameConstants.getInstance().getInteger("player2HeroPlaceY"));
-        rootPane.getChildren().add(hero2);
-        hero2.toBack();
-        renderHand(competitor1.getInHandCards(), hand1, true);
-        renderHand(competitor2.getInHandCards(), hand2, false);
-        renderBattleGround(competitor1.getOnBoardCards(), battleGround1);
-        renderBattleGround(competitor2.getOnBoardCards(), battleGround2);
-        manaText1.setText(competitor1.getLeftMana()+"/"+competitor1.getFullMana());
-        manaText2.setText(competitor2.getLeftMana()+"/"+competitor2.getFullMana());
-        renderManaBar(competitor1.getLeftMana(), competitor1.getFullMana());
-        cardsNumberLabel1.setText(getCardsNumberString(competitor1));
-        cardsNumberLabel2.setText(getCardsNumberString(competitor2));
-        heroPowerPlace1.getChildren().clear();
-        heroPowerPlace2.getChildren().clear();
-        heroPowerPlace1.getChildren().add(
-                GraphicRender.getInstance().buildHeroPower(competitor1.getHero().getHeroPower())
-        );
-        heroPowerPlace2.getChildren().add(
-                GraphicRender.getInstance().buildHeroPower(competitor2.getHero().getHeroPower())
-        );
+        for(int i = 0; i < 2; i++){
+            rootPane.getChildren().removeAll(hero[i]);
+            Competitor competitor = game.getCompetitor(i);
+            hero[i] = graphicRender.buildHeroPlace(competitor.getHero());
+            hero[i].setLayoutX(GameConstants.getInstance().getInteger("player1HeroPlaceX"));
+            hero[i].setLayoutY(GameConstants.getInstance().getInteger("player1HeroPlaceY"));
+            rootPane.getChildren().add(hero[i]);
+            hero[i].toBack();
+            setForPerformAction(hero[i], competitor.getHero(), i, true);
+            renderHand(competitor.getInHandCards(), hand[i], ((i == 0) ? true : false));
+            renderBattleGround(competitor.getOnBoardCards(), battleGround[i], i);
+            manaText[i].setText(competitor.getLeftMana()+"/"+competitor.getFullMana());
+            if(i == 0)
+                renderManaBar(competitor.getLeftMana(), competitor.getFullMana());
+            cardsNumberLabel[i].setText(getCardsNumberString(competitor));
+            heroPowerPlace[i].getChildren().clear();
+            Parent parent =  GraphicRender.getInstance().buildHeroPower(competitor.getHero().getHeroPower());
+            setForPerformAction(parent, competitor.getHero().getHeroPower(),i, true);
+            heroPowerPlace[i].getChildren().add(parent);
+        }
     }
 
     private String getCardsNumberString(Competitor competitor){
         return competitor.getInDeckCards().size() + "\n/\n" + competitor.getHero().getDeckMax();
     }
 
-    private void renderHand(ArrayList<Card> cards, Pane hand, boolean isForOwn) throws IOException {
+    private void renderHand(ArrayList<Card> cards, Pane hand, boolean isForOwn) {
         hand.getChildren().clear();
         int counter = 0;
         for(Card card: cards){
             Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, !isForOwn);
             if(isForOwn){
-                handCardSetAction(graphicCard, card);
+                handCardSetAction(graphicCard, card, isForOwn ? 0 : 1);
             }
             if(cards.size() == 1) graphicCard.setLayoutX(0);
             else graphicCard.setLayoutX(counter*((hand.getPrefWidth()-graphicCard.getPrefWidth())/(cards.size()-1)));
@@ -151,7 +155,7 @@ public class BattleGroundController implements Initializable {
         }
     }
 
-    private void handCardSetAction(Parent graphicCard, Card card){
+    private void handCardSetAction(Parent graphicCard, Card card, int side){
         graphicCard.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -164,12 +168,12 @@ public class BattleGroundController implements Initializable {
         graphicCard.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                try {
-                    gameRender();
-                } catch (IOException e) {
-                    LogCenter.getInstance().getLogger().error(e);
-                    e.printStackTrace();
-                }
+                int cnt = hand[side].getChildren().indexOf(graphicCard);
+                hand[side].getChildren().remove(graphicCard);
+                hand[side].getChildren().add(cnt, graphicCard);
+                graphicCard.setLayoutY(
+                        graphicCard.getLayoutY() + GameConstants.getInstance().getInteger("liftUpCardInHad")
+                );
             }
         });
         final double[] mousePosition = {0,0};
@@ -197,22 +201,14 @@ public class BattleGroundController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 LogCenter.getInstance().getLogger().info("drag_ended");
-                boolean check = false;
                 try {
                     int maxYForPlayCard = GameConstants.getInstance().getInteger("maxYForPlayCard");
                     if (graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() < maxYForPlayCard){
-                        game.playCard(card);
+                        performAction(card, 0, false);
                         LogCenter.getInstance().getLogger().info("play_"+card.getType());
                         addGameLog("play_"+card.getType());
                     }
                 } catch (Exception e) {
-                    LogCenter.getInstance().getLogger().error(e);
-                    check = true;
-                    e.printStackTrace();
-                }
-                try {
-                    if(!check) cardPlaySound(card);
-                } catch (IOException e) {
                     LogCenter.getInstance().getLogger().error(e);
                     e.printStackTrace();
                 }
@@ -222,7 +218,7 @@ public class BattleGroundController implements Initializable {
         });
     }
 
-    private void cardPlaySound(Card card) throws IOException {
+    private void cardPlaySound(Card card) {
         MediaManager mediaManager = MediaManager.getInstance();
         if (card instanceof Minion){
             mediaManager.playMedia(GameConstants.getInstance().getString("minionPlacingSoundTrack"), 1);
@@ -232,14 +228,16 @@ public class BattleGroundController implements Initializable {
         }
     }
 
-    private void renderBattleGround(ArrayList<Card> cards, HBox battleGround) throws IOException {
+    private void renderBattleGround(ArrayList<Minion> cards, HBox battleGround, int side) {
         battleGround.getChildren().clear();
         for(Card card: cards){
-            battleGround.getChildren().add(GraphicRender.getInstance().buildBattleGroundMinion((Minion) card));
+            Parent parent = GraphicRender.getInstance().buildBattleGroundMinion((Minion) card);
+            setForPerformAction(parent, card, side, true);
+            battleGround.getChildren().add(parent);
         }
     }
 
-    private void renderManaBar(int leftMana, int fullMana) throws IOException {
+    private void renderManaBar(int leftMana, int fullMana) {
         manaBar.getChildren().clear();
         for(int i = 0; i < leftMana; i++){
             ImageView imageView = new ImageView(AssetManager.getInstance().getImage("mana"));
@@ -262,13 +260,12 @@ public class BattleGroundController implements Initializable {
     @FXML
     private Button endTurnButton;
     @FXML
-    private void endTurn() throws IOException {
+    private void endTurn() {
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("endTurnSoundTrack"), 1);
-        changeTurn();
         changeTurn();
     }
 
-    private void changeTurn() throws IOException {
+    private void changeTurn() {
         LogCenter.getInstance().getLogger().info("end_turn_player_"+(game.getTurn()+1));
         addGameLog("end_turn_player_"+(game.getTurn()+1));
         try {
@@ -278,22 +275,21 @@ public class BattleGroundController implements Initializable {
             boolean isForOwn = (turn == 0)? true:false;
             putCardToHandAnimation(competitor.getInHandCards().get(competitor.getInHandCards().size()-1), isForOwn);
         } catch (GameOverException e) {
-            LogCenter.getInstance().getLogger().info("game_over");
-            addGameLog("game_over");
-            alertBox.setVisible(true);
-            if(game.getWinner() == 0) alertMessage.setText("You Win.");
-            else alertMessage.setText("You Lose.");
-        }catch (InterruptedException e){
-            LogCenter.getInstance().getLogger().error(e);
-        }catch (EmptyDeckException e){
-            LogCenter.getInstance().getLogger().info(e);
-            gameRender();
+            endGame();
         }
         if (game.getTurn() == 0) endTurnButton.setDisable(false);
         else endTurnButton.setDisable(true);
     }
 
-    private void putCardToHandAnimation(Card card, boolean isForOwn) throws IOException, InterruptedException {
+    private void endGame(){
+        LogCenter.getInstance().getLogger().info("game_over");
+        addGameLog("game_over");
+        alertBox.setVisible(true);
+        if(game.getWinner() == 0) alertMessage.setText("You Win.");
+        else alertMessage.setText("You Lose.");
+    }
+
+    private void putCardToHandAnimation(Card card, boolean isForOwn) {
         Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, !isForOwn);
         rootPane.getChildren().add(cardPane);
         int duration = 2;
@@ -323,20 +319,16 @@ public class BattleGroundController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 rootPane.getChildren().remove(translateTransition.getNode());
-                try {
-                    gameRender();
-                    hand1.setDisable(false);
-                    hand2.setDisable(false);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                gameRender();
+                hand1.setDisable(false);
+                hand2.setDisable(false);
             }
         });
         translateTransition.play();
     }
 
     @FXML
-    private void backToMenu() throws IOException {
+    private void backToMenu() {
         LogCenter.getInstance().getLogger().info("back_to_menu");
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("battleGroundSoundTrack"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSoundTrack"), -1);
@@ -348,7 +340,7 @@ public class BattleGroundController implements Initializable {
     @FXML
     private HBox passiveSelectionPlace;
 
-    public void renderPassives() throws IOException {
+    public void renderPassives() {
         passiveSelectionPane.setVisible(true);
         ArrayList<Passive> passives = DataManager.getInstance().getAllCharacter(Passive.class);
         int passivesNumber = GameConstants.getInstance().getInteger("passivesOnGamesStar");
@@ -378,4 +370,28 @@ public class BattleGroundController implements Initializable {
         GridPane.setConstraints(logLabel, 0, 0);
         gameLogGridPane.getChildren().add(logLabel);
     }
+     private void performAction(Character character, int side, boolean isOnGround){
+        infoPacks.add(new InfoPack(character, side, isOnGround));
+        InfoPack[] parameters = new InfoPack[infoPacks.size()];
+        for(int i = 0; i < infoPacks.size(); i++){
+            parameters[i] = infoPacks.get(i);
+        }
+         try {
+             ActionRequest.PERFORM_ACTION.execute(parameters);
+         } catch (SelectionNeededException e) {
+//             jhhj
+         } catch (InvalidChoiceException e) {
+             infoPacks.clear();
+         } catch (GameOverException e) {
+             endGame();
+         }
+     }
+     private void setForPerformAction(Parent parent, Character character, int side, boolean isOnGround){
+        parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                performAction(character, side, isOnGround);
+            }
+        });
+     }
 }

@@ -18,18 +18,18 @@ public class GameFactory {
         return gameFactory;
     }
 
-    public Game build(Player player1, Player player2) throws Exception {
-        Game game = new Game();
-        setCompetitor(game.getCompetitor(0), player1);
-        setCompetitor(game.getCompetitor(1), player2);
-        Competitor first = game.getCompetitor(game.getTurn());
-        first.setFullMana(GameConstants.getInstance().getInteger("manaForStart"));
-        first.setLeftMana(GameConstants.getInstance().getInteger("manaForStart"));
+    public Game build(Player player1, Player player2, boolean isWithBot) throws Exception {
+        Game game = new Game(setCompetitor(player1), setCompetitor(player2), isWithBot);
+        game.getCompetitor(0).setFullMana(GameConstants.getInstance().getInteger("manaForStart"));
+        game.getCompetitor(0).setLeftMana(GameConstants.getInstance().getInteger("manaForStart"));
+        game.getCompetitor(0).setFullMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
+        game.getCompetitor(0).setLeftMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
         ActionRequest.setCurrentGame(game);
         return game;
     }
 
-    private void setCompetitor(Competitor competitor, Player player) throws Exception {
+    private Competitor setCompetitor(Player player) throws Exception {
+        Competitor competitor = new Competitor();
         competitor.setDeck(player.getDeck(player.getCurrentDeckName()));
         for(Card card: player.getDeck(player.getCurrentDeckName()).getCards()){
             competitor.getInDeckCards().add(DataManager.getInstance().getObject(Card.class, card.getName()));
@@ -40,5 +40,6 @@ public class GameFactory {
         competitor.setHero(
                 DataManager.getInstance().getObject(Hero.class, player.getDeck(player.getCurrentDeckName()).getHero().getName())
         );
+        return competitor;
     }
 }

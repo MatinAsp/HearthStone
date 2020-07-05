@@ -1,5 +1,7 @@
 package Data;
 
+import Log.LogCenter;
+
 import java.io.*;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class GameConstants {
             configs.load(new FileReader(new File(address)));
         } catch (IOException e) {
             e.printStackTrace();
+            LogCenter.getInstance().getLogger().error(e);
         }
     }
 
@@ -61,7 +64,12 @@ public class GameConstants {
         configs.setProperty(key, newValue);
     }
 
-    public void save() throws IOException {
-        configs.store(new FileOutputStream(defaultAddress), "");
+    public void save() {
+        try {
+            configs.store(new FileOutputStream(defaultAddress), "");
+        } catch (IOException e) {
+            e.printStackTrace();
+            LogCenter.getInstance().getLogger().error(e);
+        }
     }
 }

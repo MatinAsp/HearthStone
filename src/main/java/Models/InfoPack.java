@@ -1,7 +1,5 @@
 package Models;
 
-import Models.Cards.Card;
-
 public class InfoPack {
     private Character character;
     private int side;
@@ -15,7 +13,7 @@ public class InfoPack {
         return isOnGround;
     }
 
-    public InfoPack(Card character, int side, boolean isOnGround){
+    public InfoPack(Character character, int side, boolean isOnGround){
         this.character = character;
         this.side = side;
         this.isOnGround = isOnGround;

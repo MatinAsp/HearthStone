@@ -4,6 +4,7 @@ import Data.GameConstants;
 import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
 import Interfaces.QuestActionHandler;
+import Log.LogCenter;
 import Models.Cards.*;
 import Models.Deck;
 import Models.Hero;
@@ -131,11 +132,16 @@ public class Competitor{
         this.heroWeapon = heroWeapon;
     }
 
-    public void runQuestRewards() throws Exception {
+    public void runQuestRewards() {
         for (Quest quest: questsInProgress.keySet()){
             if(questsInProgress.get(quest).getQuestPercent() == 1){
                 questsInProgress.remove(quest);
-                questsInProgress.get(quest).runAction();
+                try {
+                    questsInProgress.get(quest).runAction();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    LogCenter.getInstance().getLogger().error(e);
+                }
             }
         }
     }

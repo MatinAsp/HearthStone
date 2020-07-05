@@ -7,9 +7,9 @@ import java.io.IOException;
 
 public class Store {
     private static Store instanceStore = null;
-    private Store() throws IOException { }
+    private Store() { }
 
-    static public Store getInstance() throws IOException {
+    static public Store getInstance() {
         if(instanceStore == null){
             instanceStore = new Store();
         }
@@ -23,7 +23,7 @@ public class Store {
         player.addToCards(card);
     }
 
-    public void sellCard(Card card) throws IOException {
+    public void sellCard(Card card) {
         Player player =  PlayersManager.getInstance().getCurrentPlayer();
         player.setWallet(player.getWallet()+card.getPrice());
         player.removeCard(card);

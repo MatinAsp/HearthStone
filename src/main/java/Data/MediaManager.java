@@ -13,12 +13,12 @@ public class MediaManager {
     private ArrayList<MyMediaPlayer> mediaPlayers = new ArrayList<>();
     private String audiosAddress;
     private double volume;
-    private MediaManager() throws IOException {
+    private MediaManager() {
         volume = GameSettings.getInstance().getVolume();
         audiosAddress = GameConstants.getInstance().getString("audiosAddress");
     }
 
-    static public MediaManager getInstance() throws IOException {
+    static public MediaManager getInstance() {
         if(mediaManager == null){
             mediaManager = new MediaManager();
         }

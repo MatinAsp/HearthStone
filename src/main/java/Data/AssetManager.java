@@ -12,9 +12,9 @@ public class AssetManager {
     static private AssetManager assetManager = null;
     private HashMap<String, Image> imageMap = new HashMap<>();
     private String assetsAddress = GameConstants.getInstance().getString("assetsAddress");
-    private AssetManager() throws IOException {}
+    private AssetManager() {}
 
-    public static AssetManager getInstance() throws IOException {
+    public static AssetManager getInstance() {
         if(assetManager == null){
             assetManager = new AssetManager();
         }

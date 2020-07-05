@@ -77,7 +77,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void signInAction(ActionEvent e) throws Exception {
+    private void signInAction(ActionEvent e) {
         try{
             PlayersManager.getInstance().signIn(usernameField.getText(), passwordField.getText());
             LogCenter.getInstance().getLogger().info("sign_in");
@@ -748,7 +748,8 @@ public class Controller implements Initializable {
         BattleGroundController battleGroundController = fxmlLoader.getController();
         battleGroundController.setGame(GameFactory.getInstance().build(
                 PlayersManager.getInstance().getCurrentPlayer(),
-                PlayerFactory.getInstance().build("", "")
+                PlayerFactory.getInstance().build("", ""),
+                false
         ));
         battleGroundController.gameRender();
         root.getChildren().add(gameBoard);

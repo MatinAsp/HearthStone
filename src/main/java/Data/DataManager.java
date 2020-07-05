@@ -1,5 +1,6 @@
 package Data;
 
+import Log.LogCenter;
 import Models.Cards.*;
 import Models.Character;
 import Models.Hero;
@@ -38,12 +39,9 @@ public class DataManager {
                     loadData(Class.forName(className),gameConstants.getString(Class.forName(className).getSimpleName().toLowerCase()+"Path"))
                 );
             }
-        } catch (FileNotFoundException e) {
+        } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LogCenter.getInstance().getLogger().error(e);
         }
     }
 
@@ -56,6 +54,7 @@ public class DataManager {
                     arr.addAll((ArrayList<T>) loadData(Class.forName(GameConstants.getInstance().getString(file.getName()+"Class")), file.getAbsolutePath()));
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
+                    LogCenter.getInstance().getLogger().error(e);
                 }
             }
                 else{
@@ -66,6 +65,7 @@ public class DataManager {
                     fileReader.close();
                 } catch (IOException e) {
                     e.printStackTrace();
+                    LogCenter.getInstance().getLogger().error(e);
                 }
             }
         }
@@ -112,6 +112,7 @@ public class DataManager {
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
+            LogCenter.getInstance().getLogger().error(e);
         }
     }
 
@@ -121,6 +122,7 @@ public class DataManager {
             scanner = new Scanner(new File(generalPath+File.separator+"Default Cards"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            LogCenter.getInstance().getLogger().error(e);
         }
         ArrayList<Card> defaultCards = new ArrayList<>();
         while (scanner.hasNext()){
@@ -136,6 +138,7 @@ public class DataManager {
             scanner = new Scanner(new File(generalPath+File.separator+"Default Heroes"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            LogCenter.getInstance().getLogger().error(e);
         }
         ArrayList<Hero> defaultHeroes = new ArrayList<>();
         while (scanner.hasNext()){

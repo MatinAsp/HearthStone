@@ -10,14 +10,14 @@ public class GameSettings {
     private double volume;
     private String cardBack, battleGroundArena;
 
-    private GameSettings() throws IOException {
+    private GameSettings() {
         GameConstants gameConstants = GameConstants.getInstance();
         volume = gameConstants.getDouble("volume");
         cardBack = gameConstants.getString("cardBack");
         battleGroundArena = gameConstants.getString("battleGroundArena");
     }
 
-    static public GameSettings getInstance() throws IOException {
+    static public GameSettings getInstance() {
         if(gameSettings == null){
             gameSettings = new GameSettings();
         }

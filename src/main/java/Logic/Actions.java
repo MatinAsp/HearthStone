@@ -3,7 +3,6 @@ package Logic;
 import Annotations.CardName;
 import Annotations.SelectAction;
 import Data.DataManager;
-import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
 import Exceptions.SelectionNeededException;
 import Exceptions.InvalidChoiceException;
@@ -16,7 +15,6 @@ import Models.Character;
 import Models.Hero;
 import Models.InfoPack;
 
-import javax.swing.plaf.ActionMapUIResource;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -65,17 +63,15 @@ public class Actions {
         });
     }
 
-    public void performAction(InfoPack[] methodParameters) throws InvalidChoiceException, SelectionNeededException, GameOverException, EmptyDeckException {
-        //dovomi to zamin bashe
-        // taunt and rush and cahrge and divine shield
-        //tahesh hame ro set charge kon
+    public void performAction(InfoPack[] methodParameters) throws InvalidChoiceException, SelectionNeededException, GameOverException{
+        //tahesh hame ro set charge kon va weapon va minion ha ro pack kon az zamin
         //tabe selection ha
         String cardName = methodParameters[0].getCharacter().getName();
         if(methodParameters[0].getSide() != game.getTurn()){
             throw new InvalidChoiceException();
         }
         try{
-            if(!controlVersion(methodParameters[1])){
+            if(!controlVersion(methodParameters[1]) || !methodParameters[1].isOnGround()){
                 throw new InvalidChoiceException();
             }
         }catch (NullPointerException e){}
@@ -86,7 +82,14 @@ public class Actions {
                 }
             }
         } catch (IllegalAccessException | InvocationTargetException e) {
-            //charge boodan ro chek kon
+            if(methodParameters[0].getCharacter() instanceof Minion && methodParameters[0].isOnGround()){
+                Minion minion = (Minion) methodParameters[0].getCharacter();
+                if(!minion.isCharge() && !minion.isRush()) throw new InvalidChoiceException();
+            }
+            if(methodParameters[0].getCharacter() instanceof Weapon && methodParameters[0].isOnGround()){
+                Weapon weapon = (Weapon) methodParameters[0].getCharacter();
+                if(!weapon.isCharge()) throw new InvalidChoiceException();
+            }
             for(SelectAction annotation: selectActionMethodMap.keySet()){
                 if(annotation.value().equals(cardName) && annotation.isForOnBoard() == methodParameters[0].isOnGround()){
                     try {
@@ -128,6 +131,14 @@ public class Actions {
                 throw new InvalidChoiceException();
             }
         }
+        tauntCheck(infoPack2);
+    }
+
+    private void tauntCheck(InfoPack infoPack) throws InvalidChoiceException {
+        for(Minion minion: game.getCompetitor(infoPack.getSide()).getOnBoardCards()){
+            if(minion.isTaunt() && !minion.isStealth() && !((Minion) infoPack.getCharacter()).isTaunt())
+                throw new InvalidChoiceException();
+        }
     }
 
     private void runAttackActions(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
@@ -144,7 +155,7 @@ public class Actions {
         }
     }
 
-    private void attack(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    private void attack(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         Character character1 = infoPack1.getCharacter();
         Character character2 = infoPack2.getCharacter();
         attackCheck(infoPack1, infoPack2);
@@ -195,7 +206,7 @@ public class Actions {
     }
 
     @CardName(value = "Argent Commander", isForOnBoard = true)
-    public void action2(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action2(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -205,7 +216,7 @@ public class Actions {
     }
 
     @CardName(value = "Bluegill Warrior", isForOnBoard = true)
-    public void action3(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action3(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -215,7 +226,7 @@ public class Actions {
     }
 
     @CardName(value = "Curio Collector", isForOnBoard = true)
-    public void action4(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action4(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -235,7 +246,7 @@ public class Actions {
     }
 
     @CardName(value = "Deathwing", isForOnBoard = true)
-    public void action6(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action6(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -247,7 +258,7 @@ public class Actions {
     }
 
     @CardName(value = "Drakkari Trickster", isForOnBoard = true)
-    public void action7(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action7(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -262,7 +273,7 @@ public class Actions {
     }
 
     @CardName(value = "Dreadscale", isForOnBoard = true)
-    public void action9(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action9(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -287,7 +298,7 @@ public class Actions {
     }
 
     @CardName(value = "Gruul", isForOnBoard = true)
-    public void action11(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action11(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -306,7 +317,7 @@ public class Actions {
     }
 
     @CardName(value = "High Priest Amet", isForOnBoard = true)
-    public void action13(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action13(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -326,7 +337,7 @@ public class Actions {
     }
 
     @CardName(value = "Phantom Militia", isForOnBoard = true)
-    public void action15(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action15(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -344,7 +355,7 @@ public class Actions {
     }
 
     @CardName(value = "Psychic Conjurer", isForOnBoard = true)
-    public void action16(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action16(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -359,7 +370,7 @@ public class Actions {
     }
 
     @CardName(value = "Sathrovarr", isForOnBoard = true)
-    public void action18(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action18(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -388,7 +399,7 @@ public class Actions {
     }
 
     @CardName(value = "Security Rover", isForOnBoard = true)
-    public void action21(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action21(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -408,7 +419,7 @@ public class Actions {
     }
 
     @CardName(value = "Sen'jin Shieldmasta", isForOnBoard = true)
-    public void action23(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action23(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -418,7 +429,7 @@ public class Actions {
     }
 
     @CardName(value = "Stormwind Champion", isForOnBoard = true)
-    public void action24(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action24(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -432,7 +443,7 @@ public class Actions {
     }
 
     @CardName(value = "Tomb Warden", isForOnBoard = true)
-    public void action26(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action26(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -443,7 +454,7 @@ public class Actions {
     }
 
     @CardName(value = "Tortollan Forager", isForOnBoard = true)
-    public void action28(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action28(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -462,7 +473,7 @@ public class Actions {
     }
 
     @CardName(value = "Voodoo Doctor", isForOnBoard = true)
-    public void action30(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action30(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -475,7 +486,7 @@ public class Actions {
     }
 
     @CardName(value = "Wisp", isForOnBoard = true)
-    public void action32(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+    public void action32(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -494,13 +505,11 @@ public class Actions {
     @CardName(value = "Book of Specters", isForOnBoard = false)
     public void action34(InfoPack infoPack) throws GameOverException {
         for(int i = 0; i < 3; i++){
-            try {
-                ActionRequest.DRAW_CARD.execute();
-                ArrayList<Card> hand = game.getCompetitor(infoPack.getSide()).getInHandCards();
-                if(hand.size() > 0 && hand.get(hand.size() - 1) instanceof Spell){
-                    hand.remove(hand.get(hand.size() - 1));
-                }
-            } catch (EmptyDeckException e) {}
+            ActionRequest.DRAW_CARD.execute();
+            ArrayList<Card> hand = game.getCompetitor(infoPack.getSide()).getInHandCards();
+            if(hand.size() > 0 && hand.get(hand.size() - 1) instanceof Spell){
+                hand.remove(hand.get(hand.size() - 1));
+            }
         }
     }
 
@@ -550,7 +559,7 @@ public class Actions {
     }
 
     @CardName(value = "Mortal Coil", isForOnBoard = false)
-    public void action37(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, EmptyDeckException, GameOverException {
+    public void action37(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         if(!(infoPack2.getCharacter() instanceof Minion) || !infoPack2.isOnGround()){
             throw new InvalidChoiceException();
         }
@@ -588,15 +597,9 @@ public class Actions {
     }
 
     @CardName(value = "Sprint", isForOnBoard = false)
-    public void action40(InfoPack infoPack) throws EmptyDeckException, GameOverException {
+    public void action40(InfoPack infoPack) throws GameOverException {
         for(int i = 0; i < 4; i++){
-            try{
-                ActionRequest.DRAW_CARD.execute();
-            }catch (EmptyDeckException e){
-                if(i == 4){
-                    throw new EmptyDeckException();
-                }
-            }
+            ActionRequest.DRAW_CARD.execute();
         }
     }
 
@@ -617,7 +620,7 @@ public class Actions {
     }
 
     @CardName(value = "Assassin's Blade", isForOnBoard = true)
-    public void action43(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException{
+    public void action43(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -627,7 +630,7 @@ public class Actions {
     }
 
     @CardName(value = "Blood Fury", isForOnBoard = true)
-    public void action45(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException{
+    public void action45(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -637,18 +640,18 @@ public class Actions {
     }
 
     @CardName(value = "Bloodclaw", isForOnBoard = true)
-    public void action47(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException{
+    public void action47(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
     @CardName(value = "Bloodclaw", isForOnBoard = false)
-    public void action48(InfoPack infoPack) {
+    public void action48(InfoPack infoPack) throws GameOverException {
         game.getCompetitor(infoPack.getSide()).setHeroWeapon((Weapon) infoPack.getCharacter());
         game.getCompetitor(infoPack.getSide()).getHero().getDamage(5);
     }
 
     @CardName(value = "Dragon Claw", isForOnBoard = true)
-    public void action49(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException{
+    public void action49(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -658,7 +661,7 @@ public class Actions {
     }
 
     @CardName(value = "Heavy Axe", isForOnBoard = true)
-    public void action51(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException{
+    public void action51(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -668,7 +671,7 @@ public class Actions {
     }
 
     @CardName(value = "Sheep", isForOnBoard = true)
-    public void action53(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException{
+    public void action53(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -678,7 +681,7 @@ public class Actions {
     }
 
     @CardName(value = "Locust", isForOnBoard = true)
-    public void action55(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException{
+    public void action55(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
 
@@ -747,7 +750,7 @@ public class Actions {
     }
 
     public static void main(String[] arg){
-        
+
     }
 
 }

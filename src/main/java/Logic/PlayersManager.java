@@ -13,7 +13,7 @@ public class PlayersManager {
     private static PlayersManager instancePlayersManager= null;
     private ArrayList<Player> allPlayers;
     private Player currentPlayer = null;
-    private PlayersManager() throws IOException {
+    private PlayersManager() {
         DataManager dataManager = DataManager.getInstance();
         allPlayers = new ArrayList<>();
         allPlayers.addAll(dataManager.getAllPlayers());
@@ -32,7 +32,7 @@ public class PlayersManager {
         return null;
     }
 
-    static public PlayersManager getInstance() throws IOException {
+    static public PlayersManager getInstance() {
         if(instancePlayersManager == null){
             instancePlayersManager = new PlayersManager();
         }

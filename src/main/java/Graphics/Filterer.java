@@ -11,7 +11,7 @@ public class Filterer {
     private int manaFilter;
     private String searchFilter, currentHero;
     private boolean havingCard, notHavingCard;
-    private Filterer() throws IOException {
+    private Filterer(){
         reset();
     }
 
@@ -23,7 +23,7 @@ public class Filterer {
         notHavingCard = true;
     }
 
-    public static Filterer getInstance() throws IOException {
+    public static Filterer getInstance() {
         if(filterer == null){
             filterer = new Filterer();
         }

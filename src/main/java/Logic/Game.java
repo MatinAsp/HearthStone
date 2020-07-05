@@ -14,11 +14,13 @@ public class Game {
     private Competitor[] competitor = new Competitor[2];
     private int turn, winner = 0;
     private Actions actions;
+    private boolean isWithBot = false;
 
-    public Game(){
+    public Game(Competitor competitor1, Competitor competitor2, boolean isWithBot){
+        this.isWithBot = isWithBot;
         actions = new Actions(this);
-        competitor[0] = new Competitor();
-        competitor[1] = new Competitor();
+        competitor[0] = competitor1;
+        competitor[1] = competitor2;
         turn = 0;
     }
 
@@ -26,11 +28,11 @@ public class Game {
         return competitor;
     }
 
-    public void performAction(InfoPack[] parameter) throws SelectionNeededException, InvalidChoiceException, GameOverException, EmptyDeckException {
+    public void performAction(InfoPack[] parameter) throws SelectionNeededException, InvalidChoiceException, GameOverException{
         actions.performAction(parameter);
     }
 
-    public void changeTurn() throws EmptyDeckException, GameOverException {
+    public void changeTurn() throws GameOverException {
         turn = (turn+1)%2;
         if(competitor[turn].getFullMana() < GameConstants.getInstance().getInteger("manaMax")){
             competitor[turn].setFullMana(competitor[turn].getFullMana()+1);
@@ -62,7 +64,7 @@ public class Game {
         return competitor[index%2];
     }
 
-    private void engGame(){
+    public void engGame(){
         if(competitor[(turn+1)%2].getHero().getHp() <= 0){
             winner = turn;
             competitor[turn].getDeck().setWinsNumber(competitor[turn].getDeck().getWinsNumber() + 1);

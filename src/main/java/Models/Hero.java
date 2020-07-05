@@ -1,5 +1,6 @@
 package Models;
 
+import Exceptions.GameOverException;
 import Interfaces.Cloneable;
 import Models.Cards.Card;
 
@@ -53,12 +54,13 @@ public class Hero extends Character{
         this.divineShield = divineShield;
     }
 
-    public void getDamage(int damage){
+    public void getDamage(int damage) throws GameOverException {
         if(divineShield){
             divineShield = false;
         }
         else {
             hp -= damage;
         }
+        if(hp <= 0) throw new GameOverException();
     }
 }

@@ -16,30 +16,46 @@ import java.util.ArrayList;
 public enum ActionRequest {
     END_TURN{
         @Override
-        public void execute() throws EmptyDeckException, GameOverException {
-            game.changeTurn();
-            super.execute();
+        public void execute() throws GameOverException {
+            try{
+                game.changeTurn();
+                super.execute();
+                checkAll();
+            }catch (GameOverException e){
+                game.engGame();
+                throw e;
+            }
         }
     },
     DRAW_CARD{
         @Override
-        public void execute() throws EmptyDeckException, GameOverException {
-            game.drawCard();
+        public void execute() throws GameOverException {
+            try {
+                game.drawCard();
+            } catch (EmptyDeckException e) {
+                //kjshdfkjas
+            }
             super.execute();
         }
     },
     PERFORM_ACTION{
         @Override
         public void execute(InfoPack[] parameters) throws SelectionNeededException, InvalidChoiceException, GameOverException {
-            if(!parameters[0].isOnGround()){
-                game.checkForMana((Card) parameters[0].getCharacter(), parameters[0].getSide());
+            try {
+                if(!parameters[0].isOnGround()){
+                    game.checkForMana((Card) parameters[0].getCharacter(), parameters[0].getSide());
+                }
+                executeBeforeActions(parameters);
+                game.performAction(parameters);
+                if(!parameters[0].isOnGround()){
+                    game.playCard((Card) parameters[0].getCharacter(), parameters[0].getSide());
+                }
+                super.execute(parameters);
+                checkAll();
+            }catch (GameOverException e){
+                game.engGame();
+                throw e;
             }
-            executeBeforeActions(parameters);
-            game.performAction(parameters);
-            if(!parameters[0].isOnGround()){
-                game.playCard((Card) parameters[0].getCharacter(), parameters[0].getSide());
-            }
-            super.execute(parameters);
         }
 
         private void executeBeforeActions(InfoPack[] infoPacks) throws InvalidChoiceException {
@@ -70,6 +86,21 @@ public enum ActionRequest {
         }
     };
 
+    public void checkAll() {
+        game.getCompetitor(0).runQuestRewards();
+        game.getCompetitor(1).runQuestRewards();
+        for(int i = 0; i < 2; i++){
+            if(game.getCompetitor(i).getHeroWeapon().getDurability() <= 0){
+                game.getCompetitor(i).setHeroWeapon(null);
+            }
+            for(Minion minion: game.getCompetitor(i).getOnBoardCards()){
+                if(minion.getHp() <= 0){
+                    game.getCompetitor(i).getOnBoardCards().remove(minion);
+                }
+            }
+        }
+    }
+
     public ArrayList<ActionHandler> getBeforeActions() {
         return beforeActions;
     }
@@ -87,7 +118,7 @@ public enum ActionRequest {
         }
     }
 
-    public void execute() throws EmptyDeckException, GameOverException {
+    public void execute() throws GameOverException {
         for (ActionHandler actionHandler: actions){
             try {
                 actionHandler.runAction();

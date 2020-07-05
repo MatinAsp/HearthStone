@@ -21,7 +21,7 @@ public class Player {
             int wallet,
             ArrayList<Card> allCards,
             ArrayList<Hero> allHeroes
-    ) throws IOException {
+    ) {
         this.id = id;
         this.wallet = wallet;
         this.username = username;
@@ -101,19 +101,19 @@ public class Player {
         return false;
     }
 
-    public void addToCards(Card card) throws IOException {
+    public void addToCards(Card card) {
         addToCards(card.getName());
     }
 
-    public void addToCards(String card) throws IOException {
+    public void addToCards(String card) {
         allCards.add(DataManager.getInstance().getObject(Card.class, card));
     }
 
-    public void removeCard(Card card) throws IOException {
+    public void removeCard(Card card) {
         removeCard(card.getName());
     }
 
-    public void removeCard(String card) throws IOException {
+    public void removeCard(String card) {
         allCards.remove(findCard(card));
         for(Deck deck: allDecks){
             while (deck.haveCard(card)){
@@ -139,15 +139,15 @@ public class Player {
         return password;
     }
 
-    public void setPassword(String password) throws IOException {
+    public void setPassword(String password){
         this.password = password;
     }
 
-    public void setWallet(int wallet) throws IOException {
+    public void setWallet(int wallet){
         this.wallet = wallet;
     }
 
-    public void setCurrentDeck(String deckName) throws IOException {
+    public void setCurrentDeck(String deckName){
         if (deckName == null){
             currentDeckName = null;
             return;
@@ -179,7 +179,7 @@ public class Player {
         return currentDeckName;
     }
 
-    public void saveData() throws IOException {
+    public void saveData(){
         DataManager dataManager = DataManager.getInstance();
         dataManager.savePlayer(this);
     }
