@@ -147,12 +147,12 @@ public class BattleGroundController implements Initializable {
         int counter = 0;
         for(Card card: cards){
             Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, !isForOwn);
+            hand.getChildren().add(graphicCard);
             if(isForOwn || !game.isWithBot()){
                 handCardSetAction(graphicCard, card, isForOwn ? 0 : 1);
             }
             if(cards.size() == 1) graphicCard.setLayoutX(0);
             else graphicCard.setLayoutX(counter*((hand.getPrefWidth()-graphicCard.getPrefWidth())/(cards.size()-1)));
-            hand.getChildren().add(graphicCard);
             counter++;
         }
     }
@@ -168,6 +168,7 @@ public class BattleGroundController implements Initializable {
             }
         });
         int cnt = hand[side].getChildren().indexOf(graphicCard);
+        System.out.println(cnt);
         graphicCard.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -305,8 +306,6 @@ public class BattleGroundController implements Initializable {
         fromY = cardsNumberLabel[side].getLayoutY();
         toX = hand[side].getLayoutX();
         toY = hand[side].getLayoutY();
-        hand[0].setDisable(true);
-        hand[1].setDisable(true);
         System.out.println(endTurnButton.isDisable());
         translateTransition.setFromX(fromX);
         translateTransition.setFromY(fromY);
@@ -318,8 +317,6 @@ public class BattleGroundController implements Initializable {
             public void handle(ActionEvent event) {
                 rootPane.getChildren().remove(translateTransition.getNode());
                 gameRender();
-                hand[0].setDisable(false);
-                hand[1].setDisable(false);
             }
         });
         translateTransition.play();
