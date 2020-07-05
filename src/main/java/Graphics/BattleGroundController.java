@@ -167,10 +167,10 @@ public class BattleGroundController implements Initializable {
                 graphicCard.toFront();
             }
         });
+        int cnt = hand[side].getChildren().indexOf(graphicCard);
         graphicCard.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                int cnt = hand[side].getChildren().indexOf(graphicCard);
                 hand[side].getChildren().remove(graphicCard);
                 hand[side].getChildren().add(cnt, graphicCard);
                 graphicCard.setLayoutY(
