@@ -9,6 +9,7 @@ import Exceptions.SelectionNeededException;
 import Interfaces.ActionHandler;
 import Models.Cards.Card;
 import Models.Cards.Minion;
+import Models.Cards.Spell;
 import Models.InfoPack;
 
 import java.util.ArrayList;
@@ -49,11 +50,19 @@ public class Game {
 
     public void playCard(Card card, int side) {
         competitor[side].playCard(card);
-        competitor[side].setLeftMana(competitor[side].getLeftMana() - card.getMana());
+        competitor[side].setLeftMana(competitor[side].getLeftMana() - needMana(card, side));
+    }
+
+    private int needMana(Card card, int side){
+        int mana = card.getMana();
+        if(card instanceof Spell && competitor[side].getHero().getName().equals("Mage")){
+            mana -= 2;
+        }
+        return mana;
     }
 
     public void checkForMana(Card card, int side) throws InvalidChoiceException {
-        if(card.getMana() > competitor[side].getLeftMana()) {
+        if(needMana(card, side) > competitor[side].getLeftMana()) {
             throw new InvalidChoiceException();
         }
     }
