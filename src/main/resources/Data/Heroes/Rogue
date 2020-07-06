@@ -7,12 +7,9 @@
 	"name":"RogueHeroPower",
 	"rarity":"Legendary",
 	"heroClass":"Rogue",
-	"type":"Spell",
+	"type":"HeroPower",
 	"description":"Steals a card from an enemy card and add it to your hand.",
 	"mana":3,
-	"rush":false,
-    "charge":false,
-    "divineShield":false,
-    "taunt":false
-	}
+	"charge":true
+	},
 }

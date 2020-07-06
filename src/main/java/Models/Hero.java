@@ -3,10 +3,11 @@ package Models;
 import Exceptions.GameOverException;
 import Interfaces.Cloneable;
 import Models.Cards.Card;
+import Models.Cards.HeroPower;
 
 public class Hero extends Character{
     private int hp,deckMax;
-    private Card heroPower;
+    private HeroPower heroPower;
     private boolean divineShield;
 
     public Hero(){ }
@@ -37,7 +38,7 @@ public class Hero extends Character{
         this.hp = hp;
     }
 
-    public Card getHeroPower() {
+    public HeroPower getHeroPower() {
         return heroPower;
     }
 

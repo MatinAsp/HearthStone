@@ -7,12 +7,9 @@
 	"name":"MageHeroPower",
 	"rarity":"Legendary",
 	"heroClass":"Mage",
-	"type":"Spell",
+	"type":"HeroPower",
 	"description":"Deal 1 damage.",
 	"mana":2,
-	"rush":false,
-    "charge":false,
-    "divineShield":false,
-    "taunt":false
+	"charge":true
 	}
 }

@@ -126,7 +126,7 @@ public class BattleGroundController implements Initializable {
                 hero[i].setLayoutY(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceY"));
                 rootPane.getChildren().add(hero[i]);
                 hero[i].toBack();
-                setForPerformAction(hero[i], competitor.getHero(), i, true);
+                setForPerformAction(competitor.getHero(), i, true, hero[i]);
                 renderHand(competitor.getInHandCards(), hand[i], ((i == 0) ? true : false));
                 renderBattleGround(competitor.getOnBoardCards(), battleGround[i], i);
                 manaText[i].setText(competitor.getLeftMana()+"/"+competitor.getFullMana());
@@ -135,7 +135,7 @@ public class BattleGroundController implements Initializable {
                 cardsNumberLabel[i].setText(getCardsNumberString(competitor));
                 heroPowerPlace[i].getChildren().clear();
                 Parent parent =  GraphicRender.getInstance().buildHeroPower(competitor.getHero().getHeroPower());
-                setForPerformAction(parent, competitor.getHero().getHeroPower(),i, true);
+                setForPerformAction(competitor.getHero().getHeroPower(),i, true, parent);
                 heroPowerPlace[i].getChildren().add(parent);
             }
         //}
@@ -217,7 +217,7 @@ public class BattleGroundController implements Initializable {
                         int minYForPlayCard = GameConstants.getInstance().getInteger("minYForPlayCard");
                         if ((side == 0 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() < maxYForPlayCard) ||
                                 (side == 1 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() + ((Pane) graphicCard).getHeight() > minYForPlayCard)){
-                            performAction(card, side, false);
+                            performAction(card, side, false,graphicCard);
                             LogCenter.getInstance().getLogger().info("play_"+card.getType());
                             addGameLog("play_"+card.getType());
                         }
@@ -246,7 +246,7 @@ public class BattleGroundController implements Initializable {
         battleGround.getChildren().clear();
         for(Card card: cards){
             Parent parent = GraphicRender.getInstance().buildBattleGroundMinion((Minion) card);
-            setForPerformAction(parent, card, side, true);
+            setForPerformAction(card, side, true, parent);
             battleGround.getChildren().add(parent);
         }
     }
@@ -357,6 +357,7 @@ public class BattleGroundController implements Initializable {
                 public void handle(MouseEvent event) {
                     LogCenter.getInstance().getLogger().info("passive_selected");
                     addGameLog("passive_selected");
+                    performAction(passive, 0, false, passiveGraphics);
                     passiveSelectionPane.setVisible(false);
                 }
             });
@@ -374,9 +375,9 @@ public class BattleGroundController implements Initializable {
         GridPane.setConstraints(logLabel, 0, 0);
         gameLogGridPane.getChildren().add(logLabel);
     }
-    private synchronized void performAction(Character character, int side, boolean isOnGround){
+    private synchronized void performAction(Character character, int side, boolean isOnGround, Parent parent){
         Logger logger = LogCenter.getInstance().getLogger();
-        infoPacks.add(new InfoPack(character, side, isOnGround));
+        infoPacks.add(new InfoPack(character, side, isOnGround, parent));
         InfoPack[] parameters = new InfoPack[infoPacks.size()];
         for(int i = 0; i < infoPacks.size(); i++){
              parameters[i] = infoPacks.get(i);
@@ -401,11 +402,11 @@ public class BattleGroundController implements Initializable {
             }
         }
     }
-    private void setForPerformAction(Parent parent, Character character, int side, boolean isOnGround){
+    private void setForPerformAction(Character character, int side, boolean isOnGround, Parent parent){
     parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
-            performAction(character, side, isOnGround);
+            performAction(character, side, isOnGround, parent);
         }
     });
 }

@@ -2,7 +2,7 @@ package Models.Cards;
 
 import Interfaces.Cloneable;
 
-public class Spell extends Card implements Cloneable {
+public class Spell extends Card {
     public Spell(){}
 
     private Spell(Spell spell) {

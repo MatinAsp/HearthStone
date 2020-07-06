@@ -2,7 +2,7 @@ package Models.Cards;
 
 import Interfaces.Cloneable;
 
-public class Quest extends Card implements Cloneable {
+public class Quest extends Card {
     public Quest(){}
 
     private Quest(Quest quest) {

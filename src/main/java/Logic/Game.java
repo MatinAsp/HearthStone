@@ -38,7 +38,9 @@ public class Game {
             competitor[turn].setFullMana(competitor[turn].getFullMana()+1);
         }
         competitor[turn].setLeftMana(competitor[turn].getFullMana());
-        ActionRequest.DRAW_CARD.execute();
+        for(int i = 0; i < competitor[turn].getDrawNumber(); i++){
+            ActionRequest.DRAW_CARD.execute();
+        }
     }
 
     public void playCard(Card card, int side) {
@@ -100,4 +102,5 @@ public class Game {
     public boolean isWithBot() {
         return isWithBot;
     }
+
 }

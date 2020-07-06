@@ -751,8 +751,75 @@ public class Actions {
         });
     }
 
-    public static void main(String[] arg){
-
+    @CardName(value = "Mana jump", isForOnBoard = false)
+    public void action60(InfoPack infoPack){
+        game.getCompetitor(infoPack.getSide()).setFullMana(game.getCompetitor(infoPack.getSide()).getFullMana() + 1);
+        game.getCompetitor(infoPack.getSide()).setLeftMana(game.getCompetitor(infoPack.getSide()).getLeftMana() + 1);
     }
+
+    @CardName(value = "Nurse", isForOnBoard = false)
+    public void action61(InfoPack infoPack){
+        ActionRequest.END_TURN.addAction(new ActionHandler() {
+            @Override
+            public void runAction() throws Exception {
+                if(game.getTurn() != infoPack.getSide()){
+                    ArrayList<Minion> minions = new ArrayList<>();
+                    for(Minion minion: game.getCompetitor(infoPack.getSide()).getOnBoardCards()){
+                        if(minion.getHp() < DataManager.getInstance().getObject(Minion.class, infoPack.getCharacter().getName()).getHp()){
+                            minions.add(minion);
+                        }
+                    }
+                    Random random = new Random();
+                    if(minions.size() > 0) {
+                        minions.get(random.nextInt(minions.size())).setHp(DataManager.getInstance().getObject(Minion.class, infoPack.getCharacter().getName()).getHp());
+                    }
+                }
+            }
+        });
+    }
+
+    @CardName(value = "Off Cards", isForOnBoard = false)
+    public void action62(InfoPack infoPack){
+        for(Card card: game.getCompetitor(infoPack.getSide()).getInHandCards()){
+            card.setMana(Math.min(0, card.getMana() - 1));
+        }
+        for(Card card: game.getCompetitor(infoPack.getSide()).getInDeckCards()){
+            card.setMana(Math.min(0, card.getMana() - 1));
+        }
+    }
+
+    @CardName(value = "Twice Draw", isForOnBoard = false)
+    public void action63(InfoPack infoPack){
+        game.getCompetitor(infoPack.getSide()).setDrawNumber(game.getCompetitor(infoPack.getSide()).getDrawNumber() + 1);
+    }
+
+    @CardName(value = "Free Power", isForOnBoard = false)
+    public void action64(InfoPack infoPack){
+        HeroPower heroPower = game.getCompetitor(infoPack.getSide()).getHero().getHeroPower();
+        heroPower.setMana(Math.min(heroPower.getMana() - 1, 0));
+        final boolean[] used = {false};
+        ActionRequest.PERFORM_ACTION.addAction(new PerformActionHandler() {
+            @Override
+            public void runAction(InfoPack[] infoPacks) throws InvalidChoiceException {
+                if(infoPacks[0].getCharacter() instanceof HeroPower && !used[0]){
+                    used[0] = true;
+                    ((HeroPower) infoPacks[0].getCharacter()).setCharge(true);
+                }
+            }
+
+            @Override
+            public void runAction() throws Exception { }
+        });
+        ActionRequest.END_TURN.addAction(new ActionHandler() {
+            @Override
+            public void runAction() throws Exception {
+                used[0] = false;
+            }
+        });
+    }
+
+    //public static void main(String[] arg){
+
+    //}
 
 }

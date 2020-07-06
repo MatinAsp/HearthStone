@@ -22,8 +22,10 @@ public class Competitor{
     private ArrayList<Minion> onBoardCards;
     private HashMap<Quest, QuestActionHandler> questsInProgress = new HashMap<>();
     private HashMap<Class, Integer> spentMana = new HashMap<>();
+    private int drawNumber;
 
     public Competitor(){
+        drawNumber = GameConstants.getInstance().getInteger("drawNumber");
         inDeckCards = new ArrayList<>();
         inHandCards = new ArrayList<>();
         onBoardCards = new ArrayList<>();
@@ -148,5 +150,13 @@ public class Competitor{
 
     public void addQuest(Quest quest, QuestActionHandler questActionHandler){
         questsInProgress.put(quest, questActionHandler);
+    }
+
+    public int getDrawNumber() {
+        return drawNumber;
+    }
+
+    public void setDrawNumber(int drawNumber) {
+        this.drawNumber = drawNumber;
     }
 }

@@ -7,12 +7,9 @@
 	"name":"PaladinHeroPower",
 	"rarity":"Legendary",
 	"heroClass":"Paladin",
-	"type":"Spell",
+	"type":"HeroPower",
 	"description":"Summon two 1/1 Recruits.",
 	"mana":2,
-	"rush":false,
-    "charge":false,
-    "divineShield":false,
-    "taunt":false
-	}
+	"charge":true
+	},
 }

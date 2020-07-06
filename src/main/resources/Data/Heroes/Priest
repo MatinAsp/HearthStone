@@ -7,12 +7,9 @@
 	"name":"PriestHeroPower",
 	"rarity":"Legendary",
 	"heroClass":"Priest",
-	"type":"Spell",
+	"type":"HeroPower",
 	"description":"Restore 4 Health.",
 	"mana":2,
-	"rush":false,
-    "charge":false,
-    "divineShield":false,
-    "taunt":false
-	}
+	"charge":true
+	},
 }

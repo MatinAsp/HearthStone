@@ -63,4 +63,8 @@ public class Card extends Character {
     public Card newOne() {
         return new Card(this);
     }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
 }
