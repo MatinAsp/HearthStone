@@ -176,9 +176,6 @@ public class BattleGroundController implements Initializable {
             public void handle(MouseEvent event) {
                 synchronized (lock){
                     if(hand[side].getChildren().contains(graphicCard)){
-                      //  System.out.println(hand[side].getChildren().size());
-                    //    hand[side].getChildren().remove(graphicCard);
-                       // hand[side].getChildren().add(cnt, graphicCard);
                         int tmp = hand[side].getChildren().size() - cnt - 1 ;
                         while (tmp-- > 0){
                             hand[side].getChildren().get(cnt).toFront();

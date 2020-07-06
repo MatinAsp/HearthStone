@@ -887,8 +887,17 @@ public class Actions {
     }
 
     @CardName(value = "WarlockHeroPower", isForOnBoard = true)
-    public void action69(InfoPack infoPack) {
-
+    public void action69(InfoPack infoPack) throws GameOverException {
+        game.getCompetitor(infoPack.getSide()).getHero().getDamage(2);
+        Random random = new Random();
+        ArrayList<Minion> minions = game.getCompetitor(infoPack.getSide()).getOnBoardCards();
+        if(random.nextInt(2) == 0 && minions.size() > 0){
+            Minion minion = minions.get(random.nextInt(minions.size()));
+            minion.setAttack(minion.getAttack() + 1);
+        }
+        else{
+            ActionRequest.DRAW_CARD.execute();
+        }
     }
 
     //public static void main(String[] arg){
