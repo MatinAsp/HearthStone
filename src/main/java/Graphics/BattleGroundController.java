@@ -74,6 +74,11 @@ public class BattleGroundController implements Initializable {
     private StackPane heroPowerPlace2;
     private StackPane[] heroPowerPlace = new StackPane[2];
     @FXML
+    private StackPane heroWeapon1;
+    @FXML
+    private StackPane heroWeapon2;
+    private StackPane[] heroWeapon = new StackPane[2];
+    @FXML
     private ImageView arena;
     @FXML
     private GridPane gameLogGridPane;
@@ -103,11 +108,12 @@ public class BattleGroundController implements Initializable {
         hand[1] = hand2;
         manaText[0] = manaText1;
         manaText[1] = manaText2;
-
         cardsNumberLabel[0] = cardsNumberLabel1;
         cardsNumberLabel[1] = cardsNumberLabel2;
         heroPowerPlace[0] = heroPowerPlace1;
         heroPowerPlace[1] = heroPowerPlace2;
+        heroWeapon[0] = heroWeapon1;
+        heroWeapon[1] = heroWeapon2;
         arena.setImage(AssetManager.getInstance().getImage(GameSettings.getInstance().getBattleGroundArena()));
     }
 
@@ -133,12 +139,26 @@ public class BattleGroundController implements Initializable {
                 if(i == 0)
                     renderManaBar(competitor.getLeftMana(), competitor.getFullMana());
                 cardsNumberLabel[i].setText(getCardsNumberString(competitor));
-                heroPowerPlace[i].getChildren().clear();
-                Parent parent =  GraphicRender.getInstance().buildHeroPower(competitor.getHero().getHeroPower());
-                setForPerformAction(competitor.getHero().getHeroPower(),i, true, parent);
-                heroPowerPlace[i].getChildren().add(parent);
+                renderHeroPower(competitor, i);
+                renderHeroWeapon(competitor, i);
             }
         //}
+    }
+
+    private void renderHeroWeapon(Competitor competitor, int side) {
+        heroWeapon[side].getChildren().clear();
+        if(competitor.getHeroWeapon() != null){
+            Parent parent =  GraphicRender.getInstance().buildHeroWeapon(competitor.getHeroWeapon());
+            setForPerformAction(competitor.getHeroWeapon(),side, true, parent);
+            heroWeapon[side].getChildren().add(parent);
+        }
+    }
+
+    private void renderHeroPower(Competitor competitor, int side) {
+        heroPowerPlace[side].getChildren().clear();
+        Parent parent =  GraphicRender.getInstance().buildHeroPower(competitor.getHero().getHeroPower());
+        setForPerformAction(competitor.getHero().getHeroPower(),side, true, parent);
+        heroPowerPlace[side].getChildren().add(parent);
     }
 
     private String getCardsNumberString(Competitor competitor){

@@ -38,7 +38,6 @@ public class GraphicRender {
             e.printStackTrace();
         }
         CardGraphicsController cardGraphicsController = fxmlLoader.getController();
-        cardGraphicsController.setCard(card);
         cardGraphicsController.setCardPic(assetManager.getImage(card.getName()));
         cardGraphicsController.setMana(card.getMana());
         cardGraphicsController.setCardName(card.getName());
@@ -119,7 +118,6 @@ public class GraphicRender {
             LogCenter.getInstance().getLogger().error(e);
         }
         CardGraphicsController cardGraphicsController = fxmlLoader.getController();
-        cardGraphicsController.setCard(minion);
         cardGraphicsController.setAttack(minion.getAttack());
         cardGraphicsController.setHp(minion.getHp());
         cardGraphicsController.setCardPic(AssetManager.getInstance().getImage(minion.getName()));
@@ -169,5 +167,21 @@ public class GraphicRender {
             LogCenter.getInstance().getLogger().error(e);
         }
         return decksStatusGraphics;
+    }
+
+    public Pane buildHeroWeapon(Weapon card) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("heroWeapon.fxml"));
+        Pane graphicCard = null;
+        try {
+            graphicCard = fxmlLoader.load();
+        } catch (IOException e) {
+            LogCenter.getInstance().getLogger().error(e);
+            e.printStackTrace();
+        }
+        CardGraphicsController cardGraphicsController = fxmlLoader.getController();
+        cardGraphicsController.setCardPic(assetManager.getImage(card.getName()));
+        cardGraphicsController.setAttack(card.getAttack());
+        cardGraphicsController.setDurability(card.getDurability());
+        return graphicCard;
     }
 }

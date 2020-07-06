@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
+
+<Pane prefHeight="123.0" prefWidth="121.0" style="-fx-background-color: transparent;" stylesheets="@GameStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Graphics.CardGraphicsController">
+   <children>
+      <ImageView fx:id="cardPic" fitHeight="123.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true" />
+      <Ellipse fx:id="view" centerX="75.0" centerY="60.0" fill="#ffffff00" layoutX="-13.0" layoutY="3.0" radiusX="49.0" radiusY="50.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="brightButton" />
+      <ImageView fitHeight="123.0" fitWidth="121.0">
+         <image>
+            <Image url="@image/heroWeapon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="durability" alignment="CENTER" layoutX="70.0" layoutY="64.0" prefHeight="45.0" prefWidth="49.0" styleClass="cardInfo" text="0" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="attack" alignment="CENTER" layoutY="64.0" prefHeight="45.0" prefWidth="49.0" styleClass="cardInfo" text="0" textAlignment="CENTER" wrapText="true" />
+   </children>
+</Pane>

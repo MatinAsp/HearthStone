@@ -60,11 +60,13 @@
             </ScrollPane>
             <StackPane fx:id="heroPowerPlace1" layoutX="737.0" layoutY="493.0" prefHeight="97.0" prefWidth="112.0" />
             <StackPane fx:id="heroPowerPlace2" layoutX="438.0" layoutY="97.0" prefHeight="97.0" prefWidth="112.0" />
+            <StackPane fx:id="heroWeapon2" layoutX="737.0" layoutY="97.0" prefHeight="97.0" prefWidth="112.0" />
+            <StackPane fx:id="heroWeapon1" layoutX="445.0" layoutY="493.0" prefHeight="97.0" prefWidth="112.0" />
             <HBox fx:id="manaBar" layoutX="940.0" layoutY="658.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="268.0" />
             <HBox fx:id="battleGround1" alignment="CENTER" layoutX="188.0" layoutY="340.0" prefHeight="119.0" prefWidth="918.0" />
             <HBox fx:id="battleGround2" alignment="CENTER" layoutX="210.0" layoutY="213.0" prefHeight="119.0" prefWidth="875.0" />
             <Pane fx:id="hand1" layoutX="434.0" layoutY="615.0" prefHeight="178.0" prefWidth="430.0" />
-            <Pane fx:id="hand2" layoutX="465.0" layoutY="-134.0" prefHeight="178.0" prefWidth="367.0" />
+            <Pane fx:id="hand2" layoutX="402.0" layoutY="-131.0" prefHeight="178.0" prefWidth="430.0" />
          </children>
       </Pane>
       <StackPane fx:id="alertBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" visible="false">

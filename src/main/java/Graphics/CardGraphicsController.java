@@ -90,17 +90,7 @@ public class CardGraphicsController {
         this.border.setImage(border);
     }
 
-    private Card card;
-
-    public void setCard(Card card){
-        this.card = card;
-    }
-
     public void setCardBack(Image cardBack){
         this.cardBack.setImage(cardBack);
-    }
-
-    public Card getCard(){
-        return card;
     }
 }
