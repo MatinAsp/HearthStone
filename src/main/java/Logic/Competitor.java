@@ -159,4 +159,8 @@ public class Competitor{
     public void setDrawNumber(int drawNumber) {
         this.drawNumber = drawNumber;
     }
+
+    public void removeCardFromDeck(Card card) {
+        inDeckCards.remove(card);
+    }
 }

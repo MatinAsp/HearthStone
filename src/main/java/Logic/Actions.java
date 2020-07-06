@@ -482,9 +482,7 @@ public class Actions {
     @CardName(value = "Voodoo Doctor", isForOnBoard = false)
     public void action31(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
         ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
-        Hero hero = game.getCompetitor(infoPack.getSide()).getHero();
-        int maxHp = DataManager.getInstance().getObject(Hero.class, hero.getName()).getHp();
-        hero.setHp(Math.min(hero.getHp() + 2, maxHp));
+        restoreHealth(game.getCompetitor(infoPack.getSide()).getHero(), 2);
     }
 
     @CardName(value = "Wisp", isForOnBoard = true)
@@ -818,9 +816,75 @@ public class Actions {
         });
     }
 
+    private void attackWithSpell(InfoPack infoPack, int damage) throws InvalidChoiceException, GameOverException {
+        if(!infoPack.isOnGround() || (!(infoPack.getCharacter() instanceof Minion) && !(infoPack.getCharacter() instanceof Hero))){
+            throw new InvalidChoiceException();
+        }
+        if(infoPack.getCharacter() instanceof Minion){
+            if(((Minion)infoPack.getCharacter()).isStealth()){
+                throw new InvalidChoiceException();
+            }
+            ((Minion) infoPack.getCharacter()).getDamage(damage);
+        }
+        else {
+            ((Hero) infoPack.getCharacter()).getDamage(damage);
+        }
+    }
+
+    private void useHeroPower(HeroPower heroPower){
+        heroPower.setCharge(false);
+    }
+
+    private void restoreHealth(Character character, int health){
+        if(character instanceof Hero){
+            Hero hero = (Hero) character;
+            hero.setHp(Math.min(hero.getHp() + health, DataManager.getInstance().getObject(Hero.class, hero.getName()).getHp()));
+        }
+        if(character instanceof Minion){
+            Minion minion = (Minion) character;
+            minion.setHp(Math.min(minion.getHp() + health, DataManager.getInstance().getObject(Minion.class, minion.getName()).getHp()));
+        }
+    }
+
     @CardName(value = "MageHeroPower", isForOnBoard = true)
-    public void action65(InfoPack infoPack1, InfoPack infoPack2){
-    //    infoPack2.getCharacter()
+    public void action65(InfoPack infoPack1, InfoPack infoPack2) throws GameOverException, InvalidChoiceException {
+        attackWithSpell(infoPack2, 1);
+        useHeroPower((HeroPower) infoPack1.getCharacter());
+    }
+
+    @CardName(value = "PaladinHeroPower", isForOnBoard = true)
+    public void action66(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
+        ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Sheep"), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Sheep"), infoPack.getSide());
+        useHeroPower((HeroPower) infoPack.getCharacter());
+    }
+
+    @CardName(value = "PriestHeroPower", isForOnBoard = true)
+    public void action67(InfoPack infoPack){
+        restoreHealth(game.getCompetitor(infoPack.getSide()).getHero(),4);
+        useHeroPower((HeroPower) infoPack.getCharacter());
+    }
+
+    @CardName(value = "RogueHeroPower", isForOnBoard = true)
+    public void action68(InfoPack infoPack) {
+        Competitor enemy = game.getCompetitor((infoPack.getSide()+1)%2);
+        Random random = new Random();
+        if(enemy.getInDeckCards().size() > 0){
+            Card card = enemy.getInDeckCards().get(random.nextInt(enemy.getInDeckCards().size()));
+            game.getCompetitor(infoPack.getSide()).addCardInHand(card);
+            enemy.removeCardFromDeck(card);
+        }
+        if(game.getCompetitor(infoPack.getSide()).getHeroWeapon() != null && enemy.getInHandCards().size() > 0){
+            Card card = enemy.getInHandCards().get(random.nextInt(enemy.getInHandCards().size()));
+            game.getCompetitor(infoPack.getSide()).addCardInHand(card);
+            enemy.removeCardFromHand(card);
+        }
+        useHeroPower((HeroPower) infoPack.getCharacter());
+    }
+
+    @CardName(value = "WarlockHeroPower", isForOnBoard = true)
+    public void action69(InfoPack infoPack) {
+        
     }
 
     //public static void main(String[] arg){
