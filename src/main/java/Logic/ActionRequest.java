@@ -13,6 +13,7 @@ import Models.InfoPack;
 import Models.Passive;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public enum ActionRequest {
     END_TURN{
@@ -157,6 +158,29 @@ public enum ActionRequest {
         ActionRequest.game = game;
         for(ActionRequest actionRequest: values()){
             actionRequest.actions.clear();
+        }
+        setForPaladin();
+    }
+
+    private static void setForPaladin() {
+        for(int i = 0; i < 2; i++){
+            if(game.getCompetitor(i).getHero().getName().equals("Paladin")){
+                int finalI = i;
+                END_TURN.addAction(new ActionHandler() {
+                    @Override
+                    public void runAction() throws Exception {
+                        if(game.getTurn() != finalI){
+                            Random random = new Random();
+                            ArrayList<Minion> minions = game.getCompetitor(finalI).getOnBoardCards();
+                            if(minions.size() > 0){
+                                Minion minion = minions.get(random.nextInt(minions.size()));
+                                minion.setHp(minion.getHp() + 1);
+                                minion.setAttack(minion.getAttack() + 1);
+                            }
+                        }
+                    }
+                });
+            }
         }
     }
 
