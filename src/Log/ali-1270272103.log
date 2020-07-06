@@ -1889,3 +1889,25 @@ INFO    2020-07-06 03:01:18,458 - play_Minion
 INFO    2020-07-06 03:01:21,140 - end_turn_player_2
 ERROR   2020-07-06 03:01:24,863 - java.lang.IllegalArgumentException: wrong number of arguments
 INFO    2020-07-06 03:02:05,593 - exit
+INFO    2020-07-06 16:04:43,556 - start_a_game
+INFO    2020-07-06 16:04:46,448 - passive_selected
+ERROR   2020-07-06 16:04:46,449 - java.lang.ClassCastException: class Models.Passive cannot be cast to class Models.Cards.Card (Models.Passive and Models.Cards.Card are in unnamed module of loader 'app')
+INFO    2020-07-06 16:04:47,534 - passive_selected
+ERROR   2020-07-06 16:04:47,535 - java.lang.ClassCastException: class Models.Passive cannot be cast to class Models.Cards.Card (Models.Passive and Models.Cards.Card are in unnamed module of loader 'app')
+INFO    2020-07-06 16:04:48,268 - passive_selected
+ERROR   2020-07-06 16:04:48,268 - java.lang.ClassCastException: class Models.Passive cannot be cast to class Models.Cards.Card (Models.Passive and Models.Cards.Card are in unnamed module of loader 'app')
+INFO    2020-07-06 16:04:49,585 - passive_selected
+ERROR   2020-07-06 16:04:49,586 - java.lang.ClassCastException: class Models.Passive cannot be cast to class Models.Cards.Card (Models.Passive and Models.Cards.Card are in unnamed module of loader 'app')
+INFO    2020-07-06 16:04:50,792 - passive_selected
+ERROR   2020-07-06 16:04:50,792 - java.lang.ClassCastException: class Models.Passive cannot be cast to class Models.Cards.Card (Models.Passive and Models.Cards.Card are in unnamed module of loader 'app')
+INFO    2020-07-06 16:04:51,768 - passive_selected
+ERROR   2020-07-06 16:04:51,769 - java.lang.ClassCastException: class Models.Passive cannot be cast to class Models.Cards.Card (Models.Passive and Models.Cards.Card are in unnamed module of loader 'app')
+INFO    2020-07-06 16:04:52,778 - passive_selected
+ERROR   2020-07-06 16:04:52,779 - java.lang.ClassCastException: class Models.Passive cannot be cast to class Models.Cards.Card (Models.Passive and Models.Cards.Card are in unnamed module of loader 'app')
+INFO    2020-07-06 16:06:35,380 - start_a_game
+INFO    2020-07-06 16:06:44,134 - passive_selected
+ERROR   2020-07-06 16:06:44,135 - java.lang.ClassCastException: class Models.Passive cannot be cast to class Models.Cards.Card (Models.Passive and Models.Cards.Card are in unnamed module of loader 'app')
+INFO    2020-07-06 16:07:43,533 - start_a_game
+INFO    2020-07-06 16:07:55,669 - passive_selected
+INFO    2020-07-06 16:08:08,800 - back_to_menu
+INFO    2020-07-06 16:08:10,544 - exit

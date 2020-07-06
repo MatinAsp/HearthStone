@@ -10,6 +10,7 @@ import Interfaces.PlayActionHandler;
 import Models.Cards.Card;
 import Models.Cards.Minion;
 import Models.InfoPack;
+import Models.Passive;
 
 import java.util.ArrayList;
 
@@ -42,12 +43,12 @@ public enum ActionRequest {
         @Override
         public void execute(InfoPack[] parameters) throws SelectionNeededException, InvalidChoiceException, GameOverException {
             try {
-                if(!parameters[0].isOnGround()){
+                if(!parameters[0].isOnGround() && !(parameters[0].getCharacter() instanceof Passive)){
                     game.checkForMana((Card) parameters[0].getCharacter(), parameters[0].getSide());
                 }
                 executeBeforeActions(parameters);
                 game.performAction(parameters);
-                if(!parameters[0].isOnGround()){
+                if(!parameters[0].isOnGround() && !(parameters[0].getCharacter() instanceof Passive)){
                     game.playCard((Card) parameters[0].getCharacter(), parameters[0].getSide());
                 }
                 super.execute(parameters);
@@ -106,6 +107,7 @@ public enum ActionRequest {
                     minion.setCharge(true);
                 }
             }
+            game.getCompetitor(i).getHero().getHeroPower().setCharge(true);
         }
     }
 

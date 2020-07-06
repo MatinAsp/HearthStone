@@ -11,5 +11,5 @@
 	"description":"Steals a card from an enemy card and add it to your hand.",
 	"mana":3,
 	"charge":true
-	},
+	}
 }

@@ -11,5 +11,5 @@
 	"description":"Restore 4 Health.",
 	"mana":2,
 	"charge":true
-	},
+	}
 }

@@ -484,7 +484,7 @@ public class Actions {
         ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
         Hero hero = game.getCompetitor(infoPack.getSide()).getHero();
         int maxHp = DataManager.getInstance().getObject(Hero.class, hero.getName()).getHp();
-        hero.setHp(Math.max(hero.getHp() + 2, maxHp));
+        hero.setHp(Math.min(hero.getHp() + 2, maxHp));
     }
 
     @CardName(value = "Wisp", isForOnBoard = true)
@@ -781,10 +781,10 @@ public class Actions {
     @CardName(value = "Off Cards", isForOnBoard = false)
     public void action62(InfoPack infoPack){
         for(Card card: game.getCompetitor(infoPack.getSide()).getInHandCards()){
-            card.setMana(Math.min(0, card.getMana() - 1));
+            card.setMana(Math.max(0, card.getMana() - 1));
         }
         for(Card card: game.getCompetitor(infoPack.getSide()).getInDeckCards()){
-            card.setMana(Math.min(0, card.getMana() - 1));
+            card.setMana(Math.max(0, card.getMana() - 1));
         }
     }
 
@@ -796,7 +796,7 @@ public class Actions {
     @CardName(value = "Free Power", isForOnBoard = false)
     public void action64(InfoPack infoPack){
         HeroPower heroPower = game.getCompetitor(infoPack.getSide()).getHero().getHeroPower();
-        heroPower.setMana(Math.min(heroPower.getMana() - 1, 0));
+        heroPower.setMana(Math.max(heroPower.getMana() - 1, 0));
         final boolean[] used = {false};
         ActionRequest.PERFORM_ACTION.addAction(new PerformActionHandler() {
             @Override
@@ -816,6 +816,11 @@ public class Actions {
                 used[0] = false;
             }
         });
+    }
+
+    @CardName(value = "MageHeroPower", isForOnBoard = true)
+    public void action65(InfoPack infoPack1, InfoPack infoPack2){
+    //    infoPack2.getCharacter()
     }
 
     //public static void main(String[] arg){

@@ -11,5 +11,5 @@
 	"description":"Summon two 1/1 Recruits.",
 	"mana":2,
 	"charge":true
-	},
+	}
 }
