@@ -179,6 +179,10 @@ public class BattleGroundController implements Initializable {
                       //  System.out.println(hand[side].getChildren().size());
                     //    hand[side].getChildren().remove(graphicCard);
                        // hand[side].getChildren().add(cnt, graphicCard);
+                        int tmp = hand[side].getChildren().size() - cnt - 1 ;
+                        while (tmp-- > 0){
+                            hand[side].getChildren().get(cnt).toFront();
+                        }
                         graphicCard.setLayoutY(
                                 graphicCard.getLayoutY() + ((side == 0)? 1:-1)*GameConstants.getInstance().getInteger("liftUpCardInHad")
                         );

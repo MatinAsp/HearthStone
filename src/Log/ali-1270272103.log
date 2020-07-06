@@ -1935,3 +1935,17 @@ INFO    2020-07-06 16:13:36,731 - hero_filter_changed
 INFO    2020-07-06 16:13:36,761 - hero_filter_changed
 INFO    2020-07-06 16:13:40,317 - hero_filter_changed
 INFO    2020-07-06 16:13:40,346 - hero_filter_changed
+INFO    2020-07-06 18:01:51,160 - exit
+INFO    2020-07-06 19:09:46,517 - start_a_game
+INFO    2020-07-06 19:09:48,788 - passive_selected
+INFO    2020-07-06 19:09:58,520 - exit
+INFO    2020-07-06 19:16:31,106 - start_a_game
+INFO    2020-07-06 19:16:36,460 - passive_selected
+INFO    2020-07-06 19:16:40,890 - end_turn_player_1
+INFO    2020-07-06 19:16:55,563 - drag_detected
+INFO    2020-07-06 19:16:56,165 - drag_ended
+INFO    2020-07-06 19:16:57,353 - end_turn_player_2
+INFO    2020-07-06 19:17:04,802 - drag_detected
+INFO    2020-07-06 19:17:05,682 - drag_ended
+INFO    2020-07-06 19:17:05,959 - play_Minion
+INFO    2020-07-06 19:17:13,567 - exit

@@ -8,7 +8,7 @@
 	"rarity":"Legendary",
 	"heroClass":"Paladin",
 	"type":"HeroPower",
-	"description":"Summon two 1/1 Recruits.",
+	"description":"Summon two 1/1 sheep.",
 	"mana":2,
 	"charge":true
 	}

@@ -8,7 +8,7 @@
 	"rarity":"Legendary",
 	"heroClass":"Warlock",
 	"type":"HeroPower",
-	"description":"It reduces the hero's life by 2 and randomly add 1 attack and 1 attack to one of the minions Or he draw a card.",
+	"description":"It reduces the hero's life by 2 and randomly and add 1 attack to one of the minions Or he draw a card.",
 	"mana":2,
 	"charge":true
 	}
