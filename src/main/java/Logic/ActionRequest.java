@@ -4,9 +4,11 @@ import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
+import Graphics.BattleGroundController;
 import Interfaces.ActionHandler;
 import Interfaces.PerformActionHandler;
 import Interfaces.PlayActionHandler;
+import Log.LogCenter;
 import Models.Cards.Card;
 import Models.Cards.Minion;
 import Models.InfoPack;
@@ -32,10 +34,24 @@ public enum ActionRequest {
     DRAW_CARD{
         @Override
         public void execute() throws GameOverException {
+            boolean check = false;
             try {
                 game.drawCard();
             } catch (EmptyDeckException e) {
-                //kjshdfkjas
+                check = true;
+            }
+            if(!check){
+                ArrayList<Card> hand = game.getCompetitor(game.getTurn()).getInHandCards();
+                battleGroundController.putCardToHandAnimation(hand.get(hand.size() - 1), (game.getTurn() == 0) ? true:false);
+                Object lock = battleGroundController.getDrawAnimationLock();
+                synchronized (lock){
+                    try {
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        LogCenter.getInstance().getLogger().error(e);
+                        e.printStackTrace();
+                    }
+                }
             }
             super.execute();
         }
@@ -128,6 +144,7 @@ public enum ActionRequest {
     }
 
     private static Game game;
+    private static BattleGroundController battleGroundController;
     private ArrayList<ActionHandler> actions = new ArrayList<>(), beforeActions = new ArrayList<>();
 
     public static void setCurrentGame(Game game){
@@ -137,6 +154,11 @@ public enum ActionRequest {
         }
         game.initialize();
     }
+
+    public static void setBattleGroundController(BattleGroundController battleGroundController){
+        ActionRequest.battleGroundController = battleGroundController;
+    }
+
 
     public void addAction(ActionHandler actionHandler){
         actions.add(actionHandler);

@@ -6,14 +6,11 @@ import Data.GameSettings;
 import Data.MediaManager;
 import Interfaces.ActionHandler;
 import Log.LogCenter;
-import Logic.GameFactory;
+import Logic.*;
 import Models.Cards.Card;
 import Models.Deck;
 import Models.Hero;
 import Models.Player;
-import Logic.PlayerFactory;
-import Logic.PlayersManager;
-import Logic.Store;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -264,18 +261,6 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       /* EventHandler<KeyEvent> keyEvenHandler = new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                if (keyEvent.getCode() == KeyCode.ENTER){
-                    try {
-                        logInAction(new ActionEvent());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };*/
         try {
             PlayersManager.getInstance().logIn("ali", "ali");
         } catch (Exception e) {
@@ -756,6 +741,7 @@ public class Controller implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleGround.fxml"));
         StackPane gameBoard = fxmlLoader.load();
         BattleGroundController battleGroundController = fxmlLoader.getController();
+        ActionRequest.setBattleGroundController(battleGroundController);
         battleGroundController.setGame(GameFactory.getInstance().build(
                 PlayersManager.getInstance().getCurrentPlayer(),
                 PlayerFactory.getInstance().build("", ""),

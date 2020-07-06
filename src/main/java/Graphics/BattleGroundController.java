@@ -306,10 +306,6 @@ public class BattleGroundController implements Initializable {
         addGameLog("end_turn_player_"+(game.getTurn()+1));
         try {
             ActionRequest.END_TURN.execute();
-            int turn = game.getTurn();
-            Competitor competitor = game.getCompetitor(turn);
-            boolean isForOwn = (turn == 0)? true:false;
-            putCardToHandAnimation(competitor.getInHandCards().get(competitor.getInHandCards().size()-1), isForOwn);
         } catch (GameOverException e) {
             endGame();
         }
@@ -325,7 +321,13 @@ public class BattleGroundController implements Initializable {
         else alertMessage.setText("You Lose.");
     }
 
-    private void putCardToHandAnimation(Card card, boolean isForOwn) {
+    public Object drawAnimationLock = new Object();
+
+    public Object getDrawAnimationLock(){
+        return drawAnimationLock;
+    }
+
+    public void putCardToHandAnimation(Card card, boolean isForOwn) {
         Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, !isForOwn);
         int side = isForOwn? 0:1;
         rootPane.getChildren().add(cardPane);
@@ -345,8 +347,10 @@ public class BattleGroundController implements Initializable {
         translateTransition.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                rootPane.getChildren().remove(translateTransition.getNode());
-                gameRender();
+                synchronized (drawAnimationLock){
+                    rootPane.getChildren().remove(translateTransition.getNode());
+                    drawAnimationLock.notify();
+                }
             }
         });
         translateTransition.play();
