@@ -482,7 +482,7 @@ public class Actions {
     @CardName(value = "Voodoo Doctor", isForOnBoard = false)
     public void action31(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
         ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
-        restoreHealth(game.getCompetitor(infoPack.getSide()).getHero(), 2);
+        restoreHealth(game.getCompetitor(infoPack.getSide()).getHero(), game.getCompetitor(infoPack.getSide()).getHero(),2);
     }
 
     @CardName(value = "Wisp", isForOnBoard = true)
@@ -835,7 +835,8 @@ public class Actions {
         heroPower.setCharge(false);
     }
 
-    private void restoreHealth(Character character, int health){
+    private void restoreHealth(Character character, Hero ownerHero, int health){
+        if (ownerHero.getName().equals("Priest")) health *= 2;
         if(character instanceof Hero){
             Hero hero = (Hero) character;
             hero.setHp(Math.min(hero.getHp() + health, DataManager.getInstance().getObject(Hero.class, hero.getName()).getHp()));
@@ -860,9 +861,12 @@ public class Actions {
     }
 
     @CardName(value = "PriestHeroPower", isForOnBoard = true)
-    public void action67(InfoPack infoPack){
-        restoreHealth(game.getCompetitor(infoPack.getSide()).getHero(),4);
-        useHeroPower((HeroPower) infoPack.getCharacter());
+    public void action67(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException {
+        if(!infoPack2.isOnGround() || (!(infoPack2.getCharacter() instanceof Minion) && !(infoPack2.getCharacter() instanceof Hero))){
+            throw new InvalidChoiceException();
+        }
+        restoreHealth(infoPack2.getCharacter(), game.getCompetitor(infoPack1.getSide()).getHero(),2);
+        useHeroPower((HeroPower) infoPack1.getCharacter());
     }
 
     @CardName(value = "RogueHeroPower", isForOnBoard = true)
@@ -884,7 +888,7 @@ public class Actions {
 
     @CardName(value = "WarlockHeroPower", isForOnBoard = true)
     public void action69(InfoPack infoPack) {
-        
+
     }
 
     //public static void main(String[] arg){
