@@ -6,9 +6,13 @@ import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
+import Interfaces.ActionHandler;
 import Models.Cards.Card;
 import Models.Cards.Minion;
 import Models.InfoPack;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
     private Competitor[] competitor = new Competitor[2];
@@ -103,4 +107,53 @@ public class Game {
         return isWithBot;
     }
 
+    public void checkAll() {
+        competitor[0].runQuestRewards();
+        competitor[1].runQuestRewards();
+        for(int i = 0; i < 2; i++){
+            try {
+                if(competitor[i].getHeroWeapon().getDurability() <= 0){
+                    competitor[i].setHeroWeapon(null);
+                }
+            } catch (NullPointerException e){}
+            for(int j = 0; j < competitor[i].getOnBoardCards().size(); j++){
+                Minion minion = competitor[i].getOnBoardCards().get(j);
+                if(minion.getHp() <= 0){
+                    competitor[i].getOnBoardCards().remove(minion);
+                    j--;
+                }
+                else {
+                    minion.setRush(false);
+                    minion.setCharge(true);
+                }
+            }
+            competitor[i].getHero().getHeroPower().setCharge(true);
+        }
+    }
+
+    public void initialize() {
+        setForPaladin();
+    }
+
+    private void setForPaladin() {
+        for(int i = 0; i < 2; i++){
+            if(competitor[i].getHero().getName().equals("Paladin")){
+                int finalI = i;
+                ActionRequest.END_TURN.addAction(new ActionHandler() {
+                    @Override
+                    public void runAction() throws Exception {
+                        if(turn != finalI){
+                            Random random = new Random();
+                            ArrayList<Minion> minions = competitor[finalI].getOnBoardCards();
+                            if(minions.size() > 0){
+                                Minion minion = minions.get(random.nextInt(minions.size()));
+                                minion.setHp(minion.getHp() + 1);
+                                minion.setAttack(minion.getAttack() + 1);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
 }

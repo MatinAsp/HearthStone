@@ -22,7 +22,7 @@ public enum ActionRequest {
             try{
                 game.changeTurn();
                 super.execute();
-                checkAll();
+                game.checkAll();
             }catch (GameOverException e){
                 game.engGame();
                 throw e;
@@ -53,7 +53,7 @@ public enum ActionRequest {
                     game.playCard((Card) parameters[0].getCharacter(), parameters[0].getSide());
                 }
                 super.execute(parameters);
-                checkAll();
+                game.checkAll();
             }catch (GameOverException e){
                 game.engGame();
                 throw e;
@@ -87,30 +87,6 @@ public enum ActionRequest {
             super.execute(card, side);
         }
     };
-
-    public void checkAll() {
-        game.getCompetitor(0).runQuestRewards();
-        game.getCompetitor(1).runQuestRewards();
-        for(int i = 0; i < 2; i++){
-            try {
-                if(game.getCompetitor(i).getHeroWeapon().getDurability() <= 0){
-                    game.getCompetitor(i).setHeroWeapon(null);
-                }
-            } catch (NullPointerException e){}
-            for(int j = 0; j < game.getCompetitor(i).getOnBoardCards().size(); j++){
-                Minion minion = game.getCompetitor(i).getOnBoardCards().get(j);
-                if(minion.getHp() <= 0){
-                    game.getCompetitor(i).getOnBoardCards().remove(minion);
-                    j--;
-                }
-                else {
-                    minion.setRush(false);
-                    minion.setCharge(true);
-                }
-            }
-            game.getCompetitor(i).getHero().getHeroPower().setCharge(true);
-        }
-    }
 
     public ArrayList<ActionHandler> getBeforeActions() {
         return beforeActions;
@@ -159,29 +135,7 @@ public enum ActionRequest {
         for(ActionRequest actionRequest: values()){
             actionRequest.actions.clear();
         }
-        setForPaladin();
-    }
-
-    private static void setForPaladin() {
-        for(int i = 0; i < 2; i++){
-            if(game.getCompetitor(i).getHero().getName().equals("Paladin")){
-                int finalI = i;
-                END_TURN.addAction(new ActionHandler() {
-                    @Override
-                    public void runAction() throws Exception {
-                        if(game.getTurn() != finalI){
-                            Random random = new Random();
-                            ArrayList<Minion> minions = game.getCompetitor(finalI).getOnBoardCards();
-                            if(minions.size() > 0){
-                                Minion minion = minions.get(random.nextInt(minions.size()));
-                                minion.setHp(minion.getHp() + 1);
-                                minion.setAttack(minion.getAttack() + 1);
-                            }
-                        }
-                    }
-                });
-            }
-        }
+        game.initialize();
     }
 
     public void addAction(ActionHandler actionHandler){
