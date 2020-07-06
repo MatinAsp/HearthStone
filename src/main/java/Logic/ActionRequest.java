@@ -45,12 +45,12 @@ public enum ActionRequest {
                 battleGroundController.putCardToHandAnimation(hand.get(hand.size() - 1), (game.getTurn() == 0) ? true:false);
                 Object lock = battleGroundController.getDrawAnimationLock();
                 synchronized (lock){
-                    try {
+                    /*try {
                         lock.wait();
                     } catch (InterruptedException e) {
                         LogCenter.getInstance().getLogger().error(e);
                         e.printStackTrace();
-                    }
+                    }*/
                 }
             }
             super.execute();
@@ -60,14 +60,8 @@ public enum ActionRequest {
         @Override
         public void execute(InfoPack[] parameters) throws SelectionNeededException, InvalidChoiceException, GameOverException {
             try {
-                if(!parameters[0].isOnGround() && !(parameters[0].getCharacter() instanceof Passive)){
-                    game.checkForMana((Card) parameters[0].getCharacter(), parameters[0].getSide());
-                }
                 executeBeforeActions(parameters);
                 game.performAction(parameters);
-                if(!parameters[0].isOnGround() && !(parameters[0].getCharacter() instanceof Passive)){
-                    game.playCard((Card) parameters[0].getCharacter(), parameters[0].getSide());
-                }
                 super.execute(parameters);
                 game.checkAll();
             }catch (GameOverException e){
@@ -94,13 +88,6 @@ public enum ActionRequest {
         public void execute(Card minion, int side) throws GameOverException, InvalidChoiceException {
             game.summon((Minion) minion, side);
             super.execute(minion, side);
-        }
-    },
-    PLAY_CARD{
-        @Override
-        public void execute(Card card, int side) throws GameOverException, InvalidChoiceException {
-            game.playCard(card, side);
-            super.execute(card, side);
         }
     };
 

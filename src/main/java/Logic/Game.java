@@ -11,6 +11,7 @@ import Models.Cards.Card;
 import Models.Cards.Minion;
 import Models.Cards.Spell;
 import Models.InfoPack;
+import Models.Passive;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -33,8 +34,14 @@ public class Game {
         return competitor;
     }
 
-    public void performAction(InfoPack[] parameter) throws SelectionNeededException, InvalidChoiceException, GameOverException{
-        actions.performAction(parameter);
+    public void performAction(InfoPack[] parameters) throws SelectionNeededException, InvalidChoiceException, GameOverException{
+        if(!parameters[0].isOnGround() && !(parameters[0].getCharacter() instanceof Passive)){
+            checkForMana((Card) parameters[0].getCharacter(), parameters[0].getSide());
+        }
+        actions.performAction(parameters);
+        if(!parameters[0].isOnGround() && !(parameters[0].getCharacter() instanceof Passive)){
+            playCard((Card) parameters[0].getCharacter(), parameters[0].getSide());
+        }
     }
 
     public void changeTurn() throws GameOverException {
@@ -48,7 +55,7 @@ public class Game {
         }
     }
 
-    public void playCard(Card card, int side) {
+    private void playCard(Card card, int side) {
         competitor[side].playCard(card);
         competitor[side].setLeftMana(competitor[side].getLeftMana() - needMana(card, side));
     }
@@ -61,7 +68,7 @@ public class Game {
         return mana;
     }
 
-    public void checkForMana(Card card, int side) throws InvalidChoiceException {
+    private void checkForMana(Card card, int side) throws InvalidChoiceException {
         if(needMana(card, side) > competitor[side].getLeftMana()) {
             throw new InvalidChoiceException();
         }
