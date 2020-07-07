@@ -233,11 +233,14 @@ public class BattleGroundController implements Initializable {
             public void handle(MouseEvent event) {
                 synchronized (lock){
                     LogCenter.getInstance().getLogger().info("drag_ended");
+                    double y = graphicCard.getLayoutY();
+                    graphicCard.setLayoutX(graphicCard.getLayoutX() - event.getSceneX() + mouseFirstPosition[0]);
+                    graphicCard.setLayoutY(graphicCard.getLayoutY() - event.getSceneY() + mouseFirstPosition[1]);
                     try {
                         int maxYForPlayCard = GameConstants.getInstance().getInteger("maxYForPlayCard");
                         int minYForPlayCard = GameConstants.getInstance().getInteger("minYForPlayCard");
-                        if ((side == 0 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() < maxYForPlayCard) ||
-                                (side == 1 && graphicCard.getParent().getLayoutY() + graphicCard.getLayoutY() + ((Pane) graphicCard).getHeight() > minYForPlayCard)){
+                        if ((side == 0 && graphicCard.getParent().getLayoutY() + y < maxYForPlayCard) ||
+                                (side == 1 && graphicCard.getParent().getLayoutY() + y + ((Pane) graphicCard).getHeight() > minYForPlayCard)){
                             performAction(card, side, false,graphicCard);
                             LogCenter.getInstance().getLogger().info("play_"+card.getType());
                             addGameLog("play_"+card.getType());
@@ -246,8 +249,6 @@ public class BattleGroundController implements Initializable {
                         LogCenter.getInstance().getLogger().error(e);
                         e.printStackTrace();
                     }
-                    graphicCard.setLayoutX(graphicCard.getLayoutX() - event.getSceneX() + mouseFirstPosition[0]);
-                    graphicCard.setLayoutY(graphicCard.getLayoutY() - event.getSceneY() + mouseFirstPosition[1]);
                 }
             }
         });
@@ -306,6 +307,7 @@ public class BattleGroundController implements Initializable {
         addGameLog("end_turn_player_"+(game.getTurn()+1));
         try {
             ActionRequest.END_TURN.execute();
+            renderActions();
         } catch (GameOverException e) {
             endGame();
         }
@@ -413,7 +415,6 @@ public class BattleGroundController implements Initializable {
             cnt =1;
             return;
         }
-        rootPane.setDisable(true);
         MediaManager mediaManager = MediaManager.getInstance();
         GameConstants gameConstants = GameConstants.getInstance();
         transitions.clear();
@@ -421,13 +422,17 @@ public class BattleGroundController implements Initializable {
         beforeAction.clear();
         setPlayCardTransition();
      //   setAttackTransition();
-      //  setDrawTransition();
-        if(transitions.size() > 0) bindTransitions();
-        try {
-            if (transitions.size() > 0) beforeAction.get(0).runAction();
-        } catch (Exception e) {
-            e.printStackTrace();
+        setDrawTransition();
+        if(transitions.size() > 0){
+            rootPane.setDisable(true);
+            bindTransitions();
+            try {
+                if (transitions.size() > 0) beforeAction.get(0).runAction();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        else gameRender();
     }
 
     private void bindTransitions() {
@@ -466,7 +471,7 @@ public class BattleGroundController implements Initializable {
         int drawNumber = ActionRequest.readDrawNumber();
         while (drawNumber > 0 ){
             Card card = game.getCompetitor(game.getTurn()).getInHandCards().get(game.getCompetitor(game.getTurn()).getInHandCards().size() - drawNumber--);
-            Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, (game.getTurn() == 0)? true:false);
+            Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, (game.getTurn() == 0 || !game.isWithBot())? false:true);
             Transition transition = putCardToHandAnimation(cardPane, (game.getTurn() == 0)? true:false);
             transitions.add(transition);
             beforeAction.add(new ActionHandler() {
@@ -547,9 +552,13 @@ public class BattleGroundController implements Initializable {
     }
 
     private TranslateTransition playCardTransition(Parent parent) {
-        double toX = GameConstants.getInstance().getInteger("screenWidth")/2 - parent.getParent().getLayoutX() + ((Pane)parent).getWidth()/2;
-        double toY = GameConstants.getInstance().getInteger("screenHeight")/2 - parent.getParent().getLayoutY() + ((Pane)parent).getHeight()/2;
-        return buildTranslateTransition(parent, parent.getLayoutX(), parent.getLayoutY(), toX, toY, 1);
+        double fromX = parent.getLayoutX();
+        double fromY = parent.getLayoutY();
+        parent.setLayoutX(0);
+        parent.setLayoutY(0);
+        double toX = ((GameConstants.getInstance().getInteger("screenWidth")/2 - parent.getParent().getLayoutX() - (((Pane)parent).getWidth()/2)))- parent.getLayoutX();
+        double toY = ((GameConstants.getInstance().getInteger("screenHeight")/2 - parent.getParent().getLayoutY() - (((Pane)parent).getHeight()/2)));
+        return buildTranslateTransition(parent, fromX, fromY, toX, toY, 1);
     }
 
     private TranslateTransition buildTranslateTransition(Parent parent, double fromX, double fromY, double toX, double toY, double second){

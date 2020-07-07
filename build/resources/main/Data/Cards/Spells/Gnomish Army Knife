@@ -1,9 +1,0 @@
-{
-"name":"Gnomish Army Knife",
-"rarity":"Legendary",
-"heroClass":"Paladin",
-"type":"Spell",
-"description":"Give a minion Charge, Windfury, Divine Shield, Lifesteal, Poisonous, Taunt, and Stealth.",
-"mana":5,
-"price":11
-}

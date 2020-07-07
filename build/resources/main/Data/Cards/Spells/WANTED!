@@ -1,9 +1,0 @@
-{
-"name":"WANTED!",
-"rarity":"Legendary",
-"heroClass":"Rogue",
-"type":"Spell",
-"description":"Deal 3 damage to a minion. If that kills it, add a Coin to your hand.",
-"mana":4,
-"price":4
-}

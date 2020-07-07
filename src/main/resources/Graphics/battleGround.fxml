@@ -48,10 +48,10 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000c4" height="271.0" layoutX="20.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
-            <ScrollPane layoutX="23.0" layoutY="197.0" prefHeight="270.0" prefWidth="164.0" style="-fx-background-color: transparent;">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000c4" height="271.0" layoutX="7.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" width="175.0" />
+            <ScrollPane layoutX="12.0" layoutY="197.0" prefHeight="270.0" prefWidth="175.0" style="-fx-background-color: transparent;">
                <content>
-                  <GridPane fx:id="gameLogGridPane" prefHeight="260.0" prefWidth="153.0" style="-fx-font-size: 12;" styleClass="gameFont">
+                  <GridPane fx:id="gameLogGridPane" prefHeight="260.0" prefWidth="161.0" style="-fx-font-size: 12;" styleClass="gameFont">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
