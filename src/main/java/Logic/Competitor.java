@@ -3,11 +3,13 @@ package Logic;
 import Data.GameConstants;
 import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
+import Exceptions.InvalidChoiceException;
 import Interfaces.QuestActionHandler;
 import Log.LogCenter;
 import Models.Cards.*;
 import Models.Deck;
 import Models.Hero;
+import Models.InfoPack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -162,5 +164,10 @@ public class Competitor{
 
     public void removeCardFromDeck(Card card) {
         inDeckCards.remove(card);
+    }
+
+    public void useHeroPower() throws InvalidChoiceException {
+        hero.getHeroPower().setCharge(false);
+        leftMana -= hero.getHeroPower().getMana();
     }
 }

@@ -27,6 +27,7 @@ public enum ActionRequest {
                 game.changeTurn();
                 super.execute();
                 game.checkAll();
+                game.chargeCards();
             }catch (GameOverException e){
                 game.engGame();
                 throw e;

@@ -66,7 +66,6 @@ public class Actions {
     }
 
     public void performAction(InfoPack[] methodParameters) throws InvalidChoiceException, SelectionNeededException, GameOverException{
-        //tahesh hame ro set charge kon va weapon va minion ha ro pack kon az zamin
         //tabe selection ha
         String cardName = methodParameters[0].getCharacter().getName();
         if(methodParameters[0].getSide() != game.getTurn()){
@@ -831,10 +830,6 @@ public class Actions {
         }
     }
 
-    private void useHeroPower(HeroPower heroPower){
-        heroPower.setCharge(false);
-    }
-
     private void restoreHealth(Character character, Hero ownerHero, int health){
         if (ownerHero.getName().equals("Priest")) health *= 2;
         if(character instanceof Hero){
@@ -849,15 +844,15 @@ public class Actions {
 
     @CardName(value = "MageHeroPower", isForOnBoard = true)
     public void action65(InfoPack infoPack1, InfoPack infoPack2) throws GameOverException, InvalidChoiceException {
+        game.getCompetitor(infoPack1.getSide()).useHeroPower();
         attackWithSpell(infoPack2, 1);
-        useHeroPower((HeroPower) infoPack1.getCharacter());
     }
 
     @CardName(value = "PaladinHeroPower", isForOnBoard = true)
     public void action66(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
+        game.getCompetitor(infoPack.getSide()).useHeroPower();
         ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Sheep"), infoPack.getSide());
         ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Sheep"), infoPack.getSide());
-        useHeroPower((HeroPower) infoPack.getCharacter());
     }
 
     @CardName(value = "PriestHeroPower", isForOnBoard = true)
@@ -865,12 +860,13 @@ public class Actions {
         if(!infoPack2.isOnGround() || (!(infoPack2.getCharacter() instanceof Minion) && !(infoPack2.getCharacter() instanceof Hero))){
             throw new InvalidChoiceException();
         }
+        game.getCompetitor(infoPack1.getSide()).useHeroPower();
         restoreHealth(infoPack2.getCharacter(), game.getCompetitor(infoPack1.getSide()).getHero(),2);
-        useHeroPower((HeroPower) infoPack1.getCharacter());
     }
 
     @CardName(value = "RogueHeroPower", isForOnBoard = true)
-    public void action68(InfoPack infoPack) {
+    public void action68(InfoPack infoPack) throws InvalidChoiceException {
+        game.getCompetitor(infoPack.getSide()).useHeroPower();
         Competitor enemy = game.getCompetitor((infoPack.getSide()+1)%2);
         Random random = new Random();
         if(enemy.getInDeckCards().size() > 0){
@@ -883,7 +879,6 @@ public class Actions {
             game.getCompetitor(infoPack.getSide()).addCardInHand(card);
             enemy.removeCardFromHand(card);
         }
-        useHeroPower((HeroPower) infoPack.getCharacter());
     }
 
     @CardName(value = "WarlockHeroPower", isForOnBoard = true)

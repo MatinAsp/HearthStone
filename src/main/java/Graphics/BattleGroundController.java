@@ -103,7 +103,7 @@ public class BattleGroundController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        renderPassives();
+        renderPassives(0);
         battleGround[0] = battleGround1;
         battleGround[1] = battleGround2;
         hand[0] = hand1;
@@ -313,7 +313,6 @@ public class BattleGroundController implements Initializable {
         else alertMessage.setText("You Lose.");
     }
 
-    private boolean ch =false;
     public TranslateTransition putCardToHandAnimation(Pane cardPane, boolean isForOwn) {
         int side = isForOwn? 0:1;
         rootPane.getChildren().add(cardPane);
@@ -340,7 +339,8 @@ public class BattleGroundController implements Initializable {
     @FXML
     private HBox passiveSelectionPlace;
 
-    public void renderPassives() {
+    public void renderPassives(int side) {
+        passiveSelectionPlace.getChildren().clear();
         passiveSelectionPane.setVisible(true);
         ArrayList<Passive> passives = DataManager.getInstance().getAllCharacter(Passive.class);
         int passivesNumber = GameConstants.getInstance().getInteger("passivesOnGamesStar");
@@ -353,8 +353,9 @@ public class BattleGroundController implements Initializable {
                 public void handle(MouseEvent event) {
                     LogCenter.getInstance().getLogger().info("passive_selected");
                     addGameLog("passive_selected");
-                    performAction(passive, 0, false, passiveGraphics);
+                    performAction(passive, side, false, passiveGraphics);
                     passiveSelectionPane.setVisible(false);
+                    if(side == 0 && !game.isWithBot()) renderPassives(1);
                 }
             });
             passiveSelectionPlace.getChildren().add(passiveGraphics);
@@ -400,12 +401,7 @@ public class BattleGroundController implements Initializable {
     }
     private ArrayList<Transition> transitions = new ArrayList<>();
     private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();
-    int cnt = 0;
     private void renderActions() {
-        if(cnt == 0){
-            cnt =1;
-            return;
-        }
         transitions.clear();
         afterAction.clear();
         beforeAction.clear();

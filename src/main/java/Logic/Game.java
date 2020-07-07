@@ -8,6 +8,7 @@ import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
 import Interfaces.ActionHandler;
 import Models.Cards.Card;
+import Models.Cards.HeroPower;
 import Models.Cards.Minion;
 import Models.Cards.Spell;
 import Models.InfoPack;
@@ -35,7 +36,7 @@ public class Game {
     }
 
     public void performAction(InfoPack[] parameters) throws SelectionNeededException, InvalidChoiceException, GameOverException{
-        if(!parameters[0].isOnGround() && !(parameters[0].getCharacter() instanceof Passive)){
+        if((!parameters[0].isOnGround() && !(parameters[0].getCharacter() instanceof Passive)) || parameters[0].getCharacter() instanceof HeroPower){
             checkForMana((Card) parameters[0].getCharacter(), parameters[0].getSide());
         }
         actions.performAction(parameters);
@@ -138,10 +139,19 @@ public class Game {
                     competitor[i].getOnBoardCards().remove(minion);
                     j--;
                 }
-                else {
-                    minion.setRush(false);
-                    minion.setCharge(true);
-                }
+            }
+        }
+    }
+
+    public void chargeCards(){
+        for(int i = 0; i < 2; i++){
+            try {
+                competitor[i].getHeroWeapon().setCharge(true);
+            } catch (NullPointerException e){}
+            for(int j = 0; j < competitor[i].getOnBoardCards().size(); j++){
+                Minion minion = competitor[i].getOnBoardCards().get(j);
+                minion.setRush(false);
+                minion.setCharge(true);
             }
             competitor[i].getHero().getHeroPower().setCharge(true);
         }
@@ -172,4 +182,5 @@ public class Game {
             }
         }
     }
+
 }
