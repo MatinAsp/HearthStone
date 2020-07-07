@@ -2031,3 +2031,8 @@ INFO    2020-07-07 03:31:38,305 - end_turn_player_1
 INFO    2020-07-07 03:32:22,524 - start_a_game
 INFO    2020-07-07 03:32:29,441 - passive_selected
 INFO    2020-07-07 03:32:30,908 - end_turn_player_1
+INFO    2020-07-07 17:12:45,612 - start_a_game
+INFO    2020-07-07 17:12:51,812 - passive_selected
+ERROR   2020-07-07 17:12:51,819 - java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0
+INFO    2020-07-07 17:12:56,808 - passive_selected
+ERROR   2020-07-07 17:12:56,809 - Exceptions.InvalidChoiceException: Invalid Choice

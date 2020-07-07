@@ -5,6 +5,7 @@ import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
+import Interfaces.ActionHandler;
 import Log.LogCenter;
 import Logic.ActionRequest;
 import Logic.Game;
@@ -15,6 +16,7 @@ import Logic.Competitor;
 import Models.Character;
 import Models.InfoPack;
 import Models.Passive;
+import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -320,28 +322,16 @@ public class BattleGroundController implements Initializable {
     }
 
     private boolean ch =false;
-    public void putCardToHandAnimation(Card card, boolean isForOwn) {
-        Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, !isForOwn);
+    public TranslateTransition putCardToHandAnimation(Pane cardPane, boolean isForOwn) {
         int side = isForOwn? 0:1;
         rootPane.getChildren().add(cardPane);
         int duration = 2;
-        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(duration), cardPane);
         double fromX, fromY, toX, toY;
         fromX = cardsNumberLabel[side].getLayoutX();
         fromY = cardsNumberLabel[side].getLayoutY();
         toX = hand[side].getLayoutX();
         toY = hand[side].getLayoutY();
-        translateTransition.setFromX(fromX);
-        translateTransition.setFromY(fromY);
-        translateTransition.setToX(toX);
-        translateTransition.setToY(toY);
-        translateTransition.setCycleCount(1);
-        translateTransition.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                rootPane.getChildren().remove(translateTransition.getNode());
-            }
-        });
+        return buildTranslateTransition(cardPane, fromX, fromY, toX, toY, duration);
     }
 
     @FXML
@@ -415,9 +405,161 @@ public class BattleGroundController implements Initializable {
             }
         }
     }
-
+    private ArrayList<Transition> transitions = new ArrayList<>();
+    private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();
+    int cnt =0;
     private void renderActions() {
-        
+        if(cnt == 0){
+            cnt =1;
+            return;
+        }
+        rootPane.setDisable(true);
+        MediaManager mediaManager = MediaManager.getInstance();
+        GameConstants gameConstants = GameConstants.getInstance();
+        transitions.clear();
+        afterAction.clear();
+        beforeAction.clear();
+        setPlayCardTransition();
+     //   setAttackTransition();
+      //  setDrawTransition();
+        if(transitions.size() > 0) bindTransitions();
+        try {
+            if (transitions.size() > 0) beforeAction.get(0).runAction();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void bindTransitions() {
+        for(int i = 0; i < transitions.size() - 1; i++){
+            int finalI = i;
+            transitions.get(i).setOnFinished(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        afterAction.get(finalI).runAction();
+                        beforeAction.get(finalI + 1).runAction();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+        transitions.get(transitions.size() - 1).setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    afterAction.get(transitions.size() - 1).runAction();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if(ActionRequest.readSummoned()){
+                    MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("minionPlacingSoundTrack"), 1);
+                }
+                rootPane.setDisable(false);
+                gameRender();
+            }
+        });
+    }
+
+    private void setDrawTransition() {
+        int drawNumber = ActionRequest.readDrawNumber();
+        while (drawNumber > 0 ){
+            Card card = game.getCompetitor(game.getTurn()).getInHandCards().get(game.getCompetitor(game.getTurn()).getInHandCards().size() - drawNumber--);
+            Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, (game.getTurn() == 0)? true:false);
+            Transition transition = putCardToHandAnimation(cardPane, (game.getTurn() == 0)? true:false);
+            transitions.add(transition);
+            beforeAction.add(new ActionHandler() {
+                @Override
+                public void runAction() throws Exception {
+                    //MediaManager.getInstance().playMedia(GameConstants.getInstance().getString(), 1);
+                    transition.play();
+                }
+            });
+            afterAction.add(new ActionHandler() {
+                @Override
+                public void runAction() throws Exception {
+                    rootPane.getChildren().remove(cardPane);
+                }
+            });
+        }
+    }
+
+    private void setAttackTransition() {
+        ArrayList<InfoPack> attackList = ActionRequest.readAttackingList();
+        if(attackList.size() > 0){
+            Transition go = goAttackAnimation(attackList.get(0).getParent(), attackList.get(1).getParent());
+            Transition back = backAttackAnimation(attackList.get(0).getParent(), attackList.get(1).getParent());
+            transitions.add(go);
+            transitions.add(back);
+            beforeAction.add(new ActionHandler() {
+                @Override
+                public void runAction() throws Exception {
+                    go.play();
+                }
+            });
+            afterAction.add(new ActionHandler() {
+                @Override
+                public void runAction() throws Exception {
+                    //MediaManager.getInstance().playMedia(GameConstants.getInstance().getString(),1);
+                }
+            });
+            beforeAction.add(new ActionHandler() {
+                @Override
+                public void runAction() throws Exception {
+                    back.play();
+                }
+            });
+            afterAction.add(new ActionHandler() {
+                @Override
+                public void runAction() throws Exception { }
+            });
+        }
+    }
+
+    private Transition backAttackAnimation(Parent parent, Parent parent1) {
+        return null;
+    }
+
+    private Transition goAttackAnimation(Parent parent1, Parent parent2) {
+        return null;
+    }
+
+    private void setPlayCardTransition() {
+        InfoPack played = ActionRequest.readPlayed();
+        if(played != null){
+            Transition transition = playCardTransition(played.getParent());
+            transitions.add(transition);
+            beforeAction.add(new ActionHandler() {
+                @Override
+                public void runAction() throws Exception {
+                    //MediaManager.getInstance().playMedia(GameConstants.getInstance().getString(), 1);
+                    transition.play();
+                }
+            });
+            afterAction.add(new ActionHandler() {
+                @Override
+                public void runAction() throws Exception {
+                    hand[played.getSide()].getChildren().remove(played.getParent());
+                }
+            });
+        }
+    }
+
+    private TranslateTransition playCardTransition(Parent parent) {
+        double toX = GameConstants.getInstance().getInteger("screenWidth")/2 - parent.getParent().getLayoutX() + ((Pane)parent).getWidth()/2;
+        double toY = GameConstants.getInstance().getInteger("screenHeight")/2 - parent.getParent().getLayoutY() + ((Pane)parent).getHeight()/2;
+        return buildTranslateTransition(parent, parent.getLayoutX(), parent.getLayoutY(), toX, toY, 1);
+    }
+
+    private TranslateTransition buildTranslateTransition(Parent parent, double fromX, double fromY, double toX, double toY, double second){
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(second), parent);
+        translateTransition.setFromX(fromX);
+        translateTransition.setFromY(fromY);
+        translateTransition.setToX(toX);
+        translateTransition.setToY(toY);
+        translateTransition.setCycleCount(1);
+        return translateTransition;
     }
 
     private void setForPerformAction(Character character, int side, boolean isOnGround, Parent parent){

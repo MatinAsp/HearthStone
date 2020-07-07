@@ -1,0 +1,18 @@
+USER: ali
+ID: 630299199
+CREATED_AT: 2020/07/07 17:19:05
+PASSWORD: 96670
+
+INFO    2020-07-07 17:19:05,898 - sign_in
+INFO    2020-07-07 17:19:05,903 - navigate_from_log_in_to_menu
+INFO    2020-07-07 17:19:08,267 - start_a_game
+INFO    2020-07-07 17:19:11,631 - passive_selected
+INFO    2020-07-07 17:19:16,798 - end_turn_player_1
+INFO    2020-07-07 17:19:20,826 - end_turn_player_2
+ERROR   2020-07-07 17:19:21,908 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-07 17:19:22,565 - java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0
+INFO    2020-07-07 17:21:03,970 - start_a_game
+INFO    2020-07-07 17:21:09,771 - passive_selected
+INFO    2020-07-07 17:21:23,669 - drag_detected
+INFO    2020-07-07 17:21:24,948 - drag_ended
+INFO    2020-07-07 17:21:24,978 - play_Minion
