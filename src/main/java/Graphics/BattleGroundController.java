@@ -288,7 +288,7 @@ public class BattleGroundController implements Initializable {
     @FXML
     private void endTurn() {
         infoPacks.clear();
-        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("endTurnSoundTrack"), 1);
+        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("endTurnSound"), 1);
         changeTurn();
     }
 
@@ -330,8 +330,8 @@ public class BattleGroundController implements Initializable {
     @FXML
     private void backToMenu() {
         LogCenter.getInstance().getLogger().info("back_to_menu");
-        MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("battleGroundSoundTrack"));
-        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSoundTrack"), -1);
+        MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("battleGroundSound"));
+        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         root.setVisible(false);
     }
 
@@ -448,7 +448,7 @@ public class BattleGroundController implements Initializable {
                     e.printStackTrace();
                 }
                 if(ActionRequest.readSummoned()){
-                    MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("minionPlacingSoundTrack"), 1);
+                    MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("minionPlacingSound"), 1);
                 }
                 rootPane.setDisable(false);
                 gameRender();
@@ -495,7 +495,7 @@ public class BattleGroundController implements Initializable {
             afterAction.add(new ActionHandler() {
                 @Override
                 public void runAction() throws Exception {
-                    //MediaManager.getInstance().playMedia(GameConstants.getInstance().getString(),1);
+                    MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("attackSound"),1);
                 }
             });
             beforeAction.add(new ActionHandler() {
@@ -531,7 +531,7 @@ public class BattleGroundController implements Initializable {
             beforeAction.add(new ActionHandler() {
                 @Override
                 public void runAction() throws Exception {
-                    MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("playCardSoundTrack"), 1);
+                    MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("playCardSound"), 1);
                     transition.play();
                 }
             });

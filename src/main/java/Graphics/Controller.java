@@ -107,7 +107,7 @@ public class Controller implements Initializable {
     @FXML
     private void navigateFromLogInToMenu() throws IOException {
         LogCenter.getInstance().getLogger().info("navigate_from_log_in_to_menu");
-        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSoundTrack"), -1);
+        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         navigate(logInPage, menu);
     }
 
@@ -119,7 +119,7 @@ public class Controller implements Initializable {
         }catch (NullPointerException e){
 
         }
-        MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("menuSoundTrack"));
+        MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("menuSound"));
         navigate(menu, logInPage);
     }
 
@@ -748,8 +748,8 @@ public class Controller implements Initializable {
         ));
         battleGroundController.gameRender();
         root.getChildren().add(gameBoard);
-        MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("menuSoundTrack"));
-        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("battleGroundSoundTrack"), -1);
+        MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("menuSound"));
+        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("battleGroundSound"), -1);
         LogCenter.getInstance().getLogger().info("start_a_game");
     }
 
