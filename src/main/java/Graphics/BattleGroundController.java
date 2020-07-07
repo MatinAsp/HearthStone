@@ -254,16 +254,6 @@ public class BattleGroundController implements Initializable {
         });
     }
 
-    private void cardPlaySound(Card card) {
-        MediaManager mediaManager = MediaManager.getInstance();
-        if (card instanceof Minion){
-            mediaManager.playMedia(GameConstants.getInstance().getString("minionPlacingSoundTrack"), 1);
-        }
-        else {
-            mediaManager.playMedia(GameConstants.getInstance().getString("putCardFromHandSoundTrack"), 1);
-        }
-    }
-
     private void renderBattleGround(ArrayList<Minion> cards, HBox battleGround, int side) {
         battleGround.getChildren().clear();
         for(Card card: cards){
@@ -327,6 +317,7 @@ public class BattleGroundController implements Initializable {
     public TranslateTransition putCardToHandAnimation(Pane cardPane, boolean isForOwn) {
         int side = isForOwn? 0:1;
         rootPane.getChildren().add(cardPane);
+        cardPane.setVisible(false);
         int duration = 2;
         double fromX, fromY, toX, toY;
         fromX = cardsNumberLabel[side].getLayoutX();
@@ -409,19 +400,17 @@ public class BattleGroundController implements Initializable {
     }
     private ArrayList<Transition> transitions = new ArrayList<>();
     private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();
-    int cnt =0;
+    int cnt = 0;
     private void renderActions() {
         if(cnt == 0){
             cnt =1;
             return;
         }
-        MediaManager mediaManager = MediaManager.getInstance();
-        GameConstants gameConstants = GameConstants.getInstance();
         transitions.clear();
         afterAction.clear();
         beforeAction.clear();
         setPlayCardTransition();
-     //   setAttackTransition();
+        setAttackTransition();
         setDrawTransition();
         if(transitions.size() > 0){
             rootPane.setDisable(true);
@@ -477,7 +466,7 @@ public class BattleGroundController implements Initializable {
             beforeAction.add(new ActionHandler() {
                 @Override
                 public void runAction() throws Exception {
-                    //MediaManager.getInstance().playMedia(GameConstants.getInstance().getString(), 1);
+                    cardPane.setVisible(true);
                     transition.play();
                 }
             });
@@ -522,12 +511,16 @@ public class BattleGroundController implements Initializable {
         }
     }
 
-    private Transition backAttackAnimation(Parent parent, Parent parent1) {
-        return null;
+    private Transition backAttackAnimation(Parent parent1, Parent parent2) {
+        double x = parent2.getParent().getLayoutX() - parent1.getParent().getLayoutX() + parent2.getLayoutX() - parent1.getLayoutX();
+        double y = parent2.getParent().getLayoutY() - parent1.getParent().getLayoutY() + parent2.getLayoutY() - parent1.getLayoutY();
+        return buildTranslateTransition(parent1, x, y, 0, 0, 0.5);
     }
 
     private Transition goAttackAnimation(Parent parent1, Parent parent2) {
-        return null;
+        double x = parent2.getParent().getLayoutX() - parent1.getParent().getLayoutX() + parent2.getLayoutX() - parent1.getLayoutX();
+        double y = parent2.getParent().getLayoutY() - parent1.getParent().getLayoutY() + parent2.getLayoutY() - parent1.getLayoutY();
+        return buildTranslateTransition(parent1, 0, 0, x, y, 0.2);
     }
 
     private void setPlayCardTransition() {
@@ -538,7 +531,7 @@ public class BattleGroundController implements Initializable {
             beforeAction.add(new ActionHandler() {
                 @Override
                 public void runAction() throws Exception {
-                    //MediaManager.getInstance().playMedia(GameConstants.getInstance().getString(), 1);
+                    MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("playCardSoundTrack"), 1);
                     transition.play();
                 }
             });
