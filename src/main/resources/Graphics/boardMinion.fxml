@@ -8,15 +8,35 @@
 
 <Pane prefHeight="112.0" prefWidth="103.0" style="-fx-background-color: transparent;" stylesheets="@GameStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Graphics.CardGraphicsController">
    <children>
+      <ImageView fx:id="taunt" fitHeight="148.0" fitWidth="142.0" layoutX="-20.0" layoutY="-14.0" visible="false">
+         <image>
+            <Image url="@image/taunt.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="cardPic" fitHeight="112.0" fitWidth="104.0" layoutX="-1.0">
          <image>
             <Image url="@Image/hearthstone_murloc_pic_10.jpg" />
          </image>
       </ImageView>
       <Ellipse fx:id="view" fill="#ffffff00" layoutX="51.0" layoutY="56.0" radiusX="50.0" radiusY="56.0" stroke="#464646" strokeType="INSIDE" strokeWidth="5.0" />
+      <ImageView fx:id="stealth" fitHeight="156.0" fitWidth="159.0" layoutX="-29.0" layoutY="-17.0" visible="false">
+         <image>
+            <Image url="@image/stealth.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="shield" fitHeight="128.0" fitWidth="129.0" layoutX="-13.0" layoutY="-7.0" visible="false">
+         <image>
+            <Image url="@image/shield.png" />
+         </image>
+      </ImageView>
       <ImageView fitHeight="50.0" fitWidth="36.0" layoutX="68.0" layoutY="59.0">
          <image>
             <Image url="@Image/hp.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sleep" fitHeight="112.0" fitWidth="104.0">
+         <image>
+            <Image url="@image/sleep.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="43.0" layoutX="-3.0" layoutY="59.0">

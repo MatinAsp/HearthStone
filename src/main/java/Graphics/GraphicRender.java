@@ -105,6 +105,7 @@ public class GraphicRender {
         HeroPlaceController heroPlaceController  = fxmlLoader.getController();
         heroPlaceController.setHeroImage(AssetManager.getInstance().getImage(hero.getName()+"Place"));
         heroPlaceController.setHp(hero.getHp());
+        heroPlaceController.setShield(hero.isDivineShield());
         return heroPlace;
     }
 
@@ -121,6 +122,10 @@ public class GraphicRender {
         cardGraphicsController.setAttack(minion.getAttack());
         cardGraphicsController.setHp(minion.getHp());
         cardGraphicsController.setCardPic(AssetManager.getInstance().getImage(minion.getName()));
+        cardGraphicsController.setTaunt(minion.isTaunt());
+        cardGraphicsController.setShield(minion.isDivineShield());
+        cardGraphicsController.setStealth(minion.isStealth());
+        cardGraphicsController.setCharge(minion.isCharge()||minion.isRush());
         return battleGroundMinion;
     }
 

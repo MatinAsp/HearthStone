@@ -29,6 +29,14 @@ public class CardGraphicsController {
     @FXML
     private ImageView lock;
     @FXML
+    private ImageView taunt;
+    @FXML
+    private ImageView shield;
+    @FXML
+    private ImageView stealth;
+    @FXML
+    private ImageView sleep;
+    @FXML
     private Label durability;
     @FXML
     private Ellipse view;
@@ -92,5 +100,21 @@ public class CardGraphicsController {
 
     public void setCardBack(Image cardBack){
         this.cardBack.setImage(cardBack);
+    }
+
+    public void setTaunt(boolean taunt){
+        this.taunt.setVisible(taunt);
+    }
+
+    public void setShield(boolean shield){
+        this.shield.setVisible(shield);
+    }
+
+    public void setStealth(boolean stealth){
+        this.stealth.setVisible(stealth);
+    }
+
+    public void setCharge(boolean charge) {
+        this.sleep.setVisible(!charge);
     }
 }

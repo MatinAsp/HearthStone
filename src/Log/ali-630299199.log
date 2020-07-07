@@ -640,3 +640,25 @@ INFO    2020-07-07 20:56:24,737 - play_Minion
 ERROR   2020-07-07 20:56:26,877 - java.lang.IllegalArgumentException: wrong number of arguments
 ERROR   2020-07-07 20:56:27,358 - Exceptions.InvalidChoiceException: Invalid Choice
 INFO    2020-07-07 20:56:32,285 - exit
+INFO    2020-07-08 02:35:07,066 - start_a_game
+INFO    2020-07-08 02:35:09,798 - passive_selected
+INFO    2020-07-08 02:35:12,476 - passive_selected
+ERROR   2020-07-08 02:35:12,477 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-08 02:35:16,318 - drag_detected
+INFO    2020-07-08 02:35:17,374 - drag_ended
+INFO    2020-07-08 02:35:17,383 - play_Minion
+INFO    2020-07-08 02:35:22,721 - end_turn_player_1
+INFO    2020-07-08 02:35:26,454 - drag_detected
+INFO    2020-07-08 02:35:27,382 - drag_ended
+INFO    2020-07-08 02:35:27,386 - play_Minion
+INFO    2020-07-08 02:35:31,921 - end_turn_player_2
+INFO    2020-07-08 02:35:42,599 - drag_detected
+INFO    2020-07-08 02:35:51,646 - drag_ended
+INFO    2020-07-08 02:35:51,649 - play_Minion
+INFO    2020-07-08 02:35:54,497 - end_turn_player_1
+INFO    2020-07-08 02:35:58,241 - end_turn_player_2
+INFO    2020-07-08 02:36:03,550 - drag_detected
+INFO    2020-07-08 02:36:04,360 - drag_ended
+INFO    2020-07-08 02:36:04,365 - play_Minion
+INFO    2020-07-08 02:36:18,025 - end_turn_player_1
+INFO    2020-07-08 02:45:58,576 - exit
