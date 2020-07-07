@@ -741,7 +741,6 @@ public class Controller implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleGround.fxml"));
         StackPane gameBoard = fxmlLoader.load();
         BattleGroundController battleGroundController = fxmlLoader.getController();
-        ActionRequest.setBattleGroundController(battleGroundController);
         battleGroundController.setGame(GameFactory.getInstance().build(
                 PlayersManager.getInstance().getCurrentPlayer(),
                 PlayerFactory.getInstance().build("", ""),

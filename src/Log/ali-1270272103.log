@@ -2007,3 +2007,27 @@ ERROR   2020-07-07 01:09:19,726 - java.lang.IllegalArgumentException: wrong numb
 ERROR   2020-07-07 01:09:21,512 - java.lang.IllegalArgumentException: wrong number of arguments
 ERROR   2020-07-07 01:09:22,746 - java.lang.IllegalArgumentException: wrong number of arguments
 INFO    2020-07-07 01:09:25,080 - exit
+INFO    2020-07-07 01:25:41,506 - start_a_game
+INFO    2020-07-07 01:25:44,049 - passive_selected
+INFO    2020-07-07 01:25:45,584 - exit
+INFO    2020-07-07 01:26:06,255 - start_a_game
+INFO    2020-07-07 01:26:10,284 - passive_selected
+INFO    2020-07-07 01:26:13,124 - end_turn_player_1
+INFO    2020-07-07 01:32:25,500 - start_a_game
+INFO    2020-07-07 01:32:34,406 - passive_selected
+INFO    2020-07-07 01:32:42,949 - end_turn_player_1
+INFO    2020-07-07 03:23:25,118 - start_a_game
+INFO    2020-07-07 03:23:32,265 - passive_selected
+INFO    2020-07-07 03:23:34,188 - end_turn_player_1
+INFO    2020-07-07 03:30:26,802 - start_a_game
+INFO    2020-07-07 03:30:30,715 - passive_selected
+INFO    2020-07-07 03:30:39,643 - drag_detected
+INFO    2020-07-07 03:30:40,534 - drag_ended
+INFO    2020-07-07 03:30:40,725 - play_Minion
+INFO    2020-07-07 03:30:45,924 - end_turn_player_1
+INFO    2020-07-07 03:31:33,421 - start_a_game
+INFO    2020-07-07 03:31:36,260 - passive_selected
+INFO    2020-07-07 03:31:38,305 - end_turn_player_1
+INFO    2020-07-07 03:32:22,524 - start_a_game
+INFO    2020-07-07 03:32:29,441 - passive_selected
+INFO    2020-07-07 03:32:30,908 - end_turn_player_1

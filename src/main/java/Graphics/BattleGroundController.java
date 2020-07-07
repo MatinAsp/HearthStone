@@ -122,27 +122,25 @@ public class BattleGroundController implements Initializable {
     }
 
     public synchronized void gameRender() {
-        //synchronized (lock){
-            GraphicRender graphicRender = GraphicRender.getInstance();
-            for(int i = 0; i < 2; i++){
-                rootPane.getChildren().removeAll(hero[i]);
-                Competitor competitor = game.getCompetitor(i);
-                hero[i] = graphicRender.buildHeroPlace(competitor.getHero());
-                hero[i].setLayoutX(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceX"));
-                hero[i].setLayoutY(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceY"));
-                rootPane.getChildren().add(hero[i]);
-                hero[i].toBack();
-                setForPerformAction(competitor.getHero(), i, true, hero[i]);
-                renderHand(competitor.getInHandCards(), hand[i], ((i == 0) ? true : false));
-                renderBattleGround(competitor.getOnBoardCards(), battleGround[i], i);
-                manaText[i].setText(competitor.getLeftMana()+"/"+competitor.getFullMana());
-                if(i == 0)
-                    renderManaBar(competitor.getLeftMana(), competitor.getFullMana());
-                cardsNumberLabel[i].setText(getCardsNumberString(competitor));
-                renderHeroPower(competitor, i);
-                renderHeroWeapon(competitor, i);
-            }
-        //}
+        GraphicRender graphicRender = GraphicRender.getInstance();
+        for(int i = 0; i < 2; i++){
+            rootPane.getChildren().removeAll(hero[i]);
+            Competitor competitor = game.getCompetitor(i);
+            hero[i] = graphicRender.buildHeroPlace(competitor.getHero());
+            hero[i].setLayoutX(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceX"));
+            hero[i].setLayoutY(GameConstants.getInstance().getInteger("player"+(i+1)+"HeroPlaceY"));
+            rootPane.getChildren().add(hero[i]);
+            hero[i].toBack();
+            setForPerformAction(competitor.getHero(), i, true, hero[i]);
+            renderHand(competitor.getInHandCards(), hand[i], ((i == 0) ? true : false));
+            renderBattleGround(competitor.getOnBoardCards(), battleGround[i], i);
+            manaText[i].setText(competitor.getLeftMana()+"/"+competitor.getFullMana());
+            if(i == 0)
+                renderManaBar(competitor.getLeftMana(), competitor.getFullMana());
+            cardsNumberLabel[i].setText(getCardsNumberString(competitor));
+            renderHeroPower(competitor, i);
+            renderHeroWeapon(competitor, i);
+        }
     }
 
     private void renderHeroWeapon(Competitor competitor, int side) {
@@ -321,12 +319,7 @@ public class BattleGroundController implements Initializable {
         else alertMessage.setText("You Lose.");
     }
 
-    public Object drawAnimationLock = new Object();
-
-    public Object getDrawAnimationLock(){
-        return drawAnimationLock;
-    }
-
+    private boolean ch =false;
     public void putCardToHandAnimation(Card card, boolean isForOwn) {
         Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, !isForOwn);
         int side = isForOwn? 0:1;
@@ -338,7 +331,6 @@ public class BattleGroundController implements Initializable {
         fromY = cardsNumberLabel[side].getLayoutY();
         toX = hand[side].getLayoutX();
         toY = hand[side].getLayoutY();
-        System.out.println(endTurnButton.isDisable());
         translateTransition.setFromX(fromX);
         translateTransition.setFromY(fromY);
         translateTransition.setToX(toX);
@@ -347,13 +339,9 @@ public class BattleGroundController implements Initializable {
         translateTransition.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                synchronized (drawAnimationLock){
-                    rootPane.getChildren().remove(translateTransition.getNode());
-                    drawAnimationLock.notify();
-                }
+                rootPane.getChildren().remove(translateTransition.getNode());
             }
         });
-        translateTransition.play();
     }
 
     @FXML
@@ -409,7 +397,7 @@ public class BattleGroundController implements Initializable {
         }
         try {
             ActionRequest.PERFORM_ACTION.execute(parameters);
-            gameRender();
+            renderActions();
             infoPacks.clear();
         } catch (Exception e) {
             logger.error(e);
@@ -427,6 +415,11 @@ public class BattleGroundController implements Initializable {
             }
         }
     }
+
+    private void renderActions() {
+        
+    }
+
     private void setForPerformAction(Character character, int side, boolean isOnGround, Parent parent){
     parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
         @Override

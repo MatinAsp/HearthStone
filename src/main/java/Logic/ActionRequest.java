@@ -10,7 +10,9 @@ import Interfaces.PerformActionHandler;
 import Interfaces.PlayActionHandler;
 import Log.LogCenter;
 import Models.Cards.Card;
+import Models.Cards.HeroPower;
 import Models.Cards.Minion;
+import Models.Cards.Weapon;
 import Models.InfoPack;
 import Models.Passive;
 
@@ -41,17 +43,7 @@ public enum ActionRequest {
                 check = true;
             }
             if(!check){
-                ArrayList<Card> hand = game.getCompetitor(game.getTurn()).getInHandCards();
-                battleGroundController.putCardToHandAnimation(hand.get(hand.size() - 1), (game.getTurn() == 0) ? true:false);
-                Object lock = battleGroundController.getDrawAnimationLock();
-                synchronized (lock){
-                    /*try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        LogCenter.getInstance().getLogger().error(e);
-                        e.printStackTrace();
-                    }*/
-                }
+                numberOfDraws++;
             }
             super.execute();
         }
@@ -62,11 +54,29 @@ public enum ActionRequest {
             try {
                 executeBeforeActions(parameters);
                 game.performAction(parameters);
+                record(parameters);
                 super.execute(parameters);
                 game.checkAll();
             }catch (GameOverException e){
                 game.engGame();
                 throw e;
+            }
+        }
+
+        private void record(InfoPack[] parameters){
+            if(!parameters[0].isOnGround()) {
+                if (parameters[0].getCharacter() instanceof Weapon) {
+                    summoned = true;
+                }
+                if (!(parameters[0].getCharacter() instanceof Passive)){
+                    played = parameters[0];
+                }
+            }
+            else {
+                if(!(parameters[0].getCharacter() instanceof HeroPower)){
+                    attackList.add(parameters[0]);
+                    attackList.add(parameters[1]);
+                }
             }
         }
 
@@ -87,6 +97,7 @@ public enum ActionRequest {
         @Override
         public void execute(Card minion, int side) throws GameOverException, InvalidChoiceException {
             game.summon((Minion) minion, side);
+            summoned = true;
             super.execute(minion, side);
         }
     };
@@ -131,21 +142,51 @@ public enum ActionRequest {
     }
 
     private static Game game;
-    private static BattleGroundController battleGroundController;
+    private static int numberOfDraws;
+    private static boolean summoned;
+    private static InfoPack played;
+    private static ArrayList<InfoPack> attackList;
     private ArrayList<ActionHandler> actions = new ArrayList<>(), beforeActions = new ArrayList<>();
 
     public static void setCurrentGame(Game game){
         ActionRequest.game = game;
+        numberOfDraws = 0;
+        summoned = false;
+        played = null;
+        attackList = new ArrayList<>();
         for(ActionRequest actionRequest: values()){
             actionRequest.actions.clear();
         }
         game.initialize();
     }
 
-    public static void setBattleGroundController(BattleGroundController battleGroundController){
-        ActionRequest.battleGroundController = battleGroundController;
+    public static boolean readSummoned(){
+        boolean answer = summoned;
+        summoned = false;
+        return answer;
     }
 
+    public static InfoPack readPlayed(){
+        InfoPack answer = played;
+        played = null;
+        return answer;
+    }
+
+    public static int readDrawNumber(){
+        int answer = numberOfDraws;
+        numberOfDraws = 0;
+        return answer;
+    }
+
+    public static ArrayList<InfoPack> readAttackingList(){
+        ArrayList<InfoPack> infoPacks = new ArrayList<>();
+        if(attackList.size() > 0){
+            infoPacks.add(attackList.get(0));
+            infoPacks.add(attackList.get(1));
+        }
+        attackList.clear();
+        return infoPacks;
+    }
 
     public void addAction(ActionHandler actionHandler){
         actions.add(actionHandler);
