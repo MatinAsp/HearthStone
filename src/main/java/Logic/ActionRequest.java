@@ -17,7 +17,6 @@ import Models.InfoPack;
 import Models.Passive;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public enum ActionRequest {
     END_TURN{
@@ -96,10 +95,10 @@ public enum ActionRequest {
     },
     SUMMON_MINION{
         @Override
-        public void execute(Card minion, int side) throws GameOverException, InvalidChoiceException {
-            game.summon((Minion) minion, side);
+        public void execute(Card minion, int side, int summonPlace) throws GameOverException, InvalidChoiceException {
+            game.summon((Minion) minion, side, summonPlace);
             summoned = true;
-            super.execute(minion, side);
+            super.execute(minion, side, summonPlace);
         }
     };
 
@@ -107,7 +106,7 @@ public enum ActionRequest {
         return beforeActions;
     }
 
-    public void execute(Card card, int side) throws GameOverException, InvalidChoiceException {
+    public void execute(Card card, int side, int summonPlace) throws GameOverException, InvalidChoiceException {
         for (ActionHandler actionHandler: actions){
             try {
                 if(actionHandler instanceof PlayActionHandler){

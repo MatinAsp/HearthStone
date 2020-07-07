@@ -114,9 +114,16 @@ public class Game {
         }
     }
 
-    public void summon(Minion minion, int side) {
+    public void summon(Minion minion, int side, int summonPlace) {
         if(competitor[side].getOnBoardCards().size() < GameConstants.getInstance().getInteger("groundMaxCard")){
-            competitor[side].addCardOnBoard(minion);
+            System.out.println(minion);
+            System.out.println(summonPlace);
+            if(summonPlace < 0){
+                competitor[side].addCardOnBoard(minion);
+            }
+            else {
+                competitor[side].getOnBoardCards().add(summonPlace, minion);
+            }
         }
     }
 

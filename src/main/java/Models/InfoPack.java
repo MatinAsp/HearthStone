@@ -4,7 +4,7 @@ import javafx.scene.Parent;
 
 public class InfoPack {
     private Character character;
-    private int side;
+    private int side, summonPlace;
     private boolean isOnGround;
     private Parent parent;
 
@@ -17,6 +17,15 @@ public class InfoPack {
     }
 
     public InfoPack(Character character, int side, boolean isOnGround, Parent parent){
+        summonPlace = -1;
+        this.character = character;
+        this.side = side;
+        this.isOnGround = isOnGround;
+        this.parent = parent;
+    }
+
+    public InfoPack(Character character, int side, boolean isOnGround, Parent parent, int summonPlace){
+        this.summonPlace = summonPlace;
         this.character = character;
         this.side = side;
         this.isOnGround = isOnGround;
@@ -29,5 +38,9 @@ public class InfoPack {
 
     public Parent getParent() {
         return parent;
+    }
+
+    public int getSummonPlace() {
+        return summonPlace;
     }
 }

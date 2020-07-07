@@ -197,13 +197,13 @@ public class Actions {
     public void action1(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
         if(infoPack2.getCharacter() instanceof Minion && ((Minion) infoPack2.getCharacter()).getHp() < 0){
-            ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, infoPack1.getCharacter().getName()), infoPack1.getSide());
+            ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, infoPack1.getCharacter().getName()), infoPack1.getSide(), -1);
         }
     }
 
     @CardName(value = "Arena Patron", isForOnBoard = false)
     public void action1(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
     @CardName(value = "Argent Commander", isForOnBoard = true)
@@ -213,7 +213,7 @@ public class Actions {
 
     @CardName(value = "Argent Commander", isForOnBoard = false)
     public void action2(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
     @CardName(value = "Bluegill Warrior", isForOnBoard = true)
@@ -223,7 +223,7 @@ public class Actions {
 
     @CardName(value = "Bluegill Warrior", isForOnBoard = false)
     public void action3(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
     @CardName(value = "Curio Collector", isForOnBoard = true)
@@ -234,7 +234,7 @@ public class Actions {
 
     @CardName(value = "Curio Collector", isForOnBoard = false)
     public void action5(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         ActionRequest.DRAW_CARD.addAction(new ActionHandler() {
             @Override
             public void runAction() throws Exception {
@@ -253,7 +253,7 @@ public class Actions {
 
     @CardName(value = "Deathwing", isForOnBoard = false)
     public void action7(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         game.getCompetitor(0).getOnBoardCards().clear();
         game.getCompetitor(1).getOnBoardCards().clear();
     }
@@ -265,7 +265,7 @@ public class Actions {
 
     @CardName(value = "Drakkari Trickster", isForOnBoard = false)
     public void action8(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         Competitor competitor = game.getCompetitor(infoPack.getSide());
         try {
             competitor.drawCard();
@@ -280,7 +280,7 @@ public class Actions {
 
     @CardName(value = "Dreadscale", isForOnBoard = false)
     public void action10(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         ActionRequest.END_TURN.addAction(new ActionHandler() {
             @Override
             public void runAction() throws Exception {
@@ -305,7 +305,7 @@ public class Actions {
 
     @CardName(value = "Gruul", isForOnBoard = false)
     public void action12(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         ActionRequest.END_TURN.addAction(new ActionHandler() {
             @Override
             public void runAction() throws Exception {
@@ -324,7 +324,7 @@ public class Actions {
 
     @CardName(value = "High Priest Amet", isForOnBoard = false)
     public void action14(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         ActionRequest.SUMMON_MINION.addAction(new PlayActionHandler() {
             @Override
             public void runAction(Card card, int side) throws Exception {
@@ -344,7 +344,7 @@ public class Actions {
 
     @CardName(value = "Phantom Militia", isForOnBoard = false)
     public void action16(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         Card card = DataManager.getInstance().getObject(Minion.class, infoPack.getCharacter().getName());
         game.getCompetitor(infoPack.getSide()).addCardInHand(card);
         ActionRequest.END_TURN.addAction(new ActionHandler() {
@@ -362,7 +362,7 @@ public class Actions {
 
     @CardName(value = "Psychic Conjurer", isForOnBoard = false)
     public void action17(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         ArrayList<Card> cards = game.getCompetitor((infoPack.getSide()+1)%2).getInDeckCards();
         if(cards.size() > 0){
             Random random = new Random();
@@ -380,7 +380,7 @@ public class Actions {
         if(infoPack1.getSide() != infoPack2.getSide() || !infoPack2.isOnGround() || !(infoPack2.getCharacter() instanceof Minion)){
             throw new InvalidChoiceException();
         }
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack1.getCharacter(), infoPack1.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack1.getCharacter(), infoPack1.getSide(), infoPack1.getSummonPlace());
         Card[] cards = new Card[3];
         for(int i = 0 ; i < 3; i++){
             cards[i] = DataManager.getInstance().getObject(Minion.class, infoPack1.getCharacter().getName());
@@ -388,7 +388,7 @@ public class Actions {
         Competitor competitor = game.getCompetitor(infoPack1.getSide());
         competitor.addCardInDeck(cards[0]);
         competitor.addCardInHand(cards[1]);
-        ActionRequest.SUMMON_MINION.execute(cards[2], infoPack1.getSide());
+        ActionRequest.SUMMON_MINION.execute(cards[2], infoPack1.getSide(), -1);
     }
 
     @SelectAction(value = "Sathrovarr", isForOnBoard = false)
@@ -396,7 +396,7 @@ public class Actions {
         if(game.getCompetitor(game.getTurn()).getOnBoardCards().size() != 0){
             throw new SelectionNeededException();
         }
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
     @CardName(value = "Security Rover", isForOnBoard = true)
@@ -406,7 +406,7 @@ public class Actions {
 
     @CardName(value = "Security Rover", isForOnBoard = false)
     public void action22(InfoPack infoPack) throws InvalidChoiceException, GameOverException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         ((Minion) infoPack.getCharacter()).addActionForDamage(new ActionHandler() {
             @Override
             public void runAction() throws Exception {
@@ -414,7 +414,7 @@ public class Actions {
                 minion.setHp(2);
                 minion.setAttack(3);
                 minion.setTaunt(true);
-                ActionRequest.SUMMON_MINION.execute(minion, infoPack.getSide());
+                ActionRequest.SUMMON_MINION.execute(minion, infoPack.getSide(), -1);
             }
         });
     }
@@ -426,7 +426,7 @@ public class Actions {
 
     @CardName(value = "Sen'jin Shieldmasta", isForOnBoard = false)
     public void action23(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
     @CardName(value = "Stormwind Champion", isForOnBoard = true)
@@ -436,7 +436,7 @@ public class Actions {
 
     @CardName(value = "Stormwind Champion", isForOnBoard = false)
     public void action25(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         for(Minion minion: game.getCompetitor(infoPack.getSide()).getOnBoardCards()){
             minion.setHp(minion.getHp() + 1);
             minion.setAttack(minion.getAttack() + 1);
@@ -450,8 +450,8 @@ public class Actions {
 
     @CardName(value = "Tomb Warden", isForOnBoard = false)
     public void action27(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
-        ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, infoPack.getCharacter().getName()), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
+        ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, infoPack.getCharacter().getName()), infoPack.getSide(), -1);
     }
 
     @CardName(value = "Tortollan Forager", isForOnBoard = true)
@@ -461,7 +461,7 @@ public class Actions {
 
     @CardName(value = "Tortollan Forager", isForOnBoard = false)
     public void action29(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         ArrayList<Minion> minions = DataManager.getInstance().getAllCharacter(Minion.class);
         Random random = new Random();
         while (true){
@@ -480,7 +480,7 @@ public class Actions {
 
     @CardName(value = "Voodoo Doctor", isForOnBoard = false)
     public void action31(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         restoreHealth(game.getCompetitor(infoPack.getSide()).getHero(), game.getCompetitor(infoPack.getSide()).getHero(),2);
     }
 
@@ -491,7 +491,7 @@ public class Actions {
 
     @CardName(value = "Wisp", isForOnBoard = false)
     public void action32(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
     @CardName(value = "Blizzard", isForOnBoard = false)
@@ -605,7 +605,7 @@ public class Actions {
     @CardName(value = "Swarm of locusts", isForOnBoard = false)
     public void action41(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
         for(int i = 0; i < 7; i++){
-            ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Locust"), infoPack.getSide());
+            ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Locust"), infoPack.getSide(), -1);
         }
     }
 
@@ -676,7 +676,7 @@ public class Actions {
 
     @CardName(value = "Sheep", isForOnBoard = false)
     public void action54(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Card) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Card) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
     @CardName(value = "Locust", isForOnBoard = true)
@@ -686,7 +686,7 @@ public class Actions {
 
     @CardName(value = "Locust", isForOnBoard = false)
     public void action56(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Card) infoPack.getCharacter(), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute((Card) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
     @CardName(value = "Activate the Obelisk", isForOnBoard = false)
@@ -717,7 +717,7 @@ public class Actions {
                 Minion minion = DataManager.getInstance().getObject(Minion.class, "Deathwing");
                 minion.setHp(6);
                 minion.setAttack(6);
-                ActionRequest.SUMMON_MINION.execute(minion, infoPack.getSide());
+                ActionRequest.SUMMON_MINION.execute(minion, infoPack.getSide(), -1);
             }
         });
     }
@@ -742,7 +742,8 @@ public class Actions {
                 Random random = new Random();
                 ActionRequest.SUMMON_MINION.execute(
                         DataManager.getInstance().getObject(Minion.class, minions.get(random.nextInt(minions.size())).getName()),
-                        infoPack.getSide()
+                        infoPack.getSide(),
+                        -1
                 );
             }
         });
@@ -851,8 +852,8 @@ public class Actions {
     @CardName(value = "PaladinHeroPower", isForOnBoard = true)
     public void action66(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
         game.getCompetitor(infoPack.getSide()).useHeroPower();
-        ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Sheep"), infoPack.getSide());
-        ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Sheep"), infoPack.getSide());
+        ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Sheep"), infoPack.getSide(), -1);
+        ActionRequest.SUMMON_MINION.execute(DataManager.getInstance().getObject(Minion.class, "Sheep"), infoPack.getSide(), -1);
     }
 
     @CardName(value = "PriestHeroPower", isForOnBoard = true)
@@ -894,10 +895,5 @@ public class Actions {
             ActionRequest.DRAW_CARD.execute();
         }
     }
-
-
-    //public static void main(String[] arg){
-
-    //}
 
 }

@@ -185,7 +185,7 @@ public class BattleGroundController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 graphicCard.setLayoutY(
-                        graphicCard.getLayoutY()-((side == 0)? 1:-1)*GameConstants.getInstance().getInteger("liftUpCardInHad")
+                        graphicCard.getLayoutY()+GameConstants.getInstance().getInteger("liftUpCardInHand"+side)
                 );
                 graphicCard.toFront();
             }
@@ -201,7 +201,7 @@ public class BattleGroundController implements Initializable {
                             hand[side].getChildren().get(cnt).toFront();
                         }
                         graphicCard.setLayoutY(
-                                graphicCard.getLayoutY() + ((side == 0)? 1:-1)*GameConstants.getInstance().getInteger("liftUpCardInHad")
+                                graphicCard.getLayoutY() - GameConstants.getInstance().getInteger("liftUpCardInHand"+side)
                         );
                     }
                 }
@@ -234,6 +234,7 @@ public class BattleGroundController implements Initializable {
                 synchronized (lock){
                     LogCenter.getInstance().getLogger().info("drag_ended");
                     double y = graphicCard.getLayoutY();
+                    double x = graphicCard.getLayoutX();
                     graphicCard.setLayoutX(graphicCard.getLayoutX() - event.getSceneX() + mouseFirstPosition[0]);
                     graphicCard.setLayoutY(graphicCard.getLayoutY() - event.getSceneY() + mouseFirstPosition[1]);
                     try {
@@ -241,7 +242,18 @@ public class BattleGroundController implements Initializable {
                         int minYForPlayCard = GameConstants.getInstance().getInteger("minYForPlayCard");
                         if ((side == 0 && graphicCard.getParent().getLayoutY() + y < maxYForPlayCard) ||
                                 (side == 1 && graphicCard.getParent().getLayoutY() + y + ((Pane) graphicCard).getHeight() > minYForPlayCard)){
-                            performAction(card, side, false,graphicCard);
+                            x += graphicCard.getParent().getLayoutX();
+                            int cnt = -1;
+                            double groundX = battleGround[side].getLayoutX();
+                            int i = 0;
+                            for(Node node: battleGround[side].getChildren()){
+                                if(x < node.getLayoutX() + groundX){
+                                    cnt = i;
+                                    break;
+                                }
+                                i++;
+                            }
+                            performAction(card, side, false,graphicCard, cnt);
                             LogCenter.getInstance().getLogger().info("play_"+card.getType());
                             addGameLog("play_"+card.getType());
                         }
@@ -353,7 +365,7 @@ public class BattleGroundController implements Initializable {
                 public void handle(MouseEvent event) {
                     LogCenter.getInstance().getLogger().info("passive_selected");
                     addGameLog("passive_selected");
-                    performAction(passive, side, false, passiveGraphics);
+                    performAction(passive, side, false, passiveGraphics, -1);
                     passiveSelectionPane.setVisible(false);
                     if(side == 0 && !game.isWithBot()) renderPassives(1);
                 }
@@ -372,9 +384,9 @@ public class BattleGroundController implements Initializable {
         GridPane.setConstraints(logLabel, 0, 0);
         gameLogGridPane.getChildren().add(logLabel);
     }
-    private synchronized void performAction(Character character, int side, boolean isOnGround, Parent parent){
+    private synchronized void performAction(Character character, int side, boolean isOnGround, Parent parent, int summonPlace){
         Logger logger = LogCenter.getInstance().getLogger();
-        infoPacks.add(new InfoPack(character, side, isOnGround, parent));
+        infoPacks.add(new InfoPack(character, side, isOnGround, parent, summonPlace));
         InfoPack[] parameters = new InfoPack[infoPacks.size()];
         for(int i = 0; i < infoPacks.size(); i++){
              parameters[i] = infoPacks.get(i);
@@ -564,7 +576,7 @@ public class BattleGroundController implements Initializable {
     parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
-            performAction(character, side, isOnGround, parent);
+            performAction(character, side, isOnGround, parent, -1);
         }
     });
 }
