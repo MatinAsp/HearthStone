@@ -55,6 +55,11 @@ public class BattleGroundController implements Initializable {
     private HBox battleGround2;
     private HBox[] battleGround = new HBox[2];
     @FXML
+    private StackPane showCard1;
+    @FXML
+    private StackPane showCard2;
+    private StackPane[] showCard = new StackPane[2];
+    @FXML
     private Label manaText1;
     @FXML
     private Label manaText2;
@@ -107,6 +112,8 @@ public class BattleGroundController implements Initializable {
         renderPassives(0);
         battleGround[0] = battleGround1;
         battleGround[1] = battleGround2;
+        showCard[0] = showCard1;
+        showCard[1] = showCard2;
         hand[0] = hand1;
         hand[1] = hand2;
         manaText[0] = manaText1;
@@ -275,6 +282,18 @@ public class BattleGroundController implements Initializable {
         for(Card card: cards){
             Parent parent = GraphicRender.getInstance().buildBattleGroundMinion((Minion) card);
             setForPerformAction(card, side, true, parent);
+            parent.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    showCard[side].getChildren().add(GraphicRender.getInstance().buildCard(card, false, false, false));
+                }
+            });
+            parent.setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    showCard[side].getChildren().clear();
+                }
+            });
             battleGround.getChildren().add(parent);
         }
     }
@@ -320,15 +339,12 @@ public class BattleGroundController implements Initializable {
         @Override
         public void run() {
             int time = GameConstants.getInstance().getInteger("timeToPlay");
-            timeText.setText(""+time);
             Platform.runLater(()->timeText.setText(""+time));
-            for(int i = 0; i < time; i++){
+            for(int i = 0; i < time && thread == this; i++){
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    if(isInterrupted()){
-                        return;
-                    }
+                    return;
                 }
                 if(isInterrupted()){
                     return;
@@ -626,6 +642,9 @@ public class BattleGroundController implements Initializable {
     private void setPlayCardTransition() {
         InfoPack played = ActionRequest.readPlayed();
         if(played != null){
+            if(played.getSide() == 1){
+                ((Pane) played.getParent()).getChildren().get(((Pane) played.getParent()).getChildren().size() - 2).setVisible(false);
+            }
             Transition transition = playCardTransition(played.getParent());
             transitions.add(transition);
             beforeAction.add(new ActionHandler() {
@@ -665,11 +684,11 @@ public class BattleGroundController implements Initializable {
     }
 
     private void setForPerformAction(Character character, int side, boolean isOnGround, Parent parent){
-    parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
-            performAction(character, side, isOnGround, parent, -1);
-        }
-    });
-}
+        parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                performAction(character, side, isOnGround, parent, -1);
+            }
+        });
+    }
 }

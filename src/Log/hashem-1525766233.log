@@ -1,0 +1,18 @@
+USER: hashem
+ID: 1525766233
+CREATED_AT: 2020/07/08 17:25:37
+PASSWORD: -1224424906
+
+INFO    2020-07-08 17:25:37,930 - sign_in
+INFO    2020-07-08 17:25:37,931 - navigate_from_log_in_to_menu
+INFO    2020-07-08 17:25:43,873 - navigate_from_menu_to_collections
+INFO    2020-07-08 17:25:52,205 - set_current_collections_deck
+INFO    2020-07-08 17:25:55,763 - click_card
+INFO    2020-07-08 17:25:55,763 - add_card_to_deck
+INFO    2020-07-08 17:26:01,864 - hero_selection_window_opened
+ERROR   2020-07-08 17:26:03,521 - java.lang.Exception: Can't change the hero.
+INFO    2020-07-08 17:26:03,522 - set_alert
+INFO    2020-07-08 17:26:05,280 - alert_dismissed
+INFO    2020-07-08 17:26:06,456 - change_deck's_hero
+INFO    2020-07-08 17:26:10,584 - navigate_from_collections_to_menu
+INFO    2020-07-08 17:26:13,092 - exit

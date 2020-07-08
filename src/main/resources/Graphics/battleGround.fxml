@@ -25,6 +25,8 @@
       </ImageView>
       <Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
          <children>
+            <StackPane fx:id="showCard1" alignment="TOP_LEFT" layoutX="195.0" layoutY="500.0" prefHeight="150.0" prefWidth="200.0" />
+            <StackPane fx:id="showCard2" alignment="TOP_LEFT" layoutX="195.0" layoutY="20.0" prefHeight="150.0" prefWidth="200.0" />
             <Button id="endTurn" fx:id="endTurnButton" layoutX="1074.0" layoutY="302.0" mnemonicParsing="false" onAction="#endTurn" />
             <Label fx:id="manaText1" alignment="CENTER" layoutX="853.0" layoutY="651.0" prefHeight="31.0" prefWidth="83.0" styleClass="gameFont" text="10/10" textFill="WHITE">
                <font>
@@ -106,7 +108,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="720.0" opacity="0.59" stroke="#ffffff00" strokeType="INSIDE" width="1280.0" />
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="passiveText" alignment="CENTER" prefHeight="31.0" prefWidth="83.0" styleClass="gameFont" text="0" textFill="WHITE">
+                  <Label fx:id="passiveText" alignment="CENTER" prefHeight="45.0" prefWidth="394.0" styleClass="gameFont" text="0" textFill="WHITE">
                      <font>
                         <Font size="36.0" />
                      </font>
