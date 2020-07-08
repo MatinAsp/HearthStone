@@ -9,8 +9,11 @@ import Models.Deck;
 import Models.Hero;
 import Models.Passive;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.awt.font.ImageGraphicAttribute;
 import java.io.IOException;
 
 public class GraphicRender {
@@ -60,6 +63,11 @@ public class GraphicRender {
             GameSettings gameSettings = GameSettings.getInstance();
             cardGraphicsController.setCardBack(AssetManager.getInstance().getImage(gameSettings.getCardBack()));
         }
+        ImageView imageView = new ImageView(AssetManager.getInstance().getImage("X"));
+        graphicCard.getChildren().add(imageView);
+        imageView.setLayoutX(graphicCard.getPrefWidth()/2 - imageView.getImage().getWidth()/2);
+        imageView.setLayoutY(graphicCard.getPrefHeight()/2 - imageView.getImage().getHeight()/2);
+        imageView.setVisible(false);
         return graphicCard;
     }
 

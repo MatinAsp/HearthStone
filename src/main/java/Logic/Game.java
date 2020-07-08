@@ -190,4 +190,13 @@ public class Game {
         }
     }
 
+    public void selectCard(ArrayList<Card> cardsSelected) throws GameOverException {
+        for(Card card: cardsSelected){
+            ActionRequest.DRAW_CARD.execute();
+        }
+        for(Card card: cardsSelected){
+            competitor[turn].removeCardFromHand(card);
+            competitor[turn].addCardInDeck(card);
+        }
+    }
 }

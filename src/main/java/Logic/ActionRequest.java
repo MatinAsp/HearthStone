@@ -102,6 +102,15 @@ public enum ActionRequest {
         }
     };
 
+    public static void selectCard(ArrayList<Card> cardsSelected) throws GameOverException {
+        try {
+            game.selectCard(cardsSelected);
+        } catch (GameOverException e) {
+            game.engGame();
+            throw e;
+        }
+    }
+
     public ArrayList<ActionHandler> getBeforeActions() {
         return beforeActions;
     }

@@ -389,6 +389,8 @@ public class BattleGroundController implements Initializable {
     public void renderPassives(int side) {
         passiveSelectionPlace.getChildren().clear();
         passiveSelectionPane.setVisible(true);
+        cardSelectionButton.setVisible(false);
+        passiveText.setText("Player "+(side+1));
         ArrayList<Passive> passives = DataManager.getInstance().getAllCharacter(Passive.class);
         int passivesNumber = GameConstants.getInstance().getInteger("passivesOnGamesStar");
         while (passivesNumber-- > 0){
@@ -404,13 +406,61 @@ public class BattleGroundController implements Initializable {
                     passiveSelectionPane.setVisible(false);
                     if(side == 0 && !game.isWithBot()) renderPassives(1);
                     else {
-                        thread = new Timer();
-                        thread.start();
+                        renderCardSelection(0);
                     }
                 }
             });
             passiveSelectionPlace.getChildren().add(passiveGraphics);
             passives.remove(passive);
+        }
+    }
+
+    @FXML
+    private Label passiveText;
+    @FXML
+    private Button cardSelectionButton;
+    private ArrayList<Card> cardsSelected = new ArrayList<>();
+    private int selectionSide;
+    public void renderCardSelection(int side) {
+        selectionSide = side;
+        passiveSelectionPlace.getChildren().clear();
+        passiveSelectionPane.setVisible(true);
+        cardSelectionButton.setVisible(true);
+        passiveText.setText("Player "+(side+1));
+        cardsSelected.clear();
+        ArrayList<Card> cards = game.getCompetitor(side).getInHandCards();
+        for (Card card: cards){
+            Pane cardGraphics = GraphicRender.getInstance().buildCard(card, false, false, false);
+            cardGraphics.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    Node node = cardGraphics.getChildren().get(cardGraphics.getChildren().size() - 1);
+                    if(!node.isVisible()) cardsSelected.add(card);
+                    else cardsSelected.remove(card);
+                    node.setVisible(!node.isVisible());
+                }
+            });
+            passiveSelectionPlace.getChildren().add(cardGraphics);
+        }
+    }
+
+    @FXML
+    public void cardSelecting(){
+        try {
+            ActionRequest.selectCard(cardsSelected);
+        } catch (GameOverException e) {
+            e.printStackTrace();
+        }
+        renderActions();
+        if(selectionSide == 0 && !game.isWithBot()){
+            game.setTurn(1);
+            renderCardSelection(1);
+        }
+        else {
+            game.setTurn(0);
+            passiveSelectionPane.setVisible(false);
+            thread = new Timer();
+            thread.start();
         }
     }
 
