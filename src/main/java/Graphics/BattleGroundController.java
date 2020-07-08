@@ -182,9 +182,11 @@ public class BattleGroundController implements Initializable {
     }
 
     private void handCardSetAction(Parent graphicCard, Card card, int side){
+        if(side == 1) graphicCard.setRotate(180);
         graphicCard.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                graphicCard.setRotate(0);
                 graphicCard.setLayoutY(
                         graphicCard.getLayoutY()+GameConstants.getInstance().getInteger("liftUpCardInHand"+side)
                 );
@@ -204,6 +206,7 @@ public class BattleGroundController implements Initializable {
                         graphicCard.setLayoutY(
                                 graphicCard.getLayoutY() - GameConstants.getInstance().getInteger("liftUpCardInHand"+side)
                         );
+                        if (side == 1) graphicCard.setRotate(180);
                     }
                 }
             }

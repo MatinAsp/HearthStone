@@ -864,3 +864,21 @@ INFO    2020-07-08 14:40:22,914 - start_a_game
 INFO    2020-07-08 14:40:25,742 - passive_selected
 INFO    2020-07-08 14:40:27,229 - passive_selected
 INFO    2020-07-08 14:41:16,573 - exit
+INFO    2020-07-08 14:43:16,165 - start_a_game
+INFO    2020-07-08 14:43:18,977 - passive_selected
+INFO    2020-07-08 14:43:23,138 - passive_selected
+INFO    2020-07-08 14:44:26,569 - start_a_game
+INFO    2020-07-08 14:44:30,472 - passive_selected
+INFO    2020-07-08 14:44:31,402 - passive_selected
+INFO    2020-07-08 14:45:26,552 - exit
+INFO    2020-07-08 14:45:55,504 - start_a_game
+INFO    2020-07-08 14:46:05,062 - passive_selected
+INFO    2020-07-08 14:46:05,913 - passive_selected
+INFO    2020-07-08 14:46:26,429 - exit
+INFO    2020-07-08 14:46:50,670 - start_a_game
+INFO    2020-07-08 14:47:21,734 - start_a_game
+INFO    2020-07-08 14:47:26,537 - passive_selected
+INFO    2020-07-08 14:47:27,538 - passive_selected
+ERROR   2020-07-08 14:47:31,328 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+INFO    2020-07-08 14:49:42,523 - start_a_game
+INFO    2020-07-08 14:51:43,417 - start_a_game
