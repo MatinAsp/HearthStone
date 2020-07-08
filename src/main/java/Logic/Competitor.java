@@ -9,11 +9,11 @@ import Log.LogCenter;
 import Models.Cards.*;
 import Models.Deck;
 import Models.Hero;
-import Models.InfoPack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Set;
 
 public class Competitor{
     private int fullMana = 0, leftMana = 0;
@@ -137,11 +137,14 @@ public class Competitor{
     }
 
     public void runQuestRewards() {
-        for (Quest quest: questsInProgress.keySet()){
-            if(questsInProgress.get(quest).getQuestPercent() == 1){
+        ArrayList<Quest> quests = new ArrayList<>();
+        quests.addAll(questsInProgress.keySet());
+        for (Quest quest: quests){
+            if(questsInProgress.get(quest).getQuestPercent() >= 1){
+                QuestActionHandler questActionHandler = questsInProgress.get(quest);
                 questsInProgress.remove(quest);
                 try {
-                    questsInProgress.get(quest).runAction();
+                    questActionHandler.runAction();
                 } catch (Exception e) {
                     e.printStackTrace();
                     LogCenter.getInstance().getLogger().error(e);
@@ -169,5 +172,9 @@ public class Competitor{
     public void useHeroPower() throws InvalidChoiceException {
         hero.getHeroPower().setCharge(false);
         leftMana -= hero.getHeroPower().getMana();
+    }
+
+    public HashMap<Quest, QuestActionHandler> getQuestsInProgress() {
+        return questsInProgress;
     }
 }

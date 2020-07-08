@@ -262,12 +262,12 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            PlayersManager.getInstance().logIn("ali", "ali");
+            //PlayersManager.getInstance().logIn("ali", "ali");
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            startGame();
+            //startGame();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -3,7 +3,7 @@
 "rarity":"Common",
 "heroClass":"Neutral",
 "type":"Quest",
-"description":"Quest: Spend 8 Mana on spells. Reward: Summon a 6/6 Dragon.",
+"description":"Quest: Spend 8 Mana on spells. \nReward: Summon a 6/6 Dragon.",
 "mana":1,
 "price":5
 }

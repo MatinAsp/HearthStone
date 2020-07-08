@@ -692,10 +692,11 @@ public class Actions {
 
     @CardName(value = "Activate the Obelisk", isForOnBoard = false)
     public void action57(InfoPack infoPack){
+        int mana = game.getCompetitor(infoPack.getSide()).getSpentManaOnClass(Weapon.class);
         game.getCompetitor(infoPack.getSide()).addQuest((Quest) infoPack.getCharacter(), new QuestActionHandler() {
             @Override
             public double getQuestPercent() {
-                return game.getCompetitor(infoPack.getSide()).getSpentManaOnClass(Weapon.class)/6.0;
+                return (game.getCompetitor(infoPack.getSide()).getSpentManaOnClass(Weapon.class)-mana)/6.0;
             }
 
             @Override
@@ -707,10 +708,11 @@ public class Actions {
 
     @CardName(value = "Learn Draconic", isForOnBoard = false)
     public void action58(InfoPack infoPack){
+        int mana = game.getCompetitor(infoPack.getSide()).getSpentManaOnClass(Spell.class);
         game.getCompetitor(infoPack.getSide()).addQuest((Quest) infoPack.getCharacter(), new QuestActionHandler() {
             @Override
             public double getQuestPercent() {
-                return game.getCompetitor(infoPack.getSide()).getSpentManaOnClass(Spell.class)/8.0;
+                return (game.getCompetitor(infoPack.getSide()).getSpentManaOnClass(Spell.class)-mana)/8.0;
             }
 
             @Override
@@ -725,10 +727,11 @@ public class Actions {
 
     @CardName(value = "Strength in Numbers", isForOnBoard = false)
     public void action59(InfoPack infoPack){
+        int mana = game.getCompetitor(infoPack.getSide()).getSpentManaOnClass(Minion.class);
         game.getCompetitor(infoPack.getSide()).addQuest((Quest) infoPack.getCharacter(), new QuestActionHandler() {
             @Override
             public double getQuestPercent() {
-                return game.getCompetitor(infoPack.getSide()).getSpentManaOnClass(Minion.class)/10.0;
+                return (game.getCompetitor(infoPack.getSide()).getSpentManaOnClass(Minion.class)-mana)/10.0;
             }
 
             @Override

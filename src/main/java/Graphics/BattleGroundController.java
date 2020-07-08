@@ -6,6 +6,7 @@ import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
 import Interfaces.ActionHandler;
+import Interfaces.QuestActionHandler;
 import Log.LogCenter;
 import Logic.ActionRequest;
 import Logic.Game;
@@ -13,6 +14,7 @@ import Models.Cards.Card;
 import Models.Cards.Minion;
 import Logic.PlayersManager;
 import Logic.Competitor;
+import Models.Cards.Quest;
 import Models.Character;
 import Models.InfoPack;
 import Models.Passive;
@@ -27,6 +29,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -37,10 +40,9 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import org.apache.log4j.Logger;
 
-import java.awt.event.WindowStateListener;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -82,6 +84,10 @@ public class BattleGroundController implements Initializable {
     private StackPane heroPowerPlace2;
     private StackPane[] heroPowerPlace = new StackPane[2];
     @FXML
+    private Button questButton1;
+    @FXML
+    private Button questButton2;
+    @FXML
     private StackPane heroWeapon1;
     @FXML
     private StackPane heroWeapon2;
@@ -110,6 +116,8 @@ public class BattleGroundController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         renderPassives(0);
+        questButton1.setOnAction(e->renderQuests(0));
+        questButton2.setOnAction(e->renderQuests(1));
         battleGround[0] = battleGround1;
         battleGround[1] = battleGround2;
         showCard[0] = showCard1;
@@ -150,6 +158,9 @@ public class BattleGroundController implements Initializable {
             cardsNumberLabel[i].setText(getCardsNumberString(competitor));
             renderHeroPower(competitor, i);
             renderHeroWeapon(competitor, i);
+            if(!logScroll.isVisible() && lastQuestRender == i){
+                renderQuests(i);
+            }
         }
     }
 
@@ -395,6 +406,7 @@ public class BattleGroundController implements Initializable {
     @FXML
     private void backToMenu() {
         LogCenter.getInstance().getLogger().info("back_to_menu");
+        thread = null;
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("battleGroundSound"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         root.setVisible(false);
@@ -492,6 +504,43 @@ public class BattleGroundController implements Initializable {
         GridPane.setConstraints(logLabel, 0, 0);
         gameLogGridPane.getChildren().add(logLabel);
     }
+
+    @FXML
+    private GridPane questsStatus;
+    @FXML
+    private ScrollPane logScroll;
+    @FXML
+    private ScrollPane questScroll;
+
+    @FXML
+    private void showGameLog(){
+        logScroll.setVisible(true);
+        questsStatus.setVisible(false);
+    }
+
+    int lastQuestRender;
+
+    public void renderQuests(int side){
+        lastQuestRender = side;
+        logScroll.setVisible(false);
+        questsStatus.getChildren().clear();
+        questScroll.setVisible(true);
+        HashMap<Quest, QuestActionHandler> map = game.getCompetitor(side).getQuestsInProgress();
+        int cnt = 0;
+        for(Quest quest: map.keySet()){
+            Parent parent = GraphicRender.getInstance().buildQuestStatus(quest, map.get(quest));
+            parent.setOnMouseEntered(event -> showCard[side].getChildren().add(GraphicRender.getInstance().buildCard(quest, false, false, false)));
+            parent.setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    showCard[side].getChildren().clear();
+                }
+            });
+            GridPane.setConstraints(parent, 0, cnt++);
+            questsStatus.getChildren().add(parent);
+        }
+    }
+
     private synchronized void performAction(Character character, int side, boolean isOnGround, Parent parent, int summonPlace){
         Logger logger = LogCenter.getInstance().getLogger();
         infoPacks.add(new InfoPack(character, side, isOnGround, parent, summonPlace));
@@ -521,7 +570,7 @@ public class BattleGroundController implements Initializable {
     }
     private ArrayList<Transition> transitions = new ArrayList<>();
     private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();
-    private void renderActions() {
+    private synchronized void renderActions() {
         transitions.clear();
         afterAction.clear();
         beforeAction.clear();

@@ -180,3 +180,11 @@ Button{
     -fx-stroke: Black;
     -fx-stroke-width: 0.5;
 }
+
+.whiteDescription2{
+    -fx-font-family: 'Belwe Bd BT';
+    -fx-font-size: 10;
+    -fx-text-fill: White;
+    -fx-stroke: Black;
+    -fx-stroke-width: 0.5;
+}

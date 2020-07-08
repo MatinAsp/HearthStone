@@ -3,6 +3,7 @@ package Graphics;
 import Data.AssetManager;
 import Data.GameConstants;
 import Data.GameSettings;
+import Interfaces.QuestActionHandler;
 import Log.LogCenter;
 import Models.Cards.*;
 import Models.Deck;
@@ -196,5 +197,20 @@ public class GraphicRender {
         cardGraphicsController.setAttack(card.getAttack());
         cardGraphicsController.setDurability(card.getDurability());
         return graphicCard;
+    }
+
+    public Pane buildQuestStatus(Quest quest, QuestActionHandler questActionHandler) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questStatus.fxml"));
+        Pane questStatusGraphics = null;
+        try {
+            questStatusGraphics = fxmlLoader.load();
+            QuestStatusController questStatusController = fxmlLoader.getController();
+            questStatusController.setPercent("Percent: "+String.format("%.2f", questActionHandler.getQuestPercent()*100));
+            questStatusController.setQuestPic(AssetManager.getInstance().getImage(quest.getName()));
+        } catch (IOException e) {
+            e.printStackTrace();
+            LogCenter.getInstance().getLogger().error(e);
+        }
+        return questStatusGraphics;
     }
 }

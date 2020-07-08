@@ -25,6 +25,9 @@
       </ImageView>
       <Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
          <children>
+            <Button layoutX="30.0" layoutY="616.0" mnemonicParsing="false" onAction="#showGameLog" styleClass="brightButton" text="Logs" />
+            <Button fx:id="questButton1" layoutX="30.0" layoutY="489.0" mnemonicParsing="false" styleClass="brightButton" text="Quests" />
+            <Button fx:id="questButton2" layoutX="30.0" layoutY="125.0" mnemonicParsing="false" styleClass="brightButton" text="Quests" />
             <StackPane fx:id="showCard1" alignment="TOP_LEFT" layoutX="195.0" layoutY="500.0" prefHeight="150.0" prefWidth="200.0" />
             <StackPane fx:id="showCard2" alignment="TOP_LEFT" layoutX="195.0" layoutY="20.0" prefHeight="150.0" prefWidth="200.0" />
             <Button id="endTurn" fx:id="endTurnButton" layoutX="1074.0" layoutY="302.0" mnemonicParsing="false" onAction="#endTurn" />
@@ -51,12 +54,21 @@
                </font>
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000c4" height="271.0" layoutX="7.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" width="175.0" />
-            <ScrollPane layoutX="12.0" layoutY="197.0" prefHeight="270.0" prefWidth="175.0" style="-fx-background-color: transparent;">
+            <ScrollPane fx:id="logScroll" layoutX="12.0" layoutY="197.0" prefHeight="270.0" prefWidth="190.0" style="-fx-background-color: transparent;">
                <content>
                   <GridPane fx:id="gameLogGridPane" prefHeight="260.0" prefWidth="161.0" style="-fx-font-size: 12;" styleClass="gameFont">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="questScroll" layoutX="12.0" layoutY="197.0" prefHeight="270.0" prefWidth="190.0" style="-fx-background-color: transparent;">
+               <content>
+                  <GridPane fx:id="questsStatus" prefHeight="260.0" prefWidth="161.0" style="-fx-font-size: 12;" styleClass="gameFont">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
                   </GridPane>
                </content>
             </ScrollPane>
