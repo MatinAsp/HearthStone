@@ -18,7 +18,7 @@ public class Card extends Character {
         type = card.getType();
         description = card.getDescription();
         mana = card.getMana();
-        price = getPrice();
+        price = card.getPrice();
     }
 
     public String getHeroClass(){
