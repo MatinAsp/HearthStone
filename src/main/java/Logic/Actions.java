@@ -14,6 +14,7 @@ import Models.Cards.*;
 import Models.Character;
 import Models.Hero;
 import Models.InfoPack;
+import Models.Passive;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -68,7 +69,7 @@ public class Actions {
     public void performAction(InfoPack[] methodParameters) throws InvalidChoiceException, SelectionNeededException, GameOverException{
         //tabe selection ha
         String cardName = methodParameters[0].getCharacter().getName();
-        if(methodParameters[0].getSide() != game.getTurn()){
+        if(methodParameters[0].getSide() != game.getTurn() && !(methodParameters[0].getCharacter() instanceof Passive)){
             throw new InvalidChoiceException();
         }
         try{

@@ -67,6 +67,11 @@
             <HBox fx:id="battleGround2" alignment="CENTER" layoutX="210.0" layoutY="213.0" prefHeight="119.0" prefWidth="875.0" />
             <Pane fx:id="hand1" layoutX="434.0" layoutY="615.0" prefHeight="178.0" prefWidth="430.0" />
             <Pane fx:id="hand2" layoutX="402.0" layoutY="-131.0" prefHeight="178.0" prefWidth="430.0" />
+            <Label fx:id="timeText" alignment="CENTER" layoutX="1208.0" layoutY="312.0" prefHeight="31.0" prefWidth="83.0" styleClass="gameFont" text="10/10" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <StackPane fx:id="alertBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" visible="false">

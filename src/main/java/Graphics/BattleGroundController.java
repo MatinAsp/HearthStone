@@ -18,6 +18,7 @@ import Models.InfoPack;
 import Models.Passive;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -298,10 +299,42 @@ public class BattleGroundController implements Initializable {
     @FXML
     private Button endTurnButton;
     @FXML
+    private Label timeText;
+
+    Thread thread = null;
+
+    @FXML
     private void endTurn() {
         infoPacks.clear();
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("endTurnSound"), 1);
         changeTurn();
+        thread.interrupt();
+        thread = new Timer();
+        thread.start();
+    }
+
+    class Timer extends Thread{
+        @Override
+        public void run() {
+            int time = GameConstants.getInstance().getInteger("timeToPlay");
+            timeText.setText(""+time);
+            Platform.runLater(()->timeText.setText(""+time));
+            for(int i = 0; i < time; i++){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    if(isInterrupted()){
+                        return;
+                    }
+                }
+                if(isInterrupted()){
+                    return;
+                }
+                int finalI = i;
+                if(thread == this) Platform.runLater(()->timeText.setText(""+(time - finalI -1)));
+            }
+            if (thread == this) Platform.runLater(()->endTurn());
+        }
     }
 
     private void changeTurn() {
@@ -321,6 +354,8 @@ public class BattleGroundController implements Initializable {
         LogCenter.getInstance().getLogger().info("game_over");
         addGameLog("game_over");
         alertBox.setVisible(true);
+        thread.interrupt();
+        thread = null;
         if(game.getWinner() == 0) alertMessage.setText("You Win.");
         else alertMessage.setText("You Lose.");
     }
@@ -368,6 +403,10 @@ public class BattleGroundController implements Initializable {
                     performAction(passive, side, false, passiveGraphics, -1);
                     passiveSelectionPane.setVisible(false);
                     if(side == 0 && !game.isWithBot()) renderPassives(1);
+                    else {
+                        thread = new Timer();
+                        thread.start();
+                    }
                 }
             });
             passiveSelectionPlace.getChildren().add(passiveGraphics);
