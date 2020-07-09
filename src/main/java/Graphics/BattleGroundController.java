@@ -276,8 +276,6 @@ public class BattleGroundController implements Initializable {
                                 i++;
                             }
                             performAction(card, side, false,graphicCard, cnt);
-                            LogCenter.getInstance().getLogger().info("play_"+card.getType());
-                            addGameLog("play_"+card.getType());
                         }
                     } catch (Exception e) {
                         LogCenter.getInstance().getLogger().error(e);
@@ -333,14 +331,16 @@ public class BattleGroundController implements Initializable {
     private Button endTurnButton;
     @FXML
     private Label timeText;
-
-    Thread thread = null;
+    private Thread thread = null;
+    @FXML
+    private Label turnShowingText;
 
     @FXML
     private void endTurn() {
-        infoPacks.clear();
+        clearSelections();
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("endTurnSound"), 1);
         changeTurn();
+        turnShowingText.setText("Player " + (game.getTurn() + 1) + " Turn");
         thread.interrupt();
         thread = new Timer();
         thread.start();
@@ -368,8 +368,6 @@ public class BattleGroundController implements Initializable {
     }
 
     private void changeTurn() {
-        LogCenter.getInstance().getLogger().info("end_turn_player_"+(game.getTurn()+1));
-        addGameLog("end_turn_player_"+(game.getTurn()+1));
         try {
             ActionRequest.END_TURN.execute();
             renderActions();
@@ -381,8 +379,8 @@ public class BattleGroundController implements Initializable {
     }
 
     private void endGame(){
-        LogCenter.getInstance().getLogger().info("game_over");
-        addGameLog("game_over");
+        LogCenter.getInstance().getLogger().info("game over");
+        addGameLog("game over");
         alertBox.setVisible(true);
         thread.interrupt();
         thread = null;
@@ -395,12 +393,12 @@ public class BattleGroundController implements Initializable {
         rootPane.getChildren().add(cardPane);
         cardPane.setVisible(false);
         int duration = 2;
-        double fromX, fromY, toX, toY;
-        fromX = cardsNumberLabel[side].getLayoutX();
-        fromY = cardsNumberLabel[side].getLayoutY();
-        toX = hand[side].getLayoutX();
-        toY = hand[side].getLayoutY();
-        return buildTranslateTransition(cardPane, fromX, fromY, toX, toY, duration);
+        cardPane.setLayoutX(cardsNumberLabel[side].getLayoutX());
+        cardPane.setLayoutY(cardsNumberLabel[side].getLayoutY());
+        double toX, toY;
+        toX = hand[side].getLayoutX() - cardPane.getLayoutX();
+        toY = hand[side].getLayoutY() - cardPane.getLayoutY();
+        return buildTranslateTransition(cardPane, 0, 0, toX, toY, duration);
     }
 
     @FXML
@@ -431,8 +429,8 @@ public class BattleGroundController implements Initializable {
             passiveGraphics.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    LogCenter.getInstance().getLogger().info("passive_selected");
-                    addGameLog("passive_selected");
+                    LogCenter.getInstance().getLogger().info("passive selected");
+                    addGameLog("passive selected");
                     performAction(passive, side, false, passiveGraphics, -1);
                     passiveSelectionPane.setVisible(false);
                     if(side == 0 && !game.isWithBot()) renderPassives(1);
@@ -490,6 +488,7 @@ public class BattleGroundController implements Initializable {
         else {
             game.setTurn(0);
             passiveSelectionPane.setVisible(false);
+            passiveSelectionPane.toBack();
             thread = new Timer();
             thread.start();
         }
@@ -541,6 +540,13 @@ public class BattleGroundController implements Initializable {
         }
     }
 
+    @FXML
+    private StackPane targetSelectionPane;
+    private void clearSelections(){
+        targetSelectionPane.setVisible(false);
+        infoPacks.clear();
+    }
+
     private synchronized void performAction(Character character, int side, boolean isOnGround, Parent parent, int summonPlace){
         Logger logger = LogCenter.getInstance().getLogger();
         infoPacks.add(new InfoPack(character, side, isOnGround, parent, summonPlace));
@@ -551,19 +557,19 @@ public class BattleGroundController implements Initializable {
         try {
             ActionRequest.PERFORM_ACTION.execute(parameters);
             renderActions();
-            infoPacks.clear();
+            clearSelections();
         } catch (Exception e) {
             logger.error(e);
             try {
                 throw e;
             } catch (SelectionNeededException selectionNeededException) {
-                selectionNeededException.printStackTrace();
-                //kjslkfdjs
+                LogCenter.getInstance().getLogger().error(selectionNeededException);
+                targetSelectionPane.setVisible(true);
             } catch (InvalidChoiceException invalidChoiceException) {
-                invalidChoiceException.printStackTrace();
-                infoPacks.clear();
+                LogCenter.getInstance().getLogger().error(invalidChoiceException);
+                clearSelections();
             } catch (GameOverException gameOverException) {
-                gameOverException.printStackTrace();
+                LogCenter.getInstance().getLogger().error(gameOverException);
                 endGame();
             }
         }
@@ -574,6 +580,7 @@ public class BattleGroundController implements Initializable {
         transitions.clear();
         afterAction.clear();
         beforeAction.clear();
+        logActions();
         setPlayCardTransition();
         setAttackTransition();
         setDrawTransition();
@@ -586,7 +593,10 @@ public class BattleGroundController implements Initializable {
                 e.printStackTrace();
             }
         }
-        else gameRender();
+        else{
+            gameRender();
+            ActionRequest.clearRecords();
+        }
     }
 
     private void bindTransitions() {
@@ -617,6 +627,8 @@ public class BattleGroundController implements Initializable {
                 }
                 rootPane.setDisable(false);
                 gameRender();
+                ActionRequest.clearRecords();
+
             }
         });
     }
@@ -687,6 +699,36 @@ public class BattleGroundController implements Initializable {
         double y = parent2.getParent().getLayoutY() - parent1.getParent().getLayoutY() + parent2.getLayoutY() - parent1.getLayoutY();
         return buildTranslateTransition(parent1, 0, 0, x, y, 0.2);
     }
+
+    private void loggingForGame(String log){
+        LogCenter.getInstance().getLogger().info(log);
+        addGameLog(log);
+    }
+
+    private void logActions(){
+        if(ActionRequest.readUseHeroPower()){
+            loggingForGame("hero power used");
+        }
+        if(ActionRequest.readTurnEnded()){
+            loggingForGame("end turn player "+(((game.getTurn()+1)%2)+1));
+        }
+        InfoPack played = ActionRequest.readPlayed();
+        if(played != null){
+            loggingForGame("play "+played.getCharacter().getName());
+        }
+        ArrayList<InfoPack> infoPacks = ActionRequest.readAttackingList();
+        if(infoPacks.size() > 0){
+            loggingForGame(infoPacks.get(0).getCharacter().getName() + " attacked " + infoPacks.get(1).getCharacter().getName());
+        }
+        for(int i = 0; i < ActionRequest.readDrawNumber(); i++){
+            loggingForGame("draw card");
+        }
+        if(ActionRequest.readSummoned()){
+            loggingForGame("card summoned");
+        }
+
+    }
+
 
     private void setPlayCardTransition() {
         InfoPack played = ActionRequest.readPlayed();

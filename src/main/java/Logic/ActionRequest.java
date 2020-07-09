@@ -27,6 +27,7 @@ public enum ActionRequest {
                 super.execute();
                 game.checkAll();
                 game.chargeCards();
+                turnEnded = true;
             }catch (GameOverException e){
                 game.engGame();
                 throw e;
@@ -77,6 +78,7 @@ public enum ActionRequest {
                     attackList.add(parameters[0]);
                     attackList.add(parameters[1]);
                 }
+                else useHeroPower = true;
             }
         }
 
@@ -141,6 +143,7 @@ public enum ActionRequest {
             }
         }
     };
+
     public void execute(InfoPack[] parameters) throws SelectionNeededException, InvalidChoiceException, GameOverException {
         for (ActionHandler actionHandler: actions){
             try {
@@ -155,8 +158,10 @@ public enum ActionRequest {
     }
 
     private static Game game;
+    private static boolean useHeroPower;
     private static int numberOfDraws;
     private static boolean summoned;
+    private static boolean turnEnded;
     private static InfoPack played;
     private static ArrayList<InfoPack> attackList;
     private ArrayList<ActionHandler> actions = new ArrayList<>(), beforeActions = new ArrayList<>();
@@ -174,21 +179,23 @@ public enum ActionRequest {
     }
 
     public static boolean readSummoned(){
-        boolean answer = summoned;
-        summoned = false;
-        return answer;
+        return summoned;
+    }
+
+    public static boolean readTurnEnded(){
+        return turnEnded;
+    }
+
+    public static boolean readUseHeroPower(){
+        return useHeroPower;
     }
 
     public static InfoPack readPlayed(){
-        InfoPack answer = played;
-        played = null;
-        return answer;
+        return played;
     }
 
     public static int readDrawNumber(){
-        int answer = numberOfDraws;
-        numberOfDraws = 0;
-        return answer;
+        return numberOfDraws;
     }
 
     public static ArrayList<InfoPack> readAttackingList(){
@@ -197,8 +204,16 @@ public enum ActionRequest {
             infoPacks.add(attackList.get(0));
             infoPacks.add(attackList.get(1));
         }
-        attackList.clear();
         return infoPacks;
+    }
+
+    public static void clearRecords(){
+        attackList.clear();
+        numberOfDraws = 0;
+        played = null;
+        summoned = false;
+        turnEnded =false;
+        useHeroPower = false;
     }
 
     public void addAction(ActionHandler actionHandler){

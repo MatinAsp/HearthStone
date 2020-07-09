@@ -520,3 +520,186 @@ ERROR   2020-07-09 23:33:00,545 - Exceptions.SelectionNeededException: Selection
 ERROR   2020-07-09 23:33:01,217 - Exceptions.InvalidChoiceException: Invalid Choice
 ERROR   2020-07-09 23:33:08,001 - Exceptions.SelectionNeededException: Selection Needed
 INFO    2020-07-09 23:33:11,064 - exit
+INFO    2020-07-10 00:22:31,293 - log_in
+INFO    2020-07-10 00:22:31,294 - navigate_from_log_in_to_menu
+INFO    2020-07-10 00:23:55,157 - set_confirmation
+INFO    2020-07-10 00:23:59,061 - confirmed
+INFO    2020-07-10 00:23:59,061 - set_confirmation
+INFO    2020-07-10 00:24:03,461 - confirmed
+INFO    2020-07-10 00:24:04,216 - start_a_game
+INFO    2020-07-10 00:24:06,190 - passive_selected
+INFO    2020-07-10 00:24:07,189 - passive_selected
+INFO    2020-07-10 00:24:10,494 - drag_detected
+INFO    2020-07-10 00:24:10,957 - drag_ended
+INFO    2020-07-10 00:24:10,962 - play_Minion
+INFO    2020-07-10 00:24:23,233 - end_turn_player_1
+INFO    2020-07-10 00:24:25,920 - end_turn_player_2
+INFO    2020-07-10 00:24:28,592 - end_turn_player_1
+INFO    2020-07-10 00:24:40,546 - end_turn_player_2
+INFO    2020-07-10 00:24:43,192 - end_turn_player_1
+INFO    2020-07-10 00:24:46,349 - drag_detected
+INFO    2020-07-10 00:24:46,701 - drag_ended
+INFO    2020-07-10 00:24:46,704 - play_Minion
+INFO    2020-07-10 00:25:29,577 - log_in
+INFO    2020-07-10 00:25:29,578 - navigate_from_log_in_to_menu
+INFO    2020-07-10 00:25:34,030 - set_confirmation
+INFO    2020-07-10 00:25:37,906 - confirmed
+INFO    2020-07-10 00:25:37,906 - set_confirmation
+INFO    2020-07-10 00:25:42,565 - confirmed
+INFO    2020-07-10 00:25:43,227 - start_a_game
+INFO    2020-07-10 00:25:44,301 - passive_selected
+INFO    2020-07-10 00:25:45,781 - passive_selected
+INFO    2020-07-10 00:25:48,600 - end_turn_player_1
+INFO    2020-07-10 00:25:51,718 - drag_detected
+INFO    2020-07-10 00:25:52,373 - drag_ended
+INFO    2020-07-10 00:25:52,377 - play_Minion
+INFO    2020-07-10 00:27:15,957 - exit
+INFO    2020-07-10 01:41:55,335 - log_in
+INFO    2020-07-10 01:41:55,336 - navigate_from_log_in_to_menu
+INFO    2020-07-10 01:41:59,733 - set_confirmation
+INFO    2020-07-10 01:42:06,011 - confirmed
+INFO    2020-07-10 01:42:06,012 - set_confirmation
+INFO    2020-07-10 01:42:10,132 - confirmed
+INFO    2020-07-10 01:42:11,740 - start_a_game
+INFO    2020-07-10 01:42:20,380 - passive selected
+INFO    2020-07-10 01:42:39,756 - passive selected
+INFO    2020-07-10 01:42:53,967 - end turn player 1
+INFO    2020-07-10 01:42:53,967 - draw card
+INFO    2020-07-10 01:42:53,968 - draw card
+INFO    2020-07-10 01:43:01,924 - drag_detected
+INFO    2020-07-10 01:43:02,396 - drag_ended
+INFO    2020-07-10 01:43:02,396 - play Voodoo Doctor
+INFO    2020-07-10 01:43:02,397 - card summoned
+INFO    2020-07-10 01:43:07,574 - end turn player 2
+INFO    2020-07-10 01:43:07,578 - draw card
+INFO    2020-07-10 01:44:07,751 - end turn player 1
+INFO    2020-07-10 01:44:07,751 - draw card
+INFO    2020-07-10 01:44:07,751 - draw card
+INFO    2020-07-10 01:44:12,511 - end turn player 2
+INFO    2020-07-10 01:44:12,511 - draw card
+INFO    2020-07-10 01:44:18,436 - drag_detected
+INFO    2020-07-10 01:44:19,092 - drag_ended
+ERROR   2020-07-10 01:44:19,093 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 01:44:19,093 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 01:44:23,036 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 01:44:23,037 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-10 01:44:24,300 - drag_detected
+INFO    2020-07-10 01:44:24,724 - drag_ended
+ERROR   2020-07-10 01:44:24,724 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 01:44:24,724 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 01:44:26,652 - play Polymorph
+INFO    2020-07-10 01:46:12,610 - end turn player 1
+INFO    2020-07-10 01:46:12,611 - draw card
+INFO    2020-07-10 01:46:12,611 - draw card
+INFO    2020-07-10 01:47:30,065 - log_in
+INFO    2020-07-10 01:47:30,066 - navigate_from_log_in_to_menu
+INFO    2020-07-10 01:47:36,884 - set_confirmation
+INFO    2020-07-10 01:47:41,886 - confirmed
+INFO    2020-07-10 01:47:41,887 - set_confirmation
+INFO    2020-07-10 01:47:48,444 - confirmed
+INFO    2020-07-10 01:47:50,396 - start_a_game
+INFO    2020-07-10 01:47:54,387 - passive selected
+INFO    2020-07-10 01:48:04,180 - passive selected
+INFO    2020-07-10 01:48:11,796 - draw card
+INFO    2020-07-10 01:48:11,797 - draw card
+INFO    2020-07-10 01:48:11,798 - draw card
+INFO    2020-07-10 01:48:22,851 - draw card
+INFO    2020-07-10 01:48:22,852 - draw card
+INFO    2020-07-10 01:48:22,852 - draw card
+INFO    2020-07-10 01:49:47,174 - end turn player 1
+INFO    2020-07-10 01:49:47,177 - draw card
+INFO    2020-07-10 01:49:53,924 - drag_detected
+INFO    2020-07-10 01:49:54,372 - drag_ended
+INFO    2020-07-10 01:49:54,372 - play Wisp
+INFO    2020-07-10 01:49:54,372 - card summoned
+INFO    2020-07-10 01:49:57,686 - end turn player 2
+INFO    2020-07-10 01:49:57,686 - draw card
+INFO    2020-07-10 01:50:00,899 - drag_detected
+INFO    2020-07-10 01:50:01,227 - drag_ended
+INFO    2020-07-10 01:50:01,227 - play Bluegill Warrior
+INFO    2020-07-10 01:50:01,228 - card summoned
+INFO    2020-07-10 01:50:05,167 - end turn player 1
+INFO    2020-07-10 01:50:05,167 - draw card
+INFO    2020-07-10 01:50:37,019 - exit
+INFO    2020-07-10 01:50:56,666 - log_in
+INFO    2020-07-10 01:50:56,668 - navigate_from_log_in_to_menu
+INFO    2020-07-10 01:51:20,884 - set_confirmation
+INFO    2020-07-10 01:51:24,540 - confirmed
+INFO    2020-07-10 01:51:24,541 - set_confirmation
+INFO    2020-07-10 01:51:27,657 - confirmed
+INFO    2020-07-10 01:51:29,237 - start_a_game
+INFO    2020-07-10 01:51:32,355 - passive selected
+INFO    2020-07-10 01:51:37,819 - passive selected
+INFO    2020-07-10 01:51:41,955 - draw card
+INFO    2020-07-10 01:51:41,955 - draw card
+INFO    2020-07-10 01:51:41,956 - draw card
+INFO    2020-07-10 01:51:46,723 - start_a_game
+INFO    2020-07-10 01:51:46,769 - passive selected
+INFO    2020-07-10 01:57:46,642 - log_in
+INFO    2020-07-10 01:57:46,643 - navigate_from_log_in_to_menu
+INFO    2020-07-10 01:57:49,355 - set_confirmation
+INFO    2020-07-10 01:57:52,572 - confirmed
+INFO    2020-07-10 01:57:52,572 - set_confirmation
+INFO    2020-07-10 01:57:55,994 - confirmed
+INFO    2020-07-10 01:57:57,578 - start_a_game
+INFO    2020-07-10 01:58:01,899 - passive selected
+INFO    2020-07-10 01:58:05,003 - passive selected
+INFO    2020-07-10 01:58:07,987 - draw card
+INFO    2020-07-10 01:58:07,987 - draw card
+INFO    2020-07-10 01:58:07,987 - draw card
+INFO    2020-07-10 01:58:17,275 - draw card
+INFO    2020-07-10 01:58:17,275 - draw card
+INFO    2020-07-10 01:58:17,275 - draw card
+INFO    2020-07-10 02:00:17,446 - end turn player 1
+INFO    2020-07-10 02:00:17,446 - draw card
+INFO    2020-07-10 02:00:17,446 - draw card
+INFO    2020-07-10 02:01:36,887 - log_in
+INFO    2020-07-10 02:01:36,889 - navigate_from_log_in_to_menu
+INFO    2020-07-10 02:01:38,619 - set_confirmation
+INFO    2020-07-10 02:01:41,331 - confirmed
+INFO    2020-07-10 02:01:41,332 - set_confirmation
+INFO    2020-07-10 02:01:44,509 - confirmed
+INFO    2020-07-10 02:01:46,131 - start_a_game
+INFO    2020-07-10 02:01:49,354 - passive selected
+INFO    2020-07-10 02:01:51,626 - passive selected
+INFO    2020-07-10 02:01:54,634 - draw card
+INFO    2020-07-10 02:01:54,634 - draw card
+INFO    2020-07-10 02:01:54,634 - draw card
+INFO    2020-07-10 02:02:04,394 - draw card
+INFO    2020-07-10 02:02:04,394 - draw card
+INFO    2020-07-10 02:02:04,395 - draw card
+INFO    2020-07-10 02:03:28,422 - log_in
+INFO    2020-07-10 02:03:28,423 - navigate_from_log_in_to_menu
+INFO    2020-07-10 02:03:30,626 - set_confirmation
+INFO    2020-07-10 02:03:35,286 - confirmed
+INFO    2020-07-10 02:03:35,287 - set_confirmation
+INFO    2020-07-10 02:03:38,434 - confirmed
+INFO    2020-07-10 02:03:40,055 - start_a_game
+INFO    2020-07-10 02:03:41,098 - passive selected
+INFO    2020-07-10 02:03:41,802 - passive selected
+INFO    2020-07-10 02:03:44,026 - draw card
+INFO    2020-07-10 02:03:44,026 - draw card
+INFO    2020-07-10 02:03:44,026 - draw card
+INFO    2020-07-10 02:03:53,738 - draw card
+INFO    2020-07-10 02:03:53,738 - draw card
+INFO    2020-07-10 02:03:53,739 - draw card
+INFO    2020-07-10 02:05:33,281 - log_in
+INFO    2020-07-10 02:05:33,282 - navigate_from_log_in_to_menu
+INFO    2020-07-10 02:05:36,448 - start_a_game
+INFO    2020-07-10 02:05:37,873 - passive selected
+INFO    2020-07-10 02:05:40,313 - draw card
+INFO    2020-07-10 02:05:40,314 - draw card
+INFO    2020-07-10 02:05:40,314 - draw card
+INFO    2020-07-10 02:05:48,525 - end turn player 1
+INFO    2020-07-10 02:05:48,525 - draw card
+INFO    2020-07-10 02:05:53,377 - back_to_menu
+INFO    2020-07-10 02:05:54,370 - navigate_from_menu_to_settings
+INFO    2020-07-10 02:05:58,939 - navigate_from_settings_to_menu
+INFO    2020-07-10 02:05:58,939 - settings_applied
+INFO    2020-07-10 02:06:01,348 - start_a_game
+INFO    2020-07-10 02:06:04,738 - passive selected
+INFO    2020-07-10 02:06:06,394 - back_to_menu
+INFO    2020-07-10 02:06:07,146 - navigate_from_menu_to_settings
+INFO    2020-07-10 02:06:14,187 - navigate_from_settings_to_menu
+INFO    2020-07-10 02:06:14,187 - settings_applied
+INFO    2020-07-10 02:06:15,497 - exit
