@@ -333,9 +333,27 @@
                            </ImageView>
                            <Button layoutX="110.0" layoutY="50.0" mnemonicParsing="false" onAction="#navigateFromMenuToLogIn" styleClass="leftBackButton" />
                            <Button id="setting" layoutX="1040.0" layoutY="580.0" mnemonicParsing="false" onAction="#navigateFromMenuToSettings" />
-                           <VBox alignment="CENTER" layoutX="394.0" layoutY="188.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="489.0" spacing="40.0">
+                           <VBox alignment="CENTER" layoutX="394.0" layoutY="197.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="489.0" spacing="10.0">
                               <children>
-                                 <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startGame" text="Play" textFill="#d5d5d5">
+                                 <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startSinglePlayer" text="Single Player" textFill="#d5d5d5">
+                                    <font>
+                                       <Font size="30.0" />
+                                    </font>
+                                    <styleClass>
+                                       <String fx:value="purpleButton" />
+                                       <String fx:value="gameFont" />
+                                    </styleClass>
+                                 </Button>
+                                 <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startMultiPlayer" text="Multi Player" textFill="#d5d5d5">
+                                    <font>
+                                       <Font size="30.0" />
+                                    </font>
+                                    <styleClass>
+                                       <String fx:value="purpleButton" />
+                                       <String fx:value="gameFont" />
+                                    </styleClass>
+                                 </Button>
+                                 <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startDeckReader" text="Deck Reader" textFill="#d5d5d5">
                                     <font>
                                        <Font size="30.0" />
                                     </font>

@@ -215,13 +215,13 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void navigateFromMenuToCollections() throws IOException {
+    private void navigateFromMenuToCollections(){
         LogCenter.getInstance().getLogger().info("navigate_from_menu_to_collections");
         loadCollections();
         navigate(menu, collectionsPage);
     }
 
-    private void loadCollections() throws IOException {
+    private void loadCollections() {
         setDisableDecksButtons(true);
         currentCollectionsDeck = null;
         collectionsFilterer.reset();
@@ -329,7 +329,7 @@ public class Controller implements Initializable {
     @FXML
     private GridPane collectionsCardsBoard;
 
-    private void collectionsCardsRender() throws IOException {
+    private void collectionsCardsRender(){
         collectionsCardsBoard.getChildren().clear();
         Player player =PlayersManager.getInstance().getCurrentPlayer();
         ArrayList<Card> filteredCards =collectionsFilterer.filterCards(DataManager.getInstance().getAllCharacter(Card.class), player);
@@ -343,7 +343,7 @@ public class Controller implements Initializable {
         gridPaneRender(collectionsCardsBoard, nodes);
     }
 
-    private void collectionCardSetAction(Card card, Parent cardGraphic, boolean lock) throws IOException {
+    private void collectionCardSetAction(Card card, Parent cardGraphic, boolean lock){
         if(lock) {
             cardGraphic.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 LogCenter.getInstance().getLogger().info("click_card");
@@ -461,8 +461,8 @@ public class Controller implements Initializable {
             public void handle(ActionEvent event) {
                 LogCenter.getInstance().getLogger().info("confirmed");
                 try {
-                    actionHandler.runAction();
                     confirmBox.setVisible(false);
+                    actionHandler.runAction();
                 } catch (Exception e) {
                     LogCenter.getInstance().getLogger().error(e);
                     setAlert(e.getMessage());
@@ -587,7 +587,7 @@ public class Controller implements Initializable {
     private GridPane collectionsDecksBoard;
 
     @FXML
-    private void collectionsDecksRender() throws IOException {
+    private void collectionsDecksRender(){
         collectionsDecksBoard.getChildren().clear();
         Player player =PlayersManager.getInstance().getCurrentPlayer();
         ArrayList<Node> nodes = new ArrayList<>();
@@ -732,21 +732,67 @@ public class Controller implements Initializable {
 
 
     @FXML
-    private void startGame() throws Exception {
-        if(PlayersManager.getInstance().getCurrentPlayer().getCurrentDeckName() == null){
+    private void startSinglePlayer(){
+        Player player = PlayersManager.getInstance().getCurrentPlayer();
+        if(player.getCurrentDeckName() == null){
             setAlert("Please select your deck before you start a game.");
             navigateFromMenuToCollections();
             return;
         }
+        //starGame(player.getDeck(player.getCurrentDeckName()), deck2, true);
+    }
+
+    @FXML
+    private void startMultiPlayer(){
+        Player player = PlayersManager.getInstance().getCurrentPlayer();
+        if(player.getCurrentDeckName() == null){
+            setAlert("Please select your deck before you start a game.");
+            navigateFromMenuToCollections();
+            return;
+        }
+        setConfirmation(new ActionHandler() {
+            @Override
+            public void runAction() throws Exception {
+                PlayersManager.getInstance().checkUsername(getTextField.getText());
+                String username = getTextField.getText();
+                setConfirmation(new ActionHandler() {
+                    @Override
+                    public void runAction() throws Exception {
+                        PlayersManager.getInstance().checkPassword(username, getTextField.getText());
+                        Player player = PlayersManager.getInstance().getPlayer(username);
+                        if(player.getCurrentDeckName() == null){
+                            setAlert("Please select your deck before you start a game.");
+                            navigateFromMenuToCollections();
+                            return;
+                        }
+                        Player currentPlayer = PlayersManager.getInstance().getCurrentPlayer();
+                        starGame(currentPlayer.getDeck(currentPlayer.getCurrentDeckName()), player.getDeck(player.getCurrentDeckName()), false);
+                    }
+                }, "Enter second player password.", true, false);
+            }
+        }, "Enter second player username.", true, false);
+    }
+
+    @FXML
+    private void startDeckReader(){
+        //starGame(player.getDeck(player.getCurrentDeckName()), deck2, true);
+    }
+
+    private void starGame(Deck deck1, Deck deck2, boolean isWithBot){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleGround.fxml"));
-        StackPane gameBoard = fxmlLoader.load();
-        BattleGroundController battleGroundController = fxmlLoader.getController();
-        battleGroundController.setGame(GameFactory.getInstance().build(
-                PlayersManager.getInstance().getCurrentPlayer(),
-                PlayerFactory.getInstance().build("", ""),
-                false
-        ));
-        battleGroundController.gameRender();
+        StackPane gameBoard = null;
+        try {
+            gameBoard = fxmlLoader.load();
+            BattleGroundController battleGroundController = fxmlLoader.getController();
+            battleGroundController.setGame(GameFactory.getInstance().build(deck1, deck2, isWithBot));
+            battleGroundController.gameRender();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            setAlert(e.getMessage());
+            LogCenter.getInstance().getLogger().error(e);
+            e.printStackTrace();
+        }
         root.getChildren().add(gameBoard);
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("menuSound"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("battleGroundSound"), -1);

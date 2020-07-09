@@ -3,6 +3,7 @@ package Logic;
 import Data.DataManager;
 import Data.GameConstants;
 import Models.Cards.Card;
+import Models.Deck;
 import Models.Hero;
 import Models.Player;
 
@@ -18,8 +19,8 @@ public class GameFactory {
         return gameFactory;
     }
 
-    public Game build(Player player1, Player player2, boolean isWithBot) throws Exception {
-        Game game = new Game(setCompetitor(player1), setCompetitor(player2), isWithBot);
+    public Game build(Deck deck1, Deck deck2, boolean isWithBot) throws Exception {
+        Game game = new Game(buildCompetitor(deck1), buildCompetitor(deck2), isWithBot);
         game.getCompetitor(0).setFullMana(GameConstants.getInstance().getInteger("manaForStart"));
         game.getCompetitor(0).setLeftMana(GameConstants.getInstance().getInteger("manaForStart"));
         game.getCompetitor(1).setFullMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
@@ -28,17 +29,17 @@ public class GameFactory {
         return game;
     }
 
-    private Competitor setCompetitor(Player player) throws Exception {
+    private Competitor buildCompetitor(Deck deck) throws Exception {
         Competitor competitor = new Competitor();
-        competitor.setDeck(player.getDeck(player.getCurrentDeckName()));
-        for(Card card: player.getDeck(player.getCurrentDeckName()).getCards()){
+        competitor.setDeck(deck);
+        for(Card card: deck.getCards()){
             competitor.getInDeckCards().add(DataManager.getInstance().getObject(Card.class, card.getName()));
         }
         for(int i = 0; i < Math.min(competitor.getDeck().getCards().size(), GameConstants.getInstance().getInteger("HandsFirstCardsNumber")); i++){
             competitor.drawCard();
         }
         competitor.setHero(
-                DataManager.getInstance().getObject(Hero.class, player.getDeck(player.getCurrentDeckName()).getHero().getName())
+                DataManager.getInstance().getObject(Hero.class, deck.getHero().getName())
         );
         return competitor;
     }

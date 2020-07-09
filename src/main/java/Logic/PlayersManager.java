@@ -40,16 +40,24 @@ public class PlayersManager {
     }
 
     public void logIn(String username, String password) throws Exception{
+        checkUsername(username);
+        checkPassword(username, password);
+        currentPlayer = getPlayer(username);
+        LogCenter logCenter = LogCenter.getInstance();
+        logCenter.setLogFile(currentPlayer);
+    }
+
+    public void checkUsername(String username) throws Exception {
         if(username == null || !exist(username) || username.equals("")){
-            throw new Exception("wrong username or password.");
+            throw new Exception("Username dose not exist.");
         }
+    }
+
+    public void checkPassword(String username, String password) throws Exception {
         Player player = getPlayer(username);
         if(password == null || password.equals("") || Integer.parseInt(player.getPassword()) != password.hashCode()){
             throw new Exception("wrong username or password.");
         }
-        currentPlayer = player;
-        LogCenter logCenter = LogCenter.getInstance();
-        logCenter.setLogFile(currentPlayer);
     }
 
     public void signIn(String username, String password) throws Exception {
