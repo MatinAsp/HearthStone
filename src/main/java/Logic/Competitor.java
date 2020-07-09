@@ -40,7 +40,9 @@ public class Competitor{
     public void drawCard() throws EmptyDeckException {
         if (inDeckCards.size() == 0) throw new EmptyDeckException();
         Random random = new Random();
-        Card card = inDeckCards.get(random.nextInt(inDeckCards.size()));
+        Card card;
+        if(!deck.isInOrder()) card = inDeckCards.get(random.nextInt(inDeckCards.size()));
+        else card = inDeckCards.get(0);
         if(inHandCards.size() < GameConstants.getInstance().getInteger("handMaxCard")){
             inHandCards.add(card);
         }

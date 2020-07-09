@@ -13,6 +13,7 @@ public class Deck implements Comparable {
     private ArrayList<Card> cards;
     private Hero hero;
     private int playsNumber, winsNumber;
+    private boolean inOrder;
     private HashMap<String, Integer> cardsPlaysNumber;
 
     public Deck() {
@@ -23,6 +24,15 @@ public class Deck implements Comparable {
         this.hero = hero;
         cards = new ArrayList<>();
         cardsPlaysNumber = new HashMap<>();
+        inOrder = false;
+    }
+
+    public Deck(String name, Hero hero, boolean inOrder) {
+        this.name = name;
+        this.hero = hero;
+        cards = new ArrayList<>();
+        cardsPlaysNumber = new HashMap<>();
+        this.inOrder = inOrder;
     }
 
     public double getWinsPercent(){
@@ -56,16 +66,11 @@ public class Deck implements Comparable {
     }
 
     public void addCard(Card card) throws Exception {
-        addCard(card.getName());
-    }
-
-    public void addCard(String card) throws Exception {
         if(cards.size() == hero.getDeckMax()) throw new Exception("Deck is full!");
-        Card cardToAdd = DataManager.getInstance().getObject(Card.class, card);
-        if (!isForDeck(cardToAdd)) throw new Exception("This card is not for this hero.");
-        if(getUseNumber(card) >= GameConstants.getInstance().getInteger("cardMaxInDeck"))
+        if (!isForDeck(card)) throw new Exception("This card is not for this hero.");
+        if(getUseNumber(card.getName()) >= GameConstants.getInstance().getInteger("cardMaxInDeck"))
             throw new Exception("You can't add more of this card.");
-        cards.add(cardToAdd);
+        cards.add(card);
         resetRecord();
     }
 
@@ -168,5 +173,9 @@ public class Deck implements Comparable {
             }
         }
         return false;
+    }
+
+    public boolean isInOrder() {
+        return inOrder;
     }
 }

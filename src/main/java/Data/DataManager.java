@@ -3,6 +3,7 @@ package Data;
 import Log.LogCenter;
 import Models.Cards.*;
 import Models.Character;
+import Models.Deck;
 import Models.Hero;
 import Models.Player;
 import com.google.gson.Gson;
@@ -10,6 +11,7 @@ import com.google.gson.Gson;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 public class DataManager {
@@ -146,5 +148,39 @@ public class DataManager {
             defaultHeroes.add(getObject(Hero.class, str));
         }
         return defaultHeroes;
+    }
+
+    public Deck getBot(){
+        Random random = new Random();
+        ArrayList<Hero> heroes = getAllCharacter(Hero.class);
+        Deck deck = new Deck("", heroes.get(random.nextInt(heroes.size())));
+        ArrayList<Card> cards = getAllCharacter(Card.class);
+        for(int i = 0; i < cards.size(); i++){
+            Card card = cards.get(i);
+            if(card.getHeroClass().equals(deck.getHero().getName())){
+                try {
+                    deck.addCard(card);
+                    cards.remove(card);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                if(!card.getHeroClass().equals("Neutral")){
+                    cards.remove(card);
+                }
+            }
+        }
+        int size = cards.size();
+        for(int i = 0; i < Math.min(deck.getHero().getDeckMax(), size); i++){
+            Card card = cards.get(random.nextInt(cards.size()));
+            try {
+                deck.addCard(card);
+                cards.remove(card);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return deck;
     }
 }
