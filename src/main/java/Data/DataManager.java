@@ -183,4 +183,40 @@ public class DataManager {
         }
         return deck;
     }
+
+    public ArrayList<Deck> getDeckReaderDecks(){
+        FileReader fileReader = null;
+        DeckReader deckReader = null;
+        try {
+            fileReader = new FileReader(new File(generalPath + "DeckReader.json"));
+            deckReader = gson.fromJson(fileReader, DeckReader.class);
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Deck friend = new Deck("", getObject(Hero.class, "Mage"), true);
+        Deck enemy = new Deck("", getObject(Hero.class, "Mage"), true);
+        for(String cardName:deckReader.getFriend()){
+            friend.addCardWithCheat(getObject(Card.class, cardName));
+        }
+        for(String cardName:deckReader.getEnemy()){
+            enemy.addCardWithCheat(getObject(Card.class, cardName));
+        }
+        ArrayList<Deck> decks = new ArrayList<>();
+        decks.add(friend);
+        decks.add(enemy);
+        return decks;
+    }
+
+    public class DeckReader{
+        private ArrayList<String> friend, enemy;
+
+        public ArrayList<String> getFriend() {
+            return friend;
+        }
+
+        public ArrayList<String> getEnemy() {
+            return enemy;
+        }
+    }
 }

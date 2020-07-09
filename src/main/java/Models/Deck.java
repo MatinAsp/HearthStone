@@ -178,4 +178,8 @@ public class Deck implements Comparable {
     public boolean isInOrder() {
         return inOrder;
     }
+
+    public void addCardWithCheat(Card card) {
+        cards.add(card);
+    }
 }

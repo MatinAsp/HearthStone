@@ -739,7 +739,7 @@ public class Controller implements Initializable {
             navigateFromMenuToCollections();
             return;
         }
-        //starGame(player.getDeck(player.getCurrentDeckName()), deck2, true);
+        starGame(player.getDeck(player.getCurrentDeckName()), DataManager.getInstance().getBot(), true);
     }
 
     @FXML
@@ -775,7 +775,8 @@ public class Controller implements Initializable {
 
     @FXML
     private void startDeckReader(){
-        //starGame(player.getDeck(player.getCurrentDeckName()), deck2, true);
+        ArrayList<Deck> decks = DataManager.getInstance().getDeckReaderDecks();
+        starGame(decks.get(0), decks.get(1), true);
     }
 
     private void starGame(Deck deck1, Deck deck2, boolean isWithBot){

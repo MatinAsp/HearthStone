@@ -1,0 +1,42 @@
+USER: ali
+ID: 1075375718
+CREATED_AT: 2020/07/09 18:08:16
+PASSWORD: 96670
+
+INFO    2020-07-09 18:08:16,557 - sign_in
+INFO    2020-07-09 18:08:16,558 - navigate_from_log_in_to_menu
+INFO    2020-07-09 18:08:20,920 - start_a_game
+INFO    2020-07-09 18:08:23,542 - passive_selected
+INFO    2020-07-09 18:08:36,554 - end_turn_player_1
+ERROR   2020-07-09 18:08:47,238 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 18:08:47,974 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 18:08:48,566 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 18:08:49,118 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-09 18:08:58,222 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 18:09:00,486 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-09 18:09:03,030 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-09 18:09:05,910 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-09 18:09:07,654 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-09 18:09:09,510 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 18:09:10,398 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-09 18:09:14,446 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+INFO    2020-07-09 18:10:36,937 - end_turn_player_2
+ERROR   2020-07-09 18:10:40,462 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-09 18:10:56,654 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-09 18:10:57,622 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 18:10:58,934 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+ERROR   2020-07-09 18:11:01,694 - java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+INFO    2020-07-09 18:12:07,406 - drag_detected
+INFO    2020-07-09 18:12:08,166 - drag_ended
+INFO    2020-07-09 18:12:08,174 - play_Minion
+INFO    2020-07-09 18:12:10,328 - end_turn_player_1
+INFO    2020-07-09 18:12:19,921 - exit
+INFO    2020-07-09 18:13:45,340 - log_in
+INFO    2020-07-09 18:13:45,341 - navigate_from_log_in_to_menu
+INFO    2020-07-09 18:13:48,393 - start_a_game
+INFO    2020-07-09 18:13:49,661 - passive_selected
+ERROR   2020-07-09 18:13:54,429 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 18:13:55,317 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 18:13:56,166 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 18:13:56,565 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 18:14:11,156 - exit

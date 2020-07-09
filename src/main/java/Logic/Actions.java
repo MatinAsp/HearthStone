@@ -67,7 +67,6 @@ public class Actions {
     }
 
     public void performAction(InfoPack[] methodParameters) throws InvalidChoiceException, SelectionNeededException, GameOverException{
-        //tabe selection ha
         String cardName = methodParameters[0].getCharacter().getName();
         if(methodParameters[0].getSide() != game.getTurn() && !(methodParameters[0].getCharacter() instanceof Passive)){
             throw new InvalidChoiceException();
@@ -78,10 +77,15 @@ public class Actions {
             }
         }catch (ArrayIndexOutOfBoundsException e){}
         try {
+            boolean check = false;
             for(CardName annotation: methodMap.keySet()){
                 if(annotation.value().equals(cardName) && annotation.isForOnBoard() == methodParameters[0].isOnGround()){
                     methodMap.get(annotation).invoke(this, methodParameters);
+                    check =true;
                 }
+            }
+            if(!check){
+                throw new InvalidChoiceException();
             }
         } catch (IllegalAccessException | InvocationTargetException e) {
             if(methodParameters[0].getCharacter() instanceof Minion && methodParameters[0].isOnGround()){
