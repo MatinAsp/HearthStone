@@ -776,7 +776,7 @@ public class Controller implements Initializable {
     @FXML
     private void startDeckReader(){
         ArrayList<Deck> decks = DataManager.getInstance().getDeckReaderDecks();
-        starGame(decks.get(0), decks.get(1), true);
+        starGame(decks.get(0), decks.get(1), false);
     }
 
     private void starGame(Deck deck1, Deck deck2, boolean isWithBot){

@@ -1,0 +1,12 @@
+USER: matin
+ID: 1660635224
+CREATED_AT: 2020/07/09 19:20:03
+PASSWORD: 103668357
+
+INFO    2020-07-09 19:20:03,299 - sign_in
+INFO    2020-07-09 19:20:03,300 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:22:38,862 - log_in
+INFO    2020-07-09 19:22:38,863 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:25:35,910 - log_in
+INFO    2020-07-09 19:25:35,913 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:27:21,924 - exit

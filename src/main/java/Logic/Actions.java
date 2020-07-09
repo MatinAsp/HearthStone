@@ -66,7 +66,7 @@ public class Actions {
         });
     }
 
-    public void performAction(InfoPack[] methodParameters) throws InvalidChoiceException, SelectionNeededException, GameOverException{
+    public void performAction(InfoPack[] methodParameters) throws InvalidChoiceException, SelectionNeededException, GameOverException {
         String cardName = methodParameters[0].getCharacter().getName();
         if(methodParameters[0].getSide() != game.getTurn() && !(methodParameters[0].getCharacter() instanceof Passive)){
             throw new InvalidChoiceException();
@@ -87,7 +87,8 @@ public class Actions {
             if(!check){
                 throw new InvalidChoiceException();
             }
-        } catch (IllegalAccessException | InvocationTargetException e) {
+        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            exceptionCheck(e);
             if(methodParameters[0].getCharacter() instanceof Minion && methodParameters[0].isOnGround()){
                 Minion minion = (Minion) methodParameters[0].getCharacter();
                 if(!minion.isCharge() && !minion.isRush()) throw new InvalidChoiceException();
@@ -99,14 +100,26 @@ public class Actions {
             for(SelectAction annotation: selectActionMethodMap.keySet()){
                 if(annotation.value().equals(cardName) && annotation.isForOnBoard() == methodParameters[0].isOnGround()){
                     try {
-                        methodMap.get(annotation).invoke(this);
-                    } catch (IllegalAccessException | InvocationTargetException illegalAccessException) {
-                        illegalAccessException.printStackTrace();
+                        methodMap.get(annotation).invoke(this);initialize();
+                    } catch (IllegalAccessException | InvocationTargetException | IllegalArgumentException o) {
+                        exceptionCheck(o);
                     }
                     return;
                 }
             }
             throw new SelectionNeededException();
+        }
+    }
+
+    private void exceptionCheck(Exception e) throws InvalidChoiceException, SelectionNeededException, GameOverException {
+        if(e.getCause() instanceof InvalidChoiceException){
+            throw (InvalidChoiceException) e.getCause();
+        }
+        if(e.getCause() instanceof SelectionNeededException){
+            throw (SelectionNeededException) e.getCause();
+        }
+        if (e.getCause() instanceof GameOverException){
+            throw (GameOverException) e.getCause();
         }
     }
 
@@ -388,7 +401,7 @@ public class Actions {
         ActionRequest.SUMMON_MINION.execute((Minion) infoPack1.getCharacter(), infoPack1.getSide(), infoPack1.getSummonPlace());
         Card[] cards = new Card[3];
         for(int i = 0 ; i < 3; i++){
-            cards[i] = DataManager.getInstance().getObject(Minion.class, infoPack1.getCharacter().getName());
+            cards[i] = DataManager.getInstance().getObject(Minion.class, infoPack2.getCharacter().getName());
         }
         Competitor competitor = game.getCompetitor(infoPack1.getSide());
         competitor.addCardInDeck(cards[0]);
@@ -509,10 +522,12 @@ public class Actions {
     @CardName(value = "Book of Specters", isForOnBoard = false)
     public void action34(InfoPack infoPack) throws GameOverException {
         for(int i = 0; i < 3; i++){
+            if(game.getCompetitor(infoPack.getSide()).getInDeckCards().size() == 0) break;
             ActionRequest.DRAW_CARD.execute();
             ArrayList<Card> hand = game.getCompetitor(infoPack.getSide()).getInHandCards();
             if(hand.size() > 0 && hand.get(hand.size() - 1) instanceof Spell){
                 hand.remove(hand.get(hand.size() - 1));
+                ActionRequest.reduceDrawNumber(1);
             }
         }
     }

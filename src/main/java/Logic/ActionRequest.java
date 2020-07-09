@@ -44,8 +44,8 @@ public enum ActionRequest {
             }
             if(!check){
                 numberOfDraws++;
+                super.execute();
             }
-            super.execute();
         }
     },
     PERFORM_ACTION{
@@ -109,6 +109,10 @@ public enum ActionRequest {
             game.engGame();
             throw e;
         }
+    }
+
+    public static void reduceDrawNumber(int cnt) {
+        numberOfDraws -= cnt;
     }
 
     public ArrayList<ActionHandler> getBeforeActions() {

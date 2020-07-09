@@ -1,11 +1,9 @@
 package Data;
 
 import Log.LogCenter;
+import Models.*;
 import Models.Cards.*;
 import Models.Character;
-import Models.Deck;
-import Models.Hero;
-import Models.Player;
 import com.google.gson.Gson;
 
 import java.io.*;
@@ -91,7 +89,7 @@ public class DataManager {
 
     public <T extends Character> T getObject(Class<T> tClass, String name){
         for(T obj: (ArrayList<T>) dataMap.get(tClass)){
-            if((obj.getName()).equals(name))
+            if((obj.getName().trim()).equalsIgnoreCase(name))
                 return (T) obj.newOne();
         }
         return null;
@@ -188,7 +186,7 @@ public class DataManager {
         FileReader fileReader = null;
         DeckReader deckReader = null;
         try {
-            fileReader = new FileReader(new File(generalPath + "DeckReader.json"));
+            fileReader = new FileReader(new File(GameConstants.getInstance().getString("DeckReaderAddress")));
             deckReader = gson.fromJson(fileReader, DeckReader.class);
             fileReader.close();
         } catch (IOException e) {
@@ -206,17 +204,5 @@ public class DataManager {
         decks.add(friend);
         decks.add(enemy);
         return decks;
-    }
-
-    public class DeckReader{
-        private ArrayList<String> friend, enemy;
-
-        public ArrayList<String> getFriend() {
-            return friend;
-        }
-
-        public ArrayList<String> getEnemy() {
-            return enemy;
-        }
     }
 }

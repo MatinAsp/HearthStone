@@ -40,3 +40,483 @@ ERROR   2020-07-09 18:13:55,317 - Exceptions.InvalidChoiceException: Invalid Cho
 ERROR   2020-07-09 18:13:56,166 - Exceptions.InvalidChoiceException: Invalid Choice
 ERROR   2020-07-09 18:13:56,565 - Exceptions.InvalidChoiceException: Invalid Choice
 INFO    2020-07-09 18:14:11,156 - exit
+INFO    2020-07-09 19:27:34,171 - log_in
+INFO    2020-07-09 19:27:34,172 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:27:35,679 - set_alert
+ERROR   2020-07-09 19:27:35,679 - java.lang.NullPointerException
+INFO    2020-07-09 19:27:35,687 - start_a_game
+INFO    2020-07-09 19:27:42,901 - passive_selected
+ERROR   2020-07-09 19:27:42,903 - java.lang.NullPointerException
+INFO    2020-07-09 19:27:43,637 - passive_selected
+ERROR   2020-07-09 19:27:43,637 - java.lang.NullPointerException
+INFO    2020-07-09 19:27:44,621 - passive_selected
+ERROR   2020-07-09 19:27:44,621 - java.lang.NullPointerException
+INFO    2020-07-09 19:27:45,061 - passive_selected
+ERROR   2020-07-09 19:27:45,061 - java.lang.NullPointerException
+INFO    2020-07-09 19:27:45,454 - passive_selected
+ERROR   2020-07-09 19:27:45,454 - java.lang.NullPointerException
+INFO    2020-07-09 19:27:45,613 - passive_selected
+ERROR   2020-07-09 19:27:45,614 - java.lang.NullPointerException
+INFO    2020-07-09 19:28:29,976 - log_in
+INFO    2020-07-09 19:28:29,978 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:28:31,569 - set_alert
+ERROR   2020-07-09 19:28:31,569 - java.lang.NullPointerException
+INFO    2020-07-09 19:28:31,585 - start_a_game
+INFO    2020-07-09 19:30:27,336 - log_in
+INFO    2020-07-09 19:30:27,337 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:30:29,224 - set_alert
+ERROR   2020-07-09 19:30:29,225 - java.lang.NullPointerException
+INFO    2020-07-09 19:30:29,233 - start_a_game
+INFO    2020-07-09 19:31:41,428 - log_in
+INFO    2020-07-09 19:31:41,429 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:31:43,160 - set_alert
+ERROR   2020-07-09 19:31:43,160 - java.lang.NullPointerException
+INFO    2020-07-09 19:31:43,172 - start_a_game
+INFO    2020-07-09 19:33:17,171 - log_in
+INFO    2020-07-09 19:33:17,172 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:33:19,229 - start_a_game
+INFO    2020-07-09 19:33:27,893 - passive_selected
+INFO    2020-07-09 19:33:35,983 - end_turn_player_1
+INFO    2020-07-09 19:34:00,900 - drag_detected
+INFO    2020-07-09 19:34:01,373 - drag_ended
+ERROR   2020-07-09 19:34:01,373 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 19:34:01,374 - play_Spell
+INFO    2020-07-09 19:34:28,419 - exit
+INFO    2020-07-09 19:34:58,237 - log_in
+INFO    2020-07-09 19:34:58,238 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:35:00,867 - start_a_game
+INFO    2020-07-09 19:35:04,620 - passive_selected
+INFO    2020-07-09 19:35:06,364 - passive_selected
+INFO    2020-07-09 19:35:21,877 - drag_detected
+INFO    2020-07-09 19:35:22,556 - drag_ended
+INFO    2020-07-09 19:35:22,561 - play_Spell
+INFO    2020-07-09 19:35:25,847 - end_turn_player_1
+INFO    2020-07-09 19:35:32,292 - drag_detected
+INFO    2020-07-09 19:35:32,868 - drag_ended
+ERROR   2020-07-09 19:35:32,868 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 19:35:32,869 - play_Minion
+INFO    2020-07-09 19:35:37,236 - drag_detected
+INFO    2020-07-09 19:35:39,660 - drag_ended
+INFO    2020-07-09 19:35:54,852 - drag_detected
+INFO    2020-07-09 19:35:55,772 - drag_ended
+INFO    2020-07-09 19:35:55,776 - play_Quest
+INFO    2020-07-09 19:36:08,814 - end_turn_player_2
+INFO    2020-07-09 19:36:14,100 - drag_detected
+INFO    2020-07-09 19:36:15,860 - drag_ended
+INFO    2020-07-09 19:36:19,493 - drag_detected
+INFO    2020-07-09 19:36:23,187 - drag_ended
+INFO    2020-07-09 19:36:23,191 - play_Quest
+INFO    2020-07-09 19:36:25,711 - end_turn_player_1
+INFO    2020-07-09 19:36:38,140 - drag_detected
+INFO    2020-07-09 19:36:39,979 - drag_ended
+INFO    2020-07-09 19:36:39,983 - play_Minion
+INFO    2020-07-09 19:36:45,167 - end_turn_player_2
+INFO    2020-07-09 19:36:58,670 - end_turn_player_1
+INFO    2020-07-09 19:37:10,566 - end_turn_player_2
+INFO    2020-07-09 19:37:25,372 - drag_detected
+INFO    2020-07-09 19:37:26,371 - drag_ended
+INFO    2020-07-09 19:37:26,375 - play_Minion
+INFO    2020-07-09 19:37:31,711 - end_turn_player_1
+INFO    2020-07-09 19:37:42,454 - end_turn_player_2
+INFO    2020-07-09 19:38:09,412 - drag_detected
+INFO    2020-07-09 19:38:11,884 - drag_ended
+ERROR   2020-07-09 19:38:11,884 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:38:11,884 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:38:13,332 - drag_detected
+INFO    2020-07-09 19:38:14,068 - drag_ended
+ERROR   2020-07-09 19:38:14,068 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 19:38:14,069 - play_Spell
+INFO    2020-07-09 19:38:16,788 - drag_detected
+INFO    2020-07-09 19:38:21,435 - drag_ended
+INFO    2020-07-09 19:38:22,700 - drag_detected
+INFO    2020-07-09 19:38:22,780 - drag_ended
+INFO    2020-07-09 19:38:23,580 - drag_detected
+INFO    2020-07-09 19:38:23,667 - drag_ended
+ERROR   2020-07-09 19:38:26,587 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 19:38:31,955 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 19:38:32,115 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 19:38:32,275 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 19:38:32,420 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 19:38:43,396 - drag_detected
+INFO    2020-07-09 19:38:44,491 - drag_ended
+ERROR   2020-07-09 19:38:44,492 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:38:44,492 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:39:08,228 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:39:13,598 - end_turn_player_1
+INFO    2020-07-09 19:39:35,387 - drag_detected
+INFO    2020-07-09 19:39:35,980 - drag_ended
+INFO    2020-07-09 19:39:35,985 - play_Spell
+INFO    2020-07-09 19:39:45,102 - end_turn_player_2
+ERROR   2020-07-09 19:40:17,172 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:40:19,948 - drag_detected
+INFO    2020-07-09 19:40:20,028 - drag_ended
+INFO    2020-07-09 19:40:20,468 - drag_detected
+INFO    2020-07-09 19:40:20,955 - drag_ended
+INFO    2020-07-09 19:40:20,958 - play_Weapon
+ERROR   2020-07-09 19:40:22,971 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:40:26,891 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:40:37,046 - end_turn_player_1
+INFO    2020-07-09 19:40:41,675 - drag_detected
+INFO    2020-07-09 19:40:44,467 - drag_ended
+INFO    2020-07-09 19:40:45,612 - drag_detected
+INFO    2020-07-09 19:40:46,003 - drag_ended
+INFO    2020-07-09 19:40:46,007 - play_Minion
+ERROR   2020-07-09 19:40:49,347 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:40:51,724 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:40:53,700 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:40:55,758 - end_turn_player_2
+INFO    2020-07-09 19:41:03,899 - drag_detected
+INFO    2020-07-09 19:41:04,883 - drag_ended
+ERROR   2020-07-09 19:41:04,883 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:41:04,883 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:41:05,916 - drag_detected
+INFO    2020-07-09 19:41:06,348 - drag_ended
+ERROR   2020-07-09 19:41:06,348 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 19:41:06,348 - play_Spell
+ERROR   2020-07-09 19:41:07,851 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 19:41:09,011 - drag_detected
+INFO    2020-07-09 19:41:09,411 - drag_ended
+ERROR   2020-07-09 19:41:09,412 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:41:09,412 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:41:57,531 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:42:03,518 - end_turn_player_1
+INFO    2020-07-09 19:42:07,907 - drag_detected
+INFO    2020-07-09 19:42:08,563 - drag_ended
+INFO    2020-07-09 19:42:08,567 - play_Minion
+INFO    2020-07-09 19:42:22,062 - end_turn_player_2
+INFO    2020-07-09 19:42:26,611 - drag_detected
+INFO    2020-07-09 19:42:27,092 - drag_ended
+INFO    2020-07-09 19:42:27,095 - play_Spell
+INFO    2020-07-09 19:44:22,564 - end_turn_player_1
+INFO    2020-07-09 19:44:28,203 - drag_detected
+INFO    2020-07-09 19:44:32,651 - drag_ended
+ERROR   2020-07-09 19:44:32,651 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:32,652 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:44:34,314 - drag_detected
+INFO    2020-07-09 19:44:35,147 - drag_ended
+ERROR   2020-07-09 19:44:35,147 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 19:44:35,147 - play_Minion
+ERROR   2020-07-09 19:44:39,027 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 19:44:39,547 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:40,899 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-09 19:44:41,203 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:42,402 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:42,731 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:43,355 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:43,771 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:54,211 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:54,779 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:57,787 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:58,435 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:44:59,875 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:00,291 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:00,650 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:01,099 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:45:02,581 - end_turn_player_2
+ERROR   2020-07-09 19:45:06,787 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:07,923 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-09 19:45:09,027 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:09,683 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:10,939 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:11,443 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:11,915 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:12,226 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:12,555 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:13,274 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:45:31,885 - end_turn_player_1
+INFO    2020-07-09 19:45:33,171 - drag_detected
+INFO    2020-07-09 19:45:33,644 - drag_ended
+ERROR   2020-07-09 19:45:33,644 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:45:33,644 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:23,034 - java.lang.NullPointerException
+ERROR   2020-07-09 19:47:23,378 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:47:32,196 - end_turn_player_2
+ERROR   2020-07-09 19:47:37,187 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:42,298 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:42,843 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-09 19:47:43,962 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:44,563 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:46,258 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:46,915 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:47,635 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:47,994 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:48,362 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:48,987 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:49,330 - java.lang.IllegalArgumentException
+ERROR   2020-07-09 19:47:49,642 - java.lang.IllegalArgumentException
+ERROR   2020-07-09 19:47:50,115 - java.lang.IllegalArgumentException
+ERROR   2020-07-09 19:47:50,386 - java.lang.IllegalArgumentException
+INFO    2020-07-09 19:47:51,133 - end_turn_player_1
+INFO    2020-07-09 19:47:52,166 - end_turn_player_2
+ERROR   2020-07-09 19:47:54,667 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:55,611 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-09 19:47:58,323 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:47:58,899 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:48:01,557 - end_turn_player_1
+INFO    2020-07-09 19:48:02,173 - end_turn_player_2
+ERROR   2020-07-09 19:48:04,026 - java.lang.IllegalArgumentException
+INFO    2020-07-09 19:48:26,933 - end_turn_player_1
+INFO    2020-07-09 19:48:31,211 - drag_detected
+INFO    2020-07-09 19:48:33,099 - drag_ended
+ERROR   2020-07-09 19:48:33,099 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:48:33,099 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:50:01,485 - end_turn_player_2
+ERROR   2020-07-09 19:50:05,915 - java.lang.IllegalArgumentException
+INFO    2020-07-09 19:50:10,140 - end_turn_player_1
+INFO    2020-07-09 19:50:16,242 - drag_detected
+INFO    2020-07-09 19:50:16,570 - drag_ended
+ERROR   2020-07-09 19:50:16,571 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 19:50:16,571 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 19:50:21,742 - end_turn_player_2
+INFO    2020-07-09 19:50:25,662 - end_turn_player_1
+INFO    2020-07-09 19:50:30,134 - end_turn_player_2
+INFO    2020-07-09 19:50:30,870 - end_turn_player_1
+INFO    2020-07-09 19:50:31,741 - end_turn_player_2
+INFO    2020-07-09 19:50:32,405 - end_turn_player_1
+INFO    2020-07-09 19:50:33,013 - end_turn_player_2
+INFO    2020-07-09 19:50:33,622 - end_turn_player_1
+INFO    2020-07-09 19:50:36,636 - end_turn_player_2
+INFO    2020-07-09 19:50:36,637 - game_over
+INFO    2020-07-09 19:50:37,842 - back_to_menu
+INFO    2020-07-09 19:51:40,385 - exit
+INFO    2020-07-09 19:52:45,657 - log_in
+INFO    2020-07-09 19:52:45,658 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:52:47,387 - start_a_game
+INFO    2020-07-09 19:52:49,178 - passive_selected
+INFO    2020-07-09 19:52:59,434 - passive_selected
+INFO    2020-07-09 19:53:09,730 - drag_detected
+INFO    2020-07-09 19:53:10,458 - drag_ended
+INFO    2020-07-09 19:53:10,463 - play_Quest
+INFO    2020-07-09 19:53:21,957 - end_turn_player_1
+INFO    2020-07-09 19:54:07,349 - end_turn_player_2
+INFO    2020-07-09 19:54:28,986 - drag_detected
+INFO    2020-07-09 19:54:29,634 - drag_ended
+ERROR   2020-07-09 19:54:29,634 - java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 2
+ERROR   2020-07-09 19:54:29,635 - java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 2
+INFO    2020-07-09 19:54:34,674 - drag_detected
+INFO    2020-07-09 19:54:37,881 - drag_ended
+ERROR   2020-07-09 19:54:37,882 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 19:54:37,882 - play_Spell
+INFO    2020-07-09 19:56:07,443 - end_turn_player_1
+INFO    2020-07-09 19:57:39,090 - log_in
+INFO    2020-07-09 19:57:39,091 - navigate_from_log_in_to_menu
+INFO    2020-07-09 19:57:40,998 - start_a_game
+INFO    2020-07-09 19:57:44,049 - passive_selected
+INFO    2020-07-09 19:57:47,833 - passive_selected
+INFO    2020-07-09 19:58:08,674 - drag_detected
+INFO    2020-07-09 19:58:09,129 - drag_ended
+INFO    2020-07-09 19:58:09,135 - play_Quest
+INFO    2020-07-09 19:58:11,545 - drag_detected
+INFO    2020-07-09 19:58:12,034 - drag_ended
+INFO    2020-07-09 19:58:12,069 - play_Spell
+INFO    2020-07-09 19:58:37,281 - back_to_menu
+INFO    2020-07-09 19:58:39,224 - start_a_game
+INFO    2020-07-09 19:58:41,153 - passive_selected
+INFO    2020-07-09 19:58:47,338 - passive_selected
+INFO    2020-07-09 19:58:58,009 - drag_detected
+INFO    2020-07-09 19:58:58,649 - drag_ended
+INFO    2020-07-09 19:58:58,671 - play_Spell
+INFO    2020-07-09 20:00:08,554 - drag_detected
+INFO    2020-07-09 20:00:09,249 - drag_ended
+INFO    2020-07-09 20:00:09,252 - play_Spell
+INFO    2020-07-09 20:00:14,260 - end_turn_player_1
+INFO    2020-07-09 20:00:30,412 - end_turn_player_2
+INFO    2020-07-09 20:00:42,001 - drag_detected
+INFO    2020-07-09 20:00:42,417 - drag_ended
+INFO    2020-07-09 20:00:42,420 - play_Quest
+INFO    2020-07-09 20:00:48,996 - end_turn_player_1
+INFO    2020-07-09 20:01:10,625 - drag_detected
+INFO    2020-07-09 20:01:11,081 - drag_ended
+INFO    2020-07-09 20:01:12,708 - end_turn_player_2
+INFO    2020-07-09 20:01:23,348 - end_turn_player_1
+INFO    2020-07-09 20:01:26,156 - end_turn_player_2
+INFO    2020-07-09 20:01:27,873 - drag_detected
+INFO    2020-07-09 20:01:31,065 - drag_ended
+INFO    2020-07-09 20:01:31,069 - play_Minion
+INFO    2020-07-09 20:01:38,187 - end_turn_player_1
+INFO    2020-07-09 20:01:46,484 - end_turn_player_2
+INFO    2020-07-09 20:01:47,228 - end_turn_player_1
+INFO    2020-07-09 20:01:47,907 - end_turn_player_2
+INFO    2020-07-09 20:01:48,636 - end_turn_player_1
+INFO    2020-07-09 20:01:49,871 - end_turn_player_2
+INFO    2020-07-09 20:01:55,489 - drag_detected
+INFO    2020-07-09 20:01:55,913 - drag_ended
+INFO    2020-07-09 20:01:55,916 - play_Spell
+INFO    2020-07-09 20:02:05,907 - end_turn_player_1
+INFO    2020-07-09 20:02:11,130 - drag_detected
+INFO    2020-07-09 20:02:11,912 - drag_ended
+INFO    2020-07-09 20:02:11,916 - play_Minion
+INFO    2020-07-09 20:02:14,484 - end_turn_player_2
+INFO    2020-07-09 20:02:16,785 - drag_detected
+INFO    2020-07-09 20:02:17,145 - drag_ended
+INFO    2020-07-09 20:02:17,148 - play_Weapon
+INFO    2020-07-09 20:02:19,299 - end_turn_player_1
+INFO    2020-07-09 20:02:25,649 - drag_detected
+INFO    2020-07-09 20:02:28,137 - drag_ended
+INFO    2020-07-09 20:02:28,140 - play_Minion
+INFO    2020-07-09 20:02:33,235 - end_turn_player_2
+ERROR   2020-07-09 20:02:40,385 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 20:02:41,272 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-09 20:04:28,929 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 20:04:29,865 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 20:04:33,600 - end_turn_player_1
+INFO    2020-07-09 20:05:23,451 - end_turn_player_2
+ERROR   2020-07-09 20:05:38,817 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 20:05:39,377 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-09 20:06:08,264 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 20:07:23,733 - end_turn_player_1
+INFO    2020-07-09 20:07:53,991 - exit
+INFO    2020-07-09 22:55:12,238 - log_in
+INFO    2020-07-09 22:55:12,240 - navigate_from_log_in_to_menu
+INFO    2020-07-09 22:55:22,203 - start_a_game
+INFO    2020-07-09 22:55:23,981 - passive_selected
+INFO    2020-07-09 22:55:25,341 - passive_selected
+INFO    2020-07-09 22:55:53,280 - end_turn_player_1
+INFO    2020-07-09 22:56:11,775 - end_turn_player_2
+INFO    2020-07-09 22:56:14,455 - end_turn_player_1
+INFO    2020-07-09 22:56:17,127 - end_turn_player_2
+INFO    2020-07-09 22:56:20,072 - end_turn_player_1
+INFO    2020-07-09 22:56:22,840 - end_turn_player_2
+INFO    2020-07-09 22:56:25,953 - end_turn_player_1
+INFO    2020-07-09 22:56:27,483 - end_turn_player_2
+INFO    2020-07-09 22:56:35,645 - drag_detected
+INFO    2020-07-09 22:56:37,813 - drag_ended
+INFO    2020-07-09 22:56:37,817 - play_Minion
+INFO    2020-07-09 22:56:40,215 - end_turn_player_1
+INFO    2020-07-09 22:56:57,480 - end_turn_player_2
+INFO    2020-07-09 22:57:16,520 - end_turn_player_1
+INFO    2020-07-09 22:58:03,199 - end_turn_player_2
+INFO    2020-07-09 22:58:17,677 - drag_detected
+INFO    2020-07-09 22:58:18,261 - drag_ended
+ERROR   2020-07-09 22:58:18,261 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 22:58:18,262 - play_Minion
+INFO    2020-07-09 22:58:24,047 - end_turn_player_1
+INFO    2020-07-09 22:58:26,501 - drag_detected
+INFO    2020-07-09 22:58:28,716 - drag_ended
+INFO    2020-07-09 22:58:33,918 - drag_detected
+INFO    2020-07-09 22:58:34,925 - drag_ended
+INFO    2020-07-09 22:58:34,928 - play_Minion
+INFO    2020-07-09 22:58:36,744 - end_turn_player_2
+INFO    2020-07-09 22:58:38,533 - drag_detected
+INFO    2020-07-09 22:58:38,973 - drag_ended
+ERROR   2020-07-09 22:58:38,973 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-09 22:58:38,973 - play_Minion
+INFO    2020-07-09 22:58:40,960 - end_turn_player_1
+INFO    2020-07-09 22:58:42,261 - drag_detected
+INFO    2020-07-09 22:58:43,412 - drag_ended
+INFO    2020-07-09 22:58:43,416 - play_Minion
+ERROR   2020-07-09 22:58:51,204 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 22:58:51,613 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 22:59:16,487 - end_turn_player_2
+INFO    2020-07-09 22:59:17,759 - end_turn_player_1
+ERROR   2020-07-09 22:59:18,909 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 22:59:19,525 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 23:01:18,191 - end_turn_player_2
+INFO    2020-07-09 23:03:18,647 - end_turn_player_1
+INFO    2020-07-09 23:05:19,020 - end_turn_player_2
+INFO    2020-07-09 23:07:19,451 - end_turn_player_1
+INFO    2020-07-09 23:07:44,375 - log_in
+INFO    2020-07-09 23:07:44,378 - navigate_from_log_in_to_menu
+INFO    2020-07-09 23:07:45,879 - start_a_game
+INFO    2020-07-09 23:07:47,331 - passive_selected
+INFO    2020-07-09 23:07:48,659 - passive_selected
+INFO    2020-07-09 23:07:52,454 - end_turn_player_1
+INFO    2020-07-09 23:07:54,982 - end_turn_player_2
+INFO    2020-07-09 23:07:57,214 - end_turn_player_1
+INFO    2020-07-09 23:07:59,470 - end_turn_player_2
+INFO    2020-07-09 23:08:01,784 - end_turn_player_1
+INFO    2020-07-09 23:08:04,075 - end_turn_player_2
+INFO    2020-07-09 23:08:06,375 - end_turn_player_1
+INFO    2020-07-09 23:08:06,577 - end_turn_player_2
+INFO    2020-07-09 23:08:08,865 - end_turn_player_1
+INFO    2020-07-09 23:08:09,208 - end_turn_player_2
+INFO    2020-07-09 23:08:09,471 - end_turn_player_1
+INFO    2020-07-09 23:08:09,764 - end_turn_player_2
+INFO    2020-07-09 23:08:10,032 - end_turn_player_1
+INFO    2020-07-09 23:08:10,242 - end_turn_player_2
+INFO    2020-07-09 23:08:11,870 - end_turn_player_1
+INFO    2020-07-09 23:08:16,159 - end_turn_player_2
+INFO    2020-07-09 23:08:27,452 - drag_detected
+INFO    2020-07-09 23:08:30,020 - drag_ended
+INFO    2020-07-09 23:08:30,033 - play_Minion
+INFO    2020-07-09 23:08:32,127 - end_turn_player_1
+INFO    2020-07-09 23:08:32,878 - end_turn_player_2
+INFO    2020-07-09 23:08:34,143 - end_turn_player_1
+INFO    2020-07-09 23:08:46,565 - drag_detected
+INFO    2020-07-09 23:08:47,571 - drag_ended
+INFO    2020-07-09 23:08:47,575 - play_Minion
+INFO    2020-07-09 23:08:49,950 - end_turn_player_2
+ERROR   2020-07-09 23:08:50,796 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 23:08:53,407 - end_turn_player_1
+INFO    2020-07-09 23:08:54,583 - end_turn_player_2
+ERROR   2020-07-09 23:08:56,395 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 23:08:56,908 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-09 23:10:11,104 - exit
+INFO    2020-07-09 23:10:26,010 - log_in
+INFO    2020-07-09 23:10:26,013 - navigate_from_log_in_to_menu
+INFO    2020-07-09 23:10:27,816 - start_a_game
+INFO    2020-07-09 23:10:29,452 - passive_selected
+INFO    2020-07-09 23:10:30,995 - passive_selected
+INFO    2020-07-09 23:10:35,750 - end_turn_player_1
+INFO    2020-07-09 23:10:37,993 - end_turn_player_2
+INFO    2020-07-09 23:10:40,257 - end_turn_player_1
+INFO    2020-07-09 23:10:42,591 - end_turn_player_2
+INFO    2020-07-09 23:10:44,842 - end_turn_player_1
+INFO    2020-07-09 23:10:47,126 - end_turn_player_2
+INFO    2020-07-09 23:10:49,427 - end_turn_player_1
+INFO    2020-07-09 23:10:49,655 - end_turn_player_2
+INFO    2020-07-09 23:10:54,827 - drag_detected
+INFO    2020-07-09 23:10:55,683 - drag_ended
+INFO    2020-07-09 23:10:55,701 - play_Minion
+INFO    2020-07-09 23:10:57,393 - end_turn_player_1
+INFO    2020-07-09 23:11:10,203 - drag_detected
+INFO    2020-07-09 23:11:10,651 - drag_ended
+INFO    2020-07-09 23:11:10,655 - play_Minion
+INFO    2020-07-09 23:11:12,782 - end_turn_player_2
+ERROR   2020-07-09 23:11:13,396 - java.lang.IllegalArgumentException: wrong number of arguments
+INFO    2020-07-09 23:11:26,133 - end_turn_player_1
+INFO    2020-07-09 23:11:26,895 - end_turn_player_2
+ERROR   2020-07-09 23:11:30,133 - java.lang.IllegalArgumentException: wrong number of arguments
+ERROR   2020-07-09 23:11:31,188 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-09 23:13:27,203 - end_turn_player_1
+INFO    2020-07-09 23:15:27,651 - end_turn_player_2
+INFO    2020-07-09 23:17:28,527 - end_turn_player_1
+INFO    2020-07-09 23:19:28,995 - end_turn_player_2
+INFO    2020-07-09 23:21:29,687 - end_turn_player_1
+INFO    2020-07-09 23:27:37,647 - log_in
+INFO    2020-07-09 23:27:37,650 - navigate_from_log_in_to_menu
+INFO    2020-07-09 23:28:00,386 - exit
+INFO    2020-07-09 23:32:16,386 - log_in
+INFO    2020-07-09 23:32:16,387 - navigate_from_log_in_to_menu
+INFO    2020-07-09 23:32:18,648 - start_a_game
+INFO    2020-07-09 23:32:20,073 - passive_selected
+INFO    2020-07-09 23:32:21,497 - passive_selected
+INFO    2020-07-09 23:32:24,428 - end_turn_player_1
+INFO    2020-07-09 23:32:26,702 - end_turn_player_2
+INFO    2020-07-09 23:32:29,006 - end_turn_player_1
+INFO    2020-07-09 23:32:31,275 - end_turn_player_2
+INFO    2020-07-09 23:32:33,558 - end_turn_player_1
+INFO    2020-07-09 23:32:35,880 - end_turn_player_2
+INFO    2020-07-09 23:32:38,158 - end_turn_player_1
+INFO    2020-07-09 23:32:38,375 - end_turn_player_2
+INFO    2020-07-09 23:32:40,652 - end_turn_player_1
+INFO    2020-07-09 23:32:41,035 - end_turn_player_2
+INFO    2020-07-09 23:32:41,337 - end_turn_player_1
+INFO    2020-07-09 23:32:41,591 - end_turn_player_2
+INFO    2020-07-09 23:32:41,795 - end_turn_player_1
+INFO    2020-07-09 23:32:42,004 - end_turn_player_2
+INFO    2020-07-09 23:32:47,994 - drag_detected
+INFO    2020-07-09 23:32:48,457 - drag_ended
+INFO    2020-07-09 23:32:48,470 - play_Minion
+INFO    2020-07-09 23:32:50,155 - end_turn_player_1
+INFO    2020-07-09 23:32:51,665 - drag_detected
+INFO    2020-07-09 23:32:52,233 - drag_ended
+INFO    2020-07-09 23:32:52,238 - play_Minion
+INFO    2020-07-09 23:32:54,059 - end_turn_player_2
+ERROR   2020-07-09 23:32:55,241 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-09 23:32:58,573 - end_turn_player_1
+INFO    2020-07-09 23:32:59,459 - end_turn_player_2
+ERROR   2020-07-09 23:33:00,545 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-09 23:33:01,217 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-09 23:33:08,001 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-09 23:33:11,064 - exit

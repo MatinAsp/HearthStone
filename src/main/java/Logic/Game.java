@@ -64,7 +64,7 @@ public class Game {
     private int needMana(Card card, int side){
         int mana = card.getMana();
         if(card instanceof Spell && competitor[side].getHero().getName().equals("Mage")){
-            mana -= 2;
+            mana = Math.max(mana - 2, 0);
         }
         return mana;
     }
