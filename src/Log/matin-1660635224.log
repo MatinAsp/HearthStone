@@ -169,3 +169,112 @@ INFO    2020-07-10 22:30:15,233 - hero_filter_changed
 INFO    2020-07-10 22:30:15,699 - hero_filter_changed
 INFO    2020-07-10 22:30:22,081 - navigate_from_collections_to_menu
 INFO    2020-07-10 22:30:23,353 - log_out
+INFO    2020-07-10 23:39:45,094 - log_in
+INFO    2020-07-10 23:39:45,094 - navigate_from_log_in_to_menu
+INFO    2020-07-10 23:39:45,981 - navigate_from_menu_to_collections
+INFO    2020-07-10 23:39:47,125 - set_current_collections_deck
+INFO    2020-07-10 23:39:47,846 - click_card
+INFO    2020-07-10 23:39:47,857 - set_confirmation
+INFO    2020-07-10 23:39:49,789 - confirm_dismissed
+INFO    2020-07-10 23:39:50,509 - click_card
+INFO    2020-07-10 23:39:50,509 - add_card_to_deck
+INFO    2020-07-10 23:39:50,685 - click_card
+INFO    2020-07-10 23:39:50,685 - add_card_to_deck
+INFO    2020-07-10 23:39:52,125 - navigate_from_collections_to_menu
+INFO    2020-07-10 23:39:54,102 - set_confirmation
+INFO    2020-07-10 23:39:57,574 - confirmed
+INFO    2020-07-10 23:39:57,577 - set_confirmation
+INFO    2020-07-10 23:40:00,661 - confirmed
+INFO    2020-07-10 23:40:01,901 - start_a_game
+INFO    2020-07-10 23:40:03,501 - passive selected
+INFO    2020-07-10 23:40:04,133 - passive selected
+INFO    2020-07-10 23:40:07,693 - draw card
+INFO    2020-07-10 23:40:07,693 - draw card
+INFO    2020-07-10 23:40:23,733 - draw card
+INFO    2020-07-10 23:40:23,733 - draw card
+INFO    2020-07-10 23:40:23,733 - draw card
+ERROR   2020-07-10 23:40:30,094 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 23:40:30,094 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-10 23:40:36,288 - end turn player 1
+INFO    2020-07-10 23:40:36,289 - draw card
+INFO    2020-07-10 23:40:36,456 - end turn player 2
+INFO    2020-07-10 23:40:36,456 - draw card
+INFO    2020-07-10 23:40:36,456 - draw card
+INFO    2020-07-10 23:40:36,950 - end turn player 1
+INFO    2020-07-10 23:40:36,950 - draw card
+INFO    2020-07-10 23:40:36,950 - draw card
+INFO    2020-07-10 23:40:36,950 - draw card
+INFO    2020-07-10 23:40:37,123 - end turn player 2
+INFO    2020-07-10 23:40:37,123 - draw card
+INFO    2020-07-10 23:40:37,124 - draw card
+INFO    2020-07-10 23:40:37,125 - draw card
+INFO    2020-07-10 23:40:37,126 - draw card
+INFO    2020-07-10 23:40:37,782 - end turn player 1
+INFO    2020-07-10 23:40:37,782 - draw card
+INFO    2020-07-10 23:40:37,782 - draw card
+INFO    2020-07-10 23:40:37,782 - draw card
+INFO    2020-07-10 23:40:37,782 - draw card
+INFO    2020-07-10 23:40:37,782 - draw card
+INFO    2020-07-10 23:40:37,942 - end turn player 2
+INFO    2020-07-10 23:40:37,944 - draw card
+INFO    2020-07-10 23:40:37,944 - draw card
+INFO    2020-07-10 23:40:37,945 - draw card
+INFO    2020-07-10 23:40:37,945 - draw card
+INFO    2020-07-10 23:40:37,945 - draw card
+INFO    2020-07-10 23:40:37,945 - draw card
+INFO    2020-07-10 23:40:38,097 - end turn player 1
+INFO    2020-07-10 23:40:38,097 - draw card
+INFO    2020-07-10 23:40:38,097 - draw card
+INFO    2020-07-10 23:40:38,097 - draw card
+INFO    2020-07-10 23:40:38,098 - draw card
+INFO    2020-07-10 23:40:38,098 - draw card
+INFO    2020-07-10 23:40:38,098 - draw card
+INFO    2020-07-10 23:40:38,098 - draw card
+INFO    2020-07-10 23:40:38,749 - end turn player 2
+INFO    2020-07-10 23:40:39,017 - end turn player 1
+INFO    2020-07-10 23:40:39,017 - draw card
+INFO    2020-07-10 23:40:40,039 - end turn player 2
+INFO    2020-07-10 23:40:40,039 - draw card
+INFO    2020-07-10 23:40:40,207 - end turn player 1
+INFO    2020-07-10 23:40:40,207 - draw card
+INFO    2020-07-10 23:40:40,207 - draw card
+INFO    2020-07-10 23:40:40,358 - end turn player 2
+INFO    2020-07-10 23:40:40,359 - draw card
+INFO    2020-07-10 23:40:40,359 - draw card
+INFO    2020-07-10 23:40:41,413 - end turn player 1
+INFO    2020-07-10 23:40:41,686 - end turn player 2
+INFO    2020-07-10 23:40:41,929 - end turn player 1
+INFO    2020-07-10 23:40:42,222 - end turn player 2
+INFO    2020-07-10 23:40:58,565 - back_to_menu
+INFO    2020-07-10 23:41:00,231 - exit
+INFO    2020-07-11 00:15:40,920 - log_in
+INFO    2020-07-11 00:15:40,920 - navigate_from_log_in_to_menu
+INFO    2020-07-11 00:15:42,575 - navigate_from_menu_to_collections
+INFO    2020-07-11 00:15:51,759 - set_current_collections_deck
+INFO    2020-07-11 00:15:52,302 - remove_card_from_deck
+INFO    2020-07-11 00:15:52,479 - remove_card_from_deck
+INFO    2020-07-11 00:15:52,622 - remove_card_from_deck
+INFO    2020-07-11 00:15:52,775 - remove_card_from_deck
+INFO    2020-07-11 00:15:52,927 - remove_card_from_deck
+INFO    2020-07-11 00:15:53,711 - hero_filter_changed
+INFO    2020-07-11 00:15:54,148 - hero_filter_changed
+INFO    2020-07-11 00:15:54,975 - click_card
+INFO    2020-07-11 00:15:54,975 - add_card_to_deck
+INFO    2020-07-11 00:15:55,135 - click_card
+INFO    2020-07-11 00:15:55,135 - add_card_to_deck
+INFO    2020-07-11 00:15:55,606 - click_card
+INFO    2020-07-11 00:15:55,606 - add_card_to_deck
+INFO    2020-07-11 00:15:55,783 - click_card
+INFO    2020-07-11 00:15:55,783 - add_card_to_deck
+INFO    2020-07-11 00:15:56,207 - click_card
+ERROR   2020-07-11 00:15:56,207 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 00:15:56,208 - set_alert
+INFO    2020-07-11 00:15:57,103 - alert_dismissed
+INFO    2020-07-11 00:15:57,583 - hero_filter_changed
+INFO    2020-07-11 00:15:57,604 - hero_filter_changed
+INFO    2020-07-11 00:16:00,647 - click_card
+INFO    2020-07-11 00:16:00,647 - add_card_to_deck
+INFO    2020-07-11 00:16:00,791 - click_card
+INFO    2020-07-11 00:16:00,791 - add_card_to_deck
+INFO    2020-07-11 00:16:05,503 - navigate_from_collections_to_menu
+INFO    2020-07-11 00:16:11,057 - log_out

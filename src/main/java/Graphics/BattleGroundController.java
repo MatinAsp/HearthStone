@@ -380,7 +380,7 @@ public class BattleGroundController implements Initializable {
     private void changeTurn() {
         try {
             ActionRequest.END_TURN.execute();
-            renderActions();
+            Platform.runLater(() -> renderActions());
         } catch (GameOverException e) {
             endGame();
         }
@@ -392,10 +392,13 @@ public class BattleGroundController implements Initializable {
         LogCenter.getInstance().getLogger().info("game over");
         addGameLog("game over");
         isGameEnded = true;
-        renderActions();
-        alertBox.setVisible(true);
+        Platform.runLater(() -> renderActions());
         thread.interrupt();
         thread = null;
+    }
+
+    private void setAlertBox(){
+        alertBox.setVisible(true);
         if(game.getWinner() == 0) alertMessage.setText("You Win.");
         else alertMessage.setText("You Lose.");
     }
@@ -412,6 +415,9 @@ public class BattleGroundController implements Initializable {
         toY = hand[side].getLayoutY() - cardPane.getLayoutY();
         return buildTranslateTransition(cardPane, 0, 0, toX, toY, duration);
     }
+
+    @FXML
+    private StackPane protector;
 
     @FXML
     private void backToMenu() {
@@ -611,10 +617,10 @@ public class BattleGroundController implements Initializable {
         setAttackTransition();
         setDrawTransition();
         if(transitions.size() > 0){
-            rootPane.setDisable(true);
+            protector.setVisible(true);
             bindTransitions();
             try {
-                if (transitions.size() > 0) beforeAction.get(0).runAction();
+                beforeAction.get(0).runAction();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -622,7 +628,12 @@ public class BattleGroundController implements Initializable {
         else{
             gameRender();
             ActionRequest.clearRecords();
-            botCheck();
+            if(isGameEnded){
+                alertBox.setVisible(true);
+                if(game.getWinner() == 0) alertMessage.setText("You Win.");
+                else alertMessage.setText("You Lose.");
+            }
+            else botCheck();
         }
     }
 
@@ -676,10 +687,11 @@ public class BattleGroundController implements Initializable {
                 if(ActionRequest.readSummoned()){
                     MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("minionPlacingSound"), 1);
                 }
-                rootPane.setDisable(false);
+                protector.setVisible(false);
                 gameRender();
                 ActionRequest.clearRecords();
-                botCheck();
+                if(isGameEnded) setAlertBox();
+                else botCheck();
             }
         });
     }

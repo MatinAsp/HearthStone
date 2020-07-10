@@ -164,5 +164,13 @@
             </VBox>
          </children>
       </StackPane>
+      <StackPane fx:id="protector" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="874.0" visible="false">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Pane layoutX="648.0" layoutY="243.0" prefHeight="200.0" prefWidth="384.0" />
+               </children>
+            </Pane>
+         </children></StackPane>
    </children>
 </StackPane>

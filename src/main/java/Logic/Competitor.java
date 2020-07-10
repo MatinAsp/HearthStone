@@ -4,6 +4,9 @@ import Data.GameConstants;
 import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
+import Interfaces.ActionHandler;
+import Interfaces.CardAction;
+import Interfaces.PlayActionHandler;
 import Interfaces.QuestActionHandler;
 import Log.LogCenter;
 import Models.Cards.*;
@@ -24,7 +27,16 @@ public class Competitor{
     private ArrayList<Minion> onBoardCards;
     private HashMap<Quest, QuestActionHandler> questsInProgress = new HashMap<>();
     private HashMap<Class, Integer> spentMana = new HashMap<>();
+    private ArrayList<ActionHandler> deckAddActions = new ArrayList<>(), handAddActions = new ArrayList<>();
     private int drawNumber;
+
+    public void addDeckAddActions(ActionHandler actionHandler){
+        deckAddActions.add(actionHandler);
+    }
+
+    public void addHandAddActions(ActionHandler actionHandler){
+        handAddActions.add(actionHandler);
+    }
 
     public Competitor(){
         drawNumber = GameConstants.getInstance().getInteger("drawNumber");
@@ -119,10 +131,30 @@ public class Competitor{
     }
 
     public void addCardInDeck(Card card) {
+        for(ActionHandler actionHandler: deckAddActions){
+            try {
+                if(actionHandler instanceof CardAction){
+                    ((CardAction)actionHandler).runAction(card);
+                }
+                actionHandler.runAction();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         inDeckCards.add(card);
     }
 
     public void addCardInHand(Card card) {
+        for(ActionHandler actionHandler: handAddActions){
+            try {
+                if(actionHandler instanceof CardAction){
+                    ((CardAction)actionHandler).runAction(card);
+                }
+                actionHandler.runAction();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         inHandCards.add(card);
     }
 

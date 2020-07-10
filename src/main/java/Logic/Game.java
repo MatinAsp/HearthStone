@@ -7,6 +7,7 @@ import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
 import Interfaces.ActionHandler;
+import Interfaces.CardAction;
 import Models.Cards.Card;
 import Models.Cards.HeroPower;
 import Models.Cards.Minion;
@@ -58,19 +59,11 @@ public class Game {
 
     private void playCard(Card card, int side) {
         competitor[side].playCard(card);
-        competitor[side].setLeftMana(competitor[side].getLeftMana() - needMana(card, side));
-    }
-
-    private int needMana(Card card, int side){
-        int mana = card.getMana();
-        if(card instanceof Spell && competitor[side].getHero().getName().equals("Mage")){
-            mana = Math.max(mana - 2, 0);
-        }
-        return mana;
+        competitor[side].setLeftMana(competitor[side].getLeftMana() - card.getMana());
     }
 
     private void checkForMana(Card card, int side) throws InvalidChoiceException {
-        if(needMana(card, side) > competitor[side].getLeftMana()) {
+        if(card.getMana() > competitor[side].getLeftMana()) {
             throw new InvalidChoiceException();
         }
     }
@@ -163,6 +156,59 @@ public class Game {
 
     public void initialize() {
         setForPaladin();
+        setForMage();
+        setForRogue();
+    }
+
+    private void setForRogue() {
+        for(int i = 0; i < 2; i++){
+            if(competitor[i].getHero().getName().equals("Rogue")){
+                ArrayList<Card> cards = new ArrayList<>();
+                cards.addAll(competitor[i].getInDeckCards());
+                cards.addAll(competitor[i].getInHandCards());
+                int finalI = i;
+                CardAction cardAction = new CardAction() {
+                    @Override
+                    public void runAction(Card card) {
+                        if(!card.getHeroClass().equalsIgnoreCase(competitor[finalI].getHero().getName()) && !card.getHeroClass().equalsIgnoreCase("Neutral")){
+                            card.setMana(Math.max(card.getMana() - 2, 0));
+                        }
+                    }
+                    @Override
+                    public void runAction() throws Exception { }
+                };
+                for(Card card: cards){
+                    cardAction.runAction(card);
+                }
+                competitor[i].addDeckAddActions(cardAction);
+                competitor[i].addHandAddActions(cardAction);
+            }
+        }
+    }
+
+    private void setForMage() {
+        for(int i = 0; i < 2; i++){
+            if(competitor[i].getHero().getName().equals("Mage")){
+                ArrayList<Card> cards = new ArrayList<>();
+                cards.addAll(competitor[i].getInDeckCards());
+                cards.addAll(competitor[i].getInHandCards());
+                CardAction cardAction = new CardAction() {
+                    @Override
+                    public void runAction(Card card) {
+                        if(card instanceof Spell){
+                            card.setMana(Math.max(card.getMana() - 2, 0));
+                        }
+                    }
+                    @Override
+                    public void runAction() throws Exception { }
+                };
+                for(Card card: cards){
+                    cardAction.runAction(card);
+                }
+                competitor[i].addDeckAddActions(cardAction);
+                competitor[i].addHandAddActions(cardAction);
+            }
+        }
     }
 
     private void setForPaladin() {

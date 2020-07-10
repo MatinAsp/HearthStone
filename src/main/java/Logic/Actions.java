@@ -6,16 +6,14 @@ import Data.DataManager;
 import Exceptions.GameOverException;
 import Exceptions.SelectionNeededException;
 import Exceptions.InvalidChoiceException;
-import Interfaces.ActionHandler;
-import Interfaces.PerformActionHandler;
-import Interfaces.PlayActionHandler;
-import Interfaces.QuestActionHandler;
+import Interfaces.*;
 import Models.Cards.*;
 import Models.Character;
 import Models.Hero;
 import Models.InfoPack;
 import Models.Passive;
 
+import javax.xml.stream.events.DTD;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -545,7 +543,7 @@ public class Actions {
         Weapon weapon = weapons.get(random.nextInt(weapons.size()));
         weapon.setDurability(weapon.getDurability() + 2);
         weapon.setAttack(weapon.getAttack() + 2);
-        game.getCompetitor(infoPack.getSide()).getInDeckCards().add(weapon);
+        game.getCompetitor(infoPack.getSide()).addCardInDeck(weapon);
     }
 
     @CardName(value = "Gnomish Army Knife", isForOnBoard = false)
@@ -807,12 +805,22 @@ public class Actions {
 
     @CardName(value = "Off Cards", isForOnBoard = false)
     public void action62(InfoPack infoPack){
+        CardAction cardAction = new CardAction() {
+            @Override
+            public void runAction(Card card) {
+                card.setMana(Math.max(0, card.getMana() - 1));
+            }
+            @Override
+            public void runAction() throws Exception {}
+        };
         for(Card card: game.getCompetitor(infoPack.getSide()).getInHandCards()){
-            card.setMana(Math.max(0, card.getMana() - 1));
+            cardAction.runAction(card);
         }
         for(Card card: game.getCompetitor(infoPack.getSide()).getInDeckCards()){
-            card.setMana(Math.max(0, card.getMana() - 1));
+            cardAction.runAction(card);
         }
+        game.getCompetitor(infoPack.getSide()).addDeckAddActions(cardAction);
+        game.getCompetitor(infoPack.getSide()).addHandAddActions(cardAction);
     }
 
     @CardName(value = "Twice Draw", isForOnBoard = false)
@@ -901,12 +909,12 @@ public class Actions {
         Random random = new Random();
         if(enemy.getInDeckCards().size() > 0){
             Card card = enemy.getInDeckCards().get(random.nextInt(enemy.getInDeckCards().size()));
-            game.getCompetitor(infoPack.getSide()).addCardInHand(card);
+            game.getCompetitor(infoPack.getSide()).addCardInHand(DataManager.getInstance().getObject(Card.class,card.getName()));
             enemy.removeCardFromDeck(card);
         }
         if(game.getCompetitor(infoPack.getSide()).getHeroWeapon() != null && enemy.getInHandCards().size() > 0){
             Card card = enemy.getInHandCards().get(random.nextInt(enemy.getInHandCards().size()));
-            game.getCompetitor(infoPack.getSide()).addCardInHand(card);
+            game.getCompetitor(infoPack.getSide()).addCardInHand(DataManager.getInstance().getObject(Card.class,card.getName()));
             enemy.removeCardFromHand(card);
         }
     }
