@@ -98,7 +98,6 @@ public class Game {
         }
         competitor[0].getDeck().setPlaysNumber(competitor[0].getDeck().getPlaysNumber() + 1);
         competitor[1].getDeck().setPlaysNumber(competitor[1].getDeck().getPlaysNumber() + 1);
-        turn = -1;
     }
 
     public int getWinner() {

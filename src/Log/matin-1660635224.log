@@ -10,3 +10,162 @@ INFO    2020-07-09 19:22:38,863 - navigate_from_log_in_to_menu
 INFO    2020-07-09 19:25:35,910 - log_in
 INFO    2020-07-09 19:25:35,913 - navigate_from_log_in_to_menu
 INFO    2020-07-09 19:27:21,924 - exit
+INFO    2020-07-10 22:10:46,818 - log_in
+INFO    2020-07-10 22:10:46,818 - navigate_from_log_in_to_menu
+INFO    2020-07-10 22:11:52,826 - log_out
+INFO    2020-07-10 22:14:19,168 - log_in
+INFO    2020-07-10 22:14:19,170 - navigate_from_log_in_to_menu
+INFO    2020-07-10 22:14:20,240 - navigate_from_menu_to_collections
+INFO    2020-07-10 22:14:23,985 - set_current_collections_deck
+INFO    2020-07-10 22:14:32,112 - remove_card_from_deck
+INFO    2020-07-10 22:14:32,407 - remove_card_from_deck
+INFO    2020-07-10 22:14:32,720 - remove_card_from_deck
+INFO    2020-07-10 22:14:32,872 - remove_card_from_deck
+INFO    2020-07-10 22:14:33,016 - remove_card_from_deck
+INFO    2020-07-10 22:14:33,152 - remove_card_from_deck
+INFO    2020-07-10 22:14:33,336 - remove_card_from_deck
+INFO    2020-07-10 22:14:33,584 - remove_card_from_deck
+INFO    2020-07-10 22:14:33,728 - remove_card_from_deck
+INFO    2020-07-10 22:14:35,904 - hero_filter_changed
+INFO    2020-07-10 22:14:36,375 - hero_filter_changed
+INFO    2020-07-10 22:14:39,808 - click_card
+INFO    2020-07-10 22:14:39,808 - add_card_to_deck
+INFO    2020-07-10 22:14:40,184 - click_card
+INFO    2020-07-10 22:14:40,184 - add_card_to_deck
+INFO    2020-07-10 22:14:41,056 - click_card
+INFO    2020-07-10 22:14:41,056 - add_card_to_deck
+INFO    2020-07-10 22:14:41,264 - click_card
+INFO    2020-07-10 22:14:41,264 - add_card_to_deck
+INFO    2020-07-10 22:14:42,064 - click_card
+ERROR   2020-07-10 22:14:42,064 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-10 22:14:42,064 - set_alert
+INFO    2020-07-10 22:14:43,105 - alert_dismissed
+INFO    2020-07-10 22:14:44,312 - hero_filter_changed
+INFO    2020-07-10 22:14:44,350 - hero_filter_changed
+INFO    2020-07-10 22:14:49,200 - click_card
+INFO    2020-07-10 22:14:49,200 - add_card_to_deck
+INFO    2020-07-10 22:14:49,576 - click_card
+INFO    2020-07-10 22:14:49,576 - add_card_to_deck
+INFO    2020-07-10 22:14:50,664 - navigate_from_collections_to_menu
+INFO    2020-07-10 22:14:53,426 - log_out
+INFO    2020-07-10 22:23:16,199 - log_in
+INFO    2020-07-10 22:23:16,201 - navigate_from_log_in_to_menu
+INFO    2020-07-10 22:23:17,153 - navigate_from_menu_to_collections
+INFO    2020-07-10 22:23:19,217 - set_current_collections_deck
+INFO    2020-07-10 22:23:20,553 - remove_card_from_deck
+INFO    2020-07-10 22:23:20,704 - remove_card_from_deck
+INFO    2020-07-10 22:23:20,849 - remove_card_from_deck
+INFO    2020-07-10 22:23:20,984 - remove_card_from_deck
+INFO    2020-07-10 22:23:21,129 - remove_card_from_deck
+INFO    2020-07-10 22:23:21,273 - remove_card_from_deck
+INFO    2020-07-10 22:23:23,736 - click_card
+INFO    2020-07-10 22:23:23,737 - add_card_to_deck
+INFO    2020-07-10 22:23:24,953 - click_card
+INFO    2020-07-10 22:23:24,956 - set_confirmation
+INFO    2020-07-10 22:23:26,217 - confirm_dismissed
+INFO    2020-07-10 22:23:28,936 - click_card
+INFO    2020-07-10 22:23:28,936 - add_card_to_deck
+INFO    2020-07-10 22:23:30,329 - click_card
+INFO    2020-07-10 22:23:30,329 - add_card_to_deck
+INFO    2020-07-10 22:23:32,865 - navigate_from_collections_to_menu
+INFO    2020-07-10 22:23:34,834 - set_confirmation
+INFO    2020-07-10 22:23:40,912 - confirmed
+INFO    2020-07-10 22:23:40,913 - set_confirmation
+INFO    2020-07-10 22:23:45,041 - confirmed
+INFO    2020-07-10 22:23:46,589 - start_a_game
+INFO    2020-07-10 22:23:49,000 - passive selected
+INFO    2020-07-10 22:23:50,537 - passive selected
+INFO    2020-07-10 22:23:54,721 - drag_detected
+INFO    2020-07-10 22:23:55,080 - drag_ended
+INFO    2020-07-10 22:23:55,081 - play Wisp
+INFO    2020-07-10 22:23:55,081 - card summoned
+INFO    2020-07-10 22:23:57,232 - drag_detected
+INFO    2020-07-10 22:23:57,665 - drag_ended
+INFO    2020-07-10 22:23:57,665 - play Bluegill Warrior
+INFO    2020-07-10 22:23:57,666 - card summoned
+INFO    2020-07-10 22:23:59,209 - drag_detected
+INFO    2020-07-10 22:23:59,489 - drag_ended
+INFO    2020-07-10 22:23:59,489 - play Voodoo Doctor
+INFO    2020-07-10 22:23:59,489 - card summoned
+INFO    2020-07-10 22:24:01,100 - end turn player 1
+INFO    2020-07-10 22:24:01,564 - end turn player 2
+INFO    2020-07-10 22:24:01,807 - end turn player 1
+INFO    2020-07-10 22:24:02,043 - end turn player 2
+INFO    2020-07-10 22:24:02,240 - end turn player 1
+INFO    2020-07-10 22:24:04,308 - end turn player 2
+INFO    2020-07-10 22:24:04,505 - end turn player 1
+INFO    2020-07-10 22:24:04,708 - end turn player 2
+INFO    2020-07-10 22:24:05,412 - end turn player 1
+INFO    2020-07-10 22:24:06,139 - end turn player 2
+INFO    2020-07-10 22:24:06,484 - end turn player 1
+INFO    2020-07-10 22:24:07,356 - end turn player 2
+INFO    2020-07-10 22:24:08,084 - end turn player 1
+INFO    2020-07-10 22:24:12,641 - drag_detected
+INFO    2020-07-10 22:24:13,280 - drag_ended
+INFO    2020-07-10 22:24:13,281 - play WANTED!
+INFO    2020-07-10 22:24:17,401 - back_to_menu
+INFO    2020-07-10 22:24:18,497 - navigate_from_menu_to_collections
+INFO    2020-07-10 22:24:19,625 - set_current_collections_deck
+INFO    2020-07-10 22:24:20,441 - remove_card_from_deck
+INFO    2020-07-10 22:24:20,593 - remove_card_from_deck
+INFO    2020-07-10 22:24:20,745 - remove_card_from_deck
+INFO    2020-07-10 22:24:27,016 - click_card
+INFO    2020-07-10 22:24:27,017 - add_card_to_deck
+INFO    2020-07-10 22:24:31,433 - click_card
+INFO    2020-07-10 22:24:31,433 - add_card_to_deck
+INFO    2020-07-10 22:24:34,144 - click_card
+INFO    2020-07-10 22:24:34,144 - add_card_to_deck
+INFO    2020-07-10 22:24:36,057 - navigate_from_collections_to_menu
+INFO    2020-07-10 22:24:37,041 - set_confirmation
+INFO    2020-07-10 22:24:39,647 - confirmed
+INFO    2020-07-10 22:24:39,647 - set_confirmation
+INFO    2020-07-10 22:24:44,709 - confirmed
+INFO    2020-07-10 22:24:45,954 - start_a_game
+INFO    2020-07-10 22:24:47,584 - passive selected
+INFO    2020-07-10 22:24:48,849 - passive selected
+INFO    2020-07-10 22:24:55,156 - end turn player 1
+INFO    2020-07-10 22:24:55,572 - end turn player 2
+INFO    2020-07-10 22:24:55,732 - end turn player 1
+INFO    2020-07-10 22:24:55,872 - end turn player 2
+INFO    2020-07-10 22:24:56,022 - end turn player 1
+INFO    2020-07-10 22:24:56,177 - end turn player 2
+INFO    2020-07-10 22:24:56,320 - end turn player 1
+INFO    2020-07-10 22:24:58,219 - end turn player 2
+INFO    2020-07-10 22:24:58,375 - end turn player 1
+INFO    2020-07-10 22:25:00,697 - drag_detected
+INFO    2020-07-10 22:25:01,112 - drag_ended
+ERROR   2020-07-10 22:25:01,113 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 22:25:01,114 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-10 22:25:02,154 - drag_detected
+INFO    2020-07-10 22:25:02,841 - drag_ended
+ERROR   2020-07-10 22:25:02,841 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 22:25:02,841 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-10 22:25:04,364 - end turn player 2
+INFO    2020-07-10 22:25:05,481 - drag_detected
+INFO    2020-07-10 22:25:05,881 - drag_ended
+INFO    2020-07-10 22:25:05,881 - play Sen'jin Shieldmasta
+INFO    2020-07-10 22:25:05,881 - card summoned
+INFO    2020-07-10 22:25:09,140 - end turn player 1
+INFO    2020-07-10 22:25:10,771 - end turn player 2
+INFO    2020-07-10 22:25:11,393 - drag_detected
+INFO    2020-07-10 22:25:11,810 - drag_ended
+INFO    2020-07-10 22:25:11,810 - play Arena Patron
+INFO    2020-07-10 22:25:11,810 - card summoned
+INFO    2020-07-10 22:25:13,652 - end turn player 1
+INFO    2020-07-10 22:25:14,566 - end turn player 2
+INFO    2020-07-10 22:25:15,185 - drag_detected
+INFO    2020-07-10 22:25:15,673 - drag_ended
+INFO    2020-07-10 22:25:15,673 - play Gruul
+INFO    2020-07-10 22:25:15,673 - card summoned
+INFO    2020-07-10 22:25:18,171 - end turn player 1
+INFO    2020-07-10 22:25:20,721 - drag_detected
+INFO    2020-07-10 22:25:21,713 - drag_ended
+INFO    2020-07-10 22:25:21,713 - play WANTED!
+INFO    2020-07-10 22:27:18,461 - end turn player 2
+INFO    2020-07-10 22:29:19,039 - end turn player 1
+INFO    2020-07-10 22:30:08,825 - back_to_menu
+INFO    2020-07-10 22:30:12,193 - navigate_from_menu_to_collections
+INFO    2020-07-10 22:30:15,233 - hero_filter_changed
+INFO    2020-07-10 22:30:15,699 - hero_filter_changed
+INFO    2020-07-10 22:30:22,081 - navigate_from_collections_to_menu
+INFO    2020-07-10 22:30:23,353 - log_out

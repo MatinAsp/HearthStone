@@ -82,7 +82,7 @@
                </font>
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000c4" height="271.0" layoutX="7.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" width="175.0" />
-            <ScrollPane fx:id="logScroll" layoutX="12.0" layoutY="197.0" prefHeight="270.0" prefWidth="197.0" style="-fx-background-color: transparent;">
+            <ScrollPane fx:id="logScroll" layoutX="12.0" layoutY="197.0" prefHeight="270.0" prefWidth="185.0" style="-fx-background-color: transparent;">
                <content>
                   <GridPane fx:id="gameLogGridPane" prefHeight="260.0" prefWidth="161.0" style="-fx-font-size: 12;" styleClass="gameFont">
                     <columnConstraints>
@@ -91,7 +91,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <ScrollPane fx:id="questScroll" layoutX="12.0" layoutY="197.0" prefHeight="270.0" prefWidth="175.0" style="-fx-background-color: transparent;">
+            <ScrollPane fx:id="questScroll" layoutX="12.0" layoutY="197.0" prefHeight="270.0" prefWidth="185.0" style="-fx-background-color: transparent;">
                <content>
                   <GridPane fx:id="questsStatus" prefHeight="260.0" prefWidth="161.0" style="-fx-font-size: 12;" styleClass="gameFont">
                      <columnConstraints>

@@ -16,6 +16,7 @@ import Logic.PlayersManager;
 import Logic.Competitor;
 import Models.Cards.Quest;
 import Models.Character;
+import Models.Hero;
 import Models.InfoPack;
 import Models.Passive;
 import javafx.animation.ScaleTransition;
@@ -390,6 +391,8 @@ public class BattleGroundController implements Initializable {
     private void endGame(){
         LogCenter.getInstance().getLogger().info("game over");
         addGameLog("game over");
+        isGameEnded = true;
+        renderActions();
         alertBox.setVisible(true);
         thread.interrupt();
         thread = null;
@@ -417,6 +420,7 @@ public class BattleGroundController implements Initializable {
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("battleGroundSound"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         root.setVisible(false);
+        ((Pane) root.getParent()).getChildren().remove(root);
     }
 
     @FXML
@@ -523,7 +527,7 @@ public class BattleGroundController implements Initializable {
     @FXML
     private void showGameLog(){
         logScroll.setVisible(true);
-        questsStatus.setVisible(false);
+        questScroll.setVisible(false);
     }
 
     int lastQuestRender;
@@ -548,7 +552,8 @@ public class BattleGroundController implements Initializable {
             parent.setOnMouseEntered(event -> showCard[side].getChildren().add(GraphicRender.getInstance().buildHeroPowerShow((HeroPower) card)));
         }
         else{
-            parent.setOnMouseEntered(event -> showCard[side].getChildren().add(GraphicRender.getInstance().buildCard(card, false, false, false)));
+            Card finalCard = DataManager.getInstance().getObject(Card.class, card.getName());
+            parent.setOnMouseEntered(event -> showCard[side].getChildren().add(GraphicRender.getInstance().buildCard(finalCard, false, false, false)));
         }
         parent.setOnMouseExited(event -> showCard[side].getChildren().clear());
     }
@@ -635,7 +640,7 @@ public class BattleGroundController implements Initializable {
     }
 
     private void botCheck(){
-        if(game.getTurn() == 1 && game.isWithBot()){
+        if(game.getTurn() == 1 && game.isWithBot() && !isGameEnded){
             try {
                 if(!ActionRequest.BOT_MOVE.execute(allInfoPack)) Platform.runLater(()->endTurn());
                 else Platform.runLater(()->renderActions());
@@ -678,6 +683,8 @@ public class BattleGroundController implements Initializable {
             }
         });
     }
+
+    private boolean isGameEnded = false;
 
     private void setDrawTransition() {
         int drawNumber = ActionRequest.readDrawNumber();

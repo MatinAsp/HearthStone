@@ -30,6 +30,7 @@ public enum ActionRequest {
                 game.chargeCards();
                 turnEnded = true;
             }catch (GameOverException e){
+                turnEnded = true;
                 game.engGame();
                 throw e;
             }
@@ -60,6 +61,7 @@ public enum ActionRequest {
                 super.execute(parameters);
                 game.checkAll();
             }catch (GameOverException e){
+                record(parameters);
                 game.engGame();
                 throw e;
             }

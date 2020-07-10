@@ -97,6 +97,10 @@ public class Actions {
                 Weapon weapon = (Weapon) methodParameters[0].getCharacter();
                 if(!weapon.isCharge()) throw new InvalidChoiceException();
             }
+            if(methodParameters[0].getCharacter() instanceof HeroPower){
+                HeroPower heroPower = (HeroPower) methodParameters[0].getCharacter();
+                if(!heroPower.isCharge()) throw new InvalidChoiceException();
+            }
             for(SelectAction annotation: selectActionMethodMap.keySet()){
                 if(annotation.value().equals(cardName) && annotation.isForOnBoard() == methodParameters[0].isOnGround()){
                     try {
@@ -634,7 +638,7 @@ public class Actions {
     @CardName(value = "WANTED!", isForOnBoard = false)
     public void action42(InfoPack infoPack) {
         Random random = new Random();
-        ArrayList<Minion> minions = game.getCompetitor(infoPack.getSide()).getOnBoardCards();
+        ArrayList<Minion> minions = game.getCompetitor((infoPack.getSide()+1)%2).getOnBoardCards();
         if(minions.size() > 0 ){
             minions.get(random.nextInt(minions.size())).getDamage(3);
         }
@@ -860,11 +864,11 @@ public class Actions {
         if (ownerHero.getName().equals("Priest")) health *= 2;
         if(character instanceof Hero){
             Hero hero = (Hero) character;
-            hero.setHp(Math.min(hero.getHp() + health, DataManager.getInstance().getObject(Hero.class, hero.getName()).getHp()));
+            hero.setHp(Math.max(hero.getHp(),Math.min(hero.getHp() + health, DataManager.getInstance().getObject(Hero.class, hero.getName()).getHp())));
         }
         if(character instanceof Minion){
             Minion minion = (Minion) character;
-            minion.setHp(Math.min(minion.getHp() + health, DataManager.getInstance().getObject(Minion.class, minion.getName()).getHp()));
+            minion.setHp(Math.max(minion.getHp(), Math.min(minion.getHp() + health, DataManager.getInstance().getObject(Minion.class, minion.getName()).getHp())));
         }
     }
 
@@ -916,6 +920,7 @@ public class Actions {
         if(random.nextInt(2) == 0 && minions.size() > 0){
             Minion minion = minions.get(random.nextInt(minions.size()));
             minion.setAttack(minion.getAttack() + 1);
+            minion.setHp(minion.getHp() + 1);
         }
         else{
             ActionRequest.DRAW_CARD.execute();
