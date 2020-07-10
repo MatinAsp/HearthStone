@@ -301,18 +301,7 @@ public class BattleGroundController implements Initializable {
         for(Card card: cards){
             Parent parent = GraphicRender.getInstance().buildBattleGroundMinion((Minion) card);
             setForPerformAction(card, side, true, parent);
-            parent.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    showCard[side].getChildren().add(GraphicRender.getInstance().buildCard(card, false, false, false));
-                }
-            });
-            parent.setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    showCard[side].getChildren().clear();
-                }
-            });
+            showCardOnBoard(parent, side, card);
             battleGround.getChildren().add(parent);
         }
     }

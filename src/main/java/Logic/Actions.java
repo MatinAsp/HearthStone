@@ -377,7 +377,7 @@ public class Actions {
         });
     }
 
-    @CardName(value = "Psychic Conjurer", isForOnBoard = true)
+    @CardName(value = "Psyali   chic Conjurer", isForOnBoard = true)
     public void action16(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
         attack(infoPack1, infoPack2);
     }
@@ -790,13 +790,17 @@ public class Actions {
                 if(game.getTurn() != infoPack.getSide()){
                     ArrayList<Minion> minions = new ArrayList<>();
                     for(Minion minion: game.getCompetitor(infoPack.getSide()).getOnBoardCards()){
-                        if(minion.getHp() < DataManager.getInstance().getObject(Minion.class, infoPack.getCharacter().getName()).getHp()){
+                        if(minion.getHp() < DataManager.getInstance().getObject(Minion.class, minion.getName()).getHp()){
                             minions.add(minion);
                         }
                     }
                     Random random = new Random();
                     if(minions.size() > 0) {
-                        minions.get(random.nextInt(minions.size())).setHp(DataManager.getInstance().getObject(Minion.class, infoPack.getCharacter().getName()).getHp());
+                        Minion minion = minions.get(random.nextInt(minions.size()));
+                        restoreHealth(minion,
+                                game.getCompetitor(infoPack.getSide()).getHero(),
+                                DataManager.getInstance().getObject(Minion.class, minion.getName()).getHp()
+                        );
                     }
                 }
             }
@@ -933,6 +937,16 @@ public class Actions {
         else{
             ActionRequest.DRAW_CARD.execute();
         }
+    }
+
+    @CardName(value = "Mech", isForOnBoard = true)
+    public void action70(InfoPack infoPack1, InfoPack infoPack2) throws InvalidChoiceException, GameOverException {
+        attack(infoPack1, infoPack2);
+    }
+
+    @CardName(value = "Mech", isForOnBoard = false)
+    public void action71(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
 }

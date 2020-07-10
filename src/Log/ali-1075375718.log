@@ -4733,3 +4733,485 @@ INFO    2020-07-11 00:40:37,547 - Assassin's Blade attacked Rogue
 INFO    2020-07-11 00:40:38,598 - game over
 INFO    2020-07-11 00:40:38,614 - Voodoo Doctor attacked Rogue
 INFO    2020-07-11 00:40:43,832 - back_to_menu
+INFO    2020-07-11 00:43:14,049 - log_in
+INFO    2020-07-11 00:43:14,051 - navigate_from_log_in_to_menu
+INFO    2020-07-11 00:43:16,416 - navigate_from_menu_to_collections
+INFO    2020-07-11 00:43:18,481 - set_current_collections_deck
+INFO    2020-07-11 00:43:23,921 - remove_card_from_deck
+INFO    2020-07-11 00:43:24,368 - remove_card_from_deck
+INFO    2020-07-11 00:43:26,024 - remove_card_from_deck
+INFO    2020-07-11 00:43:26,209 - remove_card_from_deck
+INFO    2020-07-11 00:43:28,041 - remove_card_from_deck
+INFO    2020-07-11 00:43:31,385 - click_card
+INFO    2020-07-11 00:43:31,385 - add_card_to_deck
+INFO    2020-07-11 00:43:40,425 - hero_selection_window_opened
+INFO    2020-07-11 00:43:41,864 - change_deck's_hero
+INFO    2020-07-11 00:43:43,448 - navigate_from_collections_to_menu
+INFO    2020-07-11 00:43:47,801 - set_confirmation
+INFO    2020-07-11 00:43:50,455 - confirmed
+INFO    2020-07-11 00:43:50,455 - set_confirmation
+INFO    2020-07-11 00:43:52,828 - confirmed
+INFO    2020-07-11 00:43:54,248 - start_a_game
+INFO    2020-07-11 00:43:58,921 - passive selected
+INFO    2020-07-11 00:44:07,857 - passive selected
+INFO    2020-07-11 00:44:18,222 - end turn player 1
+INFO    2020-07-11 00:44:18,222 - draw card
+INFO    2020-07-11 00:44:20,861 - end turn player 2
+INFO    2020-07-11 00:44:31,537 - hero power used
+INFO    2020-07-11 00:44:58,397 - end turn player 1
+INFO    2020-07-11 00:44:58,397 - draw card
+INFO    2020-07-11 00:45:02,940 - end turn player 2
+INFO    2020-07-11 00:45:04,361 - drag_detected
+INFO    2020-07-11 00:45:04,689 - drag_ended
+INFO    2020-07-11 00:45:07,057 - drag_detected
+INFO    2020-07-11 00:45:07,425 - drag_ended
+INFO    2020-07-11 00:45:07,426 - play Learn Draconic
+INFO    2020-07-11 00:45:10,344 - drag_detected
+INFO    2020-07-11 00:45:12,377 - drag_ended
+INFO    2020-07-11 00:45:12,377 - play Book of Specters
+INFO    2020-07-11 00:45:14,820 - end turn player 1
+INFO    2020-07-11 00:45:15,364 - end turn player 2
+INFO    2020-07-11 00:45:15,660 - end turn player 1
+INFO    2020-07-11 00:45:17,174 - end turn player 2
+INFO    2020-07-11 00:45:18,022 - end turn player 1
+INFO    2020-07-11 00:45:18,972 - end turn player 2
+INFO    2020-07-11 00:45:19,453 - end turn player 1
+INFO    2020-07-11 00:45:19,669 - end turn player 2
+INFO    2020-07-11 00:45:20,029 - end turn player 1
+INFO    2020-07-11 00:45:20,780 - end turn player 2
+INFO    2020-07-11 00:45:22,953 - drag_detected
+INFO    2020-07-11 00:45:25,545 - drag_ended
+INFO    2020-07-11 00:45:25,545 - play Sprint
+INFO    2020-07-11 00:45:25,545 - card summoned
+INFO    2020-07-11 00:46:28,021 - exit
+INFO    2020-07-11 00:48:30,480 - log_in
+INFO    2020-07-11 00:48:30,482 - navigate_from_log_in_to_menu
+INFO    2020-07-11 00:49:44,458 - set_confirmation
+INFO    2020-07-11 00:49:46,877 - confirmed
+INFO    2020-07-11 00:49:46,878 - set_confirmation
+INFO    2020-07-11 00:49:49,361 - confirmed
+INFO    2020-07-11 00:49:50,896 - start_a_game
+INFO    2020-07-11 00:49:55,065 - passive selected
+INFO    2020-07-11 00:49:57,145 - passive selected
+INFO    2020-07-11 00:50:17,754 - drag_detected
+INFO    2020-07-11 00:50:18,472 - drag_ended
+INFO    2020-07-11 00:50:18,474 - play Learn Draconic
+INFO    2020-07-11 00:50:20,224 - end turn player 1
+INFO    2020-07-11 00:50:20,224 - draw card
+INFO    2020-07-11 00:50:23,221 - end turn player 2
+INFO    2020-07-11 00:50:26,817 - drag_detected
+INFO    2020-07-11 00:50:27,697 - drag_ended
+INFO    2020-07-11 00:50:27,697 - play Book of Specters
+INFO    2020-07-11 00:50:30,741 - end turn player 1
+INFO    2020-07-11 00:50:30,741 - draw card
+INFO    2020-07-11 00:50:33,657 - drag_detected
+INFO    2020-07-11 00:50:34,561 - drag_ended
+INFO    2020-07-11 00:50:35,296 - end turn player 2
+INFO    2020-07-11 00:50:35,941 - end turn player 1
+INFO    2020-07-11 00:50:35,942 - draw card
+INFO    2020-07-11 00:50:38,495 - end turn player 2
+INFO    2020-07-11 00:50:39,061 - end turn player 1
+INFO    2020-07-11 00:50:41,381 - end turn player 2
+INFO    2020-07-11 00:50:42,197 - end turn player 1
+INFO    2020-07-11 00:50:42,501 - end turn player 2
+INFO    2020-07-11 00:50:43,449 - drag_detected
+INFO    2020-07-11 00:50:44,217 - drag_ended
+INFO    2020-07-11 00:50:44,218 - play Sprint
+INFO    2020-07-11 00:50:44,218 - card summoned
+INFO    2020-07-11 00:56:07,937 - log_in
+INFO    2020-07-11 00:56:07,938 - navigate_from_log_in_to_menu
+INFO    2020-07-11 00:56:14,033 - navigate_from_menu_to_collections
+INFO    2020-07-11 00:56:21,169 - set_current_collections_deck
+INFO    2020-07-11 00:56:21,921 - remove_card_from_deck
+INFO    2020-07-11 00:56:22,073 - remove_card_from_deck
+INFO    2020-07-11 00:56:22,225 - remove_card_from_deck
+INFO    2020-07-11 00:59:17,785 - click_card
+INFO    2020-07-11 00:59:17,785 - add_card_to_deck
+INFO    2020-07-11 00:59:33,825 - click_card
+INFO    2020-07-11 00:59:33,825 - add_card_to_deck
+INFO    2020-07-11 00:59:33,985 - click_card
+INFO    2020-07-11 00:59:33,985 - add_card_to_deck
+INFO    2020-07-11 00:59:34,161 - click_card
+ERROR   2020-07-11 00:59:34,161 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 00:59:34,161 - set_alert
+INFO    2020-07-11 00:59:34,289 - click_card
+ERROR   2020-07-11 00:59:34,289 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 00:59:34,289 - set_alert
+INFO    2020-07-11 00:59:35,010 - alert_dismissed
+INFO    2020-07-11 00:59:35,490 - click_card
+INFO    2020-07-11 00:59:35,490 - add_card_to_deck
+INFO    2020-07-11 00:59:35,634 - click_card
+INFO    2020-07-11 00:59:35,634 - add_card_to_deck
+INFO    2020-07-11 00:59:35,785 - click_card
+ERROR   2020-07-11 00:59:35,785 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 00:59:35,785 - set_alert
+INFO    2020-07-11 00:59:36,425 - alert_dismissed
+INFO    2020-07-11 00:59:37,370 - click_card
+INFO    2020-07-11 00:59:37,370 - add_card_to_deck
+INFO    2020-07-11 00:59:37,530 - click_card
+INFO    2020-07-11 00:59:37,530 - add_card_to_deck
+INFO    2020-07-11 00:59:46,737 - click_card
+INFO    2020-07-11 00:59:46,737 - add_card_to_deck
+INFO    2020-07-11 00:59:46,905 - click_card
+INFO    2020-07-11 00:59:46,905 - add_card_to_deck
+INFO    2020-07-11 00:59:47,081 - click_card
+ERROR   2020-07-11 00:59:47,081 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 00:59:47,081 - set_alert
+INFO    2020-07-11 00:59:48,065 - alert_dismissed
+INFO    2020-07-11 00:59:48,889 - click_card
+INFO    2020-07-11 00:59:48,889 - add_card_to_deck
+INFO    2020-07-11 00:59:49,058 - click_card
+INFO    2020-07-11 00:59:49,058 - add_card_to_deck
+INFO    2020-07-11 00:59:49,227 - click_card
+ERROR   2020-07-11 00:59:49,228 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 00:59:49,228 - set_alert
+INFO    2020-07-11 00:59:49,922 - alert_dismissed
+INFO    2020-07-11 00:59:50,977 - click_card
+ERROR   2020-07-11 00:59:50,977 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 00:59:50,977 - set_alert
+INFO    2020-07-11 00:59:51,129 - click_card
+ERROR   2020-07-11 00:59:51,129 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 00:59:51,129 - set_alert
+INFO    2020-07-11 00:59:51,297 - click_card
+ERROR   2020-07-11 00:59:51,297 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 00:59:51,297 - set_alert
+INFO    2020-07-11 00:59:51,802 - alert_dismissed
+INFO    2020-07-11 00:59:53,370 - navigate_from_collections_to_menu
+INFO    2020-07-11 00:59:54,898 - set_confirmation
+INFO    2020-07-11 00:59:59,082 - confirmed
+INFO    2020-07-11 00:59:59,082 - set_confirmation
+INFO    2020-07-11 01:00:04,905 - confirmed
+INFO    2020-07-11 01:00:06,434 - start_a_game
+INFO    2020-07-11 01:00:09,553 - passive selected
+INFO    2020-07-11 01:00:11,074 - passive selected
+INFO    2020-07-11 01:00:21,970 - back_to_menu
+INFO    2020-07-11 01:00:22,873 - set_confirmation
+INFO    2020-07-11 01:00:25,139 - confirmed
+INFO    2020-07-11 01:00:25,139 - set_confirmation
+INFO    2020-07-11 01:00:28,986 - confirmed
+INFO    2020-07-11 01:00:30,199 - start_a_game
+INFO    2020-07-11 01:00:31,585 - passive selected
+INFO    2020-07-11 01:00:32,857 - passive selected
+INFO    2020-07-11 01:00:37,298 - draw card
+INFO    2020-07-11 01:00:37,298 - draw card
+INFO    2020-07-11 01:00:37,298 - draw card
+INFO    2020-07-11 01:00:46,487 - end turn player 1
+INFO    2020-07-11 01:00:46,488 - draw card
+INFO    2020-07-11 01:00:48,982 - end turn player 2
+INFO    2020-07-11 01:00:48,983 - draw card
+INFO    2020-07-11 01:00:51,470 - end turn player 1
+INFO    2020-07-11 01:00:51,470 - draw card
+INFO    2020-07-11 01:00:53,948 - end turn player 2
+INFO    2020-07-11 01:00:53,949 - draw card
+INFO    2020-07-11 01:00:56,550 - end turn player 1
+INFO    2020-07-11 01:00:56,550 - draw card
+INFO    2020-07-11 01:01:02,173 - end turn player 2
+INFO    2020-07-11 01:01:02,173 - draw card
+INFO    2020-07-11 01:01:04,653 - end turn player 1
+INFO    2020-07-11 01:01:05,501 - end turn player 2
+INFO    2020-07-11 01:01:05,501 - draw card
+INFO    2020-07-11 01:01:11,234 - drag_detected
+INFO    2020-07-11 01:01:12,865 - drag_ended
+INFO    2020-07-11 01:01:12,866 - play Security Rover
+INFO    2020-07-11 01:01:12,866 - card summoned
+INFO    2020-07-11 01:01:15,894 - end turn player 1
+INFO    2020-07-11 01:01:16,590 - end turn player 2
+INFO    2020-07-11 01:01:16,590 - draw card
+INFO    2020-07-11 01:01:22,210 - drag_detected
+INFO    2020-07-11 01:01:23,626 - drag_ended
+INFO    2020-07-11 01:01:26,049 - drag_detected
+INFO    2020-07-11 01:01:26,545 - drag_ended
+INFO    2020-07-11 01:01:26,546 - play Strength in Numbers
+INFO    2020-07-11 01:02:08,242 - drag_detected
+INFO    2020-07-11 01:02:08,739 - drag_ended
+INFO    2020-07-11 01:02:08,739 - play Security Rover
+INFO    2020-07-11 01:02:08,739 - card summoned
+INFO    2020-07-11 01:02:11,821 - end turn player 1
+INFO    2020-07-11 01:02:12,429 - end turn player 2
+INFO    2020-07-11 01:02:12,429 - draw card
+INFO    2020-07-11 01:02:18,306 - drag_detected
+INFO    2020-07-11 01:02:19,994 - drag_ended
+INFO    2020-07-11 01:02:25,010 - drag_detected
+INFO    2020-07-11 01:02:27,298 - drag_ended
+ERROR   2020-07-11 01:02:27,298 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:02:27,298 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:02:39,122 - drag_detected
+INFO    2020-07-11 01:02:39,617 - drag_ended
+ERROR   2020-07-11 01:02:39,617 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:02:39,617 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:02:53,314 - drag_detected
+INFO    2020-07-11 01:02:54,625 - drag_ended
+ERROR   2020-07-11 01:02:54,625 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:02:54,626 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:02:55,602 - drag_detected
+INFO    2020-07-11 01:02:56,191 - drag_ended
+ERROR   2020-07-11 01:02:56,192 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:02:56,192 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:03:00,037 - end turn player 1
+INFO    2020-07-11 01:03:01,351 - end turn player 2
+INFO    2020-07-11 01:03:01,351 - draw card
+INFO    2020-07-11 01:03:04,562 - drag_detected
+INFO    2020-07-11 01:03:05,370 - drag_ended
+ERROR   2020-07-11 01:03:05,370 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-11 01:03:05,370 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-11 01:03:06,490 - play Sathrovarr
+INFO    2020-07-11 01:03:06,490 - card summoned
+INFO    2020-07-11 01:03:20,509 - end turn player 1
+INFO    2020-07-11 01:03:21,608 - end turn player 2
+INFO    2020-07-11 01:03:21,608 - draw card
+INFO    2020-07-11 01:03:24,422 - end turn player 1
+INFO    2020-07-11 01:03:25,174 - end turn player 2
+INFO    2020-07-11 01:03:25,175 - draw card
+INFO    2020-07-11 01:03:42,522 - drag_detected
+INFO    2020-07-11 01:03:43,098 - drag_ended
+ERROR   2020-07-11 01:03:43,098 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:03:43,098 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:03:44,562 - drag_detected
+INFO    2020-07-11 01:03:45,770 - drag_ended
+ERROR   2020-07-11 01:03:45,770 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:03:45,770 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:03:45,978 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-11 01:03:45,978 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-11 01:03:54,874 - drag_detected
+INFO    2020-07-11 01:03:56,010 - drag_ended
+ERROR   2020-07-11 01:03:56,010 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:03:56,010 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:04:15,090 - drag_detected
+INFO    2020-07-11 01:04:15,545 - drag_ended
+ERROR   2020-07-11 01:04:15,545 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:04:15,546 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:04:16,610 - drag_detected
+INFO    2020-07-11 01:04:16,993 - drag_ended
+ERROR   2020-07-11 01:04:16,993 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:04:16,993 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:04:19,026 - back_to_menu
+INFO    2020-07-11 01:04:24,698 - navigate_from_menu_to_collections
+INFO    2020-07-11 01:04:27,114 - click_card
+INFO    2020-07-11 01:04:27,114 - set_alert
+INFO    2020-07-11 01:04:28,786 - alert_dismissed
+INFO    2020-07-11 01:04:30,274 - set_current_collections_deck
+INFO    2020-07-11 01:04:30,658 - remove_card_from_deck
+INFO    2020-07-11 01:04:30,802 - remove_card_from_deck
+INFO    2020-07-11 01:04:30,953 - remove_card_from_deck
+INFO    2020-07-11 01:04:31,105 - remove_card_from_deck
+INFO    2020-07-11 01:04:31,250 - remove_card_from_deck
+INFO    2020-07-11 01:04:31,394 - remove_card_from_deck
+INFO    2020-07-11 01:04:31,522 - remove_card_from_deck
+INFO    2020-07-11 01:04:31,650 - remove_card_from_deck
+INFO    2020-07-11 01:04:31,794 - remove_card_from_deck
+INFO    2020-07-11 01:04:31,929 - remove_card_from_deck
+INFO    2020-07-11 01:04:32,042 - remove_card_from_deck
+INFO    2020-07-11 01:04:37,418 - collections_search_card
+INFO    2020-07-11 01:04:38,657 - click_card
+INFO    2020-07-11 01:04:38,658 - add_card_to_deck
+INFO    2020-07-11 01:04:39,090 - click_card
+INFO    2020-07-11 01:04:39,090 - add_card_to_deck
+INFO    2020-07-11 01:04:40,642 - navigate_from_collections_to_menu
+INFO    2020-07-11 01:04:41,746 - set_confirmation
+INFO    2020-07-11 01:04:44,687 - confirmed
+INFO    2020-07-11 01:04:44,687 - set_confirmation
+INFO    2020-07-11 01:04:49,481 - confirmed
+INFO    2020-07-11 01:04:50,677 - start_a_game
+INFO    2020-07-11 01:05:01,522 - passive selected
+INFO    2020-07-11 01:05:04,130 - passive selected
+INFO    2020-07-11 01:05:07,613 - end turn player 1
+INFO    2020-07-11 01:05:07,613 - draw card
+INFO    2020-07-11 01:05:09,801 - end turn player 2
+INFO    2020-07-11 01:05:09,969 - end turn player 1
+INFO    2020-07-11 01:05:09,969 - draw card
+INFO    2020-07-11 01:05:12,175 - end turn player 2
+INFO    2020-07-11 01:05:12,334 - end turn player 1
+INFO    2020-07-11 01:05:12,334 - draw card
+INFO    2020-07-11 01:05:14,554 - end turn player 2
+INFO    2020-07-11 01:05:14,731 - end turn player 1
+INFO    2020-07-11 01:05:14,933 - end turn player 2
+INFO    2020-07-11 01:05:15,116 - end turn player 1
+INFO    2020-07-11 01:05:15,294 - end turn player 2
+INFO    2020-07-11 01:05:16,423 - end turn player 1
+INFO    2020-07-11 01:05:17,015 - end turn player 2
+INFO    2020-07-11 01:05:20,042 - drag_detected
+INFO    2020-07-11 01:05:21,433 - drag_ended
+ERROR   2020-07-11 01:05:21,433 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:05:21,433 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:05:47,385 - drag_detected
+INFO    2020-07-11 01:05:51,553 - drag_ended
+ERROR   2020-07-11 01:05:51,553 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:05:51,553 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:05:52,450 - drag_detected
+INFO    2020-07-11 01:05:52,922 - drag_ended
+ERROR   2020-07-11 01:05:52,922 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:05:52,922 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:05:53,547 - drag_detected
+INFO    2020-07-11 01:05:54,250 - drag_ended
+ERROR   2020-07-11 01:05:54,250 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:05:54,250 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:05:55,123 - drag_detected
+INFO    2020-07-11 01:05:56,585 - drag_ended
+ERROR   2020-07-11 01:05:56,585 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:05:56,585 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:05:57,490 - drag_detected
+INFO    2020-07-11 01:05:57,850 - drag_ended
+ERROR   2020-07-11 01:05:57,851 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:05:57,851 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:07:06,140 - log_in
+INFO    2020-07-11 01:07:06,141 - navigate_from_log_in_to_menu
+INFO    2020-07-11 01:07:14,898 - navigate_from_menu_to_collections
+INFO    2020-07-11 01:07:58,483 - set_current_collections_deck
+INFO    2020-07-11 01:07:59,954 - remove_card_from_deck
+INFO    2020-07-11 01:08:00,106 - remove_card_from_deck
+INFO    2020-07-11 01:08:00,258 - remove_card_from_deck
+INFO    2020-07-11 01:08:06,898 - click_card
+INFO    2020-07-11 01:08:06,898 - add_card_to_deck
+INFO    2020-07-11 01:08:12,866 - click_card
+INFO    2020-07-11 01:08:12,866 - add_card_to_deck
+INFO    2020-07-11 01:08:13,778 - navigate_from_collections_to_menu
+INFO    2020-07-11 01:08:14,955 - set_confirmation
+INFO    2020-07-11 01:08:19,642 - confirmed
+INFO    2020-07-11 01:08:19,644 - set_confirmation
+INFO    2020-07-11 01:08:22,746 - confirmed
+INFO    2020-07-11 01:08:24,211 - start_a_game
+INFO    2020-07-11 01:08:25,554 - passive selected
+INFO    2020-07-11 01:08:28,282 - passive selected
+INFO    2020-07-11 01:08:31,623 - end turn player 1
+INFO    2020-07-11 01:08:31,624 - draw card
+INFO    2020-07-11 01:08:31,624 - draw card
+INFO    2020-07-11 01:08:40,078 - end turn player 2
+INFO    2020-07-11 01:08:40,686 - end turn player 1
+INFO    2020-07-11 01:08:40,686 - draw card
+INFO    2020-07-11 01:08:43,558 - end turn player 2
+INFO    2020-07-11 01:08:44,262 - end turn player 1
+INFO    2020-07-11 01:08:46,614 - end turn player 2
+INFO    2020-07-11 01:08:46,801 - end turn player 1
+INFO    2020-07-11 01:08:46,991 - end turn player 2
+INFO    2020-07-11 01:08:47,240 - end turn player 1
+INFO    2020-07-11 01:08:49,029 - end turn player 2
+INFO    2020-07-11 01:08:50,126 - end turn player 1
+INFO    2020-07-11 01:08:50,990 - end turn player 2
+INFO    2020-07-11 01:08:52,922 - drag_detected
+INFO    2020-07-11 01:08:54,498 - drag_ended
+INFO    2020-07-11 01:09:02,931 - drag_detected
+INFO    2020-07-11 01:09:03,946 - drag_ended
+ERROR   2020-07-11 01:09:03,946 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:09:03,946 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:11:07,398 - log_in
+INFO    2020-07-11 01:11:07,399 - navigate_from_log_in_to_menu
+INFO    2020-07-11 01:11:12,386 - navigate_from_menu_to_collections
+INFO    2020-07-11 01:12:07,459 - log_in
+INFO    2020-07-11 01:12:07,461 - navigate_from_log_in_to_menu
+INFO    2020-07-11 01:12:08,235 - navigate_from_menu_to_collections
+INFO    2020-07-11 01:12:10,875 - set_current_collections_deck
+INFO    2020-07-11 01:12:11,322 - remove_card_from_deck
+INFO    2020-07-11 01:12:11,466 - remove_card_from_deck
+INFO    2020-07-11 01:12:11,626 - remove_card_from_deck
+INFO    2020-07-11 01:12:32,010 - click_card
+INFO    2020-07-11 01:12:32,010 - add_card_to_deck
+INFO    2020-07-11 01:12:32,834 - click_card
+INFO    2020-07-11 01:12:32,834 - add_card_to_deck
+INFO    2020-07-11 01:12:41,002 - remove_card_from_deck
+INFO    2020-07-11 01:12:41,883 - click_card
+INFO    2020-07-11 01:12:41,883 - add_card_to_deck
+INFO    2020-07-11 01:12:50,850 - navigate_from_collections_to_menu
+INFO    2020-07-11 01:12:51,723 - set_confirmation
+INFO    2020-07-11 01:12:56,762 - confirmed
+INFO    2020-07-11 01:12:56,763 - set_confirmation
+INFO    2020-07-11 01:12:58,819 - confirmed
+INFO    2020-07-11 01:13:00,224 - start_a_game
+INFO    2020-07-11 01:13:04,298 - passive selected
+INFO    2020-07-11 01:13:05,339 - passive selected
+ERROR   2020-07-11 01:13:09,186 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:13:09,186 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:13:09,954 - end turn player 1
+INFO    2020-07-11 01:13:12,455 - end turn player 2
+INFO    2020-07-11 01:13:14,134 - end turn player 1
+INFO    2020-07-11 01:13:16,863 - end turn player 2
+INFO    2020-07-11 01:13:17,334 - end turn player 1
+INFO    2020-07-11 01:13:17,847 - end turn player 2
+INFO    2020-07-11 01:13:18,415 - end turn player 1
+INFO    2020-07-11 01:13:20,214 - end turn player 2
+INFO    2020-07-11 01:13:22,326 - end turn player 1
+INFO    2020-07-11 01:13:25,894 - end turn player 2
+INFO    2020-07-11 01:13:26,847 - end turn player 1
+INFO    2020-07-11 01:13:31,079 - end turn player 2
+INFO    2020-07-11 01:13:32,626 - drag_detected
+INFO    2020-07-11 01:13:33,282 - drag_ended
+INFO    2020-07-11 01:13:33,283 - play Tomb Warden
+INFO    2020-07-11 01:13:33,283 - card summoned
+INFO    2020-07-11 01:13:45,696 - end turn player 1
+INFO    2020-07-11 01:13:52,763 - drag_detected
+INFO    2020-07-11 01:13:53,450 - drag_ended
+INFO    2020-07-11 01:13:53,451 - play Mech
+INFO    2020-07-11 01:13:53,451 - card summoned
+INFO    2020-07-11 01:14:00,568 - end turn player 2
+INFO    2020-07-11 01:16:00,846 - end turn player 1
+INFO    2020-07-11 01:18:00,987 - end turn player 2
+INFO    2020-07-11 01:20:19,610 - log_in
+INFO    2020-07-11 01:20:19,611 - navigate_from_log_in_to_menu
+INFO    2020-07-11 01:20:23,107 - set_confirmation
+INFO    2020-07-11 01:20:24,987 - confirm_dismissed
+INFO    2020-07-11 01:20:25,506 - navigate_from_menu_to_collections
+INFO    2020-07-11 01:20:27,403 - set_current_collections_deck
+INFO    2020-07-11 01:20:27,763 - remove_card_from_deck
+INFO    2020-07-11 01:20:27,931 - remove_card_from_deck
+INFO    2020-07-11 01:20:28,075 - remove_card_from_deck
+INFO    2020-07-11 01:20:32,995 - click_card
+INFO    2020-07-11 01:20:32,995 - add_card_to_deck
+INFO    2020-07-11 01:20:33,659 - click_card
+INFO    2020-07-11 01:20:33,659 - add_card_to_deck
+INFO    2020-07-11 01:20:34,299 - click_card
+INFO    2020-07-11 01:20:34,299 - add_card_to_deck
+INFO    2020-07-11 01:20:34,843 - click_card
+INFO    2020-07-11 01:20:34,843 - add_card_to_deck
+INFO    2020-07-11 01:20:35,011 - click_card
+INFO    2020-07-11 01:20:35,011 - add_card_to_deck
+INFO    2020-07-11 01:20:35,114 - click_card
+ERROR   2020-07-11 01:20:35,114 - java.lang.Exception: You can't add more of this card.
+INFO    2020-07-11 01:20:35,114 - set_alert
+INFO    2020-07-11 01:20:35,851 - alert_dismissed
+INFO    2020-07-11 01:20:39,523 - click_card
+INFO    2020-07-11 01:20:39,523 - add_card_to_deck
+INFO    2020-07-11 01:20:39,674 - click_card
+INFO    2020-07-11 01:20:39,675 - add_card_to_deck
+INFO    2020-07-11 01:20:40,378 - navigate_from_collections_to_menu
+INFO    2020-07-11 01:20:40,995 - set_confirmation
+INFO    2020-07-11 01:20:44,515 - confirmed
+INFO    2020-07-11 01:20:44,515 - set_confirmation
+INFO    2020-07-11 01:20:46,723 - confirmed
+INFO    2020-07-11 01:20:48,164 - start_a_game
+INFO    2020-07-11 01:21:00,218 - passive selected
+INFO    2020-07-11 01:21:02,827 - passive selected
+INFO    2020-07-11 01:21:07,811 - drag_detected
+INFO    2020-07-11 01:21:08,699 - drag_ended
+INFO    2020-07-11 01:21:08,699 - play Wisp
+INFO    2020-07-11 01:21:08,699 - card summoned
+INFO    2020-07-11 01:21:11,791 - end turn player 1
+INFO    2020-07-11 01:21:11,791 - draw card
+INFO    2020-07-11 01:21:18,627 - drag_detected
+INFO    2020-07-11 01:21:21,571 - drag_ended
+ERROR   2020-07-11 01:21:21,571 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-11 01:21:21,572 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-11 01:21:35,542 - end turn player 2
+INFO    2020-07-11 01:21:35,543 - draw card
+INFO    2020-07-11 01:21:38,527 - end turn player 1
+INFO    2020-07-11 01:21:38,527 - draw card
+INFO    2020-07-11 01:21:45,343 - end turn player 2
+INFO    2020-07-11 01:21:45,343 - draw card
+INFO    2020-07-11 01:21:47,654 - end turn player 1
+INFO    2020-07-11 01:21:47,656 - draw card
+INFO    2020-07-11 01:21:50,487 - end turn player 2
+INFO    2020-07-11 01:21:50,488 - draw card
+INFO    2020-07-11 01:21:53,159 - end turn player 1
+INFO    2020-07-11 01:21:53,159 - draw card
+INFO    2020-07-11 01:21:55,895 - end turn player 2
+INFO    2020-07-11 01:21:55,895 - draw card
+INFO    2020-07-11 01:22:01,342 - end turn player 1
+INFO    2020-07-11 01:22:03,731 - drag_detected
+INFO    2020-07-11 01:22:04,747 - drag_ended
+INFO    2020-07-11 01:22:04,747 - play Arena Patron
+INFO    2020-07-11 01:22:04,747 - card summoned
+INFO    2020-07-11 01:22:09,879 - end turn player 2
+ERROR   2020-07-11 01:22:11,595 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-11 01:22:11,595 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-11 01:22:12,003 - Wisp attacked Arena Patron
+INFO    2020-07-11 01:22:15,967 - end turn player 1
+INFO    2020-07-11 01:22:17,287 - end turn player 2
+INFO    2020-07-11 01:24:16,349 - exit

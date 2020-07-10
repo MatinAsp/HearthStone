@@ -3,7 +3,7 @@
 "rarity":"Common",
 "heroClass":"Neutral",
 "type":"Quest",
-"description":"Quest: Spend 10 Mana on minions. \nReward: Summon a minion from your deck.",
+"description":"Quest:Spend 10 Mana on minions. Reward: Summon a minion from your deck.",
 "mana":1,
 "price":2
 }
