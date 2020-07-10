@@ -5215,3 +5215,29 @@ INFO    2020-07-11 01:22:12,003 - Wisp attacked Arena Patron
 INFO    2020-07-11 01:22:15,967 - end turn player 1
 INFO    2020-07-11 01:22:17,287 - end turn player 2
 INFO    2020-07-11 01:24:16,349 - exit
+INFO    2020-07-11 01:33:25,458 - log_in
+INFO    2020-07-11 01:33:25,459 - navigate_from_log_in_to_menu
+INFO    2020-07-11 01:33:30,491 - navigate_from_menu_to_collections
+INFO    2020-07-11 01:40:31,092 - hero_filter_changed
+INFO    2020-07-11 01:40:31,548 - hero_filter_changed
+INFO    2020-07-11 01:40:32,780 - hero_filter_changed
+INFO    2020-07-11 01:40:32,811 - hero_filter_changed
+INFO    2020-07-11 01:40:43,580 - hero_filter_changed
+INFO    2020-07-11 01:40:43,605 - hero_filter_changed
+INFO    2020-07-11 01:40:44,724 - hero_filter_changed
+INFO    2020-07-11 01:40:44,750 - hero_filter_changed
+INFO    2020-07-11 01:48:12,588 - log_in
+INFO    2020-07-11 01:48:12,589 - navigate_from_log_in_to_menu
+INFO    2020-07-11 01:48:15,587 - set_alert
+ERROR   2020-07-11 01:48:15,587 - java.lang.NullPointerException
+INFO    2020-07-11 01:48:15,599 - start_a_game
+INFO    2020-07-11 01:50:10,404 - log_in
+INFO    2020-07-11 01:50:10,405 - navigate_from_log_in_to_menu
+INFO    2020-07-11 01:50:13,488 - start_a_game
+INFO    2020-07-11 01:51:09,156 - passive selected
+INFO    2020-07-11 01:51:10,493 - passive selected
+INFO    2020-07-11 01:51:13,041 - end turn player 1
+INFO    2020-07-11 01:51:13,042 - draw card
+INFO    2020-07-11 01:51:21,168 - end turn player 2
+INFO    2020-07-11 01:51:21,169 - draw card
+INFO    2020-07-11 01:51:30,173 - exit
