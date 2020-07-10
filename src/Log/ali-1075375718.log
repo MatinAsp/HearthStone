@@ -5241,3 +5241,12 @@ INFO    2020-07-11 01:51:13,042 - draw card
 INFO    2020-07-11 01:51:21,168 - end turn player 2
 INFO    2020-07-11 01:51:21,169 - draw card
 INFO    2020-07-11 01:51:30,173 - exit
+INFO    2020-07-11 02:12:30,215 - log_in
+INFO    2020-07-11 02:12:30,217 - navigate_from_log_in_to_menu
+INFO    2020-07-11 02:12:31,254 - navigate_from_menu_to_settings
+INFO    2020-07-11 02:12:41,478 - navigate_from_settings_to_menu
+INFO    2020-07-11 02:12:41,478 - settings_applied
+INFO    2020-07-11 02:12:44,414 - navigate_from_menu_to_settings
+INFO    2020-07-11 02:12:46,430 - navigate_from_settings_to_menu
+INFO    2020-07-11 02:12:46,430 - settings_applied
+INFO    2020-07-11 02:12:51,656 - exit
