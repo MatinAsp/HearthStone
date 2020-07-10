@@ -100,7 +100,7 @@ public class Actions {
             for(SelectAction annotation: selectActionMethodMap.keySet()){
                 if(annotation.value().equals(cardName) && annotation.isForOnBoard() == methodParameters[0].isOnGround()){
                     try {
-                        methodMap.get(annotation).invoke(this);initialize();
+                        methodMap.get(annotation).invoke(this);
                     } catch (IllegalAccessException | InvocationTargetException | IllegalArgumentException o) {
                         exceptionCheck(o);
                     }
@@ -271,9 +271,9 @@ public class Actions {
 
     @CardName(value = "Deathwing", isForOnBoard = false)
     public void action7(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
-        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         game.getCompetitor(0).getOnBoardCards().clear();
         game.getCompetitor(1).getOnBoardCards().clear();
+        ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
     }
 
     @CardName(value = "Drakkari Trickster", isForOnBoard = true)
@@ -722,7 +722,7 @@ public class Actions {
 
             @Override
             public void runAction() throws Exception {
-                game.getCompetitor((infoPack.getSide()+1)%2).getOnBoardCards().clear();
+                game.getCompetitor((infoPack.getSide()+1)%2).getInHandCards().clear();
             }
         });
     }
@@ -908,7 +908,8 @@ public class Actions {
     }
 
     @CardName(value = "WarlockHeroPower", isForOnBoard = true)
-    public void action69(InfoPack infoPack) throws GameOverException {
+    public void action69(InfoPack infoPack) throws GameOverException, InvalidChoiceException {
+        game.getCompetitor(infoPack.getSide()).useHeroPower();
         game.getCompetitor(infoPack.getSide()).getHero().getDamage(2);
         Random random = new Random();
         ArrayList<Minion> minions = game.getCompetitor(infoPack.getSide()).getOnBoardCards();

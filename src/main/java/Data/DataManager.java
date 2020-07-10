@@ -168,7 +168,6 @@ public class DataManager {
             }
             else {
                 if(!card.getHeroClass().equals("Neutral")){
-                    System.out.println(card.getName());
                     cards.remove(card);
                     cnt--;
                 }

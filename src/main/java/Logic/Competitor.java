@@ -172,6 +172,9 @@ public class Competitor{
     }
 
     public void useHeroPower() throws InvalidChoiceException {
+        if(!hero.getHeroPower().isCharge()){
+            throw new InvalidChoiceException();
+        }
         hero.getHeroPower().setCharge(false);
         leftMana -= hero.getHeroPower().getMana();
     }

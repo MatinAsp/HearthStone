@@ -160,6 +160,7 @@ public class BattleGroundController implements Initializable {
             }
             if(game.getTurn() == i && !passiveSelectionPane.isVisible()){
                 battleGround[i].toFront();
+                heroWeapon[i].toFront();
                 hand[i].toFront();
             }
         }
