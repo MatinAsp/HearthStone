@@ -2976,3 +2976,21 @@ INFO    2020-07-10 21:03:34,606 - Sheep attacked Paladin
 INFO    2020-07-10 21:03:35,547 - hero power used
 INFO    2020-07-10 21:03:37,761 - end turn player 2
 INFO    2020-07-10 21:03:50,524 - exit
+INFO    2020-07-10 21:25:00,132 - log_in
+INFO    2020-07-10 21:25:00,133 - navigate_from_log_in_to_menu
+INFO    2020-07-10 21:25:04,912 - start_a_game
+INFO    2020-07-10 21:25:07,005 - passive selected
+INFO    2020-07-10 21:27:11,758 - end turn player 1
+INFO    2020-07-10 21:27:11,758 - draw card
+INFO    2020-07-10 21:27:14,741 - play Wisp
+INFO    2020-07-10 21:27:14,742 - card summoned
+INFO    2020-07-10 21:27:30,488 - log_in
+INFO    2020-07-10 21:27:30,489 - navigate_from_log_in_to_menu
+INFO    2020-07-10 21:27:33,757 - start_a_game
+INFO    2020-07-10 21:27:35,693 - passive selected
+INFO    2020-07-10 21:29:22,995 - exit
+INFO    2020-07-10 21:29:35,836 - log_in
+INFO    2020-07-10 21:29:35,837 - navigate_from_log_in_to_menu
+INFO    2020-07-10 21:29:39,221 - start_a_game
+INFO    2020-07-10 21:29:41,766 - passive selected
+INFO    2020-07-10 21:29:53,029 - exit

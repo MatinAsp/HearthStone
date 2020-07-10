@@ -10,6 +10,7 @@ import Log.LogCenter;
 import Logic.ActionRequest;
 import Logic.Game;
 import Models.Cards.Card;
+import Models.Cards.HeroPower;
 import Models.Cards.Minion;
 import Logic.PlayersManager;
 import Logic.Competitor;
@@ -180,6 +181,7 @@ public class BattleGroundController implements Initializable {
     private void renderHeroPower(Competitor competitor, int side) {
         heroPowerPlace[side].getChildren().clear();
         Parent parent =  GraphicRender.getInstance().buildHeroPower(competitor.getHero().getHeroPower());
+        showCardOnBoard(parent, side, competitor.getHero().getHeroPower());
         setForPerformAction(competitor.getHero().getHeroPower(),side, true, parent);
         heroPowerPlace[side].getChildren().add(parent);
     }
@@ -542,7 +544,12 @@ public class BattleGroundController implements Initializable {
     }
 
     private void showCardOnBoard(Parent parent, int side, Card card) {
-        parent.setOnMouseEntered(event -> showCard[side].getChildren().add(GraphicRender.getInstance().buildCard(card, false, false, false)));
+        if(card instanceof HeroPower){
+            parent.setOnMouseEntered(event -> showCard[side].getChildren().add(GraphicRender.getInstance().buildHeroPowerShow((HeroPower) card)));
+        }
+        else{
+            parent.setOnMouseEntered(event -> showCard[side].getChildren().add(GraphicRender.getInstance().buildCard(card, false, false, false)));
+        }
         parent.setOnMouseExited(event -> showCard[side].getChildren().clear());
     }
 

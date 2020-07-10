@@ -213,4 +213,22 @@ public class GraphicRender {
         }
         return questStatusGraphics;
     }
+
+    public Pane buildHeroPowerShow(HeroPower card) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(card.getType().toLowerCase()+"CardGraphics.fxml"));
+        Pane graphicCard = null;
+        try {
+            graphicCard = fxmlLoader.load();
+        } catch (IOException e) {
+            LogCenter.getInstance().getLogger().error(e);
+            e.printStackTrace();
+        }
+        CardGraphicsController cardGraphicsController = fxmlLoader.getController();
+        cardGraphicsController.setCardPic(assetManager.getImage(card.getName()));
+        cardGraphicsController.setMana(card.getMana());
+        cardGraphicsController.setCardName(card.getName());
+        cardGraphicsController.setDescription(card.getDescription());
+        cardGraphicsController.setBorder(assetManager.getImage(card.getType().toLowerCase()+card.getRarity()));
+        return graphicCard;
+    }
 }
