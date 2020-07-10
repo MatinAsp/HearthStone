@@ -17,6 +17,7 @@ import Models.Cards.Quest;
 import Models.Character;
 import Models.InfoPack;
 import Models.Passive;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -593,6 +594,7 @@ public class BattleGroundController implements Initializable {
         afterAction.clear();
         beforeAction.clear();
         logActions();
+        setHeroPowerTransition();
         setPlayCardTransition();
         setAttackTransition();
         setDrawTransition();
@@ -609,6 +611,19 @@ public class BattleGroundController implements Initializable {
             gameRender();
             ActionRequest.clearRecords();
             botCheck();
+        }
+    }
+
+    private void setHeroPowerTransition() {
+        if (ActionRequest.readUseHeroPower()){
+            ScaleTransition transition = new ScaleTransition(Duration.seconds(1), heroPowerPlace[game.getTurn()].getChildren().get(0));
+            transition.setByX(0.5);
+            transition.setByY(0.5);
+            transition.setCycleCount(2);
+            transition.setAutoReverse(true);
+            transitions.add(transition);
+            beforeAction.add(() -> transition.play());
+            afterAction.add(() -> {});
         }
     }
 
@@ -671,12 +686,7 @@ public class BattleGroundController implements Initializable {
                     transition.play();
                 }
             });
-            afterAction.add(new ActionHandler() {
-                @Override
-                public void runAction() throws Exception {
-                    rootPane.getChildren().remove(cardPane);
-                }
-            });
+            afterAction.add(() -> rootPane.getChildren().remove(cardPane));
         }
     }
 
@@ -687,28 +697,10 @@ public class BattleGroundController implements Initializable {
             Transition back = backAttackAnimation(attackList.get(0).getParent(), attackList.get(1).getParent());
             transitions.add(go);
             transitions.add(back);
-            beforeAction.add(new ActionHandler() {
-                @Override
-                public void runAction() throws Exception {
-                    go.play();
-                }
-            });
-            afterAction.add(new ActionHandler() {
-                @Override
-                public void runAction() throws Exception {
-                    MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("attackSound"),1);
-                }
-            });
-            beforeAction.add(new ActionHandler() {
-                @Override
-                public void runAction() throws Exception {
-                    back.play();
-                }
-            });
-            afterAction.add(new ActionHandler() {
-                @Override
-                public void runAction() throws Exception { }
-            });
+            beforeAction.add(() -> go.play());
+            afterAction.add(() -> MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("attackSound"),1));
+            beforeAction.add(() -> back.play());
+            afterAction.add(() -> {});
         }
     }
 
@@ -769,12 +761,7 @@ public class BattleGroundController implements Initializable {
                     transition.play();
                 }
             });
-            afterAction.add(new ActionHandler() {
-                @Override
-                public void runAction() throws Exception {
-                    hand[played.getSide()].getChildren().remove(played.getParent());
-                }
-            });
+            afterAction.add(() -> hand[played.getSide()].getChildren().remove(played.getParent()));
         }
     }
 

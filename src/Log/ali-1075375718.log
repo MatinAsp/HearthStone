@@ -2870,3 +2870,109 @@ INFO    2020-07-10 20:08:35,964 - end turn player 1
 INFO    2020-07-10 20:08:36,868 - end turn player 2
 INFO    2020-07-10 20:08:36,869 - draw card
 INFO    2020-07-10 20:08:39,708 - exit
+INFO    2020-07-10 20:30:14,988 - log_in
+INFO    2020-07-10 20:30:14,991 - navigate_from_log_in_to_menu
+INFO    2020-07-10 20:30:16,218 - navigate_from_menu_to_collections
+INFO    2020-07-10 20:30:18,178 - set_current_collections_deck
+INFO    2020-07-10 20:30:18,787 - remove_card_from_deck
+INFO    2020-07-10 20:30:18,931 - remove_card_from_deck
+INFO    2020-07-10 20:30:19,110 - remove_card_from_deck
+INFO    2020-07-10 20:30:19,261 - remove_card_from_deck
+INFO    2020-07-10 20:30:19,396 - remove_card_from_deck
+INFO    2020-07-10 20:30:19,602 - remove_card_from_deck
+INFO    2020-07-10 20:30:19,732 - remove_card_from_deck
+INFO    2020-07-10 20:30:19,922 - remove_card_from_deck
+INFO    2020-07-10 20:30:20,338 - remove_card_from_deck
+INFO    2020-07-10 20:30:23,586 - click_card
+INFO    2020-07-10 20:30:23,586 - add_card_to_deck
+INFO    2020-07-10 20:30:24,938 - navigate_from_collections_to_menu
+INFO    2020-07-10 20:30:30,098 - set_confirmation
+INFO    2020-07-10 20:30:33,315 - confirmed
+INFO    2020-07-10 20:30:33,315 - set_confirmation
+INFO    2020-07-10 20:30:36,161 - confirmed
+INFO    2020-07-10 20:30:37,601 - start_a_game
+INFO    2020-07-10 20:30:40,002 - passive selected
+INFO    2020-07-10 20:30:41,922 - passive selected
+INFO    2020-07-10 20:30:50,629 - end turn player 1
+INFO    2020-07-10 20:30:51,389 - end turn player 2
+INFO    2020-07-10 20:30:52,189 - end turn player 1
+INFO    2020-07-10 20:30:52,621 - end turn player 2
+INFO    2020-07-10 20:30:53,308 - end turn player 1
+INFO    2020-07-10 20:30:53,717 - end turn player 2
+INFO    2020-07-10 20:30:55,850 - drag_detected
+INFO    2020-07-10 20:30:56,988 - drag_ended
+INFO    2020-07-10 20:30:57,650 - drag_detected
+INFO    2020-07-10 20:30:58,962 - drag_ended
+INFO    2020-07-10 20:30:58,962 - play Assassin's Blade
+INFO    2020-07-10 20:30:58,962 - card summoned
+INFO    2020-07-10 20:59:06,312 - log_in
+INFO    2020-07-10 20:59:06,314 - navigate_from_log_in_to_menu
+INFO    2020-07-10 20:59:30,660 - set_confirmation
+INFO    2020-07-10 20:59:34,436 - confirmed
+INFO    2020-07-10 20:59:34,436 - set_confirmation
+INFO    2020-07-10 20:59:38,996 - confirmed
+INFO    2020-07-10 20:59:40,489 - start_a_game
+INFO    2020-07-10 20:59:53,436 - passive selected
+INFO    2020-07-10 20:59:54,100 - passive selected
+INFO    2020-07-10 20:59:57,248 - end turn player 1
+INFO    2020-07-10 20:59:59,167 - end turn player 2
+INFO    2020-07-10 21:00:01,278 - hero power used
+INFO    2020-07-10 21:00:01,278 - card summoned
+INFO    2020-07-10 21:00:42,644 - log_in
+INFO    2020-07-10 21:00:42,646 - navigate_from_log_in_to_menu
+INFO    2020-07-10 21:00:44,005 - set_confirmation
+INFO    2020-07-10 21:00:45,920 - confirmed
+INFO    2020-07-10 21:00:45,921 - set_confirmation
+INFO    2020-07-10 21:00:48,924 - confirmed
+INFO    2020-07-10 21:00:50,338 - start_a_game
+INFO    2020-07-10 21:00:52,772 - passive selected
+INFO    2020-07-10 21:00:54,460 - passive selected
+INFO    2020-07-10 21:00:57,420 - hero power used
+INFO    2020-07-10 21:00:57,420 - card summoned
+INFO    2020-07-10 21:01:40,790 - log_in
+INFO    2020-07-10 21:01:40,791 - navigate_from_log_in_to_menu
+INFO    2020-07-10 21:01:43,101 - set_confirmation
+INFO    2020-07-10 21:01:47,028 - confirmed
+INFO    2020-07-10 21:01:47,029 - set_confirmation
+INFO    2020-07-10 21:01:49,284 - confirmed
+INFO    2020-07-10 21:01:50,680 - start_a_game
+INFO    2020-07-10 21:01:53,180 - passive selected
+INFO    2020-07-10 21:01:55,652 - passive selected
+INFO    2020-07-10 21:01:58,740 - hero power used
+INFO    2020-07-10 21:01:58,740 - card summoned
+INFO    2020-07-10 21:02:27,373 - log_in
+INFO    2020-07-10 21:02:27,374 - navigate_from_log_in_to_menu
+INFO    2020-07-10 21:02:30,956 - start_a_game
+INFO    2020-07-10 21:02:32,628 - passive selected
+INFO    2020-07-10 21:02:34,796 - hero power used
+INFO    2020-07-10 21:02:34,796 - card summoned
+INFO    2020-07-10 21:02:38,567 - end turn player 1
+INFO    2020-07-10 21:02:38,568 - draw card
+INFO    2020-07-10 21:02:40,848 - play Voodoo Doctor
+INFO    2020-07-10 21:02:40,850 - card summoned
+INFO    2020-07-10 21:02:42,130 - end turn player 2
+INFO    2020-07-10 21:02:43,575 - end turn player 1
+INFO    2020-07-10 21:02:43,575 - draw card
+INFO    2020-07-10 21:02:45,936 - hero power used
+INFO    2020-07-10 21:02:45,937 - draw card
+INFO    2020-07-10 21:02:50,267 - play Wisp
+INFO    2020-07-10 21:02:50,268 - card summoned
+INFO    2020-07-10 21:02:51,505 - Voodoo Doctor attacked Paladin
+INFO    2020-07-10 21:02:52,461 - end turn player 2
+INFO    2020-07-10 21:03:16,501 - log_in
+INFO    2020-07-10 21:03:16,502 - navigate_from_log_in_to_menu
+INFO    2020-07-10 21:03:21,176 - start_a_game
+INFO    2020-07-10 21:03:22,652 - passive selected
+INFO    2020-07-10 21:03:25,004 - hero power used
+INFO    2020-07-10 21:03:25,005 - card summoned
+INFO    2020-07-10 21:03:27,943 - end turn player 1
+INFO    2020-07-10 21:03:27,944 - draw card
+INFO    2020-07-10 21:03:30,249 - play Sheep
+INFO    2020-07-10 21:03:30,250 - card summoned
+INFO    2020-07-10 21:03:31,534 - end turn player 2
+INFO    2020-07-10 21:03:32,287 - end turn player 1
+INFO    2020-07-10 21:03:32,287 - draw card
+INFO    2020-07-10 21:03:34,606 - Sheep attacked Paladin
+INFO    2020-07-10 21:03:35,547 - hero power used
+INFO    2020-07-10 21:03:37,761 - end turn player 2
+INFO    2020-07-10 21:03:50,524 - exit
