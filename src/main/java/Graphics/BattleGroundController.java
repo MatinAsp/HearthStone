@@ -1,7 +1,6 @@
 package Graphics;
 
 import Data.*;
-import Exceptions.EmptyDeckException;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
@@ -41,10 +40,7 @@ import javafx.util.Duration;
 import org.apache.log4j.Logger;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class BattleGroundController implements Initializable {
     @FXML
@@ -140,6 +136,7 @@ public class BattleGroundController implements Initializable {
     }
 
     public synchronized void gameRender() {
+        allInfoPack.clear();
         GraphicRender graphicRender = GraphicRender.getInstance();
         for(int i = 0; i < 2; i++){
             rootPane.getChildren().removeAll(hero[i]);
@@ -160,6 +157,10 @@ public class BattleGroundController implements Initializable {
             renderHeroWeapon(competitor, i);
             if(!logScroll.isVisible() && lastQuestRender == i){
                 renderQuests(i);
+            }
+            if(game.getTurn() == i && !passiveSelectionPane.isVisible()){
+                battleGround[i].toFront();
+                hand[i].toFront();
             }
         }
     }
@@ -189,7 +190,10 @@ public class BattleGroundController implements Initializable {
         int counter = 0;
         for(Card card: cards){
             Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, (!isForOwn && game.isWithBot()));
+            //Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, false);
             hand.getChildren().add(graphicCard);
+            InfoPack infoPack = new InfoPack(card, isForOwn ? 0 : 1, false, graphicCard, -1);
+            allInfoPack.add(infoPack);
             if(isForOwn || !game.isWithBot()){
                 handCardSetAction(graphicCard, card, isForOwn ? 0 : 1);
             }
@@ -547,9 +551,16 @@ public class BattleGroundController implements Initializable {
         infoPacks.clear();
     }
 
+    private ArrayList<InfoPack> allInfoPack = new ArrayList<>();
     private synchronized void performAction(Character character, int side, boolean isOnGround, Parent parent, int summonPlace){
+        InfoPack infoPack = new InfoPack(character, side, isOnGround, parent, summonPlace);
+        allInfoPack.add(infoPack);
+        performAction(infoPack);
+    }
+
+    private synchronized void performAction(InfoPack infoPack){
         Logger logger = LogCenter.getInstance().getLogger();
-        infoPacks.add(new InfoPack(character, side, isOnGround, parent, summonPlace));
+        infoPacks.add(infoPack);
         InfoPack[] parameters = new InfoPack[infoPacks.size()];
         for(int i = 0; i < infoPacks.size(); i++){
              parameters[i] = infoPacks.get(i);
@@ -596,6 +607,18 @@ public class BattleGroundController implements Initializable {
         else{
             gameRender();
             ActionRequest.clearRecords();
+            botCheck();
+        }
+    }
+
+    private void botCheck(){
+        if(game.getTurn() == 1 && game.isWithBot()){
+            try {
+                if(!ActionRequest.BOT_MOVE.execute(allInfoPack)) Platform.runLater(()->endTurn());
+                else Platform.runLater(()->renderActions());
+            } catch (GameOverException e) {
+                endGame();
+            }
         }
     }
 
@@ -628,7 +651,7 @@ public class BattleGroundController implements Initializable {
                 rootPane.setDisable(false);
                 gameRender();
                 ActionRequest.clearRecords();
-
+                botCheck();
             }
         });
     }
@@ -775,10 +798,12 @@ public class BattleGroundController implements Initializable {
     }
 
     private void setForPerformAction(Character character, int side, boolean isOnGround, Parent parent){
+        InfoPack infoPack = new InfoPack(character, side, isOnGround, parent, -1);
+        allInfoPack.add(infoPack);
         parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                performAction(character, side, isOnGround, parent, -1);
+                performAction(infoPack);
             }
         });
     }

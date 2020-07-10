@@ -153,29 +153,36 @@ public class DataManager {
         ArrayList<Hero> heroes = getAllCharacter(Hero.class);
         Deck deck = new Deck("", heroes.get(random.nextInt(heroes.size())));
         ArrayList<Card> cards = getAllCharacter(Card.class);
-        for(int i = 0; i < cards.size(); i++){
-            Card card = cards.get(i);
-            if(card.getHeroClass().equals(deck.getHero().getName())){
+        int size = cards.size();
+        int cnt = 0;
+        for(int i = 0; i < size; i++, cnt++){
+            Card card = cards.get(cnt);
+            if(card.getHeroClass().equalsIgnoreCase(deck.getHero().getName())){
                 try {
                     deck.addCard(card);
                     cards.remove(card);
+                    cnt--;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
             else {
                 if(!card.getHeroClass().equals("Neutral")){
+                    System.out.println(card.getName());
                     cards.remove(card);
+                    cnt--;
                 }
             }
         }
-        int size = cards.size();
-        for(int i = 0; i < Math.min(deck.getHero().getDeckMax(), size); i++){
+        size = cards.size();
+        int deckSize = deck.getCards().size();
+        for(int i = 0; i < Math.min(deck.getHero().getDeckMax() - deckSize, size); i++){
             Card card = cards.get(random.nextInt(cards.size()));
             try {
                 deck.addCard(card);
                 cards.remove(card);
             } catch (Exception e) {
+                LogCenter.getInstance().getLogger().error(e);
                 e.printStackTrace();
             }
         }

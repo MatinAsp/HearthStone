@@ -286,8 +286,10 @@ public class Actions {
         ActionRequest.SUMMON_MINION.execute((Minion) infoPack.getCharacter(), infoPack.getSide(), infoPack.getSummonPlace());
         Competitor competitor = game.getCompetitor(infoPack.getSide());
         try {
-            competitor.drawCard();
-            competitor.addCardInDeck(DataManager.getInstance().getObject(Card.class, competitor.getInHandCards().get(competitor.getInHandCards().size() - 1).getName()));
+            if(competitor.getInDeckCards().size() > 0){
+                competitor.drawCard();
+                competitor.addCardInDeck(DataManager.getInstance().getObject(Card.class, competitor.getInHandCards().get(competitor.getInHandCards().size() - 1).getName()));
+            }
         } catch (Exception e) { }
     }
 
@@ -485,7 +487,7 @@ public class Actions {
         while (true){
             Minion minion = minions.get(random.nextInt(minions.size()));
             if (minion.getAttack() >= 5){
-                game.getCompetitor(infoPack.getSide()).addCardOnBoard(minion);
+                game.getCompetitor(infoPack.getSide()).addCardInHand(minion);
                 break;
             }
         }

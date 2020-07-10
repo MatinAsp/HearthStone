@@ -17,6 +17,7 @@ import Models.InfoPack;
 import Models.Passive;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public enum ActionRequest {
     END_TURN{
@@ -102,8 +103,46 @@ public enum ActionRequest {
             summoned = true;
             super.execute(minion, side, summonPlace);
         }
+    },
+    BOT_MOVE{
+        @Override
+        public boolean execute(ArrayList<InfoPack> allInfoPack) throws GameOverException {
+            Collections.shuffle(allInfoPack);
+            boolean check = false;
+            try {
+
+                for(InfoPack infoPack: allInfoPack){
+                    InfoPack[] infoPacks = {infoPack};
+                    try {
+                        ActionRequest.PERFORM_ACTION.execute(infoPacks);
+                        check = true;
+                        break;
+                    } catch (SelectionNeededException | InvalidChoiceException e) {
+                        continue;
+                    }
+                }
+                for(int i = 0; i < allInfoPack.size() && !check; i++ ){
+                    for(int j = 0; j < allInfoPack.size(); j++){
+                        if(i == j) continue;
+                        InfoPack[] infoPacks = {allInfoPack.get(i), allInfoPack.get(j)};
+                        try {
+                            ActionRequest.PERFORM_ACTION.execute(infoPacks);
+                            check = true;
+                            break;
+                        } catch (SelectionNeededException | InvalidChoiceException e) {
+                            continue;
+                        }
+                    }
+                }
+            }catch (GameOverException e){
+                game.engGame();
+                throw e;
+            }
+            return check;
+        }
     };
 
+    public boolean execute(ArrayList<InfoPack> allInfoPacks) throws GameOverException {return false;}
     public static void selectCard(ArrayList<Card> cardsSelected) throws GameOverException {
         try {
             game.selectCard(cardsSelected);

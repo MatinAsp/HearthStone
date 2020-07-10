@@ -703,3 +703,664 @@ INFO    2020-07-10 02:06:07,146 - navigate_from_menu_to_settings
 INFO    2020-07-10 02:06:14,187 - navigate_from_settings_to_menu
 INFO    2020-07-10 02:06:14,187 - settings_applied
 INFO    2020-07-10 02:06:15,497 - exit
+INFO    2020-07-10 03:58:36,702 - log_in
+INFO    2020-07-10 03:58:36,703 - navigate_from_log_in_to_menu
+INFO    2020-07-10 03:58:42,755 - start_a_game
+INFO    2020-07-10 03:58:45,525 - passive selected
+ERROR   2020-07-10 03:58:56,260 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 03:58:56,261 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 03:58:57,621 - hero power used
+INFO    2020-07-10 03:59:01,799 - end turn player 1
+INFO    2020-07-10 03:59:01,800 - draw card
+INFO    2020-07-10 03:59:01,831 - end turn player 1
+INFO    2020-07-10 03:59:01,831 - draw card
+INFO    2020-07-10 03:59:01,854 - end turn player 2
+INFO    2020-07-10 03:59:01,854 - draw card
+INFO    2020-07-10 03:59:01,855 - draw card
+INFO    2020-07-10 03:59:21,768 - end turn player 1
+INFO    2020-07-10 03:59:21,768 - draw card
+INFO    2020-07-10 03:59:21,815 - end turn player 1
+INFO    2020-07-10 03:59:21,816 - draw card
+INFO    2020-07-10 03:59:21,833 - end turn player 2
+INFO    2020-07-10 03:59:21,833 - draw card
+INFO    2020-07-10 03:59:21,833 - draw card
+ERROR   2020-07-10 03:59:27,692 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 03:59:27,692 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-10 04:00:33,820 - back_to_menu
+INFO    2020-07-10 04:00:40,501 - start_a_game
+INFO    2020-07-10 04:00:43,388 - passive selected
+INFO    2020-07-10 04:00:47,743 - end turn player 1
+INFO    2020-07-10 04:00:47,743 - draw card
+INFO    2020-07-10 04:00:47,772 - end turn player 1
+INFO    2020-07-10 04:00:47,773 - draw card
+INFO    2020-07-10 04:00:47,788 - end turn player 2
+INFO    2020-07-10 04:00:47,789 - draw card
+INFO    2020-07-10 04:00:47,789 - draw card
+INFO    2020-07-10 04:02:42,178 - end turn player 1
+INFO    2020-07-10 04:02:42,178 - draw card
+INFO    2020-07-10 04:02:42,205 - end turn player 1
+INFO    2020-07-10 04:02:42,205 - draw card
+INFO    2020-07-10 04:02:42,222 - end turn player 2
+INFO    2020-07-10 04:02:42,223 - draw card
+INFO    2020-07-10 04:02:42,223 - draw card
+INFO    2020-07-10 04:02:48,764 - drag_detected
+INFO    2020-07-10 04:02:49,188 - drag_ended
+INFO    2020-07-10 04:02:49,188 - play Voodoo Doctor
+INFO    2020-07-10 04:02:49,189 - card summoned
+INFO    2020-07-10 04:02:51,424 - end turn player 1
+INFO    2020-07-10 04:02:51,424 - draw card
+INFO    2020-07-10 04:02:51,472 - end turn player 1
+INFO    2020-07-10 04:02:51,473 - draw card
+INFO    2020-07-10 04:02:51,493 - end turn player 2
+INFO    2020-07-10 04:02:51,493 - draw card
+INFO    2020-07-10 04:02:51,493 - draw card
+INFO    2020-07-10 04:02:54,600 - end turn player 1
+INFO    2020-07-10 04:02:54,600 - draw card
+INFO    2020-07-10 04:02:54,629 - end turn player 1
+INFO    2020-07-10 04:02:54,630 - draw card
+INFO    2020-07-10 04:02:54,649 - end turn player 2
+INFO    2020-07-10 04:02:54,649 - draw card
+INFO    2020-07-10 04:02:54,649 - draw card
+INFO    2020-07-10 04:02:57,544 - end turn player 1
+INFO    2020-07-10 04:02:57,544 - draw card
+INFO    2020-07-10 04:02:57,573 - end turn player 1
+INFO    2020-07-10 04:02:57,573 - draw card
+INFO    2020-07-10 04:02:57,590 - end turn player 2
+INFO    2020-07-10 04:02:57,591 - draw card
+INFO    2020-07-10 04:02:57,591 - draw card
+INFO    2020-07-10 04:03:01,624 - end turn player 1
+INFO    2020-07-10 04:03:01,624 - draw card
+INFO    2020-07-10 04:03:01,654 - end turn player 1
+INFO    2020-07-10 04:03:01,654 - draw card
+INFO    2020-07-10 04:03:01,672 - end turn player 2
+INFO    2020-07-10 04:03:01,672 - draw card
+INFO    2020-07-10 04:03:01,672 - draw card
+INFO    2020-07-10 04:03:05,583 - end turn player 1
+INFO    2020-07-10 04:03:05,584 - draw card
+INFO    2020-07-10 04:03:05,614 - end turn player 1
+INFO    2020-07-10 04:03:05,614 - draw card
+INFO    2020-07-10 04:03:05,629 - end turn player 2
+INFO    2020-07-10 04:03:05,629 - draw card
+INFO    2020-07-10 04:03:08,751 - end turn player 1
+INFO    2020-07-10 04:03:08,752 - draw card
+INFO    2020-07-10 04:03:08,782 - end turn player 1
+INFO    2020-07-10 04:03:08,783 - draw card
+INFO    2020-07-10 04:03:08,800 - end turn player 2
+INFO    2020-07-10 04:03:08,800 - draw card
+INFO    2020-07-10 04:03:11,907 - end turn player 1
+INFO    2020-07-10 04:03:11,908 - draw card
+INFO    2020-07-10 04:03:11,942 - end turn player 1
+INFO    2020-07-10 04:03:11,943 - draw card
+INFO    2020-07-10 04:03:11,969 - end turn player 2
+INFO    2020-07-10 04:03:11,970 - draw card
+INFO    2020-07-10 04:03:15,280 - end turn player 1
+INFO    2020-07-10 04:03:15,280 - draw card
+INFO    2020-07-10 04:03:15,305 - end turn player 1
+INFO    2020-07-10 04:03:15,305 - draw card
+INFO    2020-07-10 04:03:15,322 - end turn player 2
+INFO    2020-07-10 04:03:15,323 - draw card
+INFO    2020-07-10 04:03:18,636 - end turn player 1
+INFO    2020-07-10 04:03:18,637 - draw card
+INFO    2020-07-10 04:03:18,655 - end turn player 1
+INFO    2020-07-10 04:03:18,656 - draw card
+INFO    2020-07-10 04:03:18,676 - end turn player 2
+INFO    2020-07-10 04:03:18,676 - draw card
+INFO    2020-07-10 04:03:21,986 - end turn player 1
+INFO    2020-07-10 04:03:21,987 - draw card
+INFO    2020-07-10 04:03:22,007 - end turn player 1
+INFO    2020-07-10 04:03:22,008 - draw card
+INFO    2020-07-10 04:03:22,030 - end turn player 2
+INFO    2020-07-10 04:03:22,030 - draw card
+INFO    2020-07-10 04:03:30,340 - exit
+INFO    2020-07-10 13:44:51,795 - log_in
+INFO    2020-07-10 13:44:51,796 - navigate_from_log_in_to_menu
+INFO    2020-07-10 13:44:55,835 - start_a_game
+INFO    2020-07-10 13:44:57,546 - passive selected
+INFO    2020-07-10 13:45:01,338 - drag_detected
+INFO    2020-07-10 13:45:02,338 - drag_ended
+INFO    2020-07-10 13:45:02,338 - play Wisp
+INFO    2020-07-10 13:45:02,338 - card summoned
+INFO    2020-07-10 13:45:07,723 - end turn player 1
+INFO    2020-07-10 13:45:07,724 - draw card
+INFO    2020-07-10 13:49:06,957 - log_in
+INFO    2020-07-10 13:49:06,958 - navigate_from_log_in_to_menu
+INFO    2020-07-10 13:49:10,084 - start_a_game
+INFO    2020-07-10 13:49:12,434 - passive selected
+INFO    2020-07-10 13:49:29,196 - end turn player 1
+INFO    2020-07-10 13:49:29,197 - draw card
+INFO    2020-07-10 13:51:28,141 - drag_detected
+INFO    2020-07-10 13:51:29,132 - drag_detected
+INFO    2020-07-10 13:51:29,473 - end turn player 2
+INFO    2020-07-10 13:51:29,474 - draw card
+INFO    2020-07-10 13:51:29,515 - end turn player 2
+INFO    2020-07-10 13:51:29,515 - draw card
+INFO    2020-07-10 13:51:47,161 - drag_detected
+INFO    2020-07-10 13:51:47,969 - drag_ended
+INFO    2020-07-10 13:51:47,969 - play Wisp
+INFO    2020-07-10 13:51:47,969 - card summoned
+INFO    2020-07-10 13:52:03,588 - end turn player 1
+INFO    2020-07-10 13:52:03,588 - draw card
+INFO    2020-07-10 13:52:17,775 - exit
+INFO    2020-07-10 13:54:59,270 - log_in
+INFO    2020-07-10 13:54:59,275 - navigate_from_log_in_to_menu
+INFO    2020-07-10 13:55:01,940 - start_a_game
+INFO    2020-07-10 13:55:03,649 - passive selected
+INFO    2020-07-10 13:55:11,073 - draw card
+INFO    2020-07-10 13:55:22,996 - end turn player 1
+INFO    2020-07-10 13:55:22,996 - draw card
+INFO    2020-07-10 13:57:23,269 - end turn player 2
+INFO    2020-07-10 13:57:23,270 - draw card
+INFO    2020-07-10 13:57:23,307 - end turn player 2
+INFO    2020-07-10 13:57:23,308 - draw card
+INFO    2020-07-10 13:58:26,972 - log_in
+INFO    2020-07-10 13:58:26,973 - navigate_from_log_in_to_menu
+INFO    2020-07-10 13:58:29,952 - start_a_game
+INFO    2020-07-10 13:58:31,209 - passive selected
+INFO    2020-07-10 13:58:36,795 - end turn player 1
+INFO    2020-07-10 13:58:36,796 - draw card
+INFO    2020-07-10 13:58:39,057 - end turn player 2
+INFO    2020-07-10 13:58:39,057 - draw card
+INFO    2020-07-10 13:58:47,100 - end turn player 1
+INFO    2020-07-10 13:58:47,100 - draw card
+INFO    2020-07-10 13:58:49,383 - end turn player 2
+INFO    2020-07-10 13:58:49,383 - draw card
+INFO    2020-07-10 13:58:57,481 - drag_detected
+INFO    2020-07-10 13:58:58,393 - drag_ended
+INFO    2020-07-10 13:58:58,393 - play Sen'jin Shieldmasta
+INFO    2020-07-10 13:58:58,393 - card summoned
+INFO    2020-07-10 13:59:00,660 - end turn player 1
+INFO    2020-07-10 13:59:00,660 - draw card
+INFO    2020-07-10 13:59:02,983 - end turn player 2
+INFO    2020-07-10 13:59:02,983 - draw card
+INFO    2020-07-10 13:59:08,353 - drag_detected
+INFO    2020-07-10 13:59:08,721 - drag_ended
+INFO    2020-07-10 13:59:08,721 - play Wisp
+INFO    2020-07-10 13:59:08,721 - card summoned
+INFO    2020-07-10 13:59:10,724 - end turn player 1
+INFO    2020-07-10 13:59:10,724 - draw card
+INFO    2020-07-10 13:59:13,152 - end turn player 2
+INFO    2020-07-10 13:59:13,152 - draw card
+INFO    2020-07-10 13:59:17,345 - drag_detected
+INFO    2020-07-10 13:59:18,145 - drag_ended
+ERROR   2020-07-10 13:59:18,145 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 13:59:18,145 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 13:59:20,721 - play Polymorph
+INFO    2020-07-10 13:59:24,100 - end turn player 1
+INFO    2020-07-10 13:59:24,100 - draw card
+INFO    2020-07-10 13:59:26,433 - end turn player 2
+INFO    2020-07-10 13:59:26,434 - draw card
+INFO    2020-07-10 13:59:39,275 - end turn player 1
+INFO    2020-07-10 13:59:39,275 - draw card
+INFO    2020-07-10 13:59:41,625 - end turn player 2
+INFO    2020-07-10 13:59:41,625 - draw card
+ERROR   2020-07-10 14:00:11,801 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:11,801 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:00:12,216 - Sen'jin Shieldmasta attacked Paladin
+ERROR   2020-07-10 14:00:14,473 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:14,473 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:00:14,921 - Sheep attacked Paladin
+ERROR   2020-07-10 14:00:17,984 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:00:17,984 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-10 14:00:19,819 - end turn player 1
+INFO    2020-07-10 14:00:19,820 - draw card
+INFO    2020-07-10 14:00:22,245 - end turn player 2
+ERROR   2020-07-10 14:00:26,313 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:26,313 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:28,424 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:00:28,424 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:00:28,841 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:28,841 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:29,785 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:00:29,785 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:00:31,328 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:31,328 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:31,841 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:00:31,841 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:00:32,361 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:32,361 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:32,929 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:00:32,929 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:00:33,640 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:33,640 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:00:34,537 - Sheep attacked Paladin
+ERROR   2020-07-10 14:00:35,929 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:00:35,929 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:00:36,697 - Sen'jin Shieldmasta attacked Paladin
+INFO    2020-07-10 14:00:44,811 - end turn player 1
+INFO    2020-07-10 14:00:44,811 - draw card
+INFO    2020-07-10 14:00:47,243 - end turn player 2
+INFO    2020-07-10 14:02:47,720 - end turn player 1
+INFO    2020-07-10 14:02:47,720 - draw card
+INFO    2020-07-10 14:02:50,158 - end turn player 2
+INFO    2020-07-10 14:04:50,792 - end turn player 1
+INFO    2020-07-10 14:04:50,793 - draw card
+INFO    2020-07-10 14:04:53,541 - end turn player 2
+INFO    2020-07-10 14:06:54,604 - end turn player 1
+INFO    2020-07-10 14:06:54,604 - draw card
+INFO    2020-07-10 14:06:57,340 - end turn player 2
+INFO    2020-07-10 14:08:34,504 - exit
+INFO    2020-07-10 14:08:51,054 - log_in
+INFO    2020-07-10 14:08:51,057 - navigate_from_log_in_to_menu
+INFO    2020-07-10 14:08:53,950 - start_a_game
+INFO    2020-07-10 14:08:55,735 - passive selected
+INFO    2020-07-10 14:09:00,504 - draw card
+INFO    2020-07-10 14:09:00,504 - draw card
+INFO    2020-07-10 14:09:00,505 - draw card
+INFO    2020-07-10 14:09:07,993 - drag_detected
+INFO    2020-07-10 14:09:08,608 - drag_ended
+INFO    2020-07-10 14:09:08,609 - play Voodoo Doctor
+INFO    2020-07-10 14:09:08,609 - card summoned
+INFO    2020-07-10 14:09:12,411 - end turn player 1
+INFO    2020-07-10 14:09:12,411 - draw card
+INFO    2020-07-10 14:09:14,657 - end turn player 2
+INFO    2020-07-10 14:09:14,657 - draw card
+INFO    2020-07-10 14:09:23,507 - end turn player 1
+INFO    2020-07-10 14:09:23,507 - draw card
+INFO    2020-07-10 14:09:25,772 - play Strength in Numbers
+INFO    2020-07-10 14:09:27,034 - end turn player 2
+INFO    2020-07-10 14:09:27,034 - draw card
+ERROR   2020-07-10 14:09:37,952 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:09:37,952 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:09:39,024 - Voodoo Doctor attacked Mage
+INFO    2020-07-10 14:09:47,968 - drag_detected
+INFO    2020-07-10 14:09:49,256 - drag_ended
+INFO    2020-07-10 14:09:49,256 - play Sen'jin Shieldmasta
+INFO    2020-07-10 14:09:49,257 - card summoned
+INFO    2020-07-10 14:09:51,378 - end turn player 1
+INFO    2020-07-10 14:09:51,379 - draw card
+INFO    2020-07-10 14:09:53,673 - play Phantom Militia
+INFO    2020-07-10 14:09:53,673 - card summoned
+INFO    2020-07-10 14:09:54,983 - end turn player 2
+INFO    2020-07-10 14:09:54,983 - draw card
+INFO    2020-07-10 14:10:18,200 - drag_detected
+INFO    2020-07-10 14:10:18,864 - drag_ended
+INFO    2020-07-10 14:10:18,864 - play Wisp
+INFO    2020-07-10 14:10:18,864 - card summoned
+INFO    2020-07-10 14:10:22,672 - drag_detected
+INFO    2020-07-10 14:10:24,664 - drag_ended
+INFO    2020-07-10 14:10:24,664 - play Assassin's Blade
+INFO    2020-07-10 14:10:24,664 - card summoned
+INFO    2020-07-10 14:10:29,578 - end turn player 1
+INFO    2020-07-10 14:10:29,578 - draw card
+INFO    2020-07-10 14:10:31,847 - play Drakkari Trickster
+INFO    2020-07-10 14:10:31,847 - card summoned
+INFO    2020-07-10 14:10:33,169 - end turn player 2
+INFO    2020-07-10 14:10:33,169 - draw card
+ERROR   2020-07-10 14:11:12,288 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:11:12,288 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:11:12,656 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:11:12,656 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:11:15,088 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:11:15,088 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:11:15,584 - Wisp attacked Phantom Militia
+INFO    2020-07-10 14:12:12,042 - end turn player 1
+INFO    2020-07-10 14:12:12,043 - draw card
+INFO    2020-07-10 14:12:14,393 - play Swarm of locusts
+INFO    2020-07-10 14:12:14,393 - card summoned
+INFO    2020-07-10 14:12:15,880 - Locust attacked Sen'jin Shieldmasta
+INFO    2020-07-10 14:12:17,054 - Locust attacked Sen'jin Shieldmasta
+INFO    2020-07-10 14:12:18,120 - Locust attacked Sen'jin Shieldmasta
+INFO    2020-07-10 14:12:19,147 - Drakkari Trickster attacked Sen'jin Shieldmasta
+INFO    2020-07-10 14:12:20,156 - end turn player 2
+INFO    2020-07-10 14:12:20,157 - draw card
+INFO    2020-07-10 14:12:36,432 - drag_detected
+INFO    2020-07-10 14:12:37,135 - drag_ended
+INFO    2020-07-10 14:12:37,135 - play Arena Patron
+INFO    2020-07-10 14:12:37,135 - card summoned
+ERROR   2020-07-10 14:12:41,896 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:12:41,896 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:12:42,319 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:12:42,319 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:12:43,872 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:12:43,872 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:12:44,463 - Voodoo Doctor attacked Phantom Militia
+INFO    2020-07-10 14:12:47,434 - end turn player 1
+INFO    2020-07-10 14:12:47,435 - draw card
+INFO    2020-07-10 14:12:49,755 - play Assassin's Blade
+INFO    2020-07-10 14:12:49,755 - card summoned
+INFO    2020-07-10 14:12:51,040 - play Learn Draconic
+INFO    2020-07-10 14:12:52,303 - Locust attacked Arena Patron
+INFO    2020-07-10 14:12:53,281 - Locust attacked Arena Patron
+INFO    2020-07-10 14:12:54,261 - Drakkari Trickster attacked Mage
+INFO    2020-07-10 14:12:55,255 - Assassin's Blade attacked Mage
+INFO    2020-07-10 14:12:56,178 - Phantom Militia attacked Mage
+INFO    2020-07-10 14:12:57,110 - end turn player 2
+INFO    2020-07-10 14:12:57,111 - draw card
+INFO    2020-07-10 14:13:16,440 - drag_detected
+INFO    2020-07-10 14:13:17,647 - drag_ended
+INFO    2020-07-10 14:13:25,360 - drag_detected
+INFO    2020-07-10 14:13:25,936 - drag_ended
+INFO    2020-07-10 14:13:25,939 - play Gruul
+INFO    2020-07-10 14:13:25,939 - card summoned
+INFO    2020-07-10 14:13:28,634 - end turn player 1
+INFO    2020-07-10 14:13:28,634 - draw card
+INFO    2020-07-10 14:13:30,988 - play Stormwind Champion
+INFO    2020-07-10 14:13:30,988 - card summoned
+INFO    2020-07-10 14:13:32,335 - Drakkari Trickster attacked Arena Patron
+INFO    2020-07-10 14:13:33,309 - Phantom Militia attacked Mage
+INFO    2020-07-10 14:13:34,271 - end turn player 2
+ERROR   2020-07-10 14:13:37,695 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:13:37,695 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:13:37,992 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:13:37,992 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:13:39,808 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:13:39,808 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:13:40,440 - Gruul attacked Phantom Militia
+ERROR   2020-07-10 14:13:44,176 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:13:44,176 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:13:44,999 - Assassin's Blade attacked Tortollan Forager
+INFO    2020-07-10 14:13:47,706 - end turn player 1
+INFO    2020-07-10 14:13:47,707 - draw card
+INFO    2020-07-10 14:13:49,981 - play Tomb Warden
+INFO    2020-07-10 14:13:49,981 - card summoned
+INFO    2020-07-10 14:13:51,296 - Assassin's Blade attacked Mage
+INFO    2020-07-10 14:13:52,360 - end turn player 2
+ERROR   2020-07-10 14:14:15,904 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:14:15,904 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:14:16,360 - Gruul attacked Tomb Warden
+INFO    2020-07-10 14:14:20,139 - end turn player 1
+INFO    2020-07-10 14:14:20,139 - draw card
+INFO    2020-07-10 14:14:22,453 - play Bluegill Warrior
+INFO    2020-07-10 14:14:22,454 - card summoned
+INFO    2020-07-10 14:14:23,761 - play Stormwind Champion
+INFO    2020-07-10 14:14:23,762 - card summoned
+INFO    2020-07-10 14:14:25,098 - Tomb Warden attacked Gruul
+INFO    2020-07-10 14:14:26,080 - Assassin's Blade attacked Mage
+INFO    2020-07-10 14:14:27,033 - Bluegill Warrior attacked Mage
+INFO    2020-07-10 14:14:27,969 - game over
+INFO    2020-07-10 14:14:35,216 - back_to_menu
+INFO    2020-07-10 14:14:45,734 - exit
+INFO    2020-07-10 14:16:44,084 - log_in
+INFO    2020-07-10 14:16:44,085 - navigate_from_log_in_to_menu
+INFO    2020-07-10 14:16:51,795 - start_a_game
+INFO    2020-07-10 14:17:04,127 - passive selected
+INFO    2020-07-10 14:17:11,110 - exit
+INFO    2020-07-10 14:18:04,972 - log_in
+INFO    2020-07-10 14:18:04,977 - navigate_from_log_in_to_menu
+INFO    2020-07-10 14:18:07,812 - start_a_game
+INFO    2020-07-10 14:18:14,151 - passive selected
+INFO    2020-07-10 14:18:19,016 - drag_detected
+INFO    2020-07-10 14:18:19,703 - drag_ended
+INFO    2020-07-10 14:18:19,703 - play Voodoo Doctor
+INFO    2020-07-10 14:18:19,704 - card summoned
+INFO    2020-07-10 14:18:22,538 - end turn player 1
+INFO    2020-07-10 14:18:22,539 - draw card
+INFO    2020-07-10 14:18:24,826 - play Sheep
+INFO    2020-07-10 14:18:24,828 - card summoned
+INFO    2020-07-10 14:18:26,097 - end turn player 2
+INFO    2020-07-10 14:18:26,097 - draw card
+INFO    2020-07-10 14:18:47,023 - drag_detected
+INFO    2020-07-10 14:18:47,799 - drag_ended
+INFO    2020-07-10 14:18:47,799 - play Bluegill Warrior
+INFO    2020-07-10 14:18:47,799 - card summoned
+INFO    2020-07-10 14:18:57,266 - end turn player 1
+INFO    2020-07-10 14:18:57,266 - draw card
+INFO    2020-07-10 14:18:59,542 - play Friendly Smith
+INFO    2020-07-10 14:19:00,815 - Sheep attacked Mage
+INFO    2020-07-10 14:19:01,758 - end turn player 2
+INFO    2020-07-10 14:19:01,759 - draw card
+ERROR   2020-07-10 14:19:20,471 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:19:20,471 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:19:21,487 - Bluegill Warrior attacked Sheep
+INFO    2020-07-10 14:19:24,338 - end turn player 1
+INFO    2020-07-10 14:19:24,339 - draw card
+INFO    2020-07-10 14:19:26,577 - hero power used
+INFO    2020-07-10 14:19:26,808 - end turn player 2
+INFO    2020-07-10 14:19:26,808 - draw card
+INFO    2020-07-10 14:19:31,319 - drag_detected
+INFO    2020-07-10 14:19:31,760 - drag_ended
+INFO    2020-07-10 14:19:31,760 - play Wisp
+INFO    2020-07-10 14:19:31,760 - card summoned
+INFO    2020-07-10 14:19:36,697 - end turn player 1
+INFO    2020-07-10 14:19:36,698 - draw card
+INFO    2020-07-10 14:19:38,998 - hero power used
+INFO    2020-07-10 14:19:39,268 - end turn player 2
+INFO    2020-07-10 14:19:39,269 - draw card
+INFO    2020-07-10 14:19:42,145 - end turn player 1
+INFO    2020-07-10 14:19:42,145 - draw card
+INFO    2020-07-10 14:19:44,419 - play Arena Patron
+INFO    2020-07-10 14:19:44,422 - card summoned
+INFO    2020-07-10 14:19:45,788 - end turn player 2
+INFO    2020-07-10 14:19:53,106 - end turn player 1
+INFO    2020-07-10 14:19:53,106 - draw card
+INFO    2020-07-10 14:19:55,383 - play Argent Commander
+INFO    2020-07-10 14:19:55,384 - card summoned
+INFO    2020-07-10 14:19:56,737 - Arena Patron attacked Voodoo Doctor
+INFO    2020-07-10 14:19:56,738 - card summoned
+INFO    2020-07-10 14:19:57,786 - Argent Commander attacked Mage
+INFO    2020-07-10 14:19:58,872 - end turn player 2
+ERROR   2020-07-10 14:20:26,416 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:20:26,416 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:20:28,023 - Wisp attacked Argent Commander
+INFO    2020-07-10 14:20:37,127 - drag_detected
+INFO    2020-07-10 14:20:37,687 - drag_ended
+INFO    2020-07-10 14:20:37,687 - play Sen'jin Shieldmasta
+INFO    2020-07-10 14:20:37,687 - card summoned
+INFO    2020-07-10 14:20:41,042 - end turn player 1
+INFO    2020-07-10 14:20:41,043 - draw card
+INFO    2020-07-10 14:20:43,413 - play Arena Patron
+INFO    2020-07-10 14:20:43,413 - card summoned
+INFO    2020-07-10 14:20:44,811 - play Activate the Obelisk
+INFO    2020-07-10 14:20:46,182 - Argent Commander attacked Sen'jin Shieldmasta
+INFO    2020-07-10 14:20:47,170 - end turn player 2
+INFO    2020-07-10 14:21:26,664 - exit
+INFO    2020-07-10 14:22:42,110 - log_in
+INFO    2020-07-10 14:22:42,111 - navigate_from_log_in_to_menu
+INFO    2020-07-10 14:22:48,464 - start_a_game
+INFO    2020-07-10 14:22:52,143 - passive selected
+INFO    2020-07-10 14:22:55,999 - drag_detected
+INFO    2020-07-10 14:22:57,183 - drag_ended
+INFO    2020-07-10 14:22:57,183 - play Wisp
+INFO    2020-07-10 14:22:57,184 - card summoned
+INFO    2020-07-10 14:22:59,135 - drag_detected
+INFO    2020-07-10 14:22:59,719 - drag_ended
+INFO    2020-07-10 14:22:59,719 - play Voodoo Doctor
+INFO    2020-07-10 14:22:59,719 - card summoned
+INFO    2020-07-10 14:23:03,794 - end turn player 1
+INFO    2020-07-10 14:23:03,795 - draw card
+INFO    2020-07-10 14:23:06,069 - end turn player 2
+INFO    2020-07-10 14:23:06,070 - draw card
+INFO    2020-07-10 14:23:12,351 - drag_detected
+INFO    2020-07-10 14:23:12,903 - drag_ended
+INFO    2020-07-10 14:23:12,903 - play Bluegill Warrior
+INFO    2020-07-10 14:23:12,903 - card summoned
+ERROR   2020-07-10 14:23:16,767 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:23:16,767 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:23:17,495 - Bluegill Warrior attacked Mage
+ERROR   2020-07-10 14:23:18,751 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:23:18,751 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:23:19,246 - Wisp attacked Mage
+ERROR   2020-07-10 14:23:20,718 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:23:20,719 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:23:21,439 - Voodoo Doctor attacked Mage
+INFO    2020-07-10 14:23:23,898 - end turn player 1
+INFO    2020-07-10 14:23:23,898 - draw card
+INFO    2020-07-10 14:23:26,175 - play Tortollan Forager
+INFO    2020-07-10 14:23:26,176 - card summoned
+INFO    2020-07-10 14:23:27,453 - end turn player 2
+INFO    2020-07-10 14:23:27,453 - draw card
+INFO    2020-07-10 14:25:24,465 - end turn player 1
+INFO    2020-07-10 14:25:24,466 - draw card
+INFO    2020-07-10 14:25:26,830 - play Phantom Militia
+INFO    2020-07-10 14:25:26,830 - card summoned
+INFO    2020-07-10 14:25:28,181 - Deathwing attacked Mage
+INFO    2020-07-10 14:25:29,204 - Tortollan Forager attacked Voodoo Doctor
+INFO    2020-07-10 14:25:30,188 - end turn player 2
+INFO    2020-07-10 14:25:30,188 - draw card
+INFO    2020-07-10 14:25:41,367 - drag_detected
+INFO    2020-07-10 14:25:42,167 - drag_ended
+ERROR   2020-07-10 14:25:42,167 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:25:42,168 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:25:43,287 - play Polymorph
+INFO    2020-07-10 14:25:45,818 - end turn player 1
+INFO    2020-07-10 14:25:45,818 - draw card
+INFO    2020-07-10 14:25:48,157 - play Activate the Obelisk
+INFO    2020-07-10 14:25:49,418 - Phantom Militia attacked Bluegill Warrior
+INFO    2020-07-10 14:25:50,354 - hero power used
+INFO    2020-07-10 14:25:50,555 - Sheep attacked Mage
+INFO    2020-07-10 14:25:51,442 - end turn player 2
+INFO    2020-07-10 14:25:51,443 - draw card
+INFO    2020-07-10 14:25:59,271 - drag_detected
+INFO    2020-07-10 14:25:59,695 - drag_ended
+INFO    2020-07-10 14:25:59,695 - play Assassin's Blade
+INFO    2020-07-10 14:25:59,695 - card summoned
+ERROR   2020-07-10 14:26:06,591 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:26:06,591 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:26:07,359 - Assassin's Blade attacked Phantom Militia
+ERROR   2020-07-10 14:26:17,031 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:26:17,031 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:26:17,398 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:26:17,398 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-10 14:26:19,849 - end turn player 1
+INFO    2020-07-10 14:26:19,849 - draw card
+INFO    2020-07-10 14:26:22,084 - play Dragon Claw
+INFO    2020-07-10 14:26:22,086 - card summoned
+INFO    2020-07-10 14:26:23,277 - Dragon Claw attacked Mage
+INFO    2020-07-10 14:26:24,196 - Sheep attacked Mage
+INFO    2020-07-10 14:26:25,127 - end turn player 2
+INFO    2020-07-10 14:26:25,127 - draw card
+INFO    2020-07-10 14:26:29,750 - drag_detected
+INFO    2020-07-10 14:26:30,112 - drag_ended
+INFO    2020-07-10 14:26:30,112 - play Sen'jin Shieldmasta
+INFO    2020-07-10 14:26:30,112 - card summoned
+INFO    2020-07-10 14:26:31,863 - drag_detected
+INFO    2020-07-10 14:26:33,168 - drag_ended
+ERROR   2020-07-10 14:26:34,942 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-07-10 14:26:34,942 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-07-10 14:26:36,934 - Assassin's Blade attacked Mage
+ERROR   2020-07-10 14:26:38,287 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:26:38,287 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:26:39,095 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-07-10 14:26:39,095 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-07-10 14:26:40,689 - end turn player 1
+INFO    2020-07-10 14:26:40,690 - draw card
+INFO    2020-07-10 14:26:42,956 - play Sheep
+INFO    2020-07-10 14:26:42,957 - card summoned
+INFO    2020-07-10 14:26:44,202 - play Sprint
+INFO    2020-07-10 14:26:44,203 - draw card
+INFO    2020-07-10 14:26:44,203 - draw card
+INFO    2020-07-10 14:26:44,203 - draw card
+INFO    2020-07-10 14:26:44,203 - draw card
+INFO    2020-07-10 14:26:53,630 - Dragon Claw attacked Sen'jin Shieldmasta
+INFO    2020-07-10 14:26:54,618 - Sheep attacked Mage
+INFO    2020-07-10 14:26:55,599 - end turn player 2
+INFO    2020-07-10 14:26:55,600 - draw card
+INFO    2020-07-10 14:27:12,005 - exit
+INFO    2020-07-10 15:16:52,330 - log_in
+INFO    2020-07-10 15:16:52,331 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:16:55,561 - start_a_game
+INFO    2020-07-10 15:19:35,538 - log_in
+INFO    2020-07-10 15:19:35,539 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:19:39,236 - start_a_game
+INFO    2020-07-10 15:19:45,834 - passive selected
+INFO    2020-07-10 15:19:47,854 - end turn player 1
+INFO    2020-07-10 15:19:47,854 - draw card
+INFO    2020-07-10 15:19:50,090 - play Activate the Obelisk
+INFO    2020-07-10 15:19:51,309 - end turn player 2
+INFO    2020-07-10 15:19:51,309 - draw card
+INFO    2020-07-10 15:19:51,309 - draw card
+INFO    2020-07-10 15:20:36,003 - drag_detected
+INFO    2020-07-10 15:20:36,338 - drag_ended
+INFO    2020-07-10 15:20:36,338 - play Voodoo Doctor
+INFO    2020-07-10 15:20:36,339 - card summoned
+INFO    2020-07-10 15:20:38,581 - end turn player 1
+INFO    2020-07-10 15:20:38,582 - draw card
+INFO    2020-07-10 15:20:40,880 - hero power used
+INFO    2020-07-10 15:20:41,131 - end turn player 2
+INFO    2020-07-10 15:20:41,133 - draw card
+INFO    2020-07-10 15:20:41,133 - draw card
+INFO    2020-07-10 15:21:36,293 - end turn player 1
+INFO    2020-07-10 15:21:36,293 - draw card
+INFO    2020-07-10 15:21:38,586 - play Drakkari Trickster
+INFO    2020-07-10 15:21:38,586 - card summoned
+INFO    2020-07-10 15:21:39,883 - end turn player 2
+INFO    2020-07-10 15:21:39,885 - draw card
+INFO    2020-07-10 15:21:39,885 - draw card
+INFO    2020-07-10 15:22:07,946 - back_to_menu
+INFO    2020-07-10 15:22:10,068 - start_a_game
+INFO    2020-07-10 15:23:22,296 - log_in
+INFO    2020-07-10 15:23:22,297 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:23:25,629 - start_a_game
+INFO    2020-07-10 15:23:27,770 - passive selected
+INFO    2020-07-10 15:24:44,633 - exit
+INFO    2020-07-10 15:24:55,290 - log_in
+INFO    2020-07-10 15:24:55,291 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:25:12,520 - start_a_game
+INFO    2020-07-10 15:25:35,098 - passive selected
+INFO    2020-07-10 15:27:37,069 - end turn player 1
+INFO    2020-07-10 15:27:37,069 - draw card
+INFO    2020-07-10 15:27:39,350 - play Sheep
+INFO    2020-07-10 15:27:39,351 - card summoned
+INFO    2020-07-10 15:27:40,633 - end turn player 2
+INFO    2020-07-10 15:27:40,635 - draw card
+INFO    2020-07-10 15:28:11,046 - log_in
+INFO    2020-07-10 15:28:11,047 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:28:41,156 - start_a_game
+INFO    2020-07-10 15:28:46,362 - passive selected
+INFO    2020-07-10 15:29:39,961 - back_to_menu
+INFO    2020-07-10 15:29:40,689 - navigate_from_menu_to_collections
+INFO    2020-07-10 15:29:42,594 - hero_filter_changed
+INFO    2020-07-10 15:29:43,126 - hero_filter_changed
+INFO    2020-07-10 15:29:43,514 - hero_filter_changed
+INFO    2020-07-10 15:29:43,548 - hero_filter_changed
+INFO    2020-07-10 15:29:44,434 - hero_filter_changed
+INFO    2020-07-10 15:29:44,467 - hero_filter_changed
+INFO    2020-07-10 15:29:45,499 - hero_filter_changed
+INFO    2020-07-10 15:29:45,957 - hero_filter_changed
+INFO    2020-07-10 15:29:46,258 - hero_filter_changed
+INFO    2020-07-10 15:29:46,292 - hero_filter_changed
+INFO    2020-07-10 15:29:47,386 - hero_filter_changed
+INFO    2020-07-10 15:29:47,413 - hero_filter_changed
+INFO    2020-07-10 15:29:48,995 - hero_filter_changed
+INFO    2020-07-10 15:29:49,027 - hero_filter_changed
+INFO    2020-07-10 15:31:28,753 - log_in
+INFO    2020-07-10 15:31:28,754 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:31:30,276 - navigate_from_menu_to_collections
+INFO    2020-07-10 15:31:34,218 - navigate_from_collections_to_menu
+INFO    2020-07-10 15:31:37,201 - start_a_game
+INFO    2020-07-10 15:32:22,105 - passive selected
+INFO    2020-07-10 15:32:24,130 - back_to_menu
+INFO    2020-07-10 15:32:24,930 - navigate_from_menu_to_collections
+INFO    2020-07-10 15:32:26,250 - hero_filter_changed
+INFO    2020-07-10 15:32:26,793 - hero_filter_changed
+INFO    2020-07-10 15:32:27,994 - hero_filter_changed
+INFO    2020-07-10 15:32:28,026 - hero_filter_changed
+INFO    2020-07-10 15:32:28,826 - hero_filter_changed
+INFO    2020-07-10 15:32:28,850 - hero_filter_changed
+INFO    2020-07-10 15:32:31,274 - hero_filter_changed
+INFO    2020-07-10 15:32:31,304 - hero_filter_changed
+INFO    2020-07-10 15:32:41,985 - hero_filter_changed
+INFO    2020-07-10 15:32:42,011 - hero_filter_changed
+INFO    2020-07-10 15:33:23,063 - log_in
+INFO    2020-07-10 15:33:23,064 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:33:23,582 - exit
+INFO    2020-07-10 15:33:32,816 - log_in
+INFO    2020-07-10 15:33:32,817 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:33:35,784 - start_a_game
+INFO    2020-07-10 15:36:53,077 - log_in
+INFO    2020-07-10 15:36:53,079 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:36:55,853 - start_a_game
+INFO    2020-07-10 15:39:58,514 - log_in
+INFO    2020-07-10 15:39:58,515 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:40:01,220 - start_a_game
+INFO    2020-07-10 15:41:18,627 - log_in
+INFO    2020-07-10 15:41:18,628 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:42:15,909 - log_in
+INFO    2020-07-10 15:42:15,911 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:43:43,984 - log_in
+INFO    2020-07-10 15:43:43,985 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:43:46,553 - start_a_game
+INFO    2020-07-10 15:44:54,335 - log_in
+INFO    2020-07-10 15:44:54,336 - navigate_from_log_in_to_menu
+INFO    2020-07-10 15:44:56,129 - navigate_from_menu_to_collections
+INFO    2020-07-10 15:44:59,721 - set_current_collections_deck
+INFO    2020-07-10 15:45:13,593 - remove_card_from_deck
+INFO    2020-07-10 15:45:14,056 - remove_card_from_deck
+INFO    2020-07-10 15:45:14,320 - remove_card_from_deck
+INFO    2020-07-10 15:45:14,489 - remove_card_from_deck
+INFO    2020-07-10 15:45:14,632 - remove_card_from_deck
+INFO    2020-07-10 15:45:14,800 - remove_card_from_deck
+INFO    2020-07-10 15:45:14,944 - remove_card_from_deck
+INFO    2020-07-10 15:45:15,577 - remove_card_from_deck
+INFO    2020-07-10 15:45:16,024 - remove_card_from_deck
+INFO    2020-07-10 15:45:21,822 - exit
