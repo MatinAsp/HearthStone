@@ -100,7 +100,7 @@ public class Actions {
             for(SelectAction annotation: selectActionMethodMap.keySet()){
                 if(annotation.value().equals(cardName) && annotation.isForOnBoard() == methodParameters[0].isOnGround()){
                     try {
-                        methodMap.get(annotation).invoke(this);
+                        selectActionMethodMap.get(annotation).invoke(this, methodParameters);
                     } catch (IllegalAccessException | InvocationTargetException | IllegalArgumentException o) {
                         exceptionCheck(o);
                     }

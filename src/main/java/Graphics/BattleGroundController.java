@@ -170,6 +170,7 @@ public class BattleGroundController implements Initializable {
         heroWeapon[side].getChildren().clear();
         if(competitor.getHeroWeapon() != null){
             Parent parent =  GraphicRender.getInstance().buildHeroWeapon(competitor.getHeroWeapon());
+            showCardOnBoard(parent, side, competitor.getHeroWeapon());
             setForPerformAction(competitor.getHeroWeapon(),side, true, parent);
             heroWeapon[side].getChildren().add(parent);
         }
@@ -533,16 +534,15 @@ public class BattleGroundController implements Initializable {
         int cnt = 0;
         for(Quest quest: map.keySet()){
             Parent parent = GraphicRender.getInstance().buildQuestStatus(quest, map.get(quest));
-            parent.setOnMouseEntered(event -> showCard[side].getChildren().add(GraphicRender.getInstance().buildCard(quest, false, false, false)));
-            parent.setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    showCard[side].getChildren().clear();
-                }
-            });
+            showCardOnBoard(parent, side, quest);
             GridPane.setConstraints(parent, 0, cnt++);
             questsStatus.getChildren().add(parent);
         }
+    }
+
+    private void showCardOnBoard(Parent parent, int side, Card card) {
+        parent.setOnMouseEntered(event -> showCard[side].getChildren().add(GraphicRender.getInstance().buildCard(card, false, false, false)));
+        parent.setOnMouseExited(event -> showCard[side].getChildren().clear());
     }
 
     @FXML
