@@ -5250,3 +5250,101 @@ INFO    2020-07-11 02:12:44,414 - navigate_from_menu_to_settings
 INFO    2020-07-11 02:12:46,430 - navigate_from_settings_to_menu
 INFO    2020-07-11 02:12:46,430 - settings_applied
 INFO    2020-07-11 02:12:51,656 - exit
+INFO    2020-08-03 16:46:09,062 - log_in
+INFO    2020-08-03 16:46:09,063 - navigate_from_log_in_to_menu
+INFO    2020-08-03 16:46:11,964 - navigate_from_menu_to_collections
+INFO    2020-08-03 16:46:18,180 - hero_filter_changed
+INFO    2020-08-03 16:46:18,661 - hero_filter_changed
+INFO    2020-08-03 16:46:19,481 - hero_filter_changed
+INFO    2020-08-03 16:46:19,506 - hero_filter_changed
+INFO    2020-08-03 16:46:21,134 - hero_filter_changed
+INFO    2020-08-03 16:46:21,165 - hero_filter_changed
+INFO    2020-08-03 16:46:21,574 - hero_filter_changed
+INFO    2020-08-03 16:46:21,613 - hero_filter_changed
+INFO    2020-08-03 16:46:22,051 - hero_filter_changed
+INFO    2020-08-03 16:46:22,082 - hero_filter_changed
+INFO    2020-08-03 16:46:23,008 - hero_filter_changed
+INFO    2020-08-03 16:46:23,042 - hero_filter_changed
+INFO    2020-08-03 16:46:23,596 - hero_filter_changed
+INFO    2020-08-03 16:46:23,628 - hero_filter_changed
+INFO    2020-08-03 16:46:24,574 - hero_filter_changed
+INFO    2020-08-03 16:46:25,026 - hero_filter_changed
+INFO    2020-08-03 16:46:25,294 - hero_filter_changed
+INFO    2020-08-03 16:46:25,316 - hero_filter_changed
+INFO    2020-08-03 16:46:25,770 - hero_filter_changed
+INFO    2020-08-03 16:46:25,792 - hero_filter_changed
+INFO    2020-08-03 16:46:26,218 - hero_filter_changed
+INFO    2020-08-03 16:46:26,239 - hero_filter_changed
+INFO    2020-08-03 16:46:26,867 - hero_filter_changed
+INFO    2020-08-03 16:46:26,889 - hero_filter_changed
+INFO    2020-08-03 16:46:27,979 - navigate_from_collections_to_menu
+INFO    2020-08-03 16:46:32,186 - start_a_game
+INFO    2020-08-03 16:46:34,240 - passive selected
+INFO    2020-08-03 16:46:37,940 - draw card
+INFO    2020-08-03 16:46:42,533 - drag_detected
+INFO    2020-08-03 16:46:43,896 - drag_ended
+INFO    2020-08-03 16:46:43,896 - play Wisp
+INFO    2020-08-03 16:46:43,896 - card summoned
+INFO    2020-08-03 16:46:47,017 - end turn player 1
+INFO    2020-08-03 16:46:47,017 - draw card
+INFO    2020-08-03 16:46:49,205 - play Heavy Axe
+INFO    2020-08-03 16:46:49,205 - card summoned
+INFO    2020-08-03 16:46:50,412 - Heavy Axe attacked Rogue
+INFO    2020-08-03 16:46:51,332 - end turn player 2
+INFO    2020-08-03 16:46:51,332 - draw card
+INFO    2020-08-03 16:46:54,822 - drag_detected
+INFO    2020-08-03 16:46:55,626 - drag_ended
+INFO    2020-08-03 16:46:55,626 - play Locust
+INFO    2020-08-03 16:46:55,626 - card summoned
+ERROR   2020-08-03 16:46:57,719 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-08-03 16:46:57,720 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-08-03 16:46:58,320 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-03 16:46:58,320 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-03 16:46:59,263 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-08-03 16:46:59,264 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-03 16:47:01,283 - Wisp attacked Paladin
+INFO    2020-08-03 16:47:04,979 - end turn player 1
+INFO    2020-08-03 16:47:04,979 - draw card
+INFO    2020-08-03 16:47:07,242 - play Bluegill Warrior
+INFO    2020-08-03 16:47:07,243 - card summoned
+INFO    2020-08-03 16:47:08,503 - Heavy Axe attacked Rogue
+INFO    2020-08-03 16:47:09,474 - Bluegill Warrior attacked Locust
+INFO    2020-08-03 16:47:10,400 - end turn player 2
+INFO    2020-08-03 16:47:10,400 - draw card
+INFO    2020-08-03 16:47:14,284 - back_to_menu
+INFO    2020-08-03 16:47:19,240 - set_confirmation
+INFO    2020-08-03 16:47:22,436 - confirmed
+INFO    2020-08-03 16:47:22,437 - set_confirmation
+INFO    2020-08-03 16:47:25,106 - confirmed
+INFO    2020-08-03 16:47:26,448 - start_a_game
+INFO    2020-08-03 16:47:28,987 - passive selected
+INFO    2020-08-03 16:47:30,273 - passive selected
+INFO    2020-08-03 16:47:33,491 - drag_detected
+INFO    2020-08-03 16:47:34,712 - drag_ended
+ERROR   2020-08-03 16:47:34,712 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-03 16:47:34,712 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-03 16:47:35,897 - drag_detected
+INFO    2020-08-03 16:47:36,547 - drag_ended
+ERROR   2020-08-03 16:47:36,547 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-03 16:47:36,547 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-03 16:47:37,642 - drag_detected
+INFO    2020-08-03 16:47:38,201 - drag_ended
+INFO    2020-08-03 16:47:38,202 - play Locust
+INFO    2020-08-03 16:47:38,202 - card summoned
+INFO    2020-08-03 16:47:40,532 - end turn player 1
+INFO    2020-08-03 16:47:40,532 - draw card
+INFO    2020-08-03 16:47:40,532 - draw card
+INFO    2020-08-03 16:47:49,370 - back_to_menu
+INFO    2020-08-03 16:47:52,673 - start_a_game
+INFO    2020-08-03 16:47:54,488 - passive selected
+INFO    2020-08-03 16:47:55,874 - passive selected
+INFO    2020-08-03 16:48:01,402 - end turn player 1
+INFO    2020-08-03 16:48:01,403 - draw card
+INFO    2020-08-03 16:48:03,990 - end turn player 2
+INFO    2020-08-03 16:48:03,991 - draw card
+INFO    2020-08-03 16:48:07,487 - end turn player 1
+INFO    2020-08-03 16:48:07,487 - draw card
+INFO    2020-08-03 16:48:10,062 - end turn player 2
+INFO    2020-08-03 16:48:10,063 - draw card
+INFO    2020-08-03 16:48:16,387 - back_to_menu
+INFO    2020-08-03 16:48:18,068 - exit

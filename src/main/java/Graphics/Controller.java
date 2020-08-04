@@ -11,6 +11,7 @@ import Models.Cards.Card;
 import Models.Deck;
 import Models.Hero;
 import Models.Player;
+import Network.Client.Client;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -811,6 +812,24 @@ public class Controller implements Initializable {
             }
         };
         setConfirmation(actionHandler, "Enter Your Password To Confirm.", true, false);
+    }
+
+    @FXML
+    private TextField ipField;
+    @FXML
+    private TextField portField;
+    private Client client = null;
+    @FXML
+    private StackPane networkPage;
+    @FXML
+    private void connect(){
+        try {
+            client = new Client(ipField.getText(), Integer.parseInt(portField.getText()), this);
+            logInPage.setVisible(true);
+            networkPage.setVisible(false);
+        } catch (Exception e) {
+            setAlert(e.getMessage());
+        }
     }
 
 }
