@@ -24,32 +24,15 @@ public class Receiver extends Thread{
         while (!isInterrupted()){
             String string = scanner.nextLine();
             switch(string){
-                case "status":
-                    getStatus();
-                    break;
                 case "log in":
-                    logIn();
+
                     break;
                 case "state":
-                    getGameState();
+
                     break;
                 case "exit":
                     return;
             }
         }
-    }
-
-    private void getGameState() {
-        client.updateGameState(scanner.nextLine());
-    }
-
-    private void logIn() {
-        client.updateLogInState(scanner.nextLine());
-    }
-
-    private void getStatus() {
-        ArrayList<Player> accounts = gson.fromJson(scanner.nextLine(), new TypeToken<ArrayList<Player>>(){}.getType());
-        ArrayList<String> onLines = gson.fromJson(scanner.nextLine(), new TypeToken<ArrayList<String>>(){}.getType());
-        client.updateStatus(accounts, onLines);
     }
 }

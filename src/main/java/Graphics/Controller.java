@@ -57,11 +57,11 @@ public class Controller implements Initializable {
     @FXML
     private StackPane status;
 
-    public Controller() throws IOException {
+    public Controller(){
     }
 
     @FXML
-    private void logInAction(ActionEvent e) throws IOException {
+    private void logInAction(){
         try{
             PlayersManager.getInstance().logIn(usernameField.getText(), passwordField.getText());
             LogCenter.getInstance().getLogger().info("log_in");
@@ -69,9 +69,14 @@ public class Controller implements Initializable {
             passwordField.clear();
             navigateFromLogInToMenu();
         }catch (Exception o){
-            System.out.println(o);
             setAlert(o.getMessage());
         }
+    }
+
+    public void logInActionUpdate(){
+        usernameField.clear();
+        passwordField.clear();
+        navigateFromLogInToMenu();
     }
 
     @FXML
@@ -106,14 +111,14 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void navigateFromLogInToMenu() throws IOException {
+    private void navigateFromLogInToMenu() {
         LogCenter.getInstance().getLogger().info("navigate_from_log_in_to_menu");
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         navigate(logInPage, menu);
     }
 
     @FXML
-    private void navigateFromMenuToLogIn() throws IOException {
+    private void navigateFromMenuToLogIn() {
         try {
             PlayersManager.getInstance().getCurrentPlayer().saveData();
             LogCenter.getInstance().getLogger().info("log_out");

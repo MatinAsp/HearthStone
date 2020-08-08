@@ -196,7 +196,6 @@ public class BattleGroundController implements Initializable {
         int counter = 0;
         for(Card card: cards){
             Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, (!isForOwn && game.isWithBot()));
-            //Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, false);
             hand.getChildren().add(graphicCard);
             InfoPack infoPack = new InfoPack(card, isForOwn ? 0 : 1, false, graphicCard, -1);
             allInfoPack.add(infoPack);

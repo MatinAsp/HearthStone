@@ -24,14 +24,12 @@ public class Server extends Thread{
     private ArrayList<ClientHandler>  waitingList;
     private ServerSocket serverSocket;
     private HashMap<ClientHandler, Game> gameMap;
-    private Gson gson;
 
     private Server(int serverPort) throws IOException {
         serverSocket = new ServerSocket(serverPort);
         gameMap = new HashMap<>();
         clientHandlers = new ArrayList<>();
         waitingList = new ArrayList<>();
-        gson = new Gson();
         players = gson.fromJson(new FileReader(new File(Configs.getInstance().readString("playersPath"))), new TypeToken<ArrayList<Player>>(){}.getType());
     }
 
@@ -49,26 +47,23 @@ public class Server extends Thread{
 
     @Override
     public void run() {
-        while(!isInterrupted()){
-            new Thread(()->{
-                while (!isInterrupted()){
-                    try {
-                        Thread.sleep(50);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    for(ClientHandler clientHandler: clientHandlers){
-                        clientHandler.send(new String[]{"status", getAllPlayersList(), getOnLines()});
-                    }
-                    FileWriter fileWriter = null;
-                    try {
-                        fileWriter = new FileWriter(Configs.getInstance().readString("playersPath"));
-                        gson.toJson(players,fileWriter);
-                        fileWriter.flush();
-                        fileWriter.close();
-                    } catch (IOException e) { }
+        new Thread(()->{
+            while (!isInterrupted()){
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-            }).start();
+                FileWriter fileWriter = null;
+                try {
+                    fileWriter = new FileWriter(Configs.getInstance().readString("playersPath"));
+                    gson.toJson(players,fileWriter);
+                    fileWriter.flush();
+                    fileWriter.close();
+                } catch (IOException e) { }
+            }
+        }).start();
+        while(!isInterrupted()){
             try {
                 Socket socket =serverSocket.accept();
                 new ClientHandler(socket.getInputStream(), socket.getOutputStream(), this).start();
@@ -101,10 +96,6 @@ public class Server extends Thread{
             treeSet.add(clientHandler.getUsername());
         }
         return gson.toJson(treeSet);
-    }
-
-    public synchronized String getAllPlayersList() {
-        return gson.toJson(players);
     }
 
     public synchronized void moveInGame(ClientHandler clientHandler, int move) {
