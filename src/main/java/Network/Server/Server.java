@@ -1,8 +1,8 @@
 package Network.Server;
 
 import Logic.Game;
+import Logic.PlayersManager;
 import Models.Player;
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
@@ -11,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeSet;
@@ -19,7 +18,6 @@ import java.util.TreeSet;
 public class Server extends Thread{
     private static Server server;
     private static int defaultPort = 8080;
-    private ArrayList<Player> players;
     private ArrayList<ClientHandler> clientHandlers;
     private ArrayList<ClientHandler>  waitingList;
     private ServerSocket serverSocket;
@@ -30,7 +28,6 @@ public class Server extends Thread{
         gameMap = new HashMap<>();
         clientHandlers = new ArrayList<>();
         waitingList = new ArrayList<>();
-        players = gson.fromJson(new FileReader(new File(Configs.getInstance().readString("playersPath"))), new TypeToken<ArrayList<Player>>(){}.getType());
     }
 
     public synchronized static Server getInstance() throws IOException {
@@ -66,28 +63,13 @@ public class Server extends Thread{
         while(!isInterrupted()){
             try {
                 Socket socket =serverSocket.accept();
-                new ClientHandler(socket.getInputStream(), socket.getOutputStream(), this).start();
+                ClientHandler  clientHandler = new ClientHandler(socket.getInputStream(), socket.getOutputStream(), this);
+                clientHandlers.add(clientHandler);
+                clientHandler.start();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    }
-
-    public synchronized String logIn(String username, String password, ClientHandler clientHandler) {
-        for(Player player: players){
-            if(username.equals(player.getUsername())){
-                if(player.isPasswordOk(password)){
-                    clientHandlers.add(clientHandler);
-                    return Integer.toString(new SecureRandom().nextInt());
-                }
-                else{
-                    return null;
-                }
-            }
-        }
-        players.add(new Player(username, password));
-        clientHandlers.add(clientHandler);
-        return Integer.toString(new SecureRandom().nextInt());
     }
 
     public synchronized String getOnLines() {

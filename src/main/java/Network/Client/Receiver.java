@@ -23,16 +23,10 @@ public class Receiver extends Thread{
     public void run() {
         while (!isInterrupted()){
             String string = scanner.nextLine();
-            switch(string){
-                case "log in":
-
-                    break;
-                case "state":
-
-                    break;
-                case "exit":
-                    return;
+            if(string.equalsIgnoreCase("exit")){
+                //todo
             }
+            client.getMassage(string);
         }
     }
 }

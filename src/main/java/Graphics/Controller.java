@@ -62,6 +62,8 @@ public class Controller implements Initializable {
 
     @FXML
     private void logInAction(){
+        client.sendLogInRequest(usernameField.getText(), passwordField.getText());
+        //////
         try{
             PlayersManager.getInstance().logIn(usernameField.getText(), passwordField.getText());
             LogCenter.getInstance().getLogger().info("log_in");

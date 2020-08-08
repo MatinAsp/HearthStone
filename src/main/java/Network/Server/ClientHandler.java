@@ -1,9 +1,15 @@
 package Network.Server;
 
+import Logic.PlayersManager;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ClientHandler extends Thread{
@@ -30,6 +36,28 @@ public class ClientHandler extends Thread{
                 }}
             }
             massagesList.add(string.substring(st, ed));
+            String methodName = massagesList.get(0);
+            massagesList.remove(0);
+            if(username == null && !methodName.equalsIgnoreCase("logIn") && !methodName.equalsIgnoreCase("signIn")){
+                continue;
+            }
+            for(Method method: ClientHandler.class.getDeclaredMethods()){
+                if(method.getName().equalsIgnoreCase(methodName)){
+                    try{
+                        if(massagesList.size() == 0){
+                            method.invoke(this);
+                        }
+                        else {
+                            method.invoke(this, massagesList.toArray());
+                        }
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        //todo
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+            }
+            /////
             if(string.equals("log in")){
                 logIn();
             }
@@ -50,24 +78,42 @@ public class ClientHandler extends Thread{
         }
     }
 
-    private void logIn() {
-        String username = scanner.nextLine();
-        String password = scanner.nextLine();
-        server.logIn(username, password, this);
-        if(!token.equals(null)){
-            this.username = username;
-            send(new String[]{"log in", token});
+    private void logIn(String username, String password) {
+        try{
+            PlayersManager.getInstance().logIn(username, password);
+        }catch (Exception e){
+            sendError(e.getMessage());
+            return;
         }
+        this.username = username;
+        send(new String[]{"logIn"});
+    }
+
+    private void signIn(String username, String password) {
+        try{
+            PlayersManager.getInstance().signIn(username, password);
+        }catch (Exception e){
+            sendError(e.getMessage());
+            return;
+        }
+        this.username = username;
+        send(new String[]{"logIn"});
     }
 
     public String getUsername() {
         return username;
     }
 
+    public void sendError(String error){
+        send(new String[]{"error", error});
+    }
+
     public synchronized void send(String[] massages){
-        for(String massage: massages){
-            printStream.println(massage);
+        String finalMassage = massages[0];
+        for(int i = 1; i < massages.length; i++){
+            finalMassage += "," + massages[i];
         }
+        printStream.println(finalMassage);
         printStream.flush();
     }
 }
