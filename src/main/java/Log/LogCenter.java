@@ -30,29 +30,30 @@ public class LogCenter {
         logger = Logger.getLogger(LogCenter.class);
     }
 
-    static public LogCenter getInstance(){
+    static public synchronized LogCenter getInstance(){
         if(logCenter == null){
             logCenter = new LogCenter();
         }
         return logCenter;
     }
 
-    public Logger getLogger(){
-        return logger;
+    public synchronized void createLogFile(Player player) {
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(new File(dataPath+File.separator+player.getUsername()+"-"+player.getId()+".log"));
+            fileWriter.write("USER: "+player.getUsername()+"\n");
+            fileWriter.write("ID: "+player.getId()+"\n");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            fileWriter.write("CREATED_AT: "+ dateFormat.format(new Date())+"\n");
+            fileWriter.write("PASSWORD: "+player.getPassword()+"\n\n");
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void createLogFile(Player player) throws IOException {
-        FileWriter fileWriter = new FileWriter(new File(dataPath+File.separator+player.getUsername()+"-"+player.getId()+".log"));
-        fileWriter.write("USER: "+player.getUsername()+"\n");
-        fileWriter.write("ID: "+player.getId()+"\n");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        fileWriter.write("CREATED_AT: "+ dateFormat.format(new Date())+"\n");
-        fileWriter.write("PASSWORD: "+player.getPassword()+"\n\n");
-        fileWriter.flush();
-        fileWriter.close();
-    }
-
-    public void setLogFile(Player player){
+    private void setLogFile(Player player){
         Logger rootLogger = Logger.getRootLogger();
         rootLogger.removeAllAppenders();
         FileAppender fileAppender = new FileAppender();
@@ -60,5 +61,20 @@ public class LogCenter {
         fileAppender.setLayout(layout);
         fileAppender.activateOptions();
         rootLogger.addAppender(fileAppender);
+    }
+
+    public synchronized void info(Player player, String massage){
+        setLogFile(player);
+        logger.info(massage);
+    }
+
+    public synchronized void error(Player player, String massage){
+        setLogFile(player);
+        logger.error(massage);
+    }
+
+    public synchronized void error(Player player, Exception massage){
+        setLogFile(player);
+        logger.error(massage);
     }
 }

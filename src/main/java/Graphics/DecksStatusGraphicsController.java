@@ -30,7 +30,7 @@ public class DecksStatusGraphicsController {
     @FXML
     private StackPane heroPlace;
 
-    public void loadDeck(Deck deck) {
+    public void loadDeck(Deck deck, boolean isUsing) {
         name.setText(deck.getName());
         wins.setText(Integer.toString(deck.getWinsNumber()));
         plays.setText(Integer.toString(deck.getPlaysNumber()));
@@ -38,7 +38,7 @@ public class DecksStatusGraphicsController {
         hero.setText(deck.getHero().getName());
         manaAverage.setText(Double.toString(deck.getAverageMana()));
         mostPlayedCard.setText(deck.getMostPlayedCard());
-        if (PlayersManager.getInstance().getCurrentPlayer().getCurrentDeckName().equals(deck.getName())){
+        if (isUsing){
             usingForBattle.setText("Yes");
         }
         else {

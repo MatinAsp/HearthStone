@@ -17,13 +17,6 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    @Override
-    public void stop() throws Exception {
-        if(PlayersManager.getInstance().getCurrentPlayer() != null){
-            PlayersManager.getInstance().getCurrentPlayer().saveData();
-        }
-    }
-
     public static void main(String[] args) {
         launch(args);
     }

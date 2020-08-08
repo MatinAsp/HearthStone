@@ -1,6 +1,8 @@
 package Network.Server;
 
 import Logic.PlayersManager;
+import Models.Player;
+import com.google.gson.Gson;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -14,31 +16,25 @@ import java.util.Scanner;
 
 public class ClientHandler extends Thread{
     private Server server;
-    private String username = null;
+    private Player player = null;
     private Scanner scanner;
     private PrintStream printStream;
+    private Gson gson;
     public ClientHandler(InputStream inputStream, OutputStream outputStream, Server server){
         this.server = server;
         scanner = new Scanner(inputStream);
         printStream = new PrintStream(outputStream);
+        gson = new Gson();
     }
 
     @Override
     public void run() {
         while(!isInterrupted()){
-            ArrayList<String> massagesList = new ArrayList<>();
             String string = scanner.nextLine();
-            int st = 0, ed = 1;
-            for(; ed < string.length(); ed++){
-                if(string.charAt(ed) == ','){{
-                    massagesList.add(string.substring(st,ed));
-                    st = ed + 1;
-                }}
-            }
-            massagesList.add(string.substring(st, ed));
+            ArrayList<String> massagesList = toListMassages(string);
             String methodName = massagesList.get(0);
             massagesList.remove(0);
-            if(username == null && !methodName.equalsIgnoreCase("logIn") && !methodName.equalsIgnoreCase("signIn")){
+            if(player == null && !methodName.equalsIgnoreCase("logIn") && !methodName.equalsIgnoreCase("signIn")){
                 continue;
             }
             for(Method method: ClientHandler.class.getDeclaredMethods()){
@@ -51,66 +47,45 @@ public class ClientHandler extends Thread{
                             method.invoke(this, massagesList.toArray());
                         }
                     } catch (IllegalAccessException | InvocationTargetException e) {
-                        //todo
-                        e.printStackTrace();
+                        sendException((Exception) e.getCause());
                     }
                     break;
                 }
             }
-            /////
-            if(string.equals("log in")){
-                logIn();
-            }
-            switch (scanner.nextLine()){
-                case "status":
-                    send(new String[]{"status", server.getAllPlayersList(), server.getOnLines()});
-                    break;
-                case "play":
-                    server.startGame(this);
-                    break;
-                case "move":
-                    server.moveInGame(this, Integer.parseInt(scanner.nextLine()));
-                    break;
-                case "exit":
-                    server.exitClient(this);
-                    return;
-            }
         }
     }
 
-    private void logIn(String username, String password) {
-        try{
-            PlayersManager.getInstance().logIn(username, password);
-        }catch (Exception e){
-            sendError(e.getMessage());
-            return;
+    private ArrayList<String> toListMassages(String string){
+        ArrayList<String> massagesList = new ArrayList<>();
+        int st = 0, ed = 1;
+        for(; ed < string.length(); ed++){
+            if(string.charAt(ed) == ','){{
+                massagesList.add(string.substring(st,ed));
+                st = ed + 1;
+            }}
         }
-        this.username = username;
+        massagesList.add(string.substring(st, ed));
+        return massagesList;
+    }
+
+    private void logIn(String username, String password) throws Exception {
+        player = PlayersManager.getInstance().logIn(username, password);
         send(new String[]{"logIn"});
     }
 
-    private void signIn(String username, String password) {
-        try{
-            PlayersManager.getInstance().signIn(username, password);
-        }catch (Exception e){
-            sendError(e.getMessage());
-            return;
-        }
-        this.username = username;
+    private void signIn(String username, String password) throws Exception {
+        player = PlayersManager.getInstance().signIn(username, password);
         send(new String[]{"logIn"});
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void sendError(String error){
-        send(new String[]{"error", error});
+    public void sendException(Exception exception){
+        send(new String[]{"error", exception.getClass().getName(), gson.toJson(exception)});
     }
 
     public synchronized void send(String[] massages){
-        String finalMassage = massages[0];
-        for(int i = 1; i < massages.length; i++){
+        String finalMassage = "null";
+        if(player != null) finalMassage = gson.toJson(player);
+        for(int i = 0; i < massages.length; i++){
             finalMassage += "," + massages[i];
         }
         printStream.println(finalMassage);

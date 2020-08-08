@@ -179,10 +179,6 @@ public class Player {
         return currentDeckName;
     }
 
-    public void saveData(){
-        DataManager dataManager = DataManager.getInstance();
-        dataManager.savePlayer(this);
-    }
 
     @Override
     public String toString() {

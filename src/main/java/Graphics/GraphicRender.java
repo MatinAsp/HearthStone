@@ -38,7 +38,7 @@ public class GraphicRender {
         try {
             graphicCard = fxmlLoader.load();
         } catch (IOException e) {
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
             e.printStackTrace();
         }
         CardGraphicsController cardGraphicsController = fxmlLoader.getController();
@@ -79,7 +79,7 @@ public class GraphicRender {
             graphicDeck = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         CollectionsDeckGraphic collectionsDeckGraphic = fxmlLoader.getController();
         collectionsDeckGraphic.setImage(AssetManager.getInstance().getImage(deck.getHero().getName()));
@@ -94,7 +94,7 @@ public class GraphicRender {
             graphicDeck = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         CollectionsDeckGraphic collectionsDeckGraphic = fxmlLoader.getController();
         collectionsDeckGraphic.setImage(AssetManager.getInstance().getImage(cardName));
@@ -109,7 +109,7 @@ public class GraphicRender {
             heroPlace = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         HeroPlaceController heroPlaceController  = fxmlLoader.getController();
         heroPlaceController.setHeroImage(AssetManager.getInstance().getImage(hero.getName()+"Place"));
@@ -125,7 +125,7 @@ public class GraphicRender {
             battleGroundMinion = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         CardGraphicsController cardGraphicsController = fxmlLoader.getController();
         cardGraphicsController.setAttack(minion.getAttack());
@@ -145,7 +145,7 @@ public class GraphicRender {
             passiveGraphics = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         CardGraphicsController passiveGraphicsController  = fxmlLoader.getController();
         passiveGraphicsController.setCardName(passive.getName());
@@ -161,7 +161,7 @@ public class GraphicRender {
             heroPowerGraphics = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         HeroPowerController heroPowerController  = fxmlLoader.getController();
         heroPowerController.setMana(heroPower.getMana());
@@ -178,7 +178,7 @@ public class GraphicRender {
             decksStatusGraphicsController.loadDeck(deck);
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         return decksStatusGraphics;
     }
@@ -189,7 +189,7 @@ public class GraphicRender {
         try {
             graphicCard = fxmlLoader.load();
         } catch (IOException e) {
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
             e.printStackTrace();
         }
         CardGraphicsController cardGraphicsController = fxmlLoader.getController();
@@ -209,7 +209,7 @@ public class GraphicRender {
             questStatusController.setQuestPic(AssetManager.getInstance().getImage(quest.getName()));
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         return questStatusGraphics;
     }
@@ -220,7 +220,7 @@ public class GraphicRender {
         try {
             graphicCard = fxmlLoader.load();
         } catch (IOException e) {
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
             e.printStackTrace();
         }
         CardGraphicsController cardGraphicsController = fxmlLoader.getController();

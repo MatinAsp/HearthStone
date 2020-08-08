@@ -1,29 +1,20 @@
 package Logic;
 
 import Data.DataManager;
-import Log.LogCenter;
 import Models.Player;
-import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class PlayersManager {
     private static PlayersManager instancePlayersManager= null;
     private ArrayList<Player> allPlayers;
-    private Player currentPlayer = null;
     private PlayersManager() {
         DataManager dataManager = DataManager.getInstance();
         allPlayers = new ArrayList<>();
         allPlayers.addAll(dataManager.getAllPlayers());
     }
 
-    public Player getCurrentPlayer(){
-        return currentPlayer;
-    }
-
-    public Player getPlayer(String username){
+    private Player getPlayer(String username){
         for(Player player: allPlayers){
             if(player.getUsername().equals(username)){
                 return player;
@@ -39,12 +30,10 @@ public class PlayersManager {
         return instancePlayersManager;
     }
 
-    public void logIn(String username, String password) throws Exception{
+    public Player logIn(String username, String password) throws Exception{
         checkUsername(username);
         checkPassword(username, password);
-        currentPlayer = getPlayer(username);
-        LogCenter logCenter = LogCenter.getInstance();
-        logCenter.setLogFile(currentPlayer);
+        return getPlayer(username);
     }
 
     public void checkUsername(String username) throws Exception {
@@ -60,7 +49,7 @@ public class PlayersManager {
         }
     }
 
-    public void signIn(String username, String password) throws Exception {
+    public Player signIn(String username, String password) throws Exception {
         if(username == null || username.equals("")){
             throw new Exception("please enter your username.");
         }
@@ -72,11 +61,8 @@ public class PlayersManager {
         }
         Player player = PlayerFactory.getInstance().build(username, password);
         allPlayers.add(player);
-        currentPlayer = player;
         DataManager.getInstance().savePlayer(player);
-        LogCenter logCenter = LogCenter.getInstance();
-        logCenter.createLogFile(player);
-        logCenter.setLogFile(currentPlayer);
+        return player;
     }
 
     public boolean exist(String username){
@@ -88,15 +74,20 @@ public class PlayersManager {
         return false;
     }
 
-    public void deleteCurrentPlayer(String password) throws Exception {
-        if (password.hashCode() == Integer.parseInt(currentPlayer.getPassword())) {
-            allPlayers.remove(currentPlayer);
+    public void deletePlayer(String username, String password) throws Exception {
+        Player player = getPlayer(username);
+        if (password.hashCode() == Integer.parseInt(player.getPassword())) {
+            allPlayers.remove(player);
             DataManager dataManager = DataManager.getInstance();
-            dataManager.deletePlayer(currentPlayer.getUsername());
-            currentPlayer = null;
-            LogCenter.getInstance().getLogger().info("USER_DELETED");
+            dataManager.deletePlayer(player.getUsername());
             return;
         }
         else throw new Exception("Wrong Password");
+    }
+
+    public void save() {
+        for(Player player: allPlayers){
+            DataManager.getInstance().savePlayer(player);
+        }
     }
 }

@@ -52,7 +52,7 @@ public class DataManager {
             }
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
     }
 
@@ -65,7 +65,7 @@ public class DataManager {
                     arr.addAll((ArrayList<T>) loadData(Class.forName(GameConstants.getInstance().getString(file.getName()+"Class")), file.getAbsolutePath()));
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
-                    LogCenter.getInstance().getLogger().error(e);
+//                    LogCenter.getInstance().getLogger().error(e);
                 }
             }
                 else{
@@ -76,7 +76,7 @@ public class DataManager {
                     fileReader.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    LogCenter.getInstance().getLogger().error(e);
+//                    LogCenter.getInstance().getLogger().error(e);
                 }
             }
         }
@@ -123,7 +123,7 @@ public class DataManager {
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
     }
 
@@ -133,7 +133,7 @@ public class DataManager {
             scanner = new Scanner(new File(generalPath+File.separator+"Default Cards"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         ArrayList<Card> defaultCards = new ArrayList<>();
         while (scanner.hasNext()){
@@ -149,7 +149,7 @@ public class DataManager {
             scanner = new Scanner(new File(generalPath+File.separator+"Default Heroes"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
         ArrayList<Hero> defaultHeroes = new ArrayList<>();
         while (scanner.hasNext()){
@@ -192,7 +192,7 @@ public class DataManager {
                 deck.addCard(card);
                 cards.remove(card);
             } catch (Exception e) {
-                LogCenter.getInstance().getLogger().error(e);
+//                LogCenter.getInstance().getLogger().error(e);
                 e.printStackTrace();
             }
         }

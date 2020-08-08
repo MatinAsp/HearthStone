@@ -17,7 +17,7 @@ public class GameConstants {
             configs.load(new FileReader(new File(address)));
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
     }
 
@@ -69,7 +69,7 @@ public class GameConstants {
             configs.store(new FileOutputStream(defaultAddress), "");
         } catch (IOException e) {
             e.printStackTrace();
-            LogCenter.getInstance().getLogger().error(e);
+//            LogCenter.getInstance().getLogger().error(e);
         }
     }
 }

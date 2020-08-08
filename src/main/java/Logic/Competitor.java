@@ -179,10 +179,7 @@ public class Competitor{
                 questsInProgress.remove(quest);
                 try {
                     questActionHandler.runAction();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    LogCenter.getInstance().getLogger().error(e);
-                }
+                } catch (Exception e) { }
             }
         }
     }

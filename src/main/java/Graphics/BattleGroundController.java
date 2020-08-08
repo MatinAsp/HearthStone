@@ -19,6 +19,7 @@ import Models.Character;
 import Models.Hero;
 import Models.InfoPack;
 import Models.Passive;
+import Network.Client.Client;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
@@ -46,6 +47,7 @@ import java.net.URL;
 import java.util.*;
 
 public class BattleGroundController implements Initializable {
+    private Client client;
     @FXML
     private StackPane root;
     @FXML
@@ -104,8 +106,7 @@ public class BattleGroundController implements Initializable {
     @FXML
     private void exit(){
         try {
-            PlayersManager.getInstance().getCurrentPlayer().saveData();
-            LogCenter.getInstance().getLogger().info("exit");
+            client.logInfo("exit");
         } catch (Exception ex) {
             System.out.println("exit on login page.");;
         }
@@ -243,7 +244,7 @@ public class BattleGroundController implements Initializable {
         graphicCard.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                LogCenter.getInstance().getLogger().info("drag_detected");
+                client.logInfo("drag_detected");
                 mousePosition[0] = event.getSceneX();
                 mousePosition[1] = event.getSceneY();
                 mouseFirstPosition[0] = event.getSceneX();
@@ -263,7 +264,7 @@ public class BattleGroundController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 synchronized (lock){
-                    LogCenter.getInstance().getLogger().info("drag_ended");
+                    client.logInfo("drag_ended");
                     double y = graphicCard.getLayoutY();
                     double x = graphicCard.getLayoutX();
                     graphicCard.setLayoutX(graphicCard.getLayoutX() - event.getSceneX() + mouseFirstPosition[0]);
@@ -287,7 +288,7 @@ public class BattleGroundController implements Initializable {
                             performAction(card, side, false,graphicCard, cnt);
                         }
                     } catch (Exception e) {
-                        LogCenter.getInstance().getLogger().error(e);
+                        client.logError(e);
                         e.printStackTrace();
                     }
                 }
@@ -377,7 +378,7 @@ public class BattleGroundController implements Initializable {
     }
 
     private void endGame(){
-        LogCenter.getInstance().getLogger().info("game over");
+        client.logInfo("game over");
         addGameLog("game over");
         isGameEnded = true;
         Platform.runLater(() -> renderActions());
@@ -409,7 +410,7 @@ public class BattleGroundController implements Initializable {
 
     @FXML
     private void backToMenu() {
-        LogCenter.getInstance().getLogger().info("back_to_menu");
+        client.logInfo("back_to_menu");
         thread = null;
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("battleGroundSound"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
@@ -436,7 +437,7 @@ public class BattleGroundController implements Initializable {
             passiveGraphics.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    LogCenter.getInstance().getLogger().info("passive selected");
+                    client.logInfo("passive selected");
                     addGameLog("passive selected");
                     performAction(passive, side, false, passiveGraphics, -1);
                     passiveSelectionPane.setVisible(false);
@@ -567,7 +568,6 @@ public class BattleGroundController implements Initializable {
     }
 
     private synchronized void performAction(InfoPack infoPack){
-        Logger logger = LogCenter.getInstance().getLogger();
         infoPacks.add(infoPack);
         InfoPack[] parameters = new InfoPack[infoPacks.size()];
         for(int i = 0; i < infoPacks.size(); i++){
@@ -578,17 +578,17 @@ public class BattleGroundController implements Initializable {
             renderActions();
             clearSelections();
         } catch (Exception e) {
-            logger.error(e);
+            client.logError(e);
             try {
                 throw e;
             } catch (SelectionNeededException selectionNeededException) {
-                LogCenter.getInstance().getLogger().error(selectionNeededException);
+                client.logError(selectionNeededException);
                 targetSelectionPane.setVisible(true);
             } catch (InvalidChoiceException invalidChoiceException) {
-                LogCenter.getInstance().getLogger().error(invalidChoiceException);
+                client.logError(invalidChoiceException);
                 clearSelections();
             } catch (GameOverException gameOverException) {
-                LogCenter.getInstance().getLogger().error(gameOverException);
+                client.logError(gameOverException);
                 endGame();
             }
         }
@@ -731,7 +731,7 @@ public class BattleGroundController implements Initializable {
     }
 
     private void loggingForGame(String log){
-        LogCenter.getInstance().getLogger().info(log);
+        client.logInfo(log);
         addGameLog(log);
     }
 
@@ -808,5 +808,9 @@ public class BattleGroundController implements Initializable {
                 performAction(infoPack);
             }
         });
+    }
+
+    public void setClient(Client client){
+        this.client = client;
     }
 }

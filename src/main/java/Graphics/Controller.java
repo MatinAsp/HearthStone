@@ -66,7 +66,7 @@ public class Controller implements Initializable {
         //////
         try{
             PlayersManager.getInstance().logIn(usernameField.getText(), passwordField.getText());
-            LogCenter.getInstance().getLogger().info("log_in");
+            client.logInfo("log_in");
             usernameField.clear();
             passwordField.clear();
             navigateFromLogInToMenu();
@@ -85,7 +85,7 @@ public class Controller implements Initializable {
     private void signInAction(ActionEvent e) {
         try{
             PlayersManager.getInstance().signIn(usernameField.getText(), passwordField.getText());
-            LogCenter.getInstance().getLogger().info("sign_in");
+            client.logInfo("sign_in");
             usernameField.clear();
             passwordField.clear();
             navigateFromLogInToMenu();
@@ -98,8 +98,7 @@ public class Controller implements Initializable {
     @FXML
     private void exit(ActionEvent e){
         try {
-            PlayersManager.getInstance().getCurrentPlayer().saveData();
-            LogCenter.getInstance().getLogger().info("exit");
+            client.logInfo("exit");
         } catch (Exception ex) {
             System.out.println("exit on login page.");;
         }
@@ -108,13 +107,13 @@ public class Controller implements Initializable {
 
     @FXML
     private void okAlert(ActionEvent e){
-        LogCenter.getInstance().getLogger().info("alert_dismissed");
+        client.logInfo("alert_dismissed");
         alertBox.setVisible(false);
     }
 
     @FXML
     private void navigateFromLogInToMenu() {
-        LogCenter.getInstance().getLogger().info("navigate_from_log_in_to_menu");
+        client.logInfo("navigate_from_log_in_to_menu");
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         navigate(logInPage, menu);
     }
@@ -122,8 +121,7 @@ public class Controller implements Initializable {
     @FXML
     private void navigateFromMenuToLogIn() {
         try {
-            PlayersManager.getInstance().getCurrentPlayer().saveData();
-            LogCenter.getInstance().getLogger().info("log_out");
+            client.logInfo("log_out");
         }catch (NullPointerException e){
 
         }
@@ -133,14 +131,14 @@ public class Controller implements Initializable {
 
     @FXML
     private void navigateFromMenuToStore() throws IOException {
-        LogCenter.getInstance().getLogger().info("navigate_from_menu_to_store");
+        client.logInfo("navigate_from_menu_to_store");
         loadStore();
         navigate(menu, storePage);
     }
 
     @FXML
     private void navigateFromMenuToStatus() throws IOException {
-        LogCenter.getInstance().getLogger().info("navigate_from_menu_to_status");
+        client.logInfo("navigate_from_menu_to_status");
         loadStatus();
         navigate(menu, status);
     }
@@ -152,13 +150,13 @@ public class Controller implements Initializable {
     private void navigateFromSettingsToMenu() throws IOException {
         navigate(settingsPane, menu);
         try{
-            LogCenter.getInstance().getLogger().info("navigate_from_settings_to_menu");
+            client.logInfo("navigate_from_settings_to_menu");
         }catch (Exception e){}
     }
 
     @FXML
     private void navigateFromMenuToSettings() throws IOException {
-        LogCenter.getInstance().getLogger().info("navigate_from_menu_to_settings");
+        client.logInfo("navigate_from_menu_to_settings");
         loadSettings();
         navigate(menu, settingsPane);
     }
@@ -189,14 +187,14 @@ public class Controller implements Initializable {
         gameSettings.setBattleGroundArena(arenaChoiceBox.getSelectionModel().getSelectedItem());
         gameSettings.applySettings();
         navigateFromSettingsToMenu();
-        LogCenter.getInstance().getLogger().info("settings_applied");
+        client.logInfo("settings_applied");
     }
 
     @FXML
     private GridPane decksStatusBoard;
     private void loadStatus() throws IOException {
         ArrayList<Node> nodes = new ArrayList<>();
-        for(Deck deck: PlayersManager.getInstance().getCurrentPlayer().getAllDecks()){
+        for(Deck deck: client.getPlayer().getAllDecks()){
             Pane decksStatusGraphics = GraphicRender.getInstance().buildDecksStatus(deck);
             nodes.add(decksStatusGraphics);
         }
@@ -205,26 +203,26 @@ public class Controller implements Initializable {
 
     @FXML
     private void navigateFromStatusToMenu() throws IOException {
-        LogCenter.getInstance().getLogger().info("navigate_from_status_to_menu");
+        client.logInfo("navigate_from_status_to_menu");
         navigate(status, menu);
     }
 
     @FXML
     private void navigateFromCollectionsToStore() throws IOException {
-        LogCenter.getInstance().getLogger().info("navigate_from_collections_to_store");
+        client.logInfo("navigate_from_collections_to_store");
         loadStore();
         navigate(collectionsPage, storePage);
     }
 
     @FXML
     private void navigateFromStoreToMenu(){
-        LogCenter.getInstance().getLogger().info("navigate_from_store_to_menu");
+        client.logInfo("navigate_from_store_to_menu");
         navigate(storePage, menu);
     }
 
     @FXML
     private void navigateFromMenuToCollections(){
-        LogCenter.getInstance().getLogger().info("navigate_from_menu_to_collections");
+        client.logInfo("navigate_from_menu_to_collections");
         loadCollections();
         navigate(menu, collectionsPage);
     }
@@ -255,7 +253,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void navigateFromCollectionsToMenu(){
-        LogCenter.getInstance().getLogger().info("navigate_from_collections_to_menu");
+        client.logInfo("navigate_from_collections_to_menu");
         navigate(collectionsPage, menu);
     }
 
@@ -297,13 +295,13 @@ public class Controller implements Initializable {
             Pane heroPane = GraphicRender.getInstance().buildHeroPlace(hero);
             heroPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                 try {
-                    PlayersManager.getInstance().getCurrentPlayer().changeDeckHero(
+                    client.getPlayer().changeDeckHero(
                             currentCollectionsDeck.getName(), hero.getName()
                     );
-                    LogCenter.getInstance().getLogger().info("change_deck's_hero");
+                    client.logInfo("change_deck's_hero");
                     heroSelectionPane.setVisible(false);
                 } catch (Exception e) {
-                    LogCenter.getInstance().getLogger().error(e);
+                    client.logError(e);
                     setAlert(e.getMessage());
                 }
             });
@@ -327,7 +325,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void changeHero(){
-        LogCenter.getInstance().getLogger().info("hero_selection_window_opened");
+        client.logInfo("hero_selection_window_opened");
         heroSelectionPane.setVisible(true);
     }
 
@@ -339,7 +337,7 @@ public class Controller implements Initializable {
 
     private void collectionsCardsRender(){
         collectionsCardsBoard.getChildren().clear();
-        Player player =PlayersManager.getInstance().getCurrentPlayer();
+        Player player =client.getPlayer();
         ArrayList<Card> filteredCards =collectionsFilterer.filterCards(DataManager.getInstance().getAllCharacter(Card.class), player);
         ArrayList<Node> nodes = new ArrayList<>();
         for(Card card: filteredCards){
@@ -354,7 +352,7 @@ public class Controller implements Initializable {
     private void collectionCardSetAction(Card card, Parent cardGraphic, boolean lock){
         if(lock) {
             cardGraphic.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-                LogCenter.getInstance().getLogger().info("click_card");
+                client.logInfo("click_card");
                 ActionHandler cardAdder = new ActionHandler() {
                     @Override
                     public void runAction() throws Exception {
@@ -372,17 +370,17 @@ public class Controller implements Initializable {
         }
         else {
             cardGraphic.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-                LogCenter.getInstance().getLogger().info("click_card");
+                client.logInfo("click_card");
                 if (currentCollectionsDeck == null){
                     setAlert("Please select your deck.");
                 }
                 else {
                     try {
                         currentCollectionsDeck.addCard(card);
-                        LogCenter.getInstance().getLogger().info("add_card_to_deck");
+                        client.logInfo("add_card_to_deck");
                         showCurrentCollectionsDecksCards();
                     } catch (Exception ex) {
-                        LogCenter.getInstance().getLogger().error(ex);
+                        client.logError(ex);
                         setAlert(ex.getMessage());
                     }
                 }
@@ -392,7 +390,7 @@ public class Controller implements Initializable {
 
     private void storeCardsRender() throws IOException {
         storeCardsBoard.getChildren().clear();
-        Player player =PlayersManager.getInstance().getCurrentPlayer();
+        Player player =client.getPlayer();
         playerCoin.setText(Integer.toString(player.getWallet()));
         ArrayList<Card> filteredCards =storeFilterer.filterCards(DataManager.getInstance().getAllCharacter(Card.class), player);
         ArrayList<Node> nodes = new ArrayList<>();
@@ -405,16 +403,28 @@ public class Controller implements Initializable {
         gridPaneRender(storeCardsBoard, nodes);
     }
 
+    private void buyCard(Card card) throws Exception {
+        Player player =  client.getPlayer();
+        if (player.getWallet() < card.getPrice()) throw new Exception("Don't have enough coin.");
+        player.setWallet(player.getWallet()-card.getPrice());
+        player.addToCards(card);
+    }
+
+    private void sellCard(Card card) {
+        Player player =  client.getPlayer();
+        player.setWallet(player.getWallet()+card.getPrice());
+        player.removeCard(card);
+    }
+
     private void storeCardSetAction(Card card, Parent cardGraphic, boolean lock) throws IOException {
-        Store store = Store.getInstance();
         if(lock) {
             cardGraphic.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-                LogCenter.getInstance().getLogger().info("click_card");
+                client.logInfo("click_card");
                 ActionHandler cardAdder = new ActionHandler() {
                     @Override
                     public void runAction() throws Exception {
-                        store.buyCard(card);
-                        LogCenter.getInstance().getLogger().info("buy_card");
+                        buyCard(card);
+                        client.logInfo("buy_card");
                         storeCardsRender();
                     }
                 };
@@ -428,12 +438,12 @@ public class Controller implements Initializable {
         }
         else {
             cardGraphic.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-                LogCenter.getInstance().getLogger().info("click_card");
+                client.logInfo("click_card");
                 ActionHandler cardRemover = new ActionHandler() {
                     @Override
                     public void runAction() throws Exception {
-                        store.sellCard(card);
-                        LogCenter.getInstance().getLogger().info("sell_card");
+                        sellCard(card);
+                        client.logInfo("sell_card");
                         storeCardsRender();
                     }
                 };
@@ -459,7 +469,7 @@ public class Controller implements Initializable {
     private TextField getTextField;
 
     private void  setConfirmation(ActionHandler actionHandler, String message, boolean gettingText, boolean closeByException){
-        LogCenter.getInstance().getLogger().info("set_confirmation");
+        client.logInfo("set_confirmation");
         confirmBox.setVisible(true);
         getTextField.setVisible(gettingText);
         getTextField.setText(null);
@@ -467,22 +477,22 @@ public class Controller implements Initializable {
         okButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LogCenter.getInstance().getLogger().info("confirmed");
+                client.logInfo("confirmed");
                 try {
                     confirmBox.setVisible(false);
                     actionHandler.runAction();
                 } catch (Exception e) {
-                    LogCenter.getInstance().getLogger().error(e);
+                    client.logError(e);
                     setAlert(e.getMessage());
                     confirmBox.setVisible(!closeByException);
-                    if(closeByException) LogCenter.getInstance().getLogger().info("confirm_dismissed");
+                    if(closeByException) client.logInfo("confirm_dismissed");
                 }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LogCenter.getInstance().getLogger().info("confirm_dismissed");
+                client.logInfo("confirm_dismissed");
                 confirmBox.setVisible(false);
             }
         });
@@ -494,7 +504,7 @@ public class Controller implements Initializable {
     @FXML
     private void collectionsSearchFilter(ActionEvent e) throws IOException {
         collectionsFilterer.setSearchFilter(collectionsSearchBox.getText());
-        LogCenter.getInstance().getLogger().info("collections_search_card");
+        client.logInfo("collections_search_card");
         collectionsCardsRender();
     }
 
@@ -504,12 +514,12 @@ public class Controller implements Initializable {
     @FXML
     private void storeSearchFilter(ActionEvent e) throws IOException {
         storeFilterer.setSearchFilter(storeSearchBox.getText());
-        LogCenter.getInstance().getLogger().info("store_search_card");
+        client.logInfo("store_search_card");
         storeCardsRender();
     }
 
     private void setAlert(String message) {
-        LogCenter.getInstance().getLogger().info("set_alert");
+        client.logInfo("set_alert");
         alertMessage.setText(message);
         alertBox.setVisible(true);
     }
@@ -523,14 +533,14 @@ public class Controller implements Initializable {
     @FXML
     private void collectionsLockFilter() throws IOException {
         lockFilter(collectionsFilterer, collectionsLockingTabPane);
-        LogCenter.getInstance().getLogger().info("collections_lock_filter_changed");
+        client.logInfo("collections_lock_filter_changed");
         collectionsCardsRender();
     }
 
     @FXML
     private void storeLockFilter() throws IOException {
         lockFilter(storeFilterer, storeLockingTabPane);
-        LogCenter.getInstance().getLogger().info("store_lock_filter_changed");
+        client.logInfo("store_lock_filter_changed");
         storeCardsRender();
     }
 
@@ -566,7 +576,7 @@ public class Controller implements Initializable {
                 collectionsFilterer.setCurrentHero(tab.getText());
             }
         }
-        LogCenter.getInstance().getLogger().info("hero_filter_changed");
+        client.logInfo("hero_filter_changed");
         collectionsCardsRender();
     }
 
@@ -587,7 +597,7 @@ public class Controller implements Initializable {
         else {
             collectionsFilterer.setManaFilter(Integer.parseInt(selected));
         }
-        LogCenter.getInstance().getLogger().info("mana_filter_changed");
+        client.logInfo("mana_filter_changed");
         collectionsCardsRender();
     }
 
@@ -597,7 +607,7 @@ public class Controller implements Initializable {
     @FXML
     private void collectionsDecksRender(){
         collectionsDecksBoard.getChildren().clear();
-        Player player =PlayersManager.getInstance().getCurrentPlayer();
+        Player player =client.getPlayer();
         ArrayList<Node> nodes = new ArrayList<>();
         for(Deck deck: player.getAllDecks()){
             Pane deckGraphic =
@@ -612,10 +622,10 @@ public class Controller implements Initializable {
         deckPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             try {
                 currentCollectionsDeck = deck;
-                LogCenter.getInstance().getLogger().info("set_current_collections_deck");
+                client.logInfo("set_current_collections_deck");
                 showCurrentCollectionsDecksCards();
             } catch (IOException e) {
-                LogCenter.getInstance().getLogger().error(e);
+                client.logError(e);
                 e.printStackTrace();
             }
         });
@@ -629,11 +639,11 @@ public class Controller implements Initializable {
             Pane decksCard = GraphicRender.getInstance().buildCollectionsDecksCard(card.getName());
             decksCard.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                 currentCollectionsDeck.removeCard(card.getName());
-                LogCenter.getInstance().getLogger().info("remove_card_from_deck");
+                client.logInfo("remove_card_from_deck");
                 try {
                     showCurrentCollectionsDecksCards();
                 } catch (IOException e) {
-                    LogCenter.getInstance().getLogger().error(e);
+                    client.logError(e);
                     e.printStackTrace();
                 }
             });
@@ -646,8 +656,8 @@ public class Controller implements Initializable {
 
     @FXML
     private void selectDeckForPlay() throws IOException {
-        PlayersManager.getInstance().getCurrentPlayer().setCurrentDeck(currentCollectionsDeck.getName());
-        LogCenter.getInstance().getLogger().info("set_player_current_deck");
+        client.getPlayer().setCurrentDeck(currentCollectionsDeck.getName());
+        client.logInfo("set_player_current_deck");
     }
 
     @FXML
@@ -655,13 +665,13 @@ public class Controller implements Initializable {
         ActionHandler actionHandler = new ActionHandler() {
             @Override
             public void runAction() throws Exception {
-                Player player = PlayersManager.getInstance().getCurrentPlayer();
+                Player player = client.getPlayer();
                 if(player.getCurrentDeckName().equals(currentCollectionsDeck.getName())){
                     player.setCurrentDeck(null);
-                    LogCenter.getInstance().getLogger().info("set_player_current_deck_null");
+                    client.logInfo("set_player_current_deck_null");
                 }
-                PlayersManager.getInstance().getCurrentPlayer().removeDeck(currentCollectionsDeck.getName());
-                LogCenter.getInstance().getLogger().info("remove_deck");
+                client.getPlayer().removeDeck(currentCollectionsDeck.getName());
+                client.logInfo("remove_deck");
                 setDisableDecksButtons(true);
                 collectionsDecksRender();
             }
@@ -703,7 +713,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void decksBackButtonAction() throws IOException {
-        LogCenter.getInstance().getLogger().info("set_collections_current_deck_null");
+        client.logInfo("set_collections_current_deck_null");
         setDisableDecksButtons(true);
         collectionsDecksRender();
     }
@@ -713,11 +723,11 @@ public class Controller implements Initializable {
         ActionHandler actionHandler = new ActionHandler() {
             @Override
             public void runAction() throws Exception {
-                Player player = PlayersManager.getInstance().getCurrentPlayer();
+                Player player = client.getPlayer();
                 player.createDeck(getTextField.getText(), player.getAllHeroes().get(0).getName());
-                LogCenter.getInstance().getLogger().info("new_deck_created");
+                client.logInfo("new_deck_created");
                 currentCollectionsDeck = player.getDeck(getTextField.getText());
-                LogCenter.getInstance().getLogger().info("set_collections_current_deck");
+                client.logInfo("set_collections_current_deck");
                 showCurrentCollectionsDecksCards();
                 heroSelectionPane.setVisible(true);
             }
@@ -731,7 +741,7 @@ public class Controller implements Initializable {
             @Override
             public void runAction() throws Exception {
                 currentCollectionsDeck.setName(getTextField.getText());
-                LogCenter.getInstance().getLogger().info("change_deck's_name");
+                client.logInfo("change_deck's_name");
                 showCurrentCollectionsDecksCards();
             }
         };
@@ -741,7 +751,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void startSinglePlayer(){
-        Player player = PlayersManager.getInstance().getCurrentPlayer();
+        Player player = client.getPlayer();
         if(player.getCurrentDeckName() == null){
             setAlert("Please select your deck before you start a game.");
             navigateFromMenuToCollections();
@@ -752,7 +762,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void startMultiPlayer(){
-        Player player = PlayersManager.getInstance().getCurrentPlayer();
+        Player player = client.getPlayer();
         if(player.getCurrentDeckName() == null){
             setAlert("Please select your deck before you start a game.");
             navigateFromMenuToCollections();
@@ -767,13 +777,13 @@ public class Controller implements Initializable {
                     @Override
                     public void runAction() throws Exception {
                         PlayersManager.getInstance().checkPassword(username, getTextField.getText());
-                        Player player = PlayersManager.getInstance().getPlayer(username);
+                        //Player player = PlayersManager.getInstance().getPlayer(username);
                         if(player.getCurrentDeckName() == null){
                             setAlert("Please select your deck before you start a game.");
                             navigateFromMenuToCollections();
                             return;
                         }
-                        Player currentPlayer = PlayersManager.getInstance().getCurrentPlayer();
+                        Player currentPlayer = client.getPlayer();
                         starGame(currentPlayer.getDeck(currentPlayer.getCurrentDeckName()), player.getDeck(player.getCurrentDeckName()), false);
                     }
                 }, "Enter second player password.", true, false);
@@ -799,22 +809,23 @@ public class Controller implements Initializable {
             e.printStackTrace();
         } catch (Exception e) {
             setAlert(e.getMessage());
-            LogCenter.getInstance().getLogger().error(e);
+            client.logError(e);
             e.printStackTrace();
         }
         root.getChildren().add(gameBoard);
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("menuSound"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("battleGroundSound"), -1);
-        LogCenter.getInstance().getLogger().info("start_a_game");
+        client.logInfo("start_a_game");
     }
 
     @FXML
-    private void deleteAccount() throws IOException {
+    private void deleteAccount() {
         ActionHandler actionHandler = new ActionHandler() {
             @Override
             public void runAction() throws Exception {
                 navigateFromSettingsToMenu();
-                PlayersManager.getInstance().deleteCurrentPlayer(getTextField.getText());
+                PlayersManager.getInstance().deletePlayer(client.getPlayer().getUsername(), getTextField.getText());
+                client.logInfo("USER_DELETED");
                 navigateFromMenuToLogIn();
             }
         };
