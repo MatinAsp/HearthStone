@@ -2,18 +2,13 @@ package Network.Server;
 
 import Logic.Game;
 import Logic.PlayersManager;
-import Models.Player;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.TreeSet;
+import java.util.Scanner;
 
 public class Server extends Thread{
     private static Server server;
@@ -44,19 +39,35 @@ public class Server extends Thread{
 
     @Override
     public void run() {
-        new Thread(()->{
+        Thread thread = new Thread(()->{
             while (!isInterrupted()){
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    break;
                 }
                 PlayersManager.getInstance().save();
             }
+        });
+        thread.start();
+        new Thread(() -> {
+            Scanner scanner = new Scanner(System.in);
+           while (!isInterrupted()){
+               if(scanner.nextLine().equals("exit")){
+                   thread.interrupt();
+                   try {
+                       serverSocket.close();
+                   } catch (IOException e) {
+                       e.printStackTrace();
+                   }
+                   break;
+               }
+           }
         }).start();
-        while(!isInterrupted()){
+        while(!isInterrupted() && !serverSocket.isClosed()){
             try {
-                Socket socket =serverSocket.accept();
+                Socket socket = serverSocket.accept();
+                System.out.println(111111);
                 ClientHandler  clientHandler = new ClientHandler(socket.getInputStream(), socket.getOutputStream(), this);
                 clientHandlers.add(clientHandler);
                 clientHandler.start();

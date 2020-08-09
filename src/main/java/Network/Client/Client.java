@@ -61,7 +61,6 @@ public class Client extends Thread{
     }
 
     private void signIn(){
-        System.out.println(11111111);
         LogCenter.getInstance().createLogFile(player);
         controller.logInActionUpdate();
     }
@@ -96,7 +95,6 @@ public class Client extends Thread{
         massagesList.remove(0);
         for(Method method: Client.class.getDeclaredMethods()){
             if(method.getName().equals(methodName)){
-                System.out.println(methodName);
                 try{
                     if(massagesList.size() == 0){
                         method.invoke(this);
