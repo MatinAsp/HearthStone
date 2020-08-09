@@ -67,7 +67,6 @@ public class Server extends Thread{
         while(!isInterrupted() && !serverSocket.isClosed()){
             try {
                 Socket socket = serverSocket.accept();
-                System.out.println(111111);
                 ClientHandler  clientHandler = new ClientHandler(socket.getInputStream(), socket.getOutputStream(), this);
                 clientHandlers.add(clientHandler);
                 clientHandler.start();

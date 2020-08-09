@@ -126,4 +126,8 @@ public class Client extends Thread{
     public Player getPlayer(){
         return player;
     }
+
+    public void exitClient() {
+        send(new String[]{"exit"});
+    }
 }

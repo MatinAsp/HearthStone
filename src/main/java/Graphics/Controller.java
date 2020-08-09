@@ -98,6 +98,7 @@ public class Controller implements Initializable {
     @FXML
     private void exit(ActionEvent e){
         try {
+            client.exitClient();
             client.logInfo("exit");
         } catch (Exception ex) {
             System.out.println("exit on login page.");;
