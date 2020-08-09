@@ -93,9 +93,10 @@ public class Client extends Thread{
         else player = gson.fromJson(massagesList.get(0), Player.class);
         String methodName = massagesList.get(1);
         massagesList.remove(0);
-        massagesList.remove(1);
-        for(Method method: ClientHandler.class.getDeclaredMethods()){
+        massagesList.remove(0);
+        for(Method method: Client.class.getDeclaredMethods()){
             if(method.getName().equals(methodName)){
+                System.out.println(methodName);
                 try{
                     if(massagesList.size() == 0){
                         method.invoke(this);

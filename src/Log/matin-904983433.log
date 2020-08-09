@@ -1,0 +1,9 @@
+USER: matin
+ID: 904983433
+CREATED_AT: 2020/08/09 16:25:27
+PASSWORD: 103668357
+
+INFO    2020-08-09 16:25:27,505 - navigate_from_log_in_to_menu
+INFO    2020-08-09 16:25:35,496 - exit
+INFO    2020-08-09 16:26:10,817 - navigate_from_log_in_to_menu
+INFO    2020-08-09 16:26:17,616 - exit
