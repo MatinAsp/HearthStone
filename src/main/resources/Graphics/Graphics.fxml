@@ -482,7 +482,7 @@
                                              <Font size="24.0" />
                                           </font>
                                        </Label>
-                                       <PasswordField fx:id="portField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="500.0" promptText="Please Enter The Port." styleClass="gameFont" />
+                                       <TextField fx:id="portField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="500.0" promptText="Please Enter The Port." styleClass="gameFont" />
                                     </children>
                                  </HBox>
                                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="640.0" spacing="100.0">

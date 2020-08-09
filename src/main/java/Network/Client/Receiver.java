@@ -20,6 +20,7 @@ public class Receiver extends Thread{
     public void run() {
         while (!isInterrupted()){
             String string = scanner.nextLine();
+            System.out.println("get: "+string);
             if(string.equalsIgnoreCase("exit")){
                 return;
             }

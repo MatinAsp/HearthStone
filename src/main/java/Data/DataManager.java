@@ -26,17 +26,6 @@ public class DataManager {
         gson = new Gson();
         dataMap = new HashMap<>();
         initialize();
-        for(Minion minion: getAllCharacter(Minion.class)){
-            System.out.print("\""+minion.getName()+"\",");
-        }
-        System.out.println();
-        for(Spell minion: getAllCharacter(Spell.class)){
-            System.out.print("\""+minion.getName()+"\",");
-        }
-        System.out.println();
-        for(Weapon minion: getAllCharacter(Weapon.class)){
-            System.out.print("\""+minion.getName()+"\",");
-        }
     }
 
     private void initialize() {

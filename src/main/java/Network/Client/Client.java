@@ -5,6 +5,7 @@ import Log.LogCenter;
 import Models.Player;
 import Network.Server.ClientHandler;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -12,6 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Client extends Thread{
     private Socket socket;
@@ -50,7 +52,16 @@ public class Client extends Thread{
         send(new String[]{"logIn", username, password});
     }
 
+    public void sendSignInRequest(String username, String password){
+        send(new String[]{"signIn", username, password});
+    }
+
     private void logIn(){
+        controller.logInActionUpdate();
+    }
+
+    private void signIn(){
+        System.out.println(11111111);
         LogCenter.getInstance().createLogFile(player);
         controller.logInActionUpdate();
     }
@@ -69,36 +80,22 @@ public class Client extends Thread{
     }
 
     private synchronized void send(String[] massages){
-        String finalMassage = massages[0];
-        for(int i = 1; i < massages.length; i++){
-            finalMassage += "," + massages[i];
-        }
-        printStream.println(finalMassage);
-        printStream.flush();
-    }
-
-    private ArrayList<String> toListMassages(String string){
         ArrayList<String> massagesList = new ArrayList<>();
-        int st = 0, ed = 1;
-        for(; ed < string.length(); ed++){
-            if(string.charAt(ed) == ','){{
-                massagesList.add(string.substring(st,ed));
-                st = ed + 1;
-            }}
-        }
-        massagesList.add(string.substring(st, ed));
-        return massagesList;
+        massagesList.addAll(Arrays.asList(massages));
+        printStream.println(gson.toJson(massagesList));
+        printStream.flush();
+        System.out.println("send: "+gson.toJson(massagesList));
     }
 
     public void getMassage(String string) {
-        ArrayList<String> massagesList = toListMassages(string);
+        ArrayList<String> massagesList = gson.fromJson(string, new TypeToken<ArrayList<String>>(){}.getType());
         if(massagesList.get(0).equalsIgnoreCase("null")) player = null;
         else player = gson.fromJson(massagesList.get(0), Player.class);
         String methodName = massagesList.get(1);
         massagesList.remove(0);
         massagesList.remove(1);
         for(Method method: ClientHandler.class.getDeclaredMethods()){
-            if(method.getName().equalsIgnoreCase(methodName)){
+            if(method.getName().equals(methodName)){
                 try{
                     if(massagesList.size() == 0){
                         method.invoke(this);

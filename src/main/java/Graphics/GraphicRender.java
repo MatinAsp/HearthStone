@@ -169,13 +169,13 @@ public class GraphicRender {
         return heroPowerGraphics;
     }
 
-    public Pane buildDecksStatus(Deck deck) {
+    public Pane buildDecksStatus(Deck deck, boolean isUsing) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("decksStatusGraphics.fxml"));
         Pane decksStatusGraphics = null;
         try {
             decksStatusGraphics = fxmlLoader.load();
             DecksStatusGraphicsController decksStatusGraphicsController  = fxmlLoader.getController();
-            decksStatusGraphicsController.loadDeck(deck);
+            decksStatusGraphicsController.loadDeck(deck, isUsing);
         } catch (IOException e) {
             e.printStackTrace();
 //            LogCenter.getInstance().getLogger().error(e);

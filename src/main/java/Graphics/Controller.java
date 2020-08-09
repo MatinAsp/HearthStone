@@ -63,16 +63,15 @@ public class Controller implements Initializable {
     @FXML
     private void logInAction(){
         client.sendLogInRequest(usernameField.getText(), passwordField.getText());
-        //////
-        try{
-            PlayersManager.getInstance().logIn(usernameField.getText(), passwordField.getText());
-            client.logInfo("log_in");
-            usernameField.clear();
-            passwordField.clear();
-            navigateFromLogInToMenu();
-        }catch (Exception o){
-            setAlert(o.getMessage());
-        }
+//        try{
+//            PlayersManager.getInstance().logIn(usernameField.getText(), passwordField.getText());
+//            client.logInfo("log_in");
+//            usernameField.clear();
+//            passwordField.clear();
+//            navigateFromLogInToMenu();
+//        }catch (Exception o){
+//            setAlert(o.getMessage());
+//        }
     }
 
     public void logInActionUpdate(){
@@ -83,16 +82,17 @@ public class Controller implements Initializable {
 
     @FXML
     private void signInAction(ActionEvent e) {
-        try{
-            PlayersManager.getInstance().signIn(usernameField.getText(), passwordField.getText());
-            client.logInfo("sign_in");
-            usernameField.clear();
-            passwordField.clear();
-            navigateFromLogInToMenu();
-        }catch (Exception o){
-            System.out.println(o);
-            setAlert(o.getMessage());
-        }
+        client.sendSignInRequest(usernameField.getText(), passwordField.getText());
+//        try{
+//            PlayersManager.getInstance().signIn(usernameField.getText(), passwordField.getText());
+//            client.logInfo("sign_in");
+//            usernameField.clear();
+//            passwordField.clear();
+//            navigateFromLogInToMenu();
+//        }catch (Exception o){
+//            System.out.println(o);
+//            setAlert(o.getMessage());
+//        }
     }
 
     @FXML
@@ -192,17 +192,18 @@ public class Controller implements Initializable {
 
     @FXML
     private GridPane decksStatusBoard;
-    private void loadStatus() throws IOException {
+    private void loadStatus(){
         ArrayList<Node> nodes = new ArrayList<>();
         for(Deck deck: client.getPlayer().getAllDecks()){
-            Pane decksStatusGraphics = GraphicRender.getInstance().buildDecksStatus(deck);
+            boolean isUsing = (client.getPlayer().getCurrentDeckName().equals(deck.getName())) ? true : false;
+            Pane decksStatusGraphics = GraphicRender.getInstance().buildDecksStatus(deck, isUsing);
             nodes.add(decksStatusGraphics);
         }
         gridPaneRender(decksStatusBoard, nodes);
     }
 
     @FXML
-    private void navigateFromStatusToMenu() throws IOException {
+    private void navigateFromStatusToMenu(){
         client.logInfo("navigate_from_status_to_menu");
         navigate(status, menu);
     }
@@ -843,6 +844,7 @@ public class Controller implements Initializable {
     private void connect(){
         try {
             client = new Client(ipField.getText(), Integer.parseInt(portField.getText()), this);
+            client.start();
             logInPage.setVisible(true);
             networkPage.setVisible(false);
         } catch (Exception e) {
