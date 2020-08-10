@@ -1,0 +1,33 @@
+USER: matin
+ID: 1342145177
+CREATED_AT: 2020/08/10 21:36:26
+PASSWORD: 103668357
+
+INFO    2020-08-10 21:36:26,469 - navigate_from_log_in_to_menu
+INFO    2020-08-10 21:36:29,817 - navigate_from_menu_to_collections
+INFO    2020-08-10 21:36:33,416 - mana_filter_changed
+INFO    2020-08-10 21:36:34,157 - mana_filter_changed
+INFO    2020-08-10 21:36:38,112 - mana_filter_changed
+INFO    2020-08-10 21:36:38,728 - mana_filter_changed
+INFO    2020-08-10 21:36:40,281 - set_current_collections_deck
+INFO    2020-08-10 21:36:42,360 - click_card
+INFO    2020-08-10 21:36:42,361 - add_card_to_deck
+INFO    2020-08-10 21:36:49,593 - set_confirmation
+INFO    2020-08-10 21:36:51,352 - confirmed
+INFO    2020-08-10 21:36:51,353 - change_deck's_name
+INFO    2020-08-10 21:36:56,296 - navigate_from_collections_to_menu
+INFO    2020-08-10 21:36:57,916 - exit
+INFO    2020-08-10 21:45:23,755 - navigate_from_log_in_to_menu
+INFO    2020-08-10 21:45:29,561 - log_out
+INFO    2020-08-10 21:45:34,305 - set_alert
+INFO    2020-08-10 21:45:35,169 - alert_dismissed
+INFO    2020-08-10 21:45:36,905 - navigate_from_log_in_to_menu
+INFO    2020-08-10 21:45:39,033 - exit
+INFO    2020-08-10 22:15:11,921 - navigate_from_log_in_to_menu
+INFO    2020-08-10 22:15:13,859 - navigate_from_menu_to_settings
+INFO    2020-08-10 22:15:15,676 - set_confirmation
+INFO    2020-08-10 22:15:20,523 - confirmed
+INFO    2020-08-10 22:15:20,567 - set_alert
+INFO    2020-08-10 22:15:21,995 - alert_dismissed
+INFO    2020-08-10 22:15:23,011 - set_confirmation
+INFO    2020-08-10 22:15:26,523 - confirmed

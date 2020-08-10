@@ -108,7 +108,8 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void okAlert(ActionEvent e){
+    private void okAlert(){
+        alertBox.setVisible(false);
         client.logInfo("alert_dismissed");
     }
 
@@ -148,7 +149,7 @@ public class Controller implements Initializable {
     private StackPane settingsPane;
 
     @FXML
-    private void navigateFromSettingsToMenu() throws IOException {
+    private void navigateFromSettingsToMenu(){
         navigate(settingsPane, menu);
         try{
             client.logInfo("navigate_from_settings_to_menu");
@@ -286,7 +287,7 @@ public class Controller implements Initializable {
     private StackPane heroSelectionPane;
     @FXML
     private GridPane heroSelectionGridPane;
-///start
+
     private void initializeHeroSelection(){
         ArrayList<Node> nodes = new ArrayList<>();
         for(Hero hero: DataManager.getInstance().getAllCharacter(Hero.class)){
@@ -801,15 +802,17 @@ public class Controller implements Initializable {
         ActionHandler actionHandler = new ActionHandler() {
             @Override
             public void runAction() throws Exception {
-                navigateFromSettingsToMenu();
-                PlayersManager.getInstance().deletePlayer(client.getPlayer().getUsername(), getTextField.getText());
-                client.logInfo("USER_DELETED");
-                navigateFromMenuToLogIn();
+                client.deleteRequest(getTextField.getText());
             }
         };
         setConfirmation(actionHandler, "Enter Your Password To Confirm.", true, false);
     }
-///end
+
+    public void deleteUpdate(){
+        navigateFromSettingsToMenu();
+        client.logInfo("USER_DELETED");
+        navigateFromMenuToLogIn();
+    }
     @FXML
     private TextField ipField;
     @FXML

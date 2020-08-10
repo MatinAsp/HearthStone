@@ -8,6 +8,7 @@ import Models.Hero;
 import Models.Player;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.sun.prism.shader.Solid_TextureRGB_AlphaTest_Loader;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -109,6 +110,12 @@ public class ClientHandler extends Thread{
 
     public void sendException(Exception exception){
         send(new String[]{"error", exception.getClass().getName(), gson.toJson(exception)});
+    }
+
+    private void delete(String password) throws Exception {
+        PlayersManager.getInstance().deletePlayer(player.getUsername(), password);
+        player = null;
+        send(new String[]{"update", "deleteUpdate"});
     }
 
     private void buyCard(String cardName) throws Exception {

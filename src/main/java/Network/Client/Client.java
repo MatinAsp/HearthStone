@@ -135,14 +135,17 @@ public class Client extends Thread{
     }
 
     public synchronized void logInfo(String massage){
+        if(player == null) return;
         LogCenter.getInstance().info(player, massage);
     }
 
     public synchronized void logError(String massage){
+        if(player == null) return;
         LogCenter.getInstance().error(player, massage);
     }
 
     public synchronized void logError(Exception massage){
+        if(player == null) return;
         LogCenter.getInstance().error(player, massage);
     }
 
@@ -160,5 +163,9 @@ public class Client extends Thread{
 
     public void sellRequest(String name) {
         send(new String[]{"sellCard", name});
+    }
+
+    public void deleteRequest(String password) {
+        send(new String[]{"delete", password});
     }
 }
