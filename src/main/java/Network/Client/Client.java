@@ -79,7 +79,8 @@ public class Client extends Thread{
 
     private void update(String updateMethod){
         try {
-            Controller.class.getMethod(updateMethod).invoke(controller);
+            controller.currentDeckCheck();
+            if(!updateMethod.equals("null")) Controller.class.getMethod(updateMethod).invoke(controller);
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }

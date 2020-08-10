@@ -4,12 +4,14 @@ import Data.DataManager;
 import Data.GameConstants;
 import Models.Cards.Card;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Deck implements Comparable {
     private String name;
+    private int id = new SecureRandom().nextInt();
     private ArrayList<Card> cards;
     private Hero hero;
     private int playsNumber, winsNumber;
@@ -181,5 +183,9 @@ public class Deck implements Comparable {
 
     public void addCardWithCheat(Card card) {
         cards.add(card);
+    }
+
+    public int getId(){
+        return id;
     }
 }

@@ -295,6 +295,7 @@ public class Controller implements Initializable {
                     client.getPlayer().changeDeckHero(
                             currentCollectionsDeck.getName(), hero.getName()
                     );
+                    client.sendUpdateRequest("null");
                     client.logInfo("change_deck's_hero");
                     heroSelectionPane.setVisible(false);
                 } catch (Exception e) {
@@ -375,7 +376,7 @@ public class Controller implements Initializable {
                     try {
                         currentCollectionsDeck.addCard(card);
                         client.logInfo("add_card_to_deck");
-                        showCurrentCollectionsDecksCards();
+                        client.sendUpdateRequest("showCurrentCollectionsDecksCards");
                     } catch (Exception ex) {
                         client.logError(ex);
                         setAlert(ex.getMessage());
@@ -499,7 +500,7 @@ public class Controller implements Initializable {
     private TextField collectionsSearchBox;
 
     @FXML
-    private void collectionsSearchFilter(ActionEvent e) throws IOException {
+    private void collectionsSearchFilter(ActionEvent e) {
         collectionsFilterer.setSearchFilter(collectionsSearchBox.getText());
         client.logInfo("collections_search_card");
         collectionsCardsRender();
@@ -509,7 +510,7 @@ public class Controller implements Initializable {
     private TextField storeSearchBox;
 
     @FXML
-    private void storeSearchFilter(ActionEvent e) throws IOException {
+    private void storeSearchFilter(ActionEvent e) {
         storeFilterer.setSearchFilter(storeSearchBox.getText());
         client.logInfo("store_search_card");
         storeCardsRender();
@@ -541,7 +542,7 @@ public class Controller implements Initializable {
         storeCardsRender();
     }
 
-    private void lockFilter(Filterer filterer, TabPane tabPane) throws IOException {
+    private void lockFilter(Filterer filterer, TabPane tabPane){
         String selected="";
         for (Tab tab: tabPane.getTabs()){
             if (tab.isSelected()){
@@ -602,7 +603,7 @@ public class Controller implements Initializable {
     private GridPane collectionsDecksBoard;
 
     @FXML
-    private void collectionsDecksRender(){
+    public void collectionsDecksRender(){
         collectionsDecksBoard.getChildren().clear();
         Player player =client.getPlayer();
         ArrayList<Node> nodes = new ArrayList<>();
@@ -617,18 +618,13 @@ public class Controller implements Initializable {
 
     private void setCollectionsDeckAction(Parent deckPane, Deck deck){
         deckPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            try {
-                currentCollectionsDeck = deck;
-                client.logInfo("set_current_collections_deck");
-                showCurrentCollectionsDecksCards();
-            } catch (IOException e) {
-                client.logError(e);
-                e.printStackTrace();
-            }
+            currentCollectionsDeck = deck;
+            client.logInfo("set_current_collections_deck");
+            showCurrentCollectionsDecksCards();
         });
     }
 
-    private void showCurrentCollectionsDecksCards() throws IOException {
+    public void showCurrentCollectionsDecksCards() {
         setDisableDecksButtons(false);
         collectionsDecksBoard.getChildren().clear();
         ArrayList<Node> nodes = new ArrayList<>();
@@ -637,12 +633,7 @@ public class Controller implements Initializable {
             decksCard.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                 currentCollectionsDeck.removeCard(card.getName());
                 client.logInfo("remove_card_from_deck");
-                try {
-                    showCurrentCollectionsDecksCards();
-                } catch (IOException e) {
-                    client.logError(e);
-                    e.printStackTrace();
-                }
+                client.sendUpdateRequest("showCurrentCollectionsDecksCards");
             });
             nodes.add(decksCard);
         }
@@ -652,13 +643,14 @@ public class Controller implements Initializable {
     private Deck currentCollectionsDeck = null;
 
     @FXML
-    private void selectDeckForPlay() throws IOException {
+    private void selectDeckForPlay(){
         client.getPlayer().setCurrentDeck(currentCollectionsDeck.getName());
+        client.sendUpdateRequest("null");
         client.logInfo("set_player_current_deck");
     }
 
     @FXML
-    private void removeDeck() throws IOException {
+    private void removeDeck(){
         ActionHandler actionHandler = new ActionHandler() {
             @Override
             public void runAction() throws Exception {
@@ -668,9 +660,9 @@ public class Controller implements Initializable {
                     client.logInfo("set_player_current_deck_null");
                 }
                 client.getPlayer().removeDeck(currentCollectionsDeck.getName());
-                client.logInfo("remove_deck");
                 setDisableDecksButtons(true);
-                collectionsDecksRender();
+                client.sendUpdateRequest("collectionsDecksRender");
+                client.logInfo("remove_deck");
             }
         };
         setConfirmation(
@@ -709,7 +701,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void decksBackButtonAction() throws IOException {
+    private void decksBackButtonAction() {
         client.logInfo("set_collections_current_deck_null");
         setDisableDecksButtons(true);
         collectionsDecksRender();
@@ -725,11 +717,15 @@ public class Controller implements Initializable {
                 client.logInfo("new_deck_created");
                 currentCollectionsDeck = player.getDeck(getTextField.getText());
                 client.logInfo("set_collections_current_deck");
-                showCurrentCollectionsDecksCards();
-                heroSelectionPane.setVisible(true);
+                client.sendUpdateRequest("showCurrentCollectionsDecksCards");
+                client.sendUpdateRequest("showHeroSelection");
             }
         };
         setConfirmation(actionHandler, "Enter Your Deck's Name.", true, false);
+    }
+
+    public void showHeroSelection(){
+        heroSelectionPane.setVisible(true);
     }
 
     @FXML
@@ -739,7 +735,7 @@ public class Controller implements Initializable {
             public void runAction() throws Exception {
                 currentCollectionsDeck.setName(getTextField.getText());
                 client.logInfo("change_deck's_name");
-                showCurrentCollectionsDecksCards();
+                client.sendUpdateRequest("showCurrentCollectionsDecksCards");
             }
         };
         setConfirmation(actionHandler, "Enter Your Deck's Name.", true, false);
@@ -848,4 +844,14 @@ public class Controller implements Initializable {
         }
     }
 
+    public void currentDeckCheck() {
+        if(currentCollectionsDeck != null){
+            for(Deck deck: client.getPlayer().getAllDecks()){
+                if(deck.getId() == currentCollectionsDeck.getId()){
+                    currentCollectionsDeck = deck;
+                    showCurrentCollectionsDecksCards();
+                }
+            }
+        }
+    }
 }

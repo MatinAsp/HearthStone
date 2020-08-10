@@ -33,8 +33,8 @@ public class ClientHandler extends Thread{
             ArrayList<String> massagesList = gson.fromJson(string, new TypeToken<ArrayList<String>>(){}.getType());
             if(massagesList.get(0).equalsIgnoreCase("null")) player = null;
             else{
-                //todo
-                //player = gson.fromJson(massagesList.get(0), Player.class);
+                //todo checking
+                player = gson.fromJson(massagesList.get(0), Player.class);
             }
             String methodName = massagesList.get(1);
             massagesList.remove(0);
@@ -62,6 +62,10 @@ public class ClientHandler extends Thread{
                 }
             }
         }
+    }
+
+    private void update(String updateMethod){
+        send(new String[]{"update", updateMethod});
     }
 
     private void logIn(String username, String password) throws Exception {
