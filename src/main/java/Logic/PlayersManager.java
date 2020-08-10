@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class PlayersManager {
     private static PlayersManager instancePlayersManager= null;
     private ArrayList<Player> allPlayers;
+    private Object lock = new Object();
     private PlayersManager() {
         DataManager dataManager = DataManager.getInstance();
         allPlayers = new ArrayList<>();
@@ -86,8 +87,17 @@ public class PlayersManager {
     }
 
     public void save() {
-        for(Player player: allPlayers){
-            DataManager.getInstance().savePlayer(player);
+        synchronized (lock){
+            for(Player player: allPlayers){
+                DataManager.getInstance().savePlayer(player);
+            }
+        }
+    }
+
+    public void changePlayer(Player player1, Player player2){
+        synchronized (lock){
+            allPlayers.remove(player1);
+            allPlayers.add(player2);
         }
     }
 }

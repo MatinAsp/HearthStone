@@ -12,6 +12,7 @@ import Models.Deck;
 import Models.Hero;
 import Models.Player;
 import Network.Client.Client;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -501,7 +502,7 @@ public class Controller implements Initializable {
         storeCardsRender();
     }
 
-    private void setAlert(String message) {
+    private synchronized void setAlert(String message) {
         client.logInfo("set_alert");
         alertMessage.setText(message);
         alertBox.setVisible(true);
@@ -702,7 +703,6 @@ public class Controller implements Initializable {
                 client.logInfo("new_deck_created");
                 currentCollectionsDeck = player.getDeck(getTextField.getText());
                 client.logInfo("set_collections_current_deck");
-                client.sendUpdateRequest("showCurrentCollectionsDecksCards");
                 client.sendUpdateRequest("showHeroSelection");
             }
         };
@@ -838,5 +838,10 @@ public class Controller implements Initializable {
                 }
             }
         }
+    }
+
+    public void handleException(Exception exception) {
+        //todo game Exception
+        Platform.runLater(() -> setAlert(exception.getMessage()));
     }
 }

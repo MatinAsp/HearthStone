@@ -76,7 +76,7 @@ public class Client extends Thread{
     private void error(String className, String gsonString){
         try {
             Exception exception = (Exception) gson.fromJson(gsonString, Class.forName(className));
-            //todo
+            controller.handleException(exception);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

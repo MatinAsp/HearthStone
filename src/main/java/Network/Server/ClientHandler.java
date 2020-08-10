@@ -39,6 +39,7 @@ public class ClientHandler extends Thread{
             else{
                 Player player1 = gson.fromJson(massagesList.get(0), Player.class);
                 if(isPlayerOk(player1)){
+                    PlayersManager.getInstance().changePlayer(player, player1);
                     player = player1;
                 }
             }
