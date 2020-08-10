@@ -31,7 +31,13 @@ public class ClientHandler extends Thread{
             String string = scanner.nextLine();
             System.out.println("get: "+string);
             ArrayList<String> massagesList = gson.fromJson(string, new TypeToken<ArrayList<String>>(){}.getType());
-            String methodName = massagesList.get(0);
+            if(massagesList.get(0).equalsIgnoreCase("null")) player = null;
+            else{
+                //todo
+                //player = gson.fromJson(massagesList.get(0), Player.class);
+            }
+            String methodName = massagesList.get(1);
+            massagesList.remove(0);
             massagesList.remove(0);
             if(methodName.equals("exit")){
                 server.exitClient(this);

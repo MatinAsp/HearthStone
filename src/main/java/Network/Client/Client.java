@@ -3,7 +3,6 @@ package Network.Client;
 import Graphics.Controller;
 import Log.LogCenter;
 import Models.Player;
-import Network.Server.ClientHandler;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -80,6 +79,8 @@ public class Client extends Thread{
 
     private synchronized void send(String[] massages){
         ArrayList<String> massagesList = new ArrayList<>();
+        if(player != null) massagesList.add(gson.toJson(player));
+        else massagesList.add("null");
         massagesList.addAll(Arrays.asList(massages));
         printStream.println(gson.toJson(massagesList));
         printStream.flush();

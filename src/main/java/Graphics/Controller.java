@@ -109,7 +109,6 @@ public class Controller implements Initializable {
     @FXML
     private void okAlert(ActionEvent e){
         client.logInfo("alert_dismissed");
-        alertBox.setVisible(false);
     }
 
     @FXML
@@ -279,19 +278,15 @@ public class Controller implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            initializeHeroSelection();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        initializeHeroSelection();
     }
 
     @FXML
     private StackPane heroSelectionPane;
     @FXML
     private GridPane heroSelectionGridPane;
-
-    private void initializeHeroSelection() throws IOException {
+///start
+    private void initializeHeroSelection(){
         ArrayList<Node> nodes = new ArrayList<>();
         for(Hero hero: DataManager.getInstance().getAllCharacter(Hero.class)){
             Pane heroPane = GraphicRender.getInstance().buildHeroPlace(hero);
@@ -390,7 +385,7 @@ public class Controller implements Initializable {
         }
     }
 
-    private void storeCardsRender() throws IOException {
+    private void storeCardsRender(){
         storeCardsBoard.getChildren().clear();
         Player player =client.getPlayer();
         playerCoin.setText(Integer.toString(player.getWallet()));
@@ -418,7 +413,7 @@ public class Controller implements Initializable {
         player.removeCard(card);
     }
 
-    private void storeCardSetAction(Card card, Parent cardGraphic, boolean lock) throws IOException {
+    private void storeCardSetAction(Card card, Parent cardGraphic, boolean lock){
         if(lock) {
             cardGraphic.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 client.logInfo("click_card");
@@ -833,7 +828,7 @@ public class Controller implements Initializable {
         };
         setConfirmation(actionHandler, "Enter Your Password To Confirm.", true, false);
     }
-
+///end
     @FXML
     private TextField ipField;
     @FXML
