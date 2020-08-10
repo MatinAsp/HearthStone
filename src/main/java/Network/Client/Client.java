@@ -77,6 +77,18 @@ public class Client extends Thread{
         }
     }
 
+    private void update(String updateMethod){
+        try {
+            Controller.class.getMethod(updateMethod).invoke(controller);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendUpdateRequest(String updateMethodName){
+        send(new String[]{"update", updateMethodName});
+    }
+
     private synchronized void send(String[] massages){
         ArrayList<String> massagesList = new ArrayList<>();
         if(player != null) massagesList.add(gson.toJson(player));
@@ -112,15 +124,15 @@ public class Client extends Thread{
         }
     }
 
-    public void logInfo(String massage){
+    public synchronized void logInfo(String massage){
         LogCenter.getInstance().info(player, massage);
     }
 
-    public void logError(String massage){
+    public synchronized void logError(String massage){
         LogCenter.getInstance().error(player, massage);
     }
 
-    public void logError(Exception massage){
+    public synchronized void logError(Exception massage){
         LogCenter.getInstance().error(player, massage);
     }
 
