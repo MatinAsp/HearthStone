@@ -5,6 +5,7 @@ import Log.LogCenter;
 import Models.Player;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import javafx.application.Platform;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -56,12 +57,16 @@ public class Client extends Thread{
     }
 
     private void logIn(){
-        controller.logInActionUpdate();
+        Platform.runLater(() ->{
+            controller.logInActionUpdate();
+        });
     }
 
     private void signIn(){
         LogCenter.getInstance().createLogFile(player);
-        controller.logInActionUpdate();
+        Platform.runLater(() ->{
+            controller.logInActionUpdate();
+        });
     }
 
     public void stopRunning() {
@@ -78,12 +83,16 @@ public class Client extends Thread{
     }
 
     private void update(String updateMethod){
-        try {
+        Platform.runLater(() ->{
             controller.currentDeckCheck();
-            if(!updateMethod.equals("null")) Controller.class.getMethod(updateMethod).invoke(controller);
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
+            if(!updateMethod.equals("null")) {
+                try {
+                    Controller.class.getMethod(updateMethod).invoke(controller);
+                } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void sendUpdateRequest(String updateMethodName){

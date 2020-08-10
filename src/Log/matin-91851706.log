@@ -1,0 +1,15 @@
+USER: matin
+ID: 91851706
+CREATED_AT: 2020/08/10 16:45:36
+PASSWORD: 103668357
+
+INFO    2020-08-10 16:45:36,916 - navigate_from_log_in_to_menu
+INFO    2020-08-10 16:45:38,326 - navigate_from_menu_to_collections
+INFO    2020-08-10 16:45:42,564 - set_current_collections_deck
+INFO    2020-08-10 16:45:48,366 - remove_card_from_deck
+INFO    2020-08-10 16:45:55,669 - click_card
+INFO    2020-08-10 16:45:55,671 - add_card_to_deck
+INFO    2020-08-10 16:46:03,462 - set_confirmation
+INFO    2020-08-10 16:46:06,429 - confirmed
+INFO    2020-08-10 16:46:06,430 - change_deck's_name
+INFO    2020-08-10 16:46:22,440 - exit
