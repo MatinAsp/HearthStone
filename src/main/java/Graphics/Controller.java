@@ -386,7 +386,7 @@ public class Controller implements Initializable {
         }
     }
 
-    private void storeCardsRender(){
+    public void storeCardsRender(){
         storeCardsBoard.getChildren().clear();
         Player player =client.getPlayer();
         playerCoin.setText(Integer.toString(player.getWallet()));
@@ -401,19 +401,6 @@ public class Controller implements Initializable {
         gridPaneRender(storeCardsBoard, nodes);
     }
 
-    private void buyCard(Card card) throws Exception {
-        Player player =  client.getPlayer();
-        if (player.getWallet() < card.getPrice()) throw new Exception("Don't have enough coin.");
-        player.setWallet(player.getWallet()-card.getPrice());
-        player.addToCards(card);
-    }
-
-    private void sellCard(Card card) {
-        Player player =  client.getPlayer();
-        player.setWallet(player.getWallet()+card.getPrice());
-        player.removeCard(card);
-    }
-
     private void storeCardSetAction(Card card, Parent cardGraphic, boolean lock){
         if(lock) {
             cardGraphic.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
@@ -421,9 +408,8 @@ public class Controller implements Initializable {
                 ActionHandler cardAdder = new ActionHandler() {
                     @Override
                     public void runAction() throws Exception {
-                        buyCard(card);
+                        client.buyRequest(card.getName());
                         client.logInfo("buy_card");
-                        storeCardsRender();
                     }
                 };
                 setConfirmation(
@@ -440,9 +426,8 @@ public class Controller implements Initializable {
                 ActionHandler cardRemover = new ActionHandler() {
                     @Override
                     public void runAction() throws Exception {
-                        sellCard(card);
+                        client.sellRequest(card.getName());
                         client.logInfo("sell_card");
-                        storeCardsRender();
                     }
                 };
                 setConfirmation(

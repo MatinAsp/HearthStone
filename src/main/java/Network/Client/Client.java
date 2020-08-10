@@ -153,4 +153,12 @@ public class Client extends Thread{
     public void exitClient() {
         send(new String[]{"exit"});
     }
+
+    public void buyRequest(String name) {
+        send(new String[]{"buyCard", name});
+    }
+
+    public void sellRequest(String name) {
+        send(new String[]{"sellCard", name});
+    }
 }

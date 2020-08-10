@@ -1,6 +1,10 @@
 package Network.Server;
 
+import Data.DataManager;
 import Logic.PlayersManager;
+import Models.Cards.Card;
+import Models.Deck;
+import Models.Hero;
 import Models.Player;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -33,8 +37,10 @@ public class ClientHandler extends Thread{
             ArrayList<String> massagesList = gson.fromJson(string, new TypeToken<ArrayList<String>>(){}.getType());
             if(massagesList.get(0).equalsIgnoreCase("null")) player = null;
             else{
-                //todo checking
-                player = gson.fromJson(massagesList.get(0), Player.class);
+                Player player1 = gson.fromJson(massagesList.get(0), Player.class);
+                if(isPlayerOk(player1)){
+                    player = player1;
+                }
             }
             String methodName = massagesList.get(1);
             massagesList.remove(0);
@@ -64,6 +70,28 @@ public class ClientHandler extends Thread{
         }
     }
 
+    private boolean isPlayerOk(Player player1) {
+        for(Hero hero: player1.getAllHeroes()){
+            if(!player.haveHero(hero.getName())){
+                return false;
+            }
+        }
+        for(Card card: player1.getAllCards()){
+            if(!player.haveCard(card.getName())){
+                return false;
+            }
+        }
+        for(Deck deck: player1.getAllDecks()){
+            for(Card card: deck.getCards()){
+                if(!player.haveCard(card.getName())){
+                    return false;
+                }
+            }
+        }
+        if(player1.getWallet() != player.getWallet()) return false;
+        return true;
+    }
+
     private void update(String updateMethod){
         send(new String[]{"update", updateMethod});
     }
@@ -80,6 +108,23 @@ public class ClientHandler extends Thread{
 
     public void sendException(Exception exception){
         send(new String[]{"error", exception.getClass().getName(), gson.toJson(exception)});
+    }
+
+    private void buyCard(String cardName) throws Exception {
+        Card card = DataManager.getInstance().getObject(Card.class, cardName);
+        if (player.getWallet() < card.getPrice()) throw new Exception("Don't have enough coin.");
+        if (player.haveCard(cardName)) throw new Exception("You have this card.");
+        player.setWallet(player.getWallet()-card.getPrice());
+        player.addToCards(card);
+        send(new String[]{"update", "storeCardsRender"});
+    }
+
+    private void sellCard(String cardName) throws Exception {
+        if (!player.haveCard(cardName)) throw new Exception("You don't have this card.");
+        Card card = DataManager.getInstance().getObject(Card.class, cardName);
+        player.setWallet(player.getWallet()+card.getPrice());
+        player.removeCard(card);
+        send(new String[]{"update", "storeCardsRender"});
     }
 
     public synchronized void send(String[] massages){
