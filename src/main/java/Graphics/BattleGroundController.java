@@ -371,6 +371,7 @@ public class BattleGroundController implements Initializable {
                 return infoPack;
             }
         }
+        return null;
     }
 
     class Timer extends Thread{
@@ -395,14 +396,15 @@ public class BattleGroundController implements Initializable {
     }
 
     private void changeTurn() {
-        try {
-            ActionRequest.END_TURN.execute();
-            Platform.runLater(() -> renderActions());
-        } catch (GameOverException e) {
-            endGame();
-        }
-        if (game.getTurn() == 0 || !game.isWithBot()) endTurnButton.setDisable(false);
-        else endTurnButton.setDisable(true);
+        client.sendEndTurn();
+//        try {
+//            ActionRequest.END_TURN.execute();
+//            Platform.runLater(() -> renderActions());
+//        } catch (GameOverException e) {
+//            endGame();
+//        }
+//        if (game.getTurn() == 0 || !game.isWithBot()) endTurnButton.setDisable(false);
+//        else endTurnButton.setDisable(true);
     }
 
     private void endGame(){
@@ -601,25 +603,25 @@ public class BattleGroundController implements Initializable {
         for(int i = 0; i < infoPacks.size(); i++){
              parameters[i] = infoPacks.get(i);
         }
-        try {
-            client.sendPerformAction(parameters);
-            ActionRequest.PERFORM_ACTION.execute(parameters);
-            renderActions();
-        } catch (Exception e) {
-            client.logError(e);
-            try {
-                throw e;
-            } catch (SelectionNeededException selectionNeededException) {
-                client.logError(selectionNeededException);
-                targetSelectionPane.setVisible(true);
-            } catch (InvalidChoiceException invalidChoiceException) {
-                client.logError(invalidChoiceException);
-                clearSelections();
-            } catch (GameOverException gameOverException) {
-                client.logError(gameOverException);
-                endGame();
-            }
-        }
+        client.sendPerformAction(parameters);
+//        try {
+//            ActionRequest.PERFORM_ACTION.execute(parameters);
+//            renderActions();
+//        } catch (Exception e) {
+//            client.logError(e);
+//            try {
+//                throw e;
+//            } catch (SelectionNeededException selectionNeededException) {
+//                client.logError(selectionNeededException);
+//                targetSelectionPane.setVisible(true);
+//            } catch (InvalidChoiceException invalidChoiceException) {
+//                client.logError(invalidChoiceException);
+//                clearSelections();
+//            } catch (GameOverException gameOverException) {
+//                client.logError(gameOverException);
+//                endGame();
+//            }
+//        }
     }
     private ArrayList<Transition> transitions = new ArrayList<>();
     private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();

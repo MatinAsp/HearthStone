@@ -147,6 +147,10 @@ public class ClientHandler extends Thread{
         server.performAction(this, gson.fromJson(parametersJson, new TypeToken<ArrayList<InfoPack>>(){}.getType()));
     }
 
+    private void endTurn() throws GameOverException, InvalidChoiceException {
+        server.endTurn(this);
+    }
+
     public synchronized void send(String[] massages){
         ArrayList<String> massagesList = new ArrayList<>();
         if(player != null) massagesList.add(gson.toJson(player));

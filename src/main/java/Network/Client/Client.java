@@ -186,4 +186,8 @@ public class Client extends Thread{
     public void sendPerformAction(InfoPack[] parameters) {
         send(new String[]{"performAction", gson.toJson(Arrays.asList(parameters))});
     }
+
+    public void sendEndTurn() {
+        send(new String[]{"endTurn"});
+    }
 }

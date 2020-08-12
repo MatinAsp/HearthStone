@@ -134,10 +134,8 @@ public class Server extends Thread{
                 waitingList.remove(clientHandler2);
                 gameKindMap.put(game, "online");
                 Gson gson = new Gson();
-                Competitor competitor1 = game.getCompetitor(player1.getUsername());
-                Competitor competitor2 = game.getCompetitor(player2.getUsername());
-                clientHandler1.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(competitor1, competitor2))});
-                clientHandler2.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(competitor2, competitor1))});
+                clientHandler1.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
+                clientHandler2.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game))});
                 break;
             }
         }
@@ -174,6 +172,25 @@ public class Server extends Thread{
     }
 
     private void sendGameStateToClients(Game game) {
+        Gson gson = new Gson();
+        for(ClientHandler clientHandler: gameMap.keySet()){
+            if(gameMap.get(clientHandler) == game){
+                if(!gameKindMap.get(game).equals("offline")){
+                    clientHandler.send(new String[]{"updateGame", gson.toJson(GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game))});
+                }
+                else {
+                    clientHandler.send(new String[]{"updateGame", gson.toJson(game)});
+                }
+            }
+        }
+    }
 
+    public void endTurn(ClientHandler clientHandler) throws InvalidChoiceException, GameOverException {
+        Game game = gameMap.get(clientHandler);
+        if(game.getTurn() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
+            throw new InvalidChoiceException();
+        }
+        game.getActionRequest().getEndTurn().execute();
+        sendGameStateToClients(game);
     }
 }
