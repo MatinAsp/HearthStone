@@ -572,9 +572,6 @@ public class BattleGroundController implements Initializable {
              parameters[i] = infoPacks.get(i);
         }
         try {
-            new ActionRequest();
-            client.sendGameAction
-
             ActionRequest.PERFORM_ACTION.execute(parameters);
             renderActions();
             clearSelections();

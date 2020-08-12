@@ -42,6 +42,18 @@ public class GraphicRender {
             e.printStackTrace();
         }
         CardGraphicsController cardGraphicsController = fxmlLoader.getController();
+        cardGraphicsController.priceVisible(priceTag);
+        cardGraphicsController.lockVisible(lock);
+        ImageView imageView = new ImageView(AssetManager.getInstance().getImage("X"));
+        graphicCard.getChildren().add(imageView);
+        imageView.setLayoutX(graphicCard.getPrefWidth()/2 - imageView.getImage().getWidth()/2);
+        imageView.setLayoutY(graphicCard.getPrefHeight()/2 - imageView.getImage().getHeight()/2);
+        imageView.setVisible(false);
+        if (cardBack){
+            GameSettings gameSettings = GameSettings.getInstance();
+            cardGraphicsController.setCardBack(AssetManager.getInstance().getImage(gameSettings.getCardBack()));
+            return graphicCard;
+        }
         cardGraphicsController.setCardPic(assetManager.getImage(card.getName()));
         cardGraphicsController.setMana(card.getMana());
         cardGraphicsController.setCardName(card.getName());
@@ -58,17 +70,6 @@ public class GraphicRender {
             cardGraphicsController.setAttack(((Weapon) card).getAttack());
             cardGraphicsController.setDurability(((Weapon) card).getDurability());
         }
-        cardGraphicsController.priceVisible(priceTag);
-        cardGraphicsController.lockVisible(lock);
-        if (cardBack){
-            GameSettings gameSettings = GameSettings.getInstance();
-            cardGraphicsController.setCardBack(AssetManager.getInstance().getImage(gameSettings.getCardBack()));
-        }
-        ImageView imageView = new ImageView(AssetManager.getInstance().getImage("X"));
-        graphicCard.getChildren().add(imageView);
-        imageView.setLayoutX(graphicCard.getPrefWidth()/2 - imageView.getImage().getWidth()/2);
-        imageView.setLayoutY(graphicCard.getPrefHeight()/2 - imageView.getImage().getHeight()/2);
-        imageView.setVisible(false);
         return graphicCard;
     }
 
