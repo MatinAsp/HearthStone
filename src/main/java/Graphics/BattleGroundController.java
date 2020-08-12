@@ -669,14 +669,14 @@ public class BattleGroundController implements Initializable {
     }
 
     private void botCheck(){
-        if(game.getTurn() == 1 && game.isWithBot() && !isGameEnded){
-            try {
-                if(!ActionRequest.BOT_MOVE.execute(allInfoPack)) Platform.runLater(()->endTurn());
-                else Platform.runLater(()->renderActions());
-            } catch (GameOverException e) {
-                endGame();
-            }
-        }
+//        if(game.getTurn() == 1 && game.isWithBot() && !isGameEnded){
+//            try {
+//                if(!ActionRequest.BOT_MOVE.execute(allInfoPack)) Platform.runLater(()->endTurn());
+//                else Platform.runLater(()->renderActions());
+//            } catch (GameOverException e) {
+//                endGame();
+//            }
+//        }
     }
 
     private void bindTransitions() {
