@@ -2,6 +2,7 @@ package Network.Client;
 
 import Graphics.Controller;
 import Log.LogCenter;
+import Logic.Game;
 import Models.Player;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -167,5 +168,17 @@ public class Client extends Thread{
 
     public void deleteRequest(String password) {
         send(new String[]{"delete", password});
+    }
+
+    private void startGame(String gameJson){
+        Platform.runLater(() -> controller.starGame(gson.fromJson(gameJson, Game.class)));
+    }
+
+    private void updateGame(String gameJson){
+
+    }
+
+    public void sendOnlinePlayRequest() {
+        send(new String[]{"starOnlinePlay"});
     }
 }

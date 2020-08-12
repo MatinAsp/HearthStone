@@ -242,4 +242,10 @@ public class Game {
             competitor[turn].addCardInDeck(card);
         }
     }
+
+    public Competitor getCompetitor(String username) {
+        if(competitor[0].getUsername().equals(username)) return competitor[0];
+        if(competitor[1].getUsername().equals(username)) return competitor[1];
+        return null;
+    }
 }

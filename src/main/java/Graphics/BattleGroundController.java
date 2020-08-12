@@ -16,7 +16,6 @@ import Logic.PlayersManager;
 import Logic.Competitor;
 import Models.Cards.Quest;
 import Models.Character;
-import Models.Hero;
 import Models.InfoPack;
 import Models.Passive;
 import Network.Client.Client;
@@ -41,7 +40,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import org.apache.log4j.Logger;
 
 import java.net.URL;
 import java.util.*;

@@ -14,9 +14,9 @@ import Models.Hero;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.Set;
 
 public class Competitor{
+    private String username;
     private int fullMana = 0, leftMana = 0;
     private Deck deck;
     private Hero hero;
@@ -36,7 +36,8 @@ public class Competitor{
         handAddActions.add(actionHandler);
     }
 
-    public Competitor(){
+    public Competitor(String username){
+        this.username = username;
         drawNumber = GameConstants.getInstance().getInteger("drawNumber");
         inDeckCards = new ArrayList<>();
         inHandCards = new ArrayList<>();
@@ -208,5 +209,9 @@ public class Competitor{
 
     public HashMap<Quest, QuestActionHandler> getQuestsInProgress() {
         return questsInProgress;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

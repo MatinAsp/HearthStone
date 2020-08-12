@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Player {
     private String username,password;
-    private int wallet, id;
+    private int wallet, id, cup;
     private ArrayList<Card> allCards;
     private ArrayList<Hero> allHeroes;
     private ArrayList<Deck> allDecks;
@@ -22,12 +22,14 @@ public class Player {
             ArrayList<Card> allCards,
             ArrayList<Hero> allHeroes
     ) {
+        cup = 0;
         this.id = id;
         this.wallet = wallet;
         this.username = username;
         this.password = password;
         this.allCards = allCards;
         this.allHeroes = allHeroes;
+        currentDeckName = null;
         allDecks = new ArrayList<>();
     }
 
@@ -214,5 +216,13 @@ public class Player {
     public ArrayList<Deck> getAllDecks() {
         Collections.sort(allDecks);
         return allDecks;
+    }
+
+    public int getCup() {
+        return cup;
+    }
+
+    public void setCup(int cup) {
+        this.cup = cup;
     }
 }

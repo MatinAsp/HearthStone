@@ -1,6 +1,5 @@
 package Models;
 
-import Interfaces.Cloneable;
 
 public class Passive extends Character{
     private String description;

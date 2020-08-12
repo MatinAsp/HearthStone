@@ -727,7 +727,12 @@ public class Controller implements Initializable {
         setConfirmation(actionHandler, "Enter Your Deck's Name.", true, false);
     }
 
-
+///start
+    @FXML
+    private void startOnlinePlay(){
+        //todo loading page
+        client.sendOnlinePlayRequest();
+    }
     @FXML
     private void startSinglePlayer(){
         Player player = client.getPlayer();
@@ -776,13 +781,13 @@ public class Controller implements Initializable {
         starGame(decks.get(0), decks.get(1), false);
     }
 
-    private void starGame(Deck deck1, Deck deck2, boolean isWithBot){
+    public void starGame(Game game){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleGround.fxml"));
         StackPane gameBoard = null;
         try {
             gameBoard = fxmlLoader.load();
             BattleGroundController battleGroundController = fxmlLoader.getController();
-            battleGroundController.setGame(GameFactory.getInstance().build(deck1, deck2, isWithBot));
+            battleGroundController.setGame(game);
             battleGroundController.gameRender();
         } catch (IOException e) {
             e.printStackTrace();
@@ -792,11 +797,17 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         root.getChildren().add(gameBoard);
+        alertBox.toFront();
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("menuSound"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("battleGroundSound"), -1);
         client.logInfo("start_a_game");
     }
 
+    public void handleException(Exception exception) {
+        //todo game Exception
+        Platform.runLater(() -> setAlert(exception.getMessage()));
+    }
+///end
     @FXML
     private void deleteAccount() {
         ActionHandler actionHandler = new ActionHandler() {
@@ -807,7 +818,6 @@ public class Controller implements Initializable {
         };
         setConfirmation(actionHandler, "Enter Your Password To Confirm.", true, false);
     }
-
     public void deleteUpdate(){
         navigateFromSettingsToMenu();
         client.logInfo("USER_DELETED");
@@ -820,6 +830,7 @@ public class Controller implements Initializable {
     private Client client = null;
     @FXML
     private StackPane networkPage;
+
     @FXML
     private void connect(){
         try {
@@ -841,10 +852,5 @@ public class Controller implements Initializable {
                 }
             }
         }
-    }
-
-    public void handleException(Exception exception) {
-        //todo game Exception
-        Platform.runLater(() -> setAlert(exception.getMessage()));
     }
 }

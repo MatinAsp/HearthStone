@@ -135,6 +135,10 @@ public class ClientHandler extends Thread{
         send(new String[]{"update", "storeCardsRender"});
     }
 
+    private void starOnlinePlay() throws Exception {
+        server.startOnlineGame(this);
+    }
+
     public synchronized void send(String[] massages){
         ArrayList<String> massagesList = new ArrayList<>();
         if(player != null) massagesList.add(gson.toJson(player));
@@ -143,5 +147,9 @@ public class ClientHandler extends Thread{
         printStream.println(gson.toJson(massagesList));
         printStream.flush();
         System.out.println("send: "+gson.toJson(massagesList));
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

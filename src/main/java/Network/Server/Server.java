@@ -1,7 +1,11 @@
 package Network.Server;
 
+import Logic.Competitor;
 import Logic.Game;
+import Logic.GameFactory;
 import Logic.PlayersManager;
+import Models.Player;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -17,12 +21,14 @@ public class Server extends Thread{
     private ArrayList<ClientHandler>  waitingList;
     private ServerSocket serverSocket;
     private HashMap<ClientHandler, Game> gameMap;
+    private HashMap<Game, String> gameKindMap;
 
     private Server(int serverPort) throws IOException {
         serverSocket = new ServerSocket(serverPort);
         gameMap = new HashMap<>();
         clientHandlers = new ArrayList<>();
         waitingList = new ArrayList<>();
+        gameKindMap = new HashMap<>();
     }
 
     public synchronized static Server getInstance() throws IOException {
@@ -97,18 +103,44 @@ public class Server extends Thread{
 //        enemyClientHandler.send(new String[]{"state", "" + game.getClientHandlerIndex(enemyClientHandler) + game.getGameState()});
     }
 
-    public synchronized void startGame(ClientHandler clientHandler){
-//        waitingList.add(clientHandler);
-//        if(waitingList.size() > 1){
-//            ClientHandler clientHandler1 = waitingList.get(0), clientHandler2 = waitingList.get(1);
-//            Game game = new Game(clientHandler1, clientHandler2);
-//            gameMap.put(clientHandler1, game);
-//            gameMap.put(clientHandler2, game);
-//            waitingList.remove(clientHandler1);
-//            waitingList.remove(clientHandler2);
-//            clientHandler1.send(new String[]{"state", "" + game.getClientHandlerIndex(clientHandler1) + game.getGameState()});
-//            clientHandler2.send(new String[]{"state", "" + game.getClientHandlerIndex(clientHandler2) + game.getGameState()});
-//        }
+    private void checkForDeck(ClientHandler clientHandler) throws Exception {
+        if(clientHandler.getPlayer().getCurrentDeckName() == null){
+            throw new Exception("Please Select Your Deck To Start.");
+        }
+    }
+    public synchronized void startOnlineGame(ClientHandler clientHandler1) throws Exception {
+        checkForDeck(clientHandler1);
+        boolean check = false;
+        for(ClientHandler clientHandler2: waitingList){
+            if(isOkForPlay(clientHandler1, clientHandler2)){
+                check = true;
+                Player player1 = clientHandler1.getPlayer();
+                Player player2 = clientHandler2.getPlayer();
+                Game game = GameFactory.getInstance().build(
+                        player1.getUsername(),
+                        player2.getUsername(),
+                        player1.getDeck(player1.getCurrentDeckName()),
+                        player2.getDeck(player2.getCurrentDeckName()),
+                        false
+                );
+                gameMap.put(clientHandler1, game);
+                gameMap.put(clientHandler2, game);
+                waitingList.remove(clientHandler2);
+                gameKindMap.put(game, "online");
+                Gson gson = new Gson();
+                Competitor competitor1 = game.getCompetitor(player1.getUsername());
+                Competitor competitor2 = game.getCompetitor(player2.getUsername());
+                clientHandler1.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(competitor1, competitor2))});
+                clientHandler2.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(competitor2, competitor1))});
+                break;
+            }
+        }
+        if(!check) waitingList.add(clientHandler1);
+    }
+
+    private boolean isOkForPlay(ClientHandler clientHandler1, ClientHandler clientHandler2) {
+        //todo
+        return true;
     }
 
     public void exitClient(ClientHandler clientHandler) {
