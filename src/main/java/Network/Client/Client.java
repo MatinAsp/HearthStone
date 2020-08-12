@@ -175,7 +175,7 @@ public class Client extends Thread{
     }
 
     private void updateGame(String gameJson){
-
+        controller.updateGame(gson.fromJson(gameJson,Game.class));
     }
 
     public void sendOnlinePlayRequest() {

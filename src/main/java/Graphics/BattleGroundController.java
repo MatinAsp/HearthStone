@@ -343,6 +343,38 @@ public class BattleGroundController implements Initializable {
         thread.start();
     }
 
+    public void makeGameOk() {
+        ArrayList<InfoPack> infoPacks = new ArrayList<>();
+        for(InfoPack infoPack: game.getActionRequest().getAttackList()){
+            infoPacks.add(getInfoPack(infoPack.getCharacter().getId()));
+        }
+        game.getActionRequest().getAttackList().clear();
+        game.getActionRequest().getAttackList().addAll(infoPacks);
+        if(game.isWithBot()){
+            boolean check = false;
+            for(Card card: game.getCompetitor(0).getInHandCards()){
+                if(card.getId() == game.getActionRequest().getPlayed().getCharacter().getId()){
+                    check = true;
+                    break;
+                }
+            }
+            if(!check){
+                ArrayList<Card> cards = game.getCompetitor(1).getInHandCards();
+                cards.remove(cards.size() - 1);
+                cards.add((Card) game.getActionRequest().getPlayed().getCharacter());
+                Platform.runLater(() -> renderHand(cards, hand[1], false));
+            }
+        }
+    }
+
+    private InfoPack getInfoPack(int id){
+        for(InfoPack infoPack: allInfoPack){
+            if(id == infoPack.getCharacter().getId()){
+                return infoPack;
+            }
+        }
+    }
+
     class Timer extends Thread{
         @Override
         public void run() {
@@ -593,7 +625,7 @@ public class BattleGroundController implements Initializable {
     }
     private ArrayList<Transition> transitions = new ArrayList<>();
     private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();
-    private synchronized void renderActions() {
+    synchronized void renderActions() {
         transitions.clear();
         afterAction.clear();
         beforeAction.clear();

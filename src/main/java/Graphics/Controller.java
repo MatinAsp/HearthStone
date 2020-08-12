@@ -781,12 +781,15 @@ public class Controller implements Initializable {
         starGame(decks.get(0), decks.get(1), false);
     }
 
+    private BattleGroundController battleGroundController = null;
     public void starGame(Game game){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleGround.fxml"));
         StackPane gameBoard = null;
         try {
             gameBoard = fxmlLoader.load();
             BattleGroundController battleGroundController = fxmlLoader.getController();
+            this.battleGroundController= battleGroundController;
+            battleGroundController.setClient(client);
             battleGroundController.setGame(game);
             battleGroundController.gameRender();
         } catch (IOException e) {
@@ -803,11 +806,17 @@ public class Controller implements Initializable {
         client.logInfo("start_a_game");
     }
 
+    public void updateGame(Game game) {
+        battleGroundController.setGame(game);
+        battleGroundController.makeGameOk();
+        battleGroundController.renderActions();
+    }
+
     public void handleException(Exception exception) {
         //todo game Exception
         Platform.runLater(() -> setAlert(exception.getMessage()));
     }
-///end
+    ///end
     @FXML
     private void deleteAccount() {
         ActionHandler actionHandler = new ActionHandler() {
@@ -828,6 +837,7 @@ public class Controller implements Initializable {
     @FXML
     private TextField portField;
     private Client client = null;
+
     @FXML
     private StackPane networkPage;
 
