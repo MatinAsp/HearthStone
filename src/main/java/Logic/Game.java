@@ -22,6 +22,7 @@ public class Game {
     private Competitor[] competitor = new Competitor[2];
     private int turn, winner = 0;
     private Actions actions;
+    private ActionRequest actionRequest;
     private boolean isWithBot = false;
 
     public Game(Competitor competitor1, Competitor competitor2, boolean isWithBot){
@@ -30,6 +31,11 @@ public class Game {
         competitor[0] = competitor1;
         competitor[1] = competitor2;
         turn = 0;
+        actionRequest = new ActionRequest(this);
+    }
+
+    public ActionRequest getActionRequest(){
+        return actionRequest;
     }
 
     public Competitor[] getCompetitors(){
@@ -53,7 +59,7 @@ public class Game {
         }
         competitor[turn].setLeftMana(competitor[turn].getFullMana());
         for(int i = 0; i < competitor[turn].getDrawNumber(); i++){
-            ActionRequest.DRAW_CARD.execute();
+            actionRequest.getDrawCard().execute();
         }
     }
 
@@ -215,7 +221,7 @@ public class Game {
         for(int i = 0; i < 2; i++){
             if(competitor[i].getHero().getName().equals("Paladin")){
                 int finalI = i;
-                ActionRequest.END_TURN.addAction(new ActionHandler() {
+                actionRequest.getEndTurn().addAction(new ActionHandler() {
                     @Override
                     public void runAction() throws Exception {
                         if(turn != finalI){
@@ -235,7 +241,7 @@ public class Game {
 
     public void selectCard(ArrayList<Card> cardsSelected) throws GameOverException {
         for(Card card: cardsSelected){
-            ActionRequest.DRAW_CARD.execute();
+            actionRequest.getDrawCard().execute();
         }
         for(Card card: cardsSelected){
             competitor[turn].removeCardFromHand(card);
