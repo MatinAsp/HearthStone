@@ -43,4 +43,12 @@ public class InfoPack {
     public int getSummonPlace() {
         return summonPlace;
     }
+
+    public void setSummonPlace(int summonPlace) {
+        this.summonPlace = summonPlace;
+    }
+
+    public void setSide(int side) {
+        this.side = side;
+    }
 }

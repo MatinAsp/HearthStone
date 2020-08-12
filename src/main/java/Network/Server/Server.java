@@ -1,10 +1,16 @@
 package Network.Server;
 
+import Exceptions.GameOverException;
+import Exceptions.InvalidChoiceException;
+import Exceptions.SelectionNeededException;
 import Logic.Competitor;
 import Logic.Game;
 import Logic.GameFactory;
 import Logic.PlayersManager;
+import Models.InfoPack;
+import Models.Passive;
 import Models.Player;
+import Models.Character;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -148,4 +154,26 @@ public class Server extends Thread{
         clientHandler.send(new String[]{"exit"});
     }
 
+    public void performAction(ClientHandler clientHandler, ArrayList<InfoPack> infoPacks) throws GameOverException, SelectionNeededException, InvalidChoiceException {
+        Game game = gameMap.get(clientHandler);
+        if(game.getInfoPack(infoPacks.get(0).getCharacter().getId()).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
+            throw new InvalidChoiceException();
+        }
+        if(infoPacks.get(0).getCharacter() instanceof Passive){
+            game.getActionRequest().getPerformAction().execute((InfoPack[]) infoPacks.toArray());
+        }
+        ArrayList<InfoPack> infoPacks1 = new ArrayList<>();
+        for(InfoPack infoPack: infoPacks){
+            InfoPack infoPack1 = game.getInfoPack(infoPack.getCharacter().getId());
+            if(infoPack1 == null) throw new InvalidChoiceException();
+            infoPack1.setSummonPlace(infoPack1.getSummonPlace());
+            infoPacks1.add(infoPack1);
+        }
+        game.getActionRequest().getPerformAction().execute((InfoPack[]) infoPacks1.toArray());
+        sendGameStateToClients(game);
+    }
+
+    private void sendGameStateToClients(Game game) {
+
+    }
 }

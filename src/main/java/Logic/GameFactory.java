@@ -28,7 +28,6 @@ public class GameFactory {
         game.getCompetitor(0).setLeftMana(GameConstants.getInstance().getInteger("manaForStart"));
         game.getCompetitor(1).setFullMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
         game.getCompetitor(1).setLeftMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
-        ActionRequest.setCurrentGame(game);
         return game;
     }
 
@@ -47,14 +46,15 @@ public class GameFactory {
         return competitor;
     }
 
-    public Game getPrivateGame(Competitor competitor1, Competitor competitor2){
+    public Game getPrivateGame(String username, Game game){
         Gson gson = new Gson();
-        competitor1 = gson.fromJson(gson.toJson(competitor1),Competitor.class);
-        competitor2 = gson.fromJson(gson.toJson(competitor2),Competitor.class);
-        competitor2.setDeck(null);
-        makeCardsPrivate(competitor2.getInDeckCards());
-        makeCardsPrivate(competitor2.getInHandCards());
-        return new Game(competitor1, competitor2, true);
+        game = gson.fromJson(gson.toJson(game), Game.class);
+        game.setWithBot(true);
+        if(game.getCompetitorIndex(username) != 0) game.changeSide();
+        game.getCompetitor(1).setDeck(null);
+        makeCardsPrivate(game.getCompetitor(1).getInDeckCards());
+        makeCardsPrivate(game.getCompetitor(1).getInHandCards());
+        return game;
     }
 
 

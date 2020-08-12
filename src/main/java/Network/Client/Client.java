@@ -3,6 +3,7 @@ package Network.Client;
 import Graphics.Controller;
 import Log.LogCenter;
 import Logic.Game;
+import Models.InfoPack;
 import Models.Player;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -180,5 +181,9 @@ public class Client extends Thread{
 
     public void sendOnlinePlayRequest() {
         send(new String[]{"starOnlinePlay"});
+    }
+
+    public void sendPerformAction(InfoPack[] parameters) {
+        send(new String[]{"performAction", gson.toJson(Arrays.asList(parameters))});
     }
 }

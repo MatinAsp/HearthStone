@@ -6,13 +6,11 @@ import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
 import Interfaces.ActionHandler;
 import Interfaces.QuestActionHandler;
-import Log.LogCenter;
 import Logic.ActionRequest;
 import Logic.Game;
 import Models.Cards.Card;
 import Models.Cards.HeroPower;
 import Models.Cards.Minion;
-import Logic.PlayersManager;
 import Logic.Competitor;
 import Models.Cards.Quest;
 import Models.Character;
@@ -604,9 +602,9 @@ public class BattleGroundController implements Initializable {
              parameters[i] = infoPacks.get(i);
         }
         try {
+            client.sendPerformAction(parameters);
             ActionRequest.PERFORM_ACTION.execute(parameters);
             renderActions();
-            clearSelections();
         } catch (Exception e) {
             client.logError(e);
             try {
@@ -626,6 +624,7 @@ public class BattleGroundController implements Initializable {
     private ArrayList<Transition> transitions = new ArrayList<>();
     private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();
     synchronized void renderActions() {
+        clearSelections();
         transitions.clear();
         afterAction.clear();
         beforeAction.clear();
@@ -645,7 +644,6 @@ public class BattleGroundController implements Initializable {
         }
         else{
             gameRender();
-            ActionRequest.clearRecords();
             if(isGameEnded){
                 alertBox.setVisible(true);
                 if(game.getWinner() == 0) alertMessage.setText("You Win.");
@@ -656,7 +654,7 @@ public class BattleGroundController implements Initializable {
     }
 
     private void setHeroPowerTransition() {
-        if (ActionRequest.readUseHeroPower()){
+        if (game.getActionRequest().readUseHeroPower()){
             ScaleTransition transition = new ScaleTransition(Duration.seconds(1), heroPowerPlace[game.getTurn()].getChildren().get(0));
             transition.setByX(0.5);
             transition.setByY(0.5);
@@ -702,12 +700,11 @@ public class BattleGroundController implements Initializable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if(ActionRequest.readSummoned()){
+                if(game.getActionRequest().readSummoned()){
                     MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("minionPlacingSound"), 1);
                 }
                 protector.setVisible(false);
                 gameRender();
-                ActionRequest.clearRecords();
                 if(isGameEnded) setAlertBox();
                 else botCheck();
             }
@@ -717,7 +714,7 @@ public class BattleGroundController implements Initializable {
     private boolean isGameEnded = false;
 
     private void setDrawTransition() {
-        int drawNumber = ActionRequest.readDrawNumber();
+        int drawNumber = game.getActionRequest().readDrawNumber();
         while (drawNumber > 0 ){
             Card card = game.getCompetitor(game.getTurn()).getInHandCards().get(game.getCompetitor(game.getTurn()).getInHandCards().size() - drawNumber--);
             Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, (game.getTurn() == 0 || !game.isWithBot())? false:true);
@@ -735,7 +732,7 @@ public class BattleGroundController implements Initializable {
     }
 
     private void setAttackTransition() {
-        ArrayList<InfoPack> attackList = ActionRequest.readAttackingList();
+        ArrayList<InfoPack> attackList = game.getActionRequest().readAttackingList();
         if(attackList.size() > 0){
             Transition go = goAttackAnimation(attackList.get(0).getParent(), attackList.get(1).getParent());
             Transition back = backAttackAnimation(attackList.get(0).getParent(), attackList.get(1).getParent());
@@ -766,24 +763,24 @@ public class BattleGroundController implements Initializable {
     }
 
     private void logActions(){
-        if(ActionRequest.readUseHeroPower()){
+        if(game.getActionRequest().readUseHeroPower()){
             loggingForGame("hero power used");
         }
-        if(ActionRequest.readTurnEnded()){
+        if(game.getActionRequest().readTurnEnded()){
             loggingForGame("end turn player "+(((game.getTurn()+1)%2)+1));
         }
-        InfoPack played = ActionRequest.readPlayed();
+        InfoPack played = game.getActionRequest().readPlayed();
         if(played != null){
             loggingForGame("play "+played.getCharacter().getName());
         }
-        ArrayList<InfoPack> infoPacks = ActionRequest.readAttackingList();
+        ArrayList<InfoPack> infoPacks = game.getActionRequest().readAttackingList();
         if(infoPacks.size() > 0){
             loggingForGame(infoPacks.get(0).getCharacter().getName() + " attacked " + infoPacks.get(1).getCharacter().getName());
         }
-        for(int i = 0; i < ActionRequest.readDrawNumber(); i++){
+        for(int i = 0; i < game.getActionRequest().readDrawNumber(); i++){
             loggingForGame("draw card");
         }
-        if(ActionRequest.readSummoned()){
+        if(game.getActionRequest().readSummoned()){
             loggingForGame("card summoned");
         }
 
@@ -791,7 +788,7 @@ public class BattleGroundController implements Initializable {
 
 
     private void setPlayCardTransition() {
-        InfoPack played = ActionRequest.readPlayed();
+        InfoPack played = game.getActionRequest().readPlayed();
         if(played != null){
             if(played.getSide() == 1){
                 ((Pane) played.getParent()).getChildren().get(((Pane) played.getParent()).getChildren().size() - 2).setVisible(false);

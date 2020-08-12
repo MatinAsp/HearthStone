@@ -1,10 +1,14 @@
 package Network.Server;
 
 import Data.DataManager;
+import Exceptions.GameOverException;
+import Exceptions.InvalidChoiceException;
+import Exceptions.SelectionNeededException;
 import Logic.PlayersManager;
 import Models.Cards.Card;
 import Models.Deck;
 import Models.Hero;
+import Models.InfoPack;
 import Models.Player;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -137,6 +141,10 @@ public class ClientHandler extends Thread{
 
     private void starOnlinePlay() throws Exception {
         server.startOnlineGame(this);
+    }
+
+    private void performAction(String parametersJson) throws SelectionNeededException, InvalidChoiceException, GameOverException {
+        server.performAction(this, gson.fromJson(parametersJson, new TypeToken<ArrayList<InfoPack>>(){}.getType()));
     }
 
     public synchronized void send(String[] massages){

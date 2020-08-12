@@ -12,10 +12,12 @@ import Models.Cards.Card;
 import Models.Cards.HeroPower;
 import Models.Cards.Minion;
 import Models.Cards.Spell;
+import Models.Character;
 import Models.InfoPack;
 import Models.Passive;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Game {
@@ -24,6 +26,7 @@ public class Game {
     private Actions actions;
     private ActionRequest actionRequest;
     private boolean isWithBot = false;
+    private HashMap<Integer, InfoPack> infoPacksPool = new HashMap<>();
 
     public Game(Competitor competitor1, Competitor competitor2, boolean isWithBot){
         this.isWithBot = isWithBot;
@@ -253,5 +256,54 @@ public class Game {
         if(competitor[0].getUsername().equals(username)) return competitor[0];
         if(competitor[1].getUsername().equals(username)) return competitor[1];
         return null;
+    }
+
+    public void refreshPool(){
+        infoPacksPool.clear();
+        for(int i = 0; i < 2; i++){
+            mapList(competitor[i].getInHandCards(), i, false);
+            mapList(competitor[i].getOnBoardCards(), i, true);
+            infoPacksPool.put(competitor[i].getHero().getId(), new InfoPack(competitor[i].getHero(), i, true, null));
+            infoPacksPool.put(competitor[i].getHero().getHeroPower().getId(), new InfoPack(competitor[i].getHero().getHeroPower(), i, true, null));
+            if(competitor[i].getHeroWeapon() != null){
+                infoPacksPool.put(competitor[i].getHeroWeapon().getId(), new InfoPack(competitor[i].getHeroWeapon(), i, true, null));
+            }
+        }
+    }
+
+    private void mapList(ArrayList<? extends Character> characters, int side, boolean isOnGround) {
+        for(Character character: characters){
+            infoPacksPool.put(character.getId(), new InfoPack(character,side,isOnGround,null));
+        }
+    }
+
+    public InfoPack getInfoPack(int id) {
+        refreshPool();
+        if(!infoPacksPool.containsKey(id)) return null;
+        return infoPacksPool.get(id);
+    }
+
+    public int getCompetitorIndex(String username) {
+        if(competitor[0].getUsername().equals(username)) return 0;
+        if(competitor[1].getUsername().equals(username)) return 1;
+        return -1;
+    }
+
+    public void changeSide() {
+        turn = (turn + 1) % 2;
+        winner = (winner + 1) % 2;
+        Competitor tmp = competitor[0];
+        competitor[0] = competitor[1];
+        competitor[1] = tmp;
+        if(actionRequest.getPlayed() != null){
+            actionRequest.getPlayed().setSide((actionRequest.getPlayed().getSide() + 1) % 2);
+        }
+        for(InfoPack infoPack: actionRequest.readAttackingList()){
+            infoPack.setSide((infoPack.getSide()+1)%2);
+        }
+    }
+
+    public void setWithBot(boolean isWithBot){
+        this.isWithBot = isWithBot;
     }
 }
