@@ -4,7 +4,7 @@ import Interfaces.Cloneable;
 
 import java.security.SecureRandom;
 
-public abstract class Character implements Cloneable {
+public class Character implements Cloneable {
     private String name;
     private int id = new SecureRandom().nextInt();
 
@@ -24,5 +24,10 @@ public abstract class Character implements Cloneable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public Character newOne() {
+        return new Character(this.name);
     }
 }

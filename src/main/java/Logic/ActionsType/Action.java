@@ -13,7 +13,7 @@ import Models.InfoPack;
 
 import java.util.ArrayList;
 
-abstract public class Action {
+public class Action {
     private ActionRequest actionRequest;
     private ArrayList<ActionHandler> actions = new ArrayList<>(), beforeActions = new ArrayList<>();
 

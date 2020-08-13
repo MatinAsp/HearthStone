@@ -1,0 +1,14 @@
+USER: ali
+ID: 669444311
+CREATED_AT: 2020/08/13 13:05:40
+PASSWORD: 96670
+
+INFO    2020-08-13 13:05:40,631 - navigate_from_log_in_to_menu
+INFO    2020-08-13 13:17:35,776 - exit
+INFO    2020-08-13 13:19:43,902 - navigate_from_log_in_to_menu
+INFO    2020-08-13 14:01:01,461 - exit
+INFO    2020-08-13 14:02:03,932 - navigate_from_log_in_to_menu
+INFO    2020-08-13 14:03:39,274 - navigate_from_log_in_to_menu
+INFO    2020-08-13 14:05:36,528 - exit
+INFO    2020-08-13 14:06:36,329 - navigate_from_log_in_to_menu
+INFO    2020-08-13 14:13:44,398 - exit

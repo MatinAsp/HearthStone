@@ -18,15 +18,15 @@ import java.util.Random;
 public class Competitor{
     private String username;
     private int fullMana = 0, leftMana = 0;
-    private Deck deck;
+    private transient Deck deck;
     private Hero hero;
     private Weapon heroWeapon = null;
     private ArrayList<Card> inDeckCards, inHandCards;
     private ArrayList<Minion> onBoardCards;
-    private HashMap<Quest, QuestActionHandler> questsInProgress = new HashMap<>();
-    private HashMap<Class, Integer> spentMana = new HashMap<>();
-    private ArrayList<ActionHandler> deckAddActions = new ArrayList<>(), handAddActions = new ArrayList<>();
-    private int drawNumber;
+    private transient HashMap<Quest, QuestActionHandler> questsInProgress = new HashMap<>();
+    private transient HashMap<Class, Integer> spentMana = new HashMap<>();
+    private transient ArrayList<ActionHandler> deckAddActions = new ArrayList<>(), handAddActions = new ArrayList<>();
+    private transient int drawNumber;
 
     public void addDeckAddActions(ActionHandler actionHandler){
         deckAddActions.add(actionHandler);

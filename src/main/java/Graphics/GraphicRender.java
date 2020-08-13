@@ -31,9 +31,13 @@ public class GraphicRender {
     }
 
     public Pane buildCard(Card card, boolean lock, boolean priceTag, boolean cardBack) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                card.getType().toLowerCase()+"CardGraphics.fxml"
-        ));
+        FXMLLoader fxmlLoader = null;
+        if(cardBack){
+            fxmlLoader = new FXMLLoader(getClass().getResource("minionCardGraphics.fxml"));
+        }
+        else{
+            fxmlLoader = new FXMLLoader(getClass().getResource(card.getType().toLowerCase()+"CardGraphics.fxml"));
+        }
         Pane graphicCard = null;
         try {
             graphicCard = fxmlLoader.load();

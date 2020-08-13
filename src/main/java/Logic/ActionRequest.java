@@ -15,12 +15,12 @@ public class ActionRequest {
     private boolean turnEnded;
     private InfoPack played;
     private ArrayList<InfoPack> attackList;
-    private Game game;
-    private BotMove botMove;
-    private DrawCard drawCard;
-    private EndTurn endTurn;
-    private PerformAction performAction;
-    private SummonMinion summonMinion;
+    private transient Game game;
+    private transient BotMove botMove;
+    private transient DrawCard drawCard;
+    private transient EndTurn endTurn;
+    private transient PerformAction performAction;
+    private transient SummonMinion summonMinion;
 
     public ActionRequest(Game game){
         this.game = game;
@@ -33,6 +33,8 @@ public class ActionRequest {
         summoned = false;
         played = null;
         attackList = new ArrayList<>();
+        useHeroPower = false;
+        turnEnded = false;
         game.initialize();
     }
 

@@ -68,6 +68,7 @@ public class ClientHandler extends Thread{
                             method.invoke(this, massagesList.toArray());
                         }
                     } catch (IllegalAccessException | InvocationTargetException e) {
+                        e.getCause().printStackTrace();
                         sendException((Exception) e.getCause());
                     }
                     break;

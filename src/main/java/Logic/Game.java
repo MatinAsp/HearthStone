@@ -16,6 +16,7 @@ import Models.Character;
 import Models.InfoPack;
 import Models.Passive;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -23,11 +24,11 @@ import java.util.Random;
 public class Game {
     private Competitor[] competitor = new Competitor[2];
     private int turn, winner = 0;
-    private Actions actions;
+    private transient Actions actions;
     private ActionRequest actionRequest;
     private boolean isWithBot = false;
-    private HashMap<Integer, InfoPack> infoPacksPool = new HashMap<>();
-    private boolean isDraw[] = {false, false};
+    private transient HashMap<Integer, InfoPack> infoPacksPool = new HashMap<>();
+    private transient boolean isDraw[] = {false, false};
 
     public Game(Competitor competitor1, Competitor competitor2, boolean isWithBot){
         this.isWithBot = isWithBot;
@@ -281,17 +282,17 @@ public class Game {
         for(int i = 0; i < 2; i++){
             mapList(competitor[i].getInHandCards(), i, false);
             mapList(competitor[i].getOnBoardCards(), i, true);
-            infoPacksPool.put(competitor[i].getHero().getId(), new InfoPack(competitor[i].getHero(), i, true, null));
-            infoPacksPool.put(competitor[i].getHero().getHeroPower().getId(), new InfoPack(competitor[i].getHero().getHeroPower(), i, true, null));
+            infoPacksPool.put(competitor[i].getHero().getId(), new InfoPack(competitor[i].getHero(), i, true));
+            infoPacksPool.put(competitor[i].getHero().getHeroPower().getId(), new InfoPack(competitor[i].getHero().getHeroPower(), i, true));
             if(competitor[i].getHeroWeapon() != null){
-                infoPacksPool.put(competitor[i].getHeroWeapon().getId(), new InfoPack(competitor[i].getHeroWeapon(), i, true, null));
+                infoPacksPool.put(competitor[i].getHeroWeapon().getId(), new InfoPack(competitor[i].getHeroWeapon(), i, true));
             }
         }
     }
 
     private void mapList(ArrayList<? extends Character> characters, int side, boolean isOnGround) {
         for(Character character: characters){
-            infoPacksPool.put(character.getId(), new InfoPack(character,side,isOnGround,null));
+            infoPacksPool.put(character.getId(), new InfoPack(character,side,isOnGround));
         }
     }
 
@@ -323,5 +324,8 @@ public class Game {
 
     public void setWithBot(boolean isWithBot){
         this.isWithBot = isWithBot;
+    }
+
+    public boolean usePassive() {
     }
 }

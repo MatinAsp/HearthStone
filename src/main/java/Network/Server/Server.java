@@ -136,8 +136,11 @@ public class Server extends Thread{
                 waitingList.remove(clientHandler2);
                 gameKindMap.put(game, "online");
                 Gson gson = new Gson();
+             //   game = GameFactory.getInstance().makeJsonSafe(game);
+                System.out.println(111111);
                 clientHandler1.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
                 clientHandler2.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game))});
+                System.out.println(222222);
                 break;
             }
         }
@@ -156,11 +159,11 @@ public class Server extends Thread{
 
     public void performAction(ClientHandler clientHandler, ArrayList<InfoPack> infoPacks) throws GameOverException, SelectionNeededException, InvalidChoiceException {
         Game game = gameMap.get(clientHandler);
+        if(infoPacks.get(0).getCharacter() instanceof Passive && !game.usePassive()){
+            game.getActionRequest().getPerformAction().execute((InfoPack[]) infoPacks.toArray());
+        }
         if(game.getInfoPack(infoPacks.get(0).getCharacter().getId()).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
             throw new InvalidChoiceException();
-        }
-        if(infoPacks.get(0).getCharacter() instanceof Passive){
-            game.getActionRequest().getPerformAction().execute((InfoPack[]) infoPacks.toArray());
         }
         ArrayList<InfoPack> infoPacks1 = new ArrayList<>();
         for(InfoPack infoPack: infoPacks){
@@ -175,16 +178,20 @@ public class Server extends Thread{
 
     private void sendGameStateToClients(Game game) {
         Gson gson = new Gson();
+        Game finalGame = game;
         for(ClientHandler clientHandler: gameMap.keySet()){
-            if(gameMap.get(clientHandler) == game){
-                if(!gameKindMap.get(game).equals("offline")){
+            if(gameMap.get(clientHandler) == finalGame){
+                if(!gameKindMap.get(finalGame).equals("offline")){
+                //    game = GameFactory.getInstance().makeJsonSafe(finalGame);
                     clientHandler.send(new String[]{"updateGame", gson.toJson(GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game))});
                 }
                 else {
+            //        game = GameFactory.getInstance().makeJsonSafe(finalGame);
                     clientHandler.send(new String[]{"updateGame", gson.toJson(game)});
                 }
             }
         }
+        finalGame.getActionRequest().clearRecords();
     }
 
     public void endTurn(ClientHandler clientHandler) throws InvalidChoiceException, GameOverException {
@@ -199,15 +206,25 @@ public class Server extends Thread{
     public void cardSelection(ClientHandler clientHandler, ArrayList<Card> cards) throws GameOverException, InvalidChoiceException {
         Game game = gameMap.get(clientHandler);
         if(gameKindMap.get(game).equals("online")) game.getActionRequest().selectCard(cards, game.getCompetitorIndex(clientHandler.getPlayer().getUsername()));
+        else {
+            try {
+                game.getActionRequest().selectCard(cards, 0);
+            } catch (InvalidChoiceException e){
+                game.getActionRequest().selectCard(cards, 1);
+            }
+        }
+        sendGameStateToClients(game);
     }
 
     public Game getGameForClient(ClientHandler clientHandler) {
         Game game = gameMap.get(clientHandler);
         if(gameMap.get(clientHandler) == game){
             if(!gameKindMap.get(game).equals("offline")){
+              //  game = GameFactory.getInstance().makeJsonSafe(game);
                 return GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game);
             }
             else {
+             //   game = GameFactory.getInstance().makeJsonSafe(game);
                 return game;
             }
         }

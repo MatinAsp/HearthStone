@@ -1,0 +1,10 @@
+USER: mamad
+ID: 2043193738
+CREATED_AT: 2020/08/13 17:00:16
+PASSWORD: 103661372
+
+INFO    2020-08-13 17:00:16,919 - navigate_from_log_in_to_menu
+INFO    2020-08-13 17:00:22,909 - start_a_game
+INFO    2020-08-13 17:00:26,522 - passive selected
+INFO    2020-08-13 17:00:27,576 - set_alert
+INFO    2020-08-13 17:00:30,220 - alert_dismissed

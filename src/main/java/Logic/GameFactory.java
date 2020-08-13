@@ -2,11 +2,13 @@ package Logic;
 
 import Data.DataManager;
 import Data.GameConstants;
+import Data.GsonCenter;
 import Models.Cards.Card;
 import Models.Deck;
 import Models.Hero;
 import Models.Player;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 
@@ -47,15 +49,15 @@ public class GameFactory {
     }
 
     public Game getPrivateGame(String username, Game game){
+       // Gson gson = GsonCenter.getInstance().getNewGson();
         Gson gson = new Gson();
-        System.out.println(gson.toJson(game));
         game = gson.fromJson(gson.toJson(game), Game.class);
+      //  System.out.println(3333333);
         game.setWithBot(true);
         if(game.getCompetitorIndex(username) != 0) game.changeSide();
-        game.getCompetitor(1).setDeck(null);
+        //game.getCompetitor(1).setDeck(null);
         makeCardsPrivate(game.getCompetitor(1).getInDeckCards());
         makeCardsPrivate(game.getCompetitor(1).getInHandCards());
-        game.refreshPool();
         return game;
     }
 
@@ -68,4 +70,8 @@ public class GameFactory {
             cards.add(new Card());
         }
     }
+
+//    public Game makeJsonSafe(Game game) {
+//        return new Game(game);
+//    }
 }

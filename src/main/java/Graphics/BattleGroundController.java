@@ -1,12 +1,10 @@
 package Graphics;
 
 import Data.*;
-import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
 import Interfaces.ActionHandler;
 import Interfaces.QuestActionHandler;
-import Logic.ActionRequest;
 import Logic.Game;
 import Models.Cards.Card;
 import Models.Cards.HeroPower;
@@ -44,6 +42,7 @@ import java.util.*;
 
 public class BattleGroundController implements Initializable {
     private Client client;
+    private HashMap<InfoPack, Parent> parentMap = new HashMap<>();
     @FXML
     private StackPane root;
     @FXML
@@ -141,6 +140,7 @@ public class BattleGroundController implements Initializable {
 
     public synchronized void gameRender() {
         allInfoPack.clear();
+        parentMap.clear();
         GraphicRender graphicRender = GraphicRender.getInstance();
         for(int i = 0; i < 2; i++){
             rootPane.getChildren().removeAll(hero[i]);
@@ -198,7 +198,8 @@ public class BattleGroundController implements Initializable {
         for(Card card: cards){
             Pane graphicCard = GraphicRender.getInstance().buildCard(card, false, false, (!isForOwn && game.isWithBot()));
             hand.getChildren().add(graphicCard);
-            InfoPack infoPack = new InfoPack(card, isForOwn ? 0 : 1, false, graphicCard, -1);
+            InfoPack infoPack = new InfoPack(card, isForOwn ? 0 : 1, false, -1);
+            parentMap.put(infoPack, graphicCard);
             allInfoPack.add(infoPack);
             if(isForOwn || !game.isWithBot()){
                 handCardSetAction(graphicCard, card, isForOwn ? 0 : 1);
@@ -352,7 +353,7 @@ public class BattleGroundController implements Initializable {
         }
         game.getActionRequest().getAttackList().clear();
         game.getActionRequest().getAttackList().addAll(infoPacks);
-        if(game.isWithBot()){
+        if(game.getActionRequest().getPlayed() != null && game.isWithBot()){
             boolean check = false;
             for(Card card: game.getCompetitor(0).getInHandCards()){
                 if(card.getId() == game.getActionRequest().getPlayed().getCharacter().getId()){
@@ -589,7 +590,8 @@ public class BattleGroundController implements Initializable {
 
     private ArrayList<InfoPack> allInfoPack = new ArrayList<>();
     private synchronized void performAction(Character character, int side, boolean isOnGround, Parent parent, int summonPlace){
-        InfoPack infoPack = new InfoPack(character, side, isOnGround, parent, summonPlace);
+        InfoPack infoPack = new InfoPack(character, side, isOnGround, summonPlace);
+        parentMap.put(infoPack, parent);
         allInfoPack.add(infoPack);
         performAction(infoPack);
     }
@@ -734,8 +736,8 @@ public class BattleGroundController implements Initializable {
     private void setAttackTransition() {
         ArrayList<InfoPack> attackList = game.getActionRequest().readAttackingList();
         if(attackList.size() > 0){
-            Transition go = goAttackAnimation(attackList.get(0).getParent(), attackList.get(1).getParent());
-            Transition back = backAttackAnimation(attackList.get(0).getParent(), attackList.get(1).getParent());
+            Transition go = goAttackAnimation(parentMap.get(attackList.get(0)), parentMap.get(attackList.get(1)));
+            Transition back = backAttackAnimation(parentMap.get(attackList.get(0)), parentMap.get(attackList.get(1)));
             transitions.add(go);
             transitions.add(back);
             beforeAction.add(() -> go.play());
@@ -791,9 +793,9 @@ public class BattleGroundController implements Initializable {
         InfoPack played = game.getActionRequest().readPlayed();
         if(played != null){
             if(played.getSide() == 1){
-                ((Pane) played.getParent()).getChildren().get(((Pane) played.getParent()).getChildren().size() - 2).setVisible(false);
+                ((Pane) parentMap.get(played)).getChildren().get(((Pane) parentMap.get(played)).getChildren().size() - 2).setVisible(false);
             }
-            Transition transition = playCardTransition(played.getParent());
+            Transition transition = playCardTransition(parentMap.get(played));
             transitions.add(transition);
             beforeAction.add(new ActionHandler() {
                 @Override
@@ -802,7 +804,7 @@ public class BattleGroundController implements Initializable {
                     transition.play();
                 }
             });
-            afterAction.add(() -> hand[played.getSide()].getChildren().remove(played.getParent()));
+            afterAction.add(() -> hand[played.getSide()].getChildren().remove(parentMap.get(played)));
         }
     }
 
@@ -827,8 +829,9 @@ public class BattleGroundController implements Initializable {
     }
 
     private void setForPerformAction(Character character, int side, boolean isOnGround, Parent parent){
-        InfoPack infoPack = new InfoPack(character, side, isOnGround, parent, -1);
+        InfoPack infoPack = new InfoPack(character, side, isOnGround, -1);
         allInfoPack.add(infoPack);
+        parentMap.put(infoPack, parent);
         parent.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

@@ -6,3 +6,4 @@ PASSWORD: 103668357
 INFO    2020-08-13 12:39:31,126 - navigate_from_log_in_to_menu
 INFO    2020-08-13 12:39:50,686 - set_alert
 INFO    2020-08-13 12:39:53,386 - alert_dismissed
+INFO    2020-08-13 12:50:53,086 - exit
