@@ -580,3 +580,15 @@ INFO    2020-08-14 02:52:38,615 - draw card
 INFO    2020-08-14 02:52:51,377 - draw card
 INFO    2020-08-14 02:53:08,823 - back_to_menu
 INFO    2020-08-14 02:53:14,667 - exit
+INFO    2020-08-14 02:56:02,784 - navigate_from_log_in_to_menu
+INFO    2020-08-14 02:56:15,924 - start_a_game
+INFO    2020-08-14 02:56:21,637 - draw card
+INFO    2020-08-14 02:56:27,354 - passive selected
+INFO    2020-08-14 02:56:31,175 - draw card
+INFO    2020-08-14 02:56:42,615 - end turn player 2
+INFO    2020-08-14 02:56:42,848 - draw card
+INFO    2020-08-14 02:56:46,258 - drag_detected
+INFO    2020-08-14 02:56:46,851 - drag_ended
+INFO    2020-08-14 02:56:46,963 - play Wisp
+INFO    2020-08-14 02:56:47,058 - card summoned
+INFO    2020-08-14 02:57:32,098 - exit

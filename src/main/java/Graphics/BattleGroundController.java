@@ -102,6 +102,7 @@ public class BattleGroundController implements Initializable {
     private void exit(){
         try {
             client.logInfo("exit");
+            client.exitClient();
         } catch (Exception ex) {
             System.out.println("exit on login page.");;
         }
