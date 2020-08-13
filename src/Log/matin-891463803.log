@@ -154,3 +154,24 @@ INFO    2020-08-13 19:27:10,589 - end turn player 2
 INFO    2020-08-13 19:27:10,591 - draw card
 INFO    2020-08-13 19:28:52,222 - end turn player 1
 INFO    2020-08-13 19:29:04,319 - exit
+INFO    2020-08-13 19:30:13,598 - navigate_from_log_in_to_menu
+INFO    2020-08-13 19:30:25,546 - start_a_game
+INFO    2020-08-13 19:30:27,355 - passive selected
+INFO    2020-08-13 19:30:34,613 - draw card
+INFO    2020-08-13 19:30:47,333 - drag_detected
+INFO    2020-08-13 19:30:48,213 - drag_ended
+INFO    2020-08-13 19:30:48,311 - play Voodoo Doctor
+INFO    2020-08-13 19:30:48,314 - card summoned
+INFO    2020-08-13 19:30:55,982 - end turn player 1
+INFO    2020-08-13 19:30:55,984 - draw card
+INFO    2020-08-13 19:31:01,413 - play Voodoo Doctor
+INFO    2020-08-13 19:31:01,570 - card summoned
+ERROR   2020-08-13 19:31:28,556 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 19:31:31,242 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 19:31:32,560 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 19:31:37,246 - end turn player 2
+INFO    2020-08-13 19:31:37,249 - draw card
+INFO    2020-08-13 19:31:46,710 - drag_detected
+INFO    2020-08-13 19:31:47,683 - drag_ended
+INFO    2020-08-13 19:31:47,994 - play Blizzard
+INFO    2020-08-13 19:32:05,989 - exit

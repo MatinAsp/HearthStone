@@ -134,3 +134,19 @@ INFO    2020-08-13 19:27:10,589 - end turn player 1
 INFO    2020-08-13 19:27:10,591 - draw card
 INFO    2020-08-13 19:28:52,227 - end turn player 2
 INFO    2020-08-13 19:29:06,709 - exit
+INFO    2020-08-13 19:30:19,600 - navigate_from_log_in_to_menu
+INFO    2020-08-13 19:30:27,191 - start_a_game
+INFO    2020-08-13 19:30:32,317 - passive selected
+INFO    2020-08-13 19:30:34,479 - draw card
+INFO    2020-08-13 19:30:48,311 - play Voodoo Doctor
+INFO    2020-08-13 19:30:48,314 - card summoned
+INFO    2020-08-13 19:30:55,982 - end turn player 2
+INFO    2020-08-13 19:30:55,983 - draw card
+INFO    2020-08-13 19:31:00,553 - drag_detected
+INFO    2020-08-13 19:31:01,148 - drag_ended
+INFO    2020-08-13 19:31:01,412 - play Voodoo Doctor
+INFO    2020-08-13 19:31:01,473 - card summoned
+INFO    2020-08-13 19:31:37,243 - end turn player 1
+INFO    2020-08-13 19:31:37,249 - draw card
+INFO    2020-08-13 19:31:48,004 - play Blizzard
+INFO    2020-08-13 19:32:03,496 - exit

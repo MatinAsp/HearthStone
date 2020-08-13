@@ -316,7 +316,9 @@ public class Game {
         competitor[0] = competitor[1];
         competitor[1] = tmp;
         if(actionRequest.getPlayed() != null){
-            actionRequest.getPlayed().setSide((actionRequest.getPlayed().getSide() + 1) % 2);
+            InfoPack infoPack = actionRequest.getPlayed();
+            infoPack.setSide((actionRequest.getPlayed().getSide() + 1) % 2);
+            actionRequest.setPlayed(infoPack);
         }
         for(InfoPack infoPack: actionRequest.readAttackingList()){
             infoPack.setSide((infoPack.getSide()+1)%2);

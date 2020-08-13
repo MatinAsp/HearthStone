@@ -340,7 +340,6 @@ public class BattleGroundController implements Initializable {
         clearSelections();
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("endTurnSound"), 1);
         changeTurn();
-        turnShowingText.setText("Player " + (game.getTurn() + 1) + " Turn");
         thread.interrupt();
         thread = new Timer();
         thread.start();
@@ -622,6 +621,7 @@ public class BattleGroundController implements Initializable {
     private ArrayList<Transition> transitions = new ArrayList<>();
     private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();
     synchronized void renderActions() {
+        turnShowingText.setText("Player " + (game.getTurn() + 1) + " Turn");
         waitPane.setVisible(false);
         clearSelections();
         transitions.clear();

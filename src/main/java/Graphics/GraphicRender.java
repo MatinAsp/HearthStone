@@ -32,11 +32,10 @@ public class GraphicRender {
 
     public Pane buildCard(Card card, boolean lock, boolean priceTag, boolean cardBack) {
         FXMLLoader fxmlLoader = null;
-        if(cardBack){
-            fxmlLoader = new FXMLLoader(getClass().getResource("minionCardGraphics.fxml"));
-        }
-        else{
+        try {
             fxmlLoader = new FXMLLoader(getClass().getResource(card.getType().toLowerCase()+"CardGraphics.fxml"));
+        } catch (Exception e){
+            fxmlLoader = new FXMLLoader(getClass().getResource("minionCardGraphics.fxml"));
         }
         Pane graphicCard = null;
         try {
@@ -56,24 +55,26 @@ public class GraphicRender {
         if (cardBack){
             GameSettings gameSettings = GameSettings.getInstance();
             cardGraphicsController.setCardBack(AssetManager.getInstance().getImage(gameSettings.getCardBack()));
-            return graphicCard;
         }
-        cardGraphicsController.setCardPic(assetManager.getImage(card.getName()));
-        cardGraphicsController.setMana(card.getMana());
-        cardGraphicsController.setCardName(card.getName());
-        cardGraphicsController.setPrice(card.getPrice());
-        cardGraphicsController.setDescription(card.getDescription());
-        cardGraphicsController.setBorder(
-                assetManager.getImage(card.getType().toLowerCase()+card.getRarity())
-        );
-        if(card instanceof Minion){
-            cardGraphicsController.setAttack(((Minion) card).getAttack());
-            cardGraphicsController.setHp(((Minion) card).getHp());
-        }
-        if(card instanceof Weapon){
-            cardGraphicsController.setAttack(((Weapon) card).getAttack());
-            cardGraphicsController.setDurability(((Weapon) card).getDurability());
-        }
+        try {
+
+            cardGraphicsController.setCardPic(assetManager.getImage(card.getName()));
+            cardGraphicsController.setMana(card.getMana());
+            cardGraphicsController.setCardName(card.getName());
+            cardGraphicsController.setPrice(card.getPrice());
+            cardGraphicsController.setDescription(card.getDescription());
+            cardGraphicsController.setBorder(
+                    assetManager.getImage(card.getType().toLowerCase()+card.getRarity())
+            );
+            if(card instanceof Minion){
+                cardGraphicsController.setAttack(((Minion) card).getAttack());
+                cardGraphicsController.setHp(((Minion) card).getHp());
+            }
+            if(card instanceof Weapon){
+                cardGraphicsController.setAttack(((Weapon) card).getAttack());
+                cardGraphicsController.setDurability(((Weapon) card).getDurability());
+            }
+        } catch (Exception e) {}
         return graphicCard;
     }
 
