@@ -2,13 +2,10 @@ package Logic;
 
 import Data.DataManager;
 import Data.GameConstants;
-import Data.GsonCenter;
 import Models.Cards.Card;
 import Models.Deck;
 import Models.Hero;
-import Models.Player;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 

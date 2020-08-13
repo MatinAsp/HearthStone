@@ -255,3 +255,53 @@ INFO    2020-08-13 23:03:40,322 - drag_ended
 ERROR   2020-08-13 23:03:40,370 - Exceptions.InvalidChoiceException: Invalid Choice
 INFO    2020-08-13 23:03:41,499 - back_to_menu
 INFO    2020-08-13 23:03:42,542 - exit
+INFO    2020-08-13 23:18:13,198 - navigate_from_log_in_to_menu
+INFO    2020-08-13 23:19:03,349 - start_a_game
+INFO    2020-08-13 23:19:08,186 - draw card
+INFO    2020-08-13 23:19:17,382 - passive selected
+INFO    2020-08-13 23:19:24,150 - play Voodoo Doctor
+INFO    2020-08-13 23:19:24,159 - card summoned
+INFO    2020-08-13 23:19:26,735 - play Bluegill Warrior
+INFO    2020-08-13 23:19:26,805 - card summoned
+INFO    2020-08-13 23:19:49,754 - Bluegill Warrior attacked Mage
+INFO    2020-08-13 23:19:51,780 - end turn player 2
+INFO    2020-08-13 23:19:51,802 - draw card
+INFO    2020-08-13 23:19:55,288 - end turn player 1
+INFO    2020-08-13 23:19:55,292 - draw card
+INFO    2020-08-13 23:20:04,512 - Voodoo Doctor attacked Mage
+INFO    2020-08-13 23:20:06,756 - Bluegill Warrior attacked Mage
+INFO    2020-08-13 23:20:10,439 - end turn player 2
+INFO    2020-08-13 23:20:10,464 - draw card
+INFO    2020-08-13 23:20:14,175 - end turn player 1
+INFO    2020-08-13 23:20:14,248 - draw card
+INFO    2020-08-13 23:20:19,359 - play Sen'jin Shieldmasta
+INFO    2020-08-13 23:20:19,376 - card summoned
+INFO    2020-08-13 23:20:22,193 - Bluegill Warrior attacked Mage
+INFO    2020-08-13 23:20:24,170 - Voodoo Doctor attacked Mage
+INFO    2020-08-13 23:20:26,060 - end turn player 2
+INFO    2020-08-13 23:20:26,096 - draw card
+INFO    2020-08-13 23:20:30,307 - end turn player 1
+INFO    2020-08-13 23:20:30,317 - draw card
+INFO    2020-08-13 23:20:34,686 - play Arena Patron
+INFO    2020-08-13 23:20:34,705 - card summoned
+INFO    2020-08-13 23:20:39,269 - Sen'jin Shieldmasta attacked Mage
+INFO    2020-08-13 23:20:41,399 - Bluegill Warrior attacked Mage
+INFO    2020-08-13 23:20:43,441 - Voodoo Doctor attacked Mage
+INFO    2020-08-13 23:20:45,541 - end turn player 2
+INFO    2020-08-13 23:20:45,654 - draw card
+INFO    2020-08-13 23:20:51,672 - drag_detected
+INFO    2020-08-13 23:20:52,287 - drag_ended
+INFO    2020-08-13 23:20:52,338 - play Wisp
+INFO    2020-08-13 23:20:52,351 - card summoned
+INFO    2020-08-13 23:21:19,559 - end turn player 1
+INFO    2020-08-13 23:21:19,569 - draw card
+INFO    2020-08-13 23:21:24,507 - Arena Patron attacked Mage
+INFO    2020-08-13 23:21:29,569 - Bluegill Warrior attacked Mage
+INFO    2020-08-13 23:21:31,719 - Voodoo Doctor attacked Mage
+INFO    2020-08-13 23:21:34,081 - end turn player 2
+INFO    2020-08-13 23:21:34,086 - draw card
+INFO    2020-08-13 23:21:37,513 - end turn player 1
+INFO    2020-08-13 23:21:37,516 - draw card
+ERROR   2020-08-13 23:23:40,471 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 23:25:14,725 - back_to_menu
+INFO    2020-08-13 23:25:16,385 - exit

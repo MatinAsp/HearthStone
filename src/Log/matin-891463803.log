@@ -331,3 +331,81 @@ INFO    2020-08-13 23:03:28,324 - back_to_menu
 INFO    2020-08-13 23:03:28,424 - set_alert
 INFO    2020-08-13 23:03:29,508 - alert_dismissed
 INFO    2020-08-13 23:03:31,361 - exit
+INFO    2020-08-13 23:18:46,621 - navigate_from_log_in_to_menu
+INFO    2020-08-13 23:19:01,560 - start_a_game
+INFO    2020-08-13 23:19:04,476 - passive selected
+INFO    2020-08-13 23:19:08,141 - draw card
+INFO    2020-08-13 23:19:23,428 - drag_detected
+INFO    2020-08-13 23:19:24,022 - drag_ended
+INFO    2020-08-13 23:19:24,146 - play Voodoo Doctor
+INFO    2020-08-13 23:19:24,152 - card summoned
+INFO    2020-08-13 23:19:26,093 - drag_detected
+INFO    2020-08-13 23:19:26,631 - drag_ended
+INFO    2020-08-13 23:19:26,684 - play Bluegill Warrior
+INFO    2020-08-13 23:19:26,715 - card summoned
+ERROR   2020-08-13 23:19:49,129 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:19:49,746 - Bluegill Warrior attacked Mage
+INFO    2020-08-13 23:19:51,763 - end turn player 1
+INFO    2020-08-13 23:19:51,782 - draw card
+INFO    2020-08-13 23:19:55,289 - end turn player 2
+INFO    2020-08-13 23:19:55,310 - draw card
+ERROR   2020-08-13 23:20:04,069 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:20:04,512 - Voodoo Doctor attacked Mage
+ERROR   2020-08-13 23:20:06,040 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:20:06,752 - Bluegill Warrior attacked Mage
+INFO    2020-08-13 23:20:10,431 - end turn player 1
+INFO    2020-08-13 23:20:10,440 - draw card
+INFO    2020-08-13 23:20:14,172 - end turn player 2
+INFO    2020-08-13 23:20:14,177 - draw card
+INFO    2020-08-13 23:20:18,687 - drag_detected
+INFO    2020-08-13 23:20:19,176 - drag_ended
+INFO    2020-08-13 23:20:19,269 - play Sen'jin Shieldmasta
+INFO    2020-08-13 23:20:19,292 - card summoned
+ERROR   2020-08-13 23:20:21,921 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:20:22,193 - Bluegill Warrior attacked Mage
+ERROR   2020-08-13 23:20:23,480 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:20:24,139 - Voodoo Doctor attacked Mage
+INFO    2020-08-13 23:20:26,063 - end turn player 1
+INFO    2020-08-13 23:20:26,085 - draw card
+INFO    2020-08-13 23:20:30,306 - end turn player 2
+INFO    2020-08-13 23:20:30,315 - draw card
+INFO    2020-08-13 23:20:34,189 - drag_detected
+INFO    2020-08-13 23:20:34,557 - drag_ended
+INFO    2020-08-13 23:20:34,607 - play Arena Patron
+INFO    2020-08-13 23:20:34,638 - card summoned
+ERROR   2020-08-13 23:20:38,851 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:20:39,268 - Sen'jin Shieldmasta attacked Mage
+ERROR   2020-08-13 23:20:40,957 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:20:41,380 - Bluegill Warrior attacked Mage
+ERROR   2020-08-13 23:20:43,006 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:20:43,413 - Voodoo Doctor attacked Mage
+INFO    2020-08-13 23:20:45,536 - end turn player 1
+INFO    2020-08-13 23:20:45,548 - draw card
+INFO    2020-08-13 23:20:52,944 - play Wisp
+INFO    2020-08-13 23:20:52,991 - card summoned
+ERROR   2020-08-13 23:21:13,330 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:21:14,068 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:21:15,743 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 23:21:19,561 - end turn player 2
+INFO    2020-08-13 23:21:19,626 - draw card
+ERROR   2020-08-13 23:21:24,027 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:21:24,508 - Arena Patron attacked Mage
+ERROR   2020-08-13 23:21:26,629 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:21:26,875 - Sen'jin Shieldmasta attacked Mage
+ERROR   2020-08-13 23:21:29,131 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:21:29,557 - Bluegill Warrior attacked Mage
+ERROR   2020-08-13 23:21:31,384 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:21:31,718 - Voodoo Doctor attacked Mage
+INFO    2020-08-13 23:21:34,079 - end turn player 1
+INFO    2020-08-13 23:21:34,083 - draw card
+INFO    2020-08-13 23:21:37,509 - end turn player 2
+INFO    2020-08-13 23:21:37,515 - draw card
+ERROR   2020-08-13 23:21:43,091 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:21:43,433 - game over
+INFO    2020-08-13 23:21:43,472 - Arena Patron attacked Mage
+INFO    2020-08-13 23:23:37,443 - set_alert
+INFO    2020-08-13 23:25:06,574 - alert_dismissed
+INFO    2020-08-13 23:25:09,383 - back_to_menu
+INFO    2020-08-13 23:25:09,421 - set_alert
+INFO    2020-08-13 23:25:10,253 - alert_dismissed
+INFO    2020-08-13 23:25:18,389 - exit

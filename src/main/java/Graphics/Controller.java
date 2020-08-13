@@ -772,7 +772,7 @@ public class Controller implements Initializable {
             this.battleGroundController= battleGroundController;
             battleGroundController.setClient(client);
             battleGroundController.setGame(game);
-            battleGroundController.gameRender();
+            updateGame(game);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -848,7 +848,7 @@ public class Controller implements Initializable {
     }
 
     public void endGame() {
-        battleGroundController.endGame();
+        Platform.runLater(() -> battleGroundController.endGame());
         battleGroundController = null;
     }
 
