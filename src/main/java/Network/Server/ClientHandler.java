@@ -113,7 +113,11 @@ public class ClientHandler extends Thread{
     }
 
     public void sendException(Exception exception){
+        if(exception instanceof GameOverException){
+            send(new String[]{"gameOver", gson.toJson(server.getGameForClient(this))});
+        }
         send(new String[]{"error", exception.getClass().getName(), gson.toJson(exception)});
+        exception.printStackTrace();
     }
 
     private void delete(String password) throws Exception {
@@ -161,8 +165,8 @@ public class ClientHandler extends Thread{
         System.out.println("send: "+gson.toJson(massagesList));
     }
 
-    private void cardSelection(String cardsJson){
-        server.cardSelection(gson.fromJson(cardsJson,new TypeToken<ArrayList<Card>>(){}.getType()));
+    private void cardSelection(String cardsJson) throws GameOverException, InvalidChoiceException {
+        server.cardSelection(this, gson.fromJson(cardsJson,new TypeToken<ArrayList<Card>>(){}.getType()));
     }
 
     public Player getPlayer() {

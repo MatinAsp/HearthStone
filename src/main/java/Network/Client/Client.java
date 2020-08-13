@@ -195,4 +195,9 @@ public class Client extends Thread{
     public void sendCardSelection(ArrayList<Card> cardsSelected) {
         send(new String[]{"cardSelection", gson.toJson(cardsSelected)});
     }
+
+    private void gameOver(String gameJson){
+        updateGame(gameJson);
+        controller.endGame();
+    }
 }

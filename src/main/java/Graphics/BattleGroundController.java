@@ -411,7 +411,7 @@ public class BattleGroundController implements Initializable {
 //        else endTurnButton.setDisable(true);
     }
 
-    private void endGame(){
+    public void endGame(){
         client.logInfo("game over");
         addGameLog("game over");
         isGameEnded = true;
@@ -839,5 +839,17 @@ public class BattleGroundController implements Initializable {
 
     public void setClient(Client client){
         this.client = client;
+    }
+
+    public void exceptionHandling(Exception e){
+        if(e instanceof InvalidChoiceException){
+            client.logError(e);
+            clearSelections();
+            return;
+        }
+        if(e instanceof SelectionNeededException){
+            client.logError(e);
+            targetSelectionPane.setVisible(true);
+        }
     }
 }

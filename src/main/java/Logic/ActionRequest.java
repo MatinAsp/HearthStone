@@ -1,6 +1,7 @@
 package Logic;
 
 import Exceptions.GameOverException;
+import Exceptions.InvalidChoiceException;
 import Logic.ActionsType.*;
 import Models.Cards.Card;
 import Models.InfoPack;
@@ -35,7 +36,7 @@ public class ActionRequest {
         game.initialize();
     }
 
-    public void selectCard(ArrayList<Card> cardsSelected, int competitorIndex) throws GameOverException {
+    public void selectCard(ArrayList<Card> cardsSelected, int competitorIndex) throws GameOverException, InvalidChoiceException {
         try {
             game.selectCard(cardsSelected, competitorIndex);
         } catch (GameOverException e) {

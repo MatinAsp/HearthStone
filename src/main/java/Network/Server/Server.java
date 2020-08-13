@@ -196,8 +196,21 @@ public class Server extends Thread{
         sendGameStateToClients(game);
     }
 
-    public void cardSelection(ClientHandler clientHandler, ArrayList<Card> cards) throws GameOverException {
+    public void cardSelection(ClientHandler clientHandler, ArrayList<Card> cards) throws GameOverException, InvalidChoiceException {
         Game game = gameMap.get(clientHandler);
         if(gameKindMap.get(game).equals("online")) game.getActionRequest().selectCard(cards, game.getCompetitorIndex(clientHandler.getPlayer().getUsername()));
+    }
+
+    public Game getGameForClient(ClientHandler clientHandler) {
+        Game game = gameMap.get(clientHandler);
+        if(gameMap.get(clientHandler) == game){
+            if(!gameKindMap.get(game).equals("offline")){
+                return GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game);
+            }
+            else {
+                return game;
+            }
+        }
+        return null;
     }
 }

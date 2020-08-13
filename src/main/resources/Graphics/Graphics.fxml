@@ -21,6 +21,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.stage.Stage?>
 
@@ -576,6 +577,16 @@
                            <Insets bottom="125.0" />
                         </padding>
                      </VBox>
+                  </children>
+               </StackPane>
+               <StackPane fx:id="waitPane" prefHeight="150.0" prefWidth="200.0" visible="false">
+                  <children>
+                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0000006a" height="720.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+                     <Label styleClass="gameFont" text="Please Wait...">
+                        <font>
+                           <Font size="64.0" />
+                        </font>
+                     </Label>
                   </children>
                </StackPane>
                <StackPane fx:id="alertBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" visible="false">

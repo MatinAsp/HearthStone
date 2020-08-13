@@ -48,12 +48,14 @@ public class GameFactory {
 
     public Game getPrivateGame(String username, Game game){
         Gson gson = new Gson();
+        System.out.println(gson.toJson(game));
         game = gson.fromJson(gson.toJson(game), Game.class);
         game.setWithBot(true);
         if(game.getCompetitorIndex(username) != 0) game.changeSide();
         game.getCompetitor(1).setDeck(null);
         makeCardsPrivate(game.getCompetitor(1).getInDeckCards());
         makeCardsPrivate(game.getCompetitor(1).getInHandCards());
+        game.refreshPool();
         return game;
     }
 

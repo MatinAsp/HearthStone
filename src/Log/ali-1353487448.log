@@ -1,0 +1,16 @@
+USER: ali
+ID: 1353487448
+CREATED_AT: 2020/08/13 11:51:25
+PASSWORD: 96670
+
+INFO    2020-08-13 11:51:25,563 - navigate_from_log_in_to_menu
+INFO    2020-08-13 11:51:41,296 - navigate_from_menu_to_collections
+INFO    2020-08-13 11:51:46,224 - set_current_collections_deck
+INFO    2020-08-13 11:51:47,728 - set_player_current_deck
+INFO    2020-08-13 11:51:49,175 - navigate_from_collections_to_menu
+INFO    2020-08-13 11:53:21,561 - exit
+INFO    2020-08-13 11:54:31,095 - navigate_from_log_in_to_menu
+INFO    2020-08-13 11:57:22,784 - exit
+INFO    2020-08-13 11:58:42,700 - navigate_from_log_in_to_menu
+INFO    2020-08-13 11:58:44,091 - set_alert
+INFO    2020-08-13 12:34:34,719 - exit

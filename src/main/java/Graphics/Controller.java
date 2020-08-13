@@ -4,6 +4,8 @@ import Data.DataManager;
 import Data.GameConstants;
 import Data.GameSettings;
 import Data.MediaManager;
+import Exceptions.InvalidChoiceException;
+import Exceptions.SelectionNeededException;
 import Interfaces.ActionHandler;
 import Log.LogCenter;
 import Logic.*;
@@ -731,11 +733,6 @@ public class Controller implements Initializable {
 
 ///start
     @FXML
-    private void startOnlinePlay(){
-        //todo loading page
-        client.sendOnlinePlayRequest();
-    }
-    @FXML
     private void startSinglePlayer(){
         Player player = client.getPlayer();
         if(player.getCurrentDeckName() == null){
@@ -743,7 +740,7 @@ public class Controller implements Initializable {
             navigateFromMenuToCollections();
             return;
         }
-        starGame(player.getDeck(player.getCurrentDeckName()), DataManager.getInstance().getBot(), true);
+      //  starGame(player.getDeck(player.getCurrentDeckName()), DataManager.getInstance().getBot(), true);
     }
 
     @FXML
@@ -754,33 +751,13 @@ public class Controller implements Initializable {
             navigateFromMenuToCollections();
             return;
         }
-        setConfirmation(new ActionHandler() {
-            @Override
-            public void runAction() throws Exception {
-                PlayersManager.getInstance().checkUsername(getTextField.getText());
-                String username = getTextField.getText();
-                setConfirmation(new ActionHandler() {
-                    @Override
-                    public void runAction() throws Exception {
-                        PlayersManager.getInstance().checkPassword(username, getTextField.getText());
-                        //Player player = PlayersManager.getInstance().getPlayer(username);
-                        if(player.getCurrentDeckName() == null){
-                            setAlert("Please select your deck before you start a game.");
-                            navigateFromMenuToCollections();
-                            return;
-                        }
-                        Player currentPlayer = client.getPlayer();
-                        starGame(currentPlayer.getDeck(currentPlayer.getCurrentDeckName()), player.getDeck(player.getCurrentDeckName()), false);
-                    }
-                }, "Enter second player password.", true, false);
-            }
-        }, "Enter second player username.", true, false);
+        client.sendOnlinePlayRequest();
     }
 
     @FXML
     private void startDeckReader(){
         ArrayList<Deck> decks = DataManager.getInstance().getDeckReaderDecks();
-        starGame(decks.get(0), decks.get(1), false);
+     //   starGame(decks.get(0), decks.get(1), false);
     }
 
     private BattleGroundController battleGroundController = null;
@@ -815,8 +792,10 @@ public class Controller implements Initializable {
     }
 
     public void handleException(Exception exception) {
-        //todo game Exception
-        Platform.runLater(() -> setAlert(exception.getMessage()));
+        if(exception instanceof InvalidChoiceException || exception instanceof SelectionNeededException){
+            battleGroundController.exceptionHandling(exception);
+        }
+        else Platform.runLater(() -> setAlert(exception.getMessage()));
     }
     ///end
     @FXML
@@ -864,5 +843,10 @@ public class Controller implements Initializable {
                 }
             }
         }
+    }
+
+    public void endGame() {
+        battleGroundController.endGame();
+        battleGroundController = null;
     }
 }

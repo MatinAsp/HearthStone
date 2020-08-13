@@ -1,0 +1,23 @@
+USER: matin
+ID: 43345974
+CREATED_AT: 2020/08/13 11:51:10
+PASSWORD: 103668357
+
+INFO    2020-08-13 11:51:10,555 - navigate_from_log_in_to_menu
+INFO    2020-08-13 11:51:36,376 - set_alert
+INFO    2020-08-13 11:51:39,535 - alert_dismissed
+INFO    2020-08-13 11:51:52,184 - navigate_from_menu_to_collections
+INFO    2020-08-13 11:51:54,808 - set_current_collections_deck
+INFO    2020-08-13 11:51:56,271 - set_player_current_deck
+INFO    2020-08-13 11:51:56,967 - navigate_from_collections_to_menu
+INFO    2020-08-13 11:51:58,307 - set_alert
+INFO    2020-08-13 11:51:59,632 - alert_dismissed
+INFO    2020-08-13 11:53:19,185 - exit
+INFO    2020-08-13 11:54:15,212 - navigate_from_log_in_to_menu
+INFO    2020-08-13 11:54:59,550 - set_alert
+INFO    2020-08-13 11:55:06,192 - alert_dismissed
+INFO    2020-08-13 11:57:20,850 - exit
+INFO    2020-08-13 11:58:32,064 - navigate_from_log_in_to_menu
+INFO    2020-08-13 12:34:36,950 - exit
+INFO    2020-08-13 12:35:34,815 - navigate_from_log_in_to_menu
+INFO    2020-08-13 12:35:36,225 - exit

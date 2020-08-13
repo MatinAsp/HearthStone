@@ -31,11 +31,11 @@ public class Game {
 
     public Game(Competitor competitor1, Competitor competitor2, boolean isWithBot){
         this.isWithBot = isWithBot;
-        actions = new Actions(this);
         competitor[0] = competitor1;
         competitor[1] = competitor2;
         turn = 0;
         actionRequest = new ActionRequest(this);
+        actions = new Actions(this);
     }
 
     public ActionRequest getActionRequest(){
