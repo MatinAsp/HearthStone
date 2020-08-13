@@ -610,25 +610,8 @@ public class BattleGroundController implements Initializable {
              parameters[i] = infoPacks.get(i);
         }
         client.sendPerformAction(parameters);
-//        try {
-//            ActionRequest.PERFORM_ACTION.execute(parameters);
-//            renderActions();
-//        } catch (Exception e) {
-//            client.logError(e);
-//            try {
-//                throw e;
-//            } catch (SelectionNeededException selectionNeededException) {
-//                client.logError(selectionNeededException);
-//                targetSelectionPane.setVisible(true);
-//            } catch (InvalidChoiceException invalidChoiceException) {
-//                client.logError(invalidChoiceException);
-//                clearSelections();
-//            } catch (GameOverException gameOverException) {
-//                client.logError(gameOverException);
-//                endGame();
-//            }
-//        }
     }
+
     private ArrayList<Transition> transitions = new ArrayList<>();
     private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();
     synchronized void renderActions() {
@@ -664,7 +647,7 @@ public class BattleGroundController implements Initializable {
     }
 
     private void setHeroPowerTransition() {
-        if (game.getActionRequest().readUseHeroPower()){
+        if (game.getActionRequest().isUseHeroPower()){
             ScaleTransition transition = new ScaleTransition(Duration.seconds(1), heroPowerPlace[game.getTurn()].getChildren().get(0));
             transition.setByX(0.5);
             transition.setByY(0.5);
@@ -710,7 +693,7 @@ public class BattleGroundController implements Initializable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if(game.getActionRequest().readSummoned()){
+                if(game.getActionRequest().isSummoned()){
                     MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("minionPlacingSound"), 1);
                 }
                 protector.setVisible(false);
@@ -724,11 +707,11 @@ public class BattleGroundController implements Initializable {
     private boolean isGameEnded = false;
 
     private void setDrawTransition() {
-        int drawNumber = game.getActionRequest().readDrawNumber();
+        int drawNumber = game.getActionRequest().getNumberOfDraws();
         while (drawNumber > 0 ){
-            Card card = game.getCompetitor(game.getTurn()).getInHandCards().get(game.getCompetitor(game.getTurn()).getInHandCards().size() - drawNumber--);
-            Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, (game.getTurn() == 0 || !game.isWithBot())? false:true);
-            Transition transition = putCardToHandAnimation(cardPane, (game.getTurn() == 0)? true:false);
+            Card card = game.getCompetitor(game.getActionRequest().getDrawTurn()).getInHandCards().get(game.getCompetitor(game.getActionRequest().getDrawTurn()).getInHandCards().size() - drawNumber--);
+            Pane cardPane = GraphicRender.getInstance().buildCard(card, false, false, (game.getActionRequest().getDrawTurn() == 0 || !game.isWithBot())? false:true);
+            Transition transition = putCardToHandAnimation(cardPane, (game.getActionRequest().getDrawTurn() == 0)? true:false);
             transitions.add(transition);
             beforeAction.add(new ActionHandler() {
                 @Override
@@ -773,13 +756,13 @@ public class BattleGroundController implements Initializable {
     }
 
     private void logActions(){
-        if(game.getActionRequest().readUseHeroPower()){
+        if(game.getActionRequest().isUseHeroPower()){
             loggingForGame("hero power used");
         }
-        if(game.getActionRequest().readTurnEnded()){
+        if(game.getActionRequest().isTurnEnded()){
             loggingForGame("end turn player "+(((game.getTurn()+1)%2)+1));
         }
-        InfoPack played = game.getActionRequest().readPlayed();
+        InfoPack played = game.getActionRequest().getPlayed();
         if(played != null){
             loggingForGame("play "+played.getCharacter().getName());
         }
@@ -787,10 +770,10 @@ public class BattleGroundController implements Initializable {
         if(infoPacks.size() > 0){
             loggingForGame(infoPacks.get(0).getCharacter().getName() + " attacked " + infoPacks.get(1).getCharacter().getName());
         }
-        for(int i = 0; i < game.getActionRequest().readDrawNumber(); i++){
+        for(int i = 0; i < game.getActionRequest().getNumberOfDraws(); i++){
             loggingForGame("draw card");
         }
-        if(game.getActionRequest().readSummoned()){
+        if(game.getActionRequest().isSummoned()){
             loggingForGame("card summoned");
         }
 
@@ -798,7 +781,7 @@ public class BattleGroundController implements Initializable {
 
 
     private void setPlayCardTransition() {
-        InfoPack played = game.getActionRequest().readPlayed();
+        InfoPack played = game.getActionRequest().getPlayed();
         if(played != null){
             if(played.getSide() == 1){
                 ((Pane) parentMap.get(played)).getChildren().get(((Pane) parentMap.get(played)).getChildren().size() - 2).setVisible(false);

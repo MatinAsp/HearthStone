@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(value = {"game", "botMove", "drawCard", "endTurn", "performAction", "summonMinion"})
 public class ActionRequest {
     private boolean useHeroPower;
-    private int numberOfDraws;
+    private int numberOfDraws, drawTurn;
     private boolean summoned;
     private boolean turnEnded;
     private InfoPack played;
@@ -35,6 +35,7 @@ public class ActionRequest {
         performAction = new PerformAction(this);
         summonMinion = new SummonMinion(this);
         numberOfDraws = 0;
+        drawTurn = 0;
         summoned = false;
         played = null;
         attackList = new ArrayList<>();
@@ -55,26 +56,6 @@ public class ActionRequest {
         numberOfDraws -= cnt;
     }
 
-    public boolean readSummoned(){
-        return summoned;
-    }
-
-    public boolean readTurnEnded(){
-        return turnEnded;
-    }
-
-    public boolean readUseHeroPower(){
-        return useHeroPower;
-    }
-
-    public InfoPack readPlayed(){
-        return getPlayed();
-    }
-
-    public int readDrawNumber(){
-        return numberOfDraws;
-    }
-
     public ArrayList<InfoPack> readAttackingList(){
         ArrayList<InfoPack> infoPacks = new ArrayList<>();
         if(attackList.size() > 0){
@@ -91,6 +72,7 @@ public class ActionRequest {
         summoned = false;
         turnEnded = false;
         useHeroPower = false;
+        drawTurn = 0;
     }
 
     public boolean isUseHeroPower() {
@@ -163,5 +145,13 @@ public class ActionRequest {
 
     public void setAttackList(ArrayList<InfoPack> attackList) {
         this.attackList = attackList;
+    }
+
+    public int getDrawTurn() {
+        return drawTurn;
+    }
+
+    public void setDrawTurn(int drawTurn) {
+        this.drawTurn = drawTurn;
     }
 }

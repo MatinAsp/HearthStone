@@ -20,6 +20,7 @@ public class DrawCard extends Action{
             check = true;
         }
         if(!check){
+            getActionRequest().setDrawTurn(getActionRequest().getGame().getTurn());
             getActionRequest().setNumberOfDraws(getActionRequest().getNumberOfDraws() + 1);
             super.execute();
         }
