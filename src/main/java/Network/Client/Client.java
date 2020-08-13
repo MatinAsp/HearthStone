@@ -43,7 +43,7 @@ public class Client extends Thread{
         }
         receiver.start();
         while (receiver.isAlive()){
-            if(socket.isConnected()) Platform.runLater(() -> controller.setWait(true));
+            if(!socket.isConnected()) Platform.runLater(() -> controller.setWait(true));
             else Platform.runLater(() -> controller.setWait(false));
             try {
                 Thread.sleep(50);

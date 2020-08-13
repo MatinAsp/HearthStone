@@ -223,3 +223,111 @@ INFO    2020-08-13 20:46:53,282 - drag_ended
 INFO    2020-08-13 20:46:53,313 - play Arena Patron
 INFO    2020-08-13 20:46:53,315 - card summoned
 INFO    2020-08-13 20:47:26,497 - exit
+INFO    2020-08-13 22:56:55,574 - navigate_from_log_in_to_menu
+INFO    2020-08-13 22:56:59,858 - start_a_game
+INFO    2020-08-13 22:57:56,730 - passive selected
+INFO    2020-08-13 22:58:00,623 - draw card
+INFO    2020-08-13 22:58:13,761 - draw card
+INFO    2020-08-13 22:58:24,889 - drag_detected
+INFO    2020-08-13 22:58:25,357 - drag_ended
+INFO    2020-08-13 22:58:25,526 - play Wisp
+INFO    2020-08-13 22:58:25,546 - card summoned
+INFO    2020-08-13 22:58:27,391 - drag_detected
+INFO    2020-08-13 22:58:27,727 - drag_ended
+INFO    2020-08-13 22:58:27,858 - play Bluegill Warrior
+INFO    2020-08-13 22:58:27,873 - card summoned
+INFO    2020-08-13 22:58:30,126 - end turn player 1
+INFO    2020-08-13 22:58:30,128 - draw card
+ERROR   2020-08-13 22:58:35,269 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 22:58:41,148 - end turn player 2
+INFO    2020-08-13 22:58:41,158 - draw card
+ERROR   2020-08-13 22:58:57,670 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 22:58:58,357 - Bluegill Warrior attacked Mage
+ERROR   2020-08-13 22:59:02,154 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 22:59:02,552 - Wisp attacked Mage
+INFO    2020-08-13 22:59:05,713 - end turn player 1
+INFO    2020-08-13 22:59:05,718 - draw card
+ERROR   2020-08-13 22:59:09,538 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 22:59:11,066 - end turn player 2
+INFO    2020-08-13 22:59:11,070 - draw card
+ERROR   2020-08-13 22:59:15,282 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 22:59:15,728 - Bluegill Warrior attacked Mage
+ERROR   2020-08-13 22:59:18,667 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 22:59:19,574 - Wisp attacked Mage
+INFO    2020-08-13 22:59:25,847 - end turn player 1
+INFO    2020-08-13 22:59:25,850 - draw card
+INFO    2020-08-13 22:59:31,048 - end turn player 2
+INFO    2020-08-13 22:59:31,153 - draw card
+INFO    2020-08-13 22:59:34,827 - drag_detected
+INFO    2020-08-13 22:59:35,370 - drag_ended
+INFO    2020-08-13 22:59:35,536 - play Sen'jin Shieldmasta
+INFO    2020-08-13 22:59:35,552 - card summoned
+ERROR   2020-08-13 22:59:38,779 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 22:59:39,339 - Bluegill Warrior attacked Mage
+ERROR   2020-08-13 22:59:41,106 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 22:59:41,718 - Wisp attacked Mage
+INFO    2020-08-13 22:59:44,721 - end turn player 1
+INFO    2020-08-13 22:59:44,725 - draw card
+INFO    2020-08-13 22:59:48,289 - end turn player 2
+INFO    2020-08-13 22:59:48,293 - draw card
+ERROR   2020-08-13 22:59:54,559 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 22:59:54,984 - Sen'jin Shieldmasta attacked Mage
+ERROR   2020-08-13 22:59:56,623 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 22:59:57,089 - Bluegill Warrior attacked Mage
+ERROR   2020-08-13 22:59:58,892 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 22:59:59,376 - Wisp attacked Mage
+INFO    2020-08-13 23:00:26,461 - drag_detected
+INFO    2020-08-13 23:00:26,930 - drag_ended
+INFO    2020-08-13 23:00:26,968 - play Assassin's Blade
+INFO    2020-08-13 23:00:27,018 - card summoned
+INFO    2020-08-13 23:00:31,220 - end turn player 1
+INFO    2020-08-13 23:00:31,232 - draw card
+ERROR   2020-08-13 23:00:41,271 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:00:48,723 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:00:49,777 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:00:51,519 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:00:52,385 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:00:55,853 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:00:56,362 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:00:57,423 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 23:01:02,404 - end turn player 2
+INFO    2020-08-13 23:01:02,414 - draw card
+ERROR   2020-08-13 23:01:08,648 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:01:11,244 - Assassin's Blade attacked Mage
+ERROR   2020-08-13 23:01:28,026 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:01:28,631 - Sen'jin Shieldmasta attacked Mage
+ERROR   2020-08-13 23:01:30,394 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:01:30,799 - Bluegill Warrior attacked Mage
+ERROR   2020-08-13 23:01:32,626 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:01:33,150 - Wisp attacked Mage
+ERROR   2020-08-13 23:01:37,229 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:01:37,844 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 23:01:38,704 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:01:39,309 - hero power used
+INFO    2020-08-13 23:01:45,073 - drag_detected
+INFO    2020-08-13 23:01:45,990 - drag_ended
+INFO    2020-08-13 23:01:46,032 - play Voodoo Doctor
+INFO    2020-08-13 23:01:46,094 - card summoned
+INFO    2020-08-13 23:01:48,466 - end turn player 1
+INFO    2020-08-13 23:01:48,491 - draw card
+INFO    2020-08-13 23:01:53,627 - end turn player 2
+INFO    2020-08-13 23:01:53,628 - draw card
+ERROR   2020-08-13 23:02:02,052 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:02:02,659 - Sen'jin Shieldmasta attacked Mage
+ERROR   2020-08-13 23:02:05,458 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 23:02:06,180 - game over
+INFO    2020-08-13 23:02:06,182 - Voodoo Doctor attacked Mage
+INFO    2020-08-13 23:02:06,205 - set_alert
+INFO    2020-08-13 23:03:20,091 - alert_dismissed
+INFO    2020-08-13 23:03:24,078 - drag_detected
+INFO    2020-08-13 23:03:24,734 - drag_ended
+INFO    2020-08-13 23:03:24,776 - set_alert
+INFO    2020-08-13 23:03:25,717 - alert_dismissed
+INFO    2020-08-13 23:03:26,305 - drag_detected
+INFO    2020-08-13 23:03:26,573 - drag_ended
+INFO    2020-08-13 23:03:26,633 - set_alert
+INFO    2020-08-13 23:03:27,515 - alert_dismissed
+INFO    2020-08-13 23:03:28,324 - back_to_menu
+INFO    2020-08-13 23:03:28,424 - set_alert
+INFO    2020-08-13 23:03:29,508 - alert_dismissed
+INFO    2020-08-13 23:03:31,361 - exit

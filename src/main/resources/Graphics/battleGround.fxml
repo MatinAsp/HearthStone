@@ -151,7 +151,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" onAction="#backToMenu" text="OK">
+                  <Button mnemonicParsing="false" onAction="#backToMenuWithoutRequest" text="OK">
                      <styleClass>
                         <String fx:value="brightButton" />
                         <String fx:value="gameFont" />

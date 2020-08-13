@@ -47,7 +47,6 @@ public class ActionRequest {
         try {
             game.selectCard(cardsSelected, competitorIndex);
         } catch (GameOverException e) {
-            game.engGame();
             throw e;
         }
     }

@@ -232,10 +232,17 @@ public class Server extends Thread{
                 clientHandler2.getPlayer().setCup(clientHandler2.getPlayer().getCup() + 1);
                 clientHandler.getPlayer().setCup(Math.max(clientHandler.getPlayer().getCup() - 1, 0));
             }
-            clientHandler2.endGame(game);
+            clientHandler2.endGame(GameFactory.getInstance().getPrivateGame(clientHandler2.getPlayer().getUsername(), game));
             gameMap.remove(clientHandler2);
         }
-        if(sendForOwn) clientHandler.endGame(game);
+        if(sendForOwn){
+            if(gameKindMap.get(game).equals("online")){
+                clientHandler.endGame(GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game));
+            }
+            else{
+                clientHandler.endGame(game);
+            }
+        }
         gameKindMap.remove(game);
         gameMap.remove(clientHandler);
     }

@@ -117,6 +117,7 @@ public class ClientHandler extends Thread{
     public void sendException(Exception exception){
         if(exception instanceof GameOverException){
             server.endGame(this, true);
+            return;
         }
         send(new String[]{"error", exception.getClass().getName(), gson.toJson(exception)});
         exception.printStackTrace();
