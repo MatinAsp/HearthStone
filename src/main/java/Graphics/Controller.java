@@ -723,7 +723,7 @@ public class Controller implements Initializable {
             navigateFromMenuToCollections();
             return;
         }
-      //  starGame(player.getDeck(player.getCurrentDeckName()), DataManager.getInstance().getBot(), true);
+        client.sendOfflinePlayRequest();
     }
 
     @FXML
@@ -741,7 +741,7 @@ public class Controller implements Initializable {
     @FXML
     private void startDeckReader(){
         ArrayList<Deck> decks = DataManager.getInstance().getDeckReaderDecks();
-     //   starGame(decks.get(0), decks.get(1), false);
+        client.sendDeckReaderPlayRequest();
     }
 
     private BattleGroundController battleGroundController = null;

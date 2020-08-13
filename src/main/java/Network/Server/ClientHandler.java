@@ -147,8 +147,16 @@ public class ClientHandler extends Thread{
         send(new String[]{"update", "storeCardsRender"});
     }
 
-    private void starOnlinePlay() throws Exception {
+    private void startOnlinePlay() throws Exception {
         server.startOnlineGame(this);
+    }
+
+    private void startDeckReaderPlay() throws Exception {
+        server.startDeckReaderGame(this);
+    }
+
+    private void startOfflinePlay() throws Exception {
+        server.startOfflineGame(this);
     }
 
     private void performAction(String parametersJson) throws SelectionNeededException, InvalidChoiceException, GameOverException {

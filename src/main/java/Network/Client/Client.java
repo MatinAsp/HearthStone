@@ -195,7 +195,7 @@ public class Client extends Thread{
     }
 
     public void sendOnlinePlayRequest() {
-        send(new String[]{"starOnlinePlay"});
+        send(new String[]{"startOnlinePlay"});
     }
 
     public void sendPerformAction(InfoPack[] parameters) {
@@ -217,5 +217,13 @@ public class Client extends Thread{
 
     public void sendCancelGame() {
         send(new String[]{"cancelGame"});
+    }
+
+    public void sendDeckReaderPlayRequest() {
+        send(new String[]{"startDeckReaderPlay"});
+    }
+
+    public void sendOfflinePlayRequest() {
+        send(new String[]{"startOfflinePlay"});
     }
 }
