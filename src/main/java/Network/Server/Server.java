@@ -5,11 +5,11 @@ import Data.JacksonMapper;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
-import Logic.Competitor;
 import Logic.Game;
 import Logic.GameFactory;
 import Logic.PlayersManager;
 import Models.Cards.Card;
+import Models.Deck;
 import Models.InfoPack;
 import Models.Passive;
 import Models.Player;
@@ -26,7 +26,7 @@ public class Server extends Thread{
     private static Server server;
     private static int defaultPort = 8080;
     private ArrayList<ClientHandler> clientHandlers;
-    private ArrayList<ClientHandler>  waitingList;
+    private ArrayList<ClientHandler>  waitingList, deckReaderWaitingList;
     private ServerSocket serverSocket;
     private HashMap<ClientHandler, Game> gameMap;
     private HashMap<Game, String> gameKindMap;
@@ -37,6 +37,7 @@ public class Server extends Thread{
         clientHandlers = new ArrayList<>();
         waitingList = new ArrayList<>();
         gameKindMap = new HashMap<>();
+        deckReaderWaitingList = new ArrayList<>();
     }
 
     public synchronized static Server getInstance() throws IOException {
@@ -95,6 +96,13 @@ public class Server extends Thread{
             throw new Exception("Please Select Your Deck To Start.");
         }
     }
+
+    public synchronized void startOfflineGame(ClientHandler clientHandler) throws Exception {
+        checkForDeck(clientHandler);
+        Deck deck = clientHandler.getPlayer().getDeck(clientHandler.getPlayer().getCurrentDeckName());
+        startGame(clientHandler, clientHandler, deck, deck, "offline", false, false);
+    }
+
     public synchronized void startOnlineGame(ClientHandler clientHandler1) throws Exception {
         checkForDeck(clientHandler1);
         boolean check = false;
@@ -103,23 +111,44 @@ public class Server extends Thread{
                 check = true;
                 Player player1 = clientHandler1.getPlayer();
                 Player player2 = clientHandler2.getPlayer();
-                Game game = GameFactory.getInstance().build(
-                        player1.getUsername(),
-                        player2.getUsername(),
-                        player1.getDeck(player1.getCurrentDeckName()),
-                        player2.getDeck(player2.getCurrentDeckName()),
-                        false
-                );
-                gameMap.put(clientHandler1, game);
-                gameMap.put(clientHandler2, game);
+                startGame(clientHandler1, clientHandler2, player1.getDeck(player1.getCurrentDeckName()), player2.getDeck(player2.getCurrentDeckName()), "online", false, true);
                 waitingList.remove(clientHandler2);
-                gameKindMap.put(game, "online");
-                clientHandler1.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
-                clientHandler2.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game))});
                 break;
             }
         }
         if(!check) waitingList.add(clientHandler1);
+    }
+
+    public synchronized void startDeckReaderGame(ClientHandler clientHandler1) throws Exception {
+        boolean check = false;
+        for(ClientHandler clientHandler2: deckReaderWaitingList){
+            if(isOkForPlay(clientHandler1, clientHandler2)){
+                check = true;
+                startGame(clientHandler1, clientHandler2, DataManager.getInstance().getDeckReaderDecks().get(1), DataManager.getInstance().getDeckReaderDecks().get(0), "online", false, true);
+                deckReaderWaitingList.remove(clientHandler2);
+                break;
+            }
+        }
+        if(!check) deckReaderWaitingList.add(clientHandler1);
+    }
+
+    private void startGame(ClientHandler clientHandler1, ClientHandler clientHandler2, Deck deck1, Deck deck2, String kind, boolean isWithBot, boolean sendForBoth) throws Exception {
+        Player player1 = clientHandler1.getPlayer();
+        Player player2 = clientHandler2.getPlayer();
+        Game game = GameFactory.getInstance().build(
+                player1.getUsername(),
+                player2.getUsername(),
+                deck1,
+                deck2,
+                isWithBot
+        );
+        gameKindMap.put(game, "online");
+        gameMap.put(clientHandler1, game);
+        clientHandler1.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
+        if(sendForBoth){
+            gameMap.put(clientHandler2, game);
+            clientHandler2.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game))});
+        }
     }
 
     private boolean isOkForPlay(ClientHandler clientHandler1, ClientHandler clientHandler2) {
