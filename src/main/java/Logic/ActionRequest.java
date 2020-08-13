@@ -17,8 +17,6 @@ public class ActionRequest {
     private boolean summoned;
     private boolean turnEnded;
     private InfoPack played;
-    private String playedJson;
-    private String playedType;
     private ArrayList<InfoPack> attackList;
     private Game game;
     private BotMove botMove;
@@ -39,8 +37,6 @@ public class ActionRequest {
         numberOfDraws = 0;
         summoned = false;
         played = null;
-        playedJson = null;
-        playedType = null;
         attackList = new ArrayList<>();
         useHeroPower = false;
         turnEnded = false;
@@ -95,8 +91,6 @@ public class ActionRequest {
         summoned = false;
         turnEnded = false;
         useHeroPower = false;
-        playedType = null;
-        playedJson = null;
     }
 
     public boolean isUseHeroPower() {
@@ -132,23 +126,11 @@ public class ActionRequest {
     }
 
     public InfoPack getPlayed() {
-        if(played == null) return null;
-        Gson gson = new Gson();
-        Card card = null;
-        try {
-            card = (Card) gson.fromJson(playedJson, Class.forName(playedType));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        played.setCharacter(card);
         return played;
     }
 
     public void setPlayed(InfoPack played) {
         this.played = played;
-        playedType = played.getCharacter().getClass().getName();
-        Gson gson = new Gson();
-        playedJson = gson.toJson(played.getCharacter());
     }
 
     public ArrayList<InfoPack> getAttackList() {
@@ -177,22 +159,6 @@ public class ActionRequest {
 
     public SummonMinion getSummonMinion() {
         return summonMinion;
-    }
-
-    public String getPlayedJson() {
-        return playedJson;
-    }
-
-    public void setPlayedJson(String playedJson) {
-        this.playedJson = playedJson;
-    }
-
-    public String getPlayedType() {
-        return playedType;
-    }
-
-    public void setPlayedType(String playedType) {
-        this.playedType = playedType;
     }
 
     public void setAttackList(ArrayList<InfoPack> attackList) {

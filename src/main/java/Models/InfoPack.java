@@ -48,10 +48,6 @@ public class InfoPack {
         this.side = side;
     }
 
-    public void setCharacter(Card card) {
-        character = card;
-    }
-
     public void setCharacter(Character character) {
         this.character = character;
     }

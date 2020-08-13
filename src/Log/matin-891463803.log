@@ -415,3 +415,7 @@ INFO    2020-08-14 00:24:52,133 - alert_dismissed
 INFO    2020-08-14 00:24:53,334 - exit
 INFO    2020-08-14 00:31:04,887 - navigate_from_log_in_to_menu
 INFO    2020-08-14 00:43:23,182 - exit
+INFO    2020-08-14 00:44:34,044 - navigate_from_log_in_to_menu
+INFO    2020-08-14 00:46:50,621 - exit
+INFO    2020-08-14 00:47:43,220 - navigate_from_log_in_to_menu
+INFO    2020-08-14 00:51:19,077 - exit
