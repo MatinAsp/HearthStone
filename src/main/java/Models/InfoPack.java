@@ -1,6 +1,8 @@
 package Models;
 
 
+import Models.Cards.Card;
+
 public class InfoPack {
     private Character character;
     private int side, summonPlace;
@@ -42,5 +44,9 @@ public class InfoPack {
 
     public void setSide(int side) {
         this.side = side;
+    }
+
+    public void setCharacter(Card card) {
+        character = card;
     }
 }

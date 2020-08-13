@@ -353,20 +353,17 @@ public class BattleGroundController implements Initializable {
         }
         game.getActionRequest().getAttackList().clear();
         game.getActionRequest().getAttackList().addAll(infoPacks);
-        if(game.getActionRequest().getPlayed() != null && game.isWithBot()){
-            boolean check = false;
-            for(Card card: game.getCompetitor(0).getInHandCards()){
-                if(card.getId() == game.getActionRequest().getPlayed().getCharacter().getId()){
-                    check = true;
-                    break;
-                }
-            }
-            if(!check){
+        if(game.getActionRequest().getPlayed() != null){
+            if(getInfoPack(game.getActionRequest().getPlayed().getCharacter().getId()) == null){
                 ArrayList<Card> cards = game.getCompetitor(1).getInHandCards();
                 cards.remove(cards.size() - 1);
                 cards.add((Card) game.getActionRequest().getPlayed().getCharacter());
-                Platform.runLater(() -> renderHand(cards, hand[1], false));
+                Platform.runLater(() ->{
+                    renderHand(cards, hand[1], false);
+                    game.getActionRequest().setPlayed(getInfoPack(game.getActionRequest().getPlayed().getCharacter().getId()));
+                });
             }
+            else game.getActionRequest().setPlayed(getInfoPack(game.getActionRequest().getPlayed().getCharacter().getId()));
         }
     }
 

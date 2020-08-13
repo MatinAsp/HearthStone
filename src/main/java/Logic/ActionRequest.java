@@ -5,6 +5,7 @@ import Exceptions.InvalidChoiceException;
 import Logic.ActionsType.*;
 import Models.Cards.Card;
 import Models.InfoPack;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,8 @@ public class ActionRequest {
     private boolean summoned;
     private boolean turnEnded;
     private InfoPack played;
+    private String playedJson;
+    private String playedType;
     private ArrayList<InfoPack> attackList;
     private transient Game game;
     private transient BotMove botMove;
@@ -32,6 +35,8 @@ public class ActionRequest {
         numberOfDraws = 0;
         summoned = false;
         played = null;
+        playedJson = null;
+        playedType = null;
         attackList = new ArrayList<>();
         useHeroPower = false;
         turnEnded = false;
@@ -64,7 +69,7 @@ public class ActionRequest {
     }
 
     public InfoPack readPlayed(){
-        return played;
+        return getPlayed();
     }
 
     public int readDrawNumber(){
@@ -85,8 +90,10 @@ public class ActionRequest {
         numberOfDraws = 0;
         played = null;
         summoned = false;
-        turnEnded =false;
+        turnEnded = false;
         useHeroPower = false;
+        playedType = null;
+        playedJson = null;
     }
 
     public boolean isUseHeroPower() {
@@ -122,11 +129,23 @@ public class ActionRequest {
     }
 
     public InfoPack getPlayed() {
+        if(played == null) return null;
+        Gson gson = new Gson();
+        Card card = null;
+        try {
+            card = (Card) gson.fromJson(playedJson, Class.forName(playedType));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        played.setCharacter(card);
         return played;
     }
 
     public void setPlayed(InfoPack played) {
         this.played = played;
+        playedType = played.getCharacter().getClass().getName();
+        Gson gson = new Gson();
+        playedJson = gson.toJson(played.getCharacter());
     }
 
     public ArrayList<InfoPack> getAttackList() {

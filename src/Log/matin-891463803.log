@@ -75,3 +75,82 @@ ERROR   2020-08-13 18:15:16,803 - Exceptions.InvalidChoiceException: Invalid Cho
 ERROR   2020-08-13 18:17:18,200 - Exceptions.InvalidChoiceException: Invalid Choice
 ERROR   2020-08-13 18:19:21,756 - Exceptions.InvalidChoiceException: Invalid Choice
 ERROR   2020-08-13 18:21:26,293 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 18:23:27,670 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 18:25:29,253 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 18:27:30,728 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 18:28:06,830 - end turn player 2
+INFO    2020-08-13 18:28:06,842 - draw card
+INFO    2020-08-13 18:28:06,870 - draw card
+INFO    2020-08-13 18:28:17,067 - drag_detected
+INFO    2020-08-13 18:28:17,660 - drag_ended
+INFO    2020-08-13 18:28:30,138 - drag_detected
+INFO    2020-08-13 18:28:30,851 - drag_ended
+ERROR   2020-08-13 18:28:30,921 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 18:28:33,154 - drag_detected
+INFO    2020-08-13 18:28:33,906 - drag_ended
+ERROR   2020-08-13 18:28:33,923 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-08-13 18:28:39,525 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 18:28:52,463 - end turn player 1
+INFO    2020-08-13 18:28:52,475 - draw card
+INFO    2020-08-13 18:29:56,803 - exit
+INFO    2020-08-13 18:55:55,753 - navigate_from_log_in_to_menu
+INFO    2020-08-13 18:56:16,088 - start_a_game
+INFO    2020-08-13 18:56:20,242 - draw card
+INFO    2020-08-13 18:56:28,545 - passive selected
+INFO    2020-08-13 18:56:33,704 - draw card
+INFO    2020-08-13 18:56:40,948 - play Voodoo Doctor
+INFO    2020-08-13 18:56:40,973 - card summoned
+INFO    2020-08-13 18:56:46,366 - end turn player 2
+INFO    2020-08-13 18:56:46,461 - draw card
+INFO    2020-08-13 18:56:51,996 - drag_detected
+INFO    2020-08-13 18:56:52,653 - drag_ended
+INFO    2020-08-13 18:56:52,852 - play Voodoo Doctor
+INFO    2020-08-13 18:56:52,860 - card summoned
+INFO    2020-08-13 18:56:56,807 - end turn player 1
+INFO    2020-08-13 18:56:56,816 - draw card
+INFO    2020-08-13 18:57:01,681 - Voodoo Doctor attacked Voodoo Doctor
+INFO    2020-08-13 18:57:10,240 - end turn player 2
+INFO    2020-08-13 18:57:10,252 - draw card
+INFO    2020-08-13 18:57:20,859 - back_to_menu
+INFO    2020-08-13 18:57:21,780 - exit
+INFO    2020-08-13 19:15:25,086 - navigate_from_log_in_to_menu
+INFO    2020-08-13 19:15:29,501 - start_a_game
+INFO    2020-08-13 19:15:51,148 - passive selected
+INFO    2020-08-13 19:16:01,658 - draw card
+INFO    2020-08-13 19:16:01,679 - draw card
+INFO    2020-08-13 19:16:18,824 - draw card
+INFO    2020-08-13 19:16:45,123 - end turn player 1
+INFO    2020-08-13 19:16:45,125 - draw card
+INFO    2020-08-13 19:16:52,154 - drag_detected
+INFO    2020-08-13 19:16:52,615 - drag_ended
+ERROR   2020-08-13 19:16:52,690 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 19:16:58,812 - play Wisp
+INFO    2020-08-13 19:16:58,846 - card summoned
+INFO    2020-08-13 19:17:03,691 - end turn player 2
+INFO    2020-08-13 19:17:03,695 - draw card
+INFO    2020-08-13 19:17:12,820 - drag_detected
+INFO    2020-08-13 19:17:13,278 - drag_ended
+INFO    2020-08-13 19:17:13,396 - play Bluegill Warrior
+INFO    2020-08-13 19:17:13,435 - card summoned
+INFO    2020-08-13 19:18:46,427 - end turn player 1
+INFO    2020-08-13 19:18:46,435 - draw card
+INFO    2020-08-13 19:19:06,225 - end turn player 2
+INFO    2020-08-13 19:19:06,229 - draw card
+INFO    2020-08-13 19:20:47,440 - end turn player 1
+INFO    2020-08-13 19:20:47,447 - draw card
+INFO    2020-08-13 19:21:07,138 - end turn player 2
+INFO    2020-08-13 19:21:07,149 - draw card
+INFO    2020-08-13 19:22:48,281 - end turn player 1
+INFO    2020-08-13 19:22:48,316 - draw card
+INFO    2020-08-13 19:23:07,833 - end turn player 2
+INFO    2020-08-13 19:23:07,834 - draw card
+INFO    2020-08-13 19:24:49,140 - end turn player 1
+INFO    2020-08-13 19:24:49,146 - draw card
+INFO    2020-08-13 19:25:09,326 - end turn player 2
+INFO    2020-08-13 19:25:09,346 - draw card
+INFO    2020-08-13 19:26:50,282 - end turn player 1
+INFO    2020-08-13 19:26:50,284 - draw card
+INFO    2020-08-13 19:27:10,589 - end turn player 2
+INFO    2020-08-13 19:27:10,591 - draw card
+INFO    2020-08-13 19:28:52,222 - end turn player 1
+INFO    2020-08-13 19:29:04,319 - exit

@@ -65,3 +65,72 @@ INFO    2020-08-13 18:09:14,814 - draw card
 INFO    2020-08-13 18:09:14,824 - draw card
 INFO    2020-08-13 18:11:15,577 - end turn player 2
 INFO    2020-08-13 18:11:15,581 - draw card
+INFO    2020-08-13 18:27:59,905 - passive selected
+INFO    2020-08-13 18:28:06,828 - end turn player 1
+INFO    2020-08-13 18:28:06,840 - draw card
+INFO    2020-08-13 18:28:06,857 - draw card
+INFO    2020-08-13 18:28:52,463 - end turn player 2
+INFO    2020-08-13 18:28:52,494 - draw card
+INFO    2020-08-13 18:30:00,729 - exit
+INFO    2020-08-13 18:56:09,635 - navigate_from_log_in_to_menu
+INFO    2020-08-13 18:56:13,948 - start_a_game
+INFO    2020-08-13 18:56:16,871 - passive selected
+INFO    2020-08-13 18:56:20,229 - draw card
+INFO    2020-08-13 18:56:33,704 - draw card
+INFO    2020-08-13 18:56:40,191 - drag_detected
+INFO    2020-08-13 18:56:40,784 - drag_ended
+INFO    2020-08-13 18:56:40,947 - play Voodoo Doctor
+INFO    2020-08-13 18:56:40,969 - card summoned
+INFO    2020-08-13 18:56:46,452 - end turn player 1
+INFO    2020-08-13 18:56:46,508 - draw card
+INFO    2020-08-13 18:56:52,857 - play Voodoo Doctor
+INFO    2020-08-13 18:56:52,872 - card summoned
+INFO    2020-08-13 18:56:56,808 - end turn player 2
+INFO    2020-08-13 18:56:56,895 - draw card
+ERROR   2020-08-13 18:57:01,035 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-13 18:57:01,654 - Voodoo Doctor attacked Voodoo Doctor
+INFO    2020-08-13 18:57:10,236 - end turn player 1
+INFO    2020-08-13 18:57:10,239 - draw card
+INFO    2020-08-13 18:57:23,835 - exit
+INFO    2020-08-13 19:15:00,665 - navigate_from_log_in_to_menu
+INFO    2020-08-13 19:15:31,438 - start_a_game
+INFO    2020-08-13 19:16:01,662 - draw card
+INFO    2020-08-13 19:16:01,682 - draw card
+INFO    2020-08-13 19:16:12,032 - passive selected
+INFO    2020-08-13 19:16:18,808 - draw card
+INFO    2020-08-13 19:16:32,948 - drag_detected
+INFO    2020-08-13 19:16:34,153 - drag_ended
+ERROR   2020-08-13 19:16:34,178 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 19:16:40,215 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 19:16:45,122 - end turn player 2
+INFO    2020-08-13 19:16:45,125 - draw card
+INFO    2020-08-13 19:16:57,228 - drag_detected
+INFO    2020-08-13 19:16:58,524 - drag_ended
+INFO    2020-08-13 19:16:58,578 - play Wisp
+INFO    2020-08-13 19:16:58,580 - card summoned
+INFO    2020-08-13 19:17:03,694 - end turn player 1
+INFO    2020-08-13 19:17:03,695 - draw card
+INFO    2020-08-13 19:17:13,430 - play Bluegill Warrior
+INFO    2020-08-13 19:17:13,511 - card summoned
+INFO    2020-08-13 19:18:46,431 - end turn player 2
+INFO    2020-08-13 19:18:46,438 - draw card
+INFO    2020-08-13 19:19:06,225 - end turn player 1
+INFO    2020-08-13 19:19:06,229 - draw card
+INFO    2020-08-13 19:20:47,441 - end turn player 2
+INFO    2020-08-13 19:20:47,456 - draw card
+INFO    2020-08-13 19:21:07,138 - end turn player 1
+INFO    2020-08-13 19:21:07,154 - draw card
+INFO    2020-08-13 19:22:48,280 - end turn player 2
+INFO    2020-08-13 19:22:48,319 - draw card
+INFO    2020-08-13 19:23:07,833 - end turn player 1
+INFO    2020-08-13 19:23:07,834 - draw card
+INFO    2020-08-13 19:24:49,133 - end turn player 2
+INFO    2020-08-13 19:24:49,146 - draw card
+INFO    2020-08-13 19:25:09,326 - end turn player 1
+INFO    2020-08-13 19:25:09,346 - draw card
+INFO    2020-08-13 19:26:50,282 - end turn player 2
+INFO    2020-08-13 19:26:50,286 - draw card
+INFO    2020-08-13 19:27:10,589 - end turn player 1
+INFO    2020-08-13 19:27:10,591 - draw card
+INFO    2020-08-13 19:28:52,227 - end turn player 2
+INFO    2020-08-13 19:29:06,709 - exit
