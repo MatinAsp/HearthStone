@@ -1,5 +1,6 @@
 package Network.Server;
 
+import Data.DataManager;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
@@ -159,13 +160,18 @@ public class Server extends Thread{
 
     public void performAction(ClientHandler clientHandler, ArrayList<InfoPack> infoPacks) throws GameOverException, SelectionNeededException, InvalidChoiceException {
         Game game = gameMap.get(clientHandler);
-        if(infoPacks.get(0).getCharacter() instanceof Passive && !game.usePassive(game.getCompetitorIndex(clientHandler.getPlayer().getUsername()))){
-            game.getActionRequest().getPerformAction().execute((InfoPack[]) infoPacks.toArray());
-            sendGameStateToClients(game);
-            return;
-        }
-        if(game.getInfoPack(infoPacks.get(0).getCharacter().getId()).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
-            throw new InvalidChoiceException();
+        try {
+            if(game.getInfoPack(infoPacks.get(0).getCharacter().getId()).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
+                throw new InvalidChoiceException();
+            }
+        } catch (NullPointerException e){
+            Passive passive = DataManager.getInstance().getObject(Passive.class, infoPacks.get(0).getCharacter().getName());
+            InfoPack[] passiveInfoPack = {new InfoPack(passive, infoPacks.get(0).getSide(), infoPacks.get(0).isOnGround())};
+            if(!game.usePassive(game.getCompetitorIndex(clientHandler.getPlayer().getUsername()))){
+                game.getActionRequest().getPerformAction().execute(passiveInfoPack);
+                sendGameStateToClients(game);
+                return;
+            }
         }
         ArrayList<InfoPack> infoPacks1 = new ArrayList<>();
         for(InfoPack infoPack: infoPacks){

@@ -788,12 +788,12 @@ public class Controller implements Initializable {
     public void updateGame(Game game) {
         battleGroundController.setGame(game);
         battleGroundController.makeGameOk();
-        battleGroundController.renderActions();
+        Platform.runLater(() -> battleGroundController.renderActions());
     }
 
     public void handleException(Exception exception) {
         if(exception instanceof InvalidChoiceException || exception instanceof SelectionNeededException){
-            battleGroundController.exceptionHandling(exception);
+            Platform.runLater(() -> battleGroundController.exceptionHandling(exception));
         }
         else Platform.runLater(() -> setAlert(exception.getMessage()));
     }

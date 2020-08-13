@@ -38,3 +38,12 @@ INFO    2020-08-13 17:13:32,961 - start_a_game
 INFO    2020-08-13 17:13:37,038 - passive selected
 INFO    2020-08-13 17:13:37,562 - set_alert
 INFO    2020-08-13 17:13:38,865 - alert_dismissed
+INFO    2020-08-13 17:26:16,893 - exit
+INFO    2020-08-13 17:27:21,333 - navigate_from_log_in_to_menu
+INFO    2020-08-13 17:27:42,994 - start_a_game
+INFO    2020-08-13 17:49:01,596 - navigate_from_log_in_to_menu
+INFO    2020-08-13 17:49:05,994 - start_a_game
+INFO    2020-08-13 17:49:12,942 - passive selected
+INFO    2020-08-13 17:49:21,996 - draw card
+INFO    2020-08-13 17:51:28,742 - end turn player 1
+INFO    2020-08-13 17:51:46,005 - end turn player 2

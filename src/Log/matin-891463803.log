@@ -34,3 +34,18 @@ INFO    2020-08-13 16:54:43,463 - alert_dismissed
 ERROR   2020-08-13 16:56:59,354 - Exceptions.InvalidChoiceException: Invalid Choice
 INFO    2020-08-13 17:13:25,888 - navigate_from_log_in_to_menu
 INFO    2020-08-13 17:13:36,023 - start_a_game
+INFO    2020-08-13 17:26:20,005 - passive selected
+INFO    2020-08-13 17:26:20,214 - set_alert
+INFO    2020-08-13 17:26:20,830 - alert_dismissed
+INFO    2020-08-13 17:26:22,094 - exit
+INFO    2020-08-13 17:27:34,094 - navigate_from_log_in_to_menu
+INFO    2020-08-13 17:27:39,036 - start_a_game
+INFO    2020-08-13 17:27:42,096 - passive selected
+INFO    2020-08-13 17:27:42,866 - set_alert
+INFO    2020-08-13 17:27:44,695 - alert_dismissed
+INFO    2020-08-13 17:48:58,358 - navigate_from_log_in_to_menu
+INFO    2020-08-13 17:49:08,349 - start_a_game
+INFO    2020-08-13 17:49:21,996 - draw card
+INFO    2020-08-13 17:49:36,993 - passive selected
+INFO    2020-08-13 17:51:28,762 - end turn player 2
+INFO    2020-08-13 17:51:46,011 - end turn player 1
