@@ -27,6 +27,7 @@ public class Game {
     private ActionRequest actionRequest;
     private boolean isWithBot = false;
     private HashMap<Integer, InfoPack> infoPacksPool = new HashMap<>();
+    private boolean isDraw[] = {false, false};
 
     public Game(Competitor competitor1, Competitor competitor2, boolean isWithBot){
         this.isWithBot = isWithBot;
@@ -242,14 +243,31 @@ public class Game {
         }
     }
 
-    public void selectCard(ArrayList<Card> cardsSelected) throws GameOverException {
+    public void selectCard(ArrayList<Card> cardsSelected, int competitorIndex) throws GameOverException, InvalidChoiceException {
+        if(isDraw[competitorIndex]) throw new InvalidChoiceException();
+        isDraw[competitorIndex] = true;
+        boolean changed = false;
+        if (turn != competitorIndex){
+            changed = true;
+            turn = (turn + 1) % 2;
+        }
         for(Card card: cardsSelected){
             actionRequest.getDrawCard().execute();
         }
         for(Card card: cardsSelected){
-            competitor[turn].removeCardFromHand(card);
-            competitor[turn].addCardInDeck(card);
+            Card card1 = (Card) getCharacter(card.getId());
+            competitor[turn].removeCardFromHand(card1);
+            competitor[turn].addCardInDeck(card1);
         }
+        if(changed){
+            turn = (turn + 1) % 2;
+        }
+    }
+
+    private Character getCharacter(int id) {
+        refreshPool();
+        if(!infoPacksPool.containsKey(id)) return null;
+        return infoPacksPool.get(id).getCharacter();
     }
 
     public Competitor getCompetitor(String username) {

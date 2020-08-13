@@ -7,6 +7,7 @@ import Logic.Competitor;
 import Logic.Game;
 import Logic.GameFactory;
 import Logic.PlayersManager;
+import Models.Cards.Card;
 import Models.InfoPack;
 import Models.Passive;
 import Models.Player;
@@ -16,6 +17,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.channels.CancelledKeyException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -192,5 +194,10 @@ public class Server extends Thread{
         }
         game.getActionRequest().getEndTurn().execute();
         sendGameStateToClients(game);
+    }
+
+    public void cardSelection(ClientHandler clientHandler, ArrayList<Card> cards) throws GameOverException {
+        Game game = gameMap.get(clientHandler);
+        if(gameKindMap.get(game).equals("online")) game.getActionRequest().selectCard(cards, game.getCompetitorIndex(clientHandler.getPlayer().getUsername()));
     }
 }

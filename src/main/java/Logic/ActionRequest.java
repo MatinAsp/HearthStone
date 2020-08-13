@@ -35,9 +35,9 @@ public class ActionRequest {
         game.initialize();
     }
 
-    public void selectCard(ArrayList<Card> cardsSelected) throws GameOverException {
+    public void selectCard(ArrayList<Card> cardsSelected, int competitorIndex) throws GameOverException {
         try {
-            game.selectCard(cardsSelected);
+            game.selectCard(cardsSelected, competitorIndex);
         } catch (GameOverException e) {
             game.engGame();
             throw e;

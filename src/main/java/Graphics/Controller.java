@@ -57,6 +57,8 @@ public class Controller implements Initializable {
     private PasswordField passwordField;
     @FXML
     private StackPane status;
+    @FXML
+    private StackPane waitPane;
 
     public Controller(){
     }

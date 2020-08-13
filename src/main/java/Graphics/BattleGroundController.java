@@ -130,9 +130,13 @@ public class BattleGroundController implements Initializable {
         heroWeapon[1] = heroWeapon2;
         arena.setImage(AssetManager.getInstance().getImage(GameSettings.getInstance().getBattleGroundArena()));
     }
-
+    @FXML
+    private StackPane waitPane;
     public void setGame(Game game){
         this.game = game;
+        if(game.isWithBot() && game.getTurn() != 0){
+            waitPane.setVisible(true);
+        }
     }
 
     public synchronized void gameRender() {
@@ -513,18 +517,11 @@ public class BattleGroundController implements Initializable {
 
     @FXML
     public void cardSelecting(){
-        try {
-            ActionRequest.selectCard(cardsSelected);
-        } catch (GameOverException e) {
-            e.printStackTrace();
-        }
-        renderActions();
+        client.sendCardSelection(cardsSelected);
         if(selectionSide == 0 && !game.isWithBot()){
-            game.setTurn(1);
             renderCardSelection(1);
         }
         else {
-            game.setTurn(0);
             passiveSelectionPane.setVisible(false);
             passiveSelectionPane.toBack();
             thread = new Timer();
@@ -626,6 +623,7 @@ public class BattleGroundController implements Initializable {
     private ArrayList<Transition> transitions = new ArrayList<>();
     private ArrayList<ActionHandler> afterAction = new ArrayList<>(), beforeAction = new ArrayList<>();
     synchronized void renderActions() {
+        waitPane.setVisible(false);
         clearSelections();
         transitions.clear();
         afterAction.clear();

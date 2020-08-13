@@ -3,6 +3,7 @@ package Network.Client;
 import Graphics.Controller;
 import Log.LogCenter;
 import Logic.Game;
+import Models.Cards.Card;
 import Models.InfoPack;
 import Models.Player;
 import com.google.gson.Gson;
@@ -189,5 +190,9 @@ public class Client extends Thread{
 
     public void sendEndTurn() {
         send(new String[]{"endTurn"});
+    }
+
+    public void sendCardSelection(ArrayList<Card> cardsSelected) {
+        send(new String[]{"cardSelection", gson.toJson(cardsSelected)});
     }
 }

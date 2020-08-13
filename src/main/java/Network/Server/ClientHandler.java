@@ -161,6 +161,10 @@ public class ClientHandler extends Thread{
         System.out.println("send: "+gson.toJson(massagesList));
     }
 
+    private void cardSelection(String cardsJson){
+        server.cardSelection(gson.fromJson(cardsJson,new TypeToken<ArrayList<Card>>(){}.getType()));
+    }
+
     public Player getPlayer() {
         return player;
     }
