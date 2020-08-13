@@ -447,6 +447,7 @@ public class BattleGroundController implements Initializable {
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         root.setVisible(false);
         ((Pane) root.getParent()).getChildren().remove(root);
+        client.sendCancelGame();
     }
 
     @FXML

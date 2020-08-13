@@ -91,27 +91,6 @@ public class Server extends Thread{
         }
     }
 
-    public synchronized void moveInGame(ClientHandler clientHandler, int move) {
-//        Game game = gameMap.get(clientHandler);
-//        ClientHandler enemyClientHandler = null;
-//        for(ClientHandler clientHandler1: gameMap.keySet()){
-//            if(game == gameMap.get(clientHandler1) && clientHandler1 != clientHandler){
-//                enemyClientHandler = clientHandler1;
-//                break;
-//            }
-//        }
-//        try {
-//            game.move(game.getClientHandlerIndex(clientHandler), move);
-//        } catch (InvalidMoveException ignore) {}
-//        catch (GameOverException e) {
-//            recordWinning(clientHandler.getUsername());
-//            gameMap.remove(clientHandler);
-//            gameMap.remove(enemyClientHandler);
-//        }
-//        clientHandler.send(new String[]{"state", "" + game.getClientHandlerIndex(clientHandler) + game.getGameState()});
-//        enemyClientHandler.send(new String[]{"state", "" + game.getClientHandlerIndex(enemyClientHandler) + game.getGameState()});
-    }
-
     private void checkForDeck(ClientHandler clientHandler) throws Exception {
         if(clientHandler.getPlayer().getCurrentDeckName() == null){
             throw new Exception("Please Select Your Deck To Start.");
@@ -154,6 +133,9 @@ public class Server extends Thread{
     }
 
     public void exitClient(ClientHandler clientHandler) {
+        try {
+            endGame(clientHandler, false);
+        } catch (Exception e){}
         clientHandlers.remove(clientHandler);
         clientHandler.send(new String[]{"exit"});
     }
@@ -228,18 +210,33 @@ public class Server extends Thread{
         sendGameStateToClients(game);
     }
 
-    public Game getGameForClient(ClientHandler clientHandler) {
+
+
+    public void endGame(ClientHandler clientHandler, boolean sendForOwn){
         Game game = gameMap.get(clientHandler);
-        if(gameMap.get(clientHandler) == game){
-            if(!gameKindMap.get(game).equals("offline")){
-              //  game = GameFactory.getInstance().makeJsonSafe(game);
-                return GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game);
+        int index = game.getCompetitorIndex(clientHandler.getPlayer().getUsername());
+        game.endGame((index+1)%2);
+        if(gameMap.get(clientHandler).equals("online")){
+            ClientHandler clientHandler2 = null;
+            for(ClientHandler clientHandler1:gameMap.keySet()){
+                if(gameMap.get(clientHandler1) == game){
+                    clientHandler2 = clientHandler1;
+                    break;
+                }
+            }
+            if(game.getWinner() == index){
+                clientHandler.getPlayer().setCup(clientHandler.getPlayer().getCup() + 1);
+                clientHandler2.getPlayer().setCup(Math.max(clientHandler2.getPlayer().getCup() - 1, 0));
             }
             else {
-             //   game = GameFactory.getInstance().makeJsonSafe(game);
-                return game;
+                clientHandler2.getPlayer().setCup(clientHandler2.getPlayer().getCup() + 1);
+                clientHandler.getPlayer().setCup(Math.max(clientHandler.getPlayer().getCup() - 1, 0));
             }
+            clientHandler2.endGame(game);
+            gameMap.remove(clientHandler2);
         }
-        return null;
+        if(sendForOwn) clientHandler.endGame(game);
+        gameKindMap.remove(game);
+        gameMap.remove(clientHandler);
     }
 }

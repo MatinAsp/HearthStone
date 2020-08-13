@@ -27,7 +27,6 @@ public class PerformAction extends Action{
             getActionRequest().getGame().checkAll();
         }catch (GameOverException e){
             record(parameters);
-            getActionRequest().getGame().engGame();
             throw e;
         }
     }

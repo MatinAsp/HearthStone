@@ -43,6 +43,8 @@ public class Client extends Thread{
         }
         receiver.start();
         while (receiver.isAlive()){
+            if(socket.isConnected()) Platform.runLater(() -> controller.setWait(true));
+            else Platform.runLater(() -> controller.setWait(false));
             try {
                 Thread.sleep(50);
             } catch (InterruptedException e) {
@@ -199,5 +201,9 @@ public class Client extends Thread{
     private void gameOver(String gameJson){
         updateGame(gameJson);
         controller.endGame();
+    }
+
+    public void sendCancelGame() {
+        send(new String[]{"cancelGame"});
     }
 }

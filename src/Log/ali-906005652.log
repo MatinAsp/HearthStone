@@ -150,3 +150,45 @@ INFO    2020-08-13 19:31:37,243 - end turn player 1
 INFO    2020-08-13 19:31:37,249 - draw card
 INFO    2020-08-13 19:31:48,004 - play Blizzard
 INFO    2020-08-13 19:32:03,496 - exit
+INFO    2020-08-13 20:42:57,064 - navigate_from_log_in_to_menu
+INFO    2020-08-13 20:43:14,750 - start_a_game
+INFO    2020-08-13 20:43:55,353 - draw card
+INFO    2020-08-13 20:44:01,226 - passive selected
+INFO    2020-08-13 20:44:13,181 - draw card
+INFO    2020-08-13 20:44:30,610 - drag_detected
+INFO    2020-08-13 20:44:41,314 - drag_ended
+ERROR   2020-08-13 20:44:41,370 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 20:44:55,094 - hero power used
+INFO    2020-08-13 20:45:06,759 - end turn player 2
+INFO    2020-08-13 20:45:06,761 - draw card
+INFO    2020-08-13 20:45:11,131 - drag_detected
+INFO    2020-08-13 20:45:11,667 - drag_ended
+INFO    2020-08-13 20:45:11,731 - play Wisp
+INFO    2020-08-13 20:45:11,737 - card summoned
+INFO    2020-08-13 20:45:20,319 - end turn player 1
+INFO    2020-08-13 20:45:20,325 - draw card
+INFO    2020-08-13 20:45:33,094 - play Voodoo Doctor
+INFO    2020-08-13 20:45:33,149 - card summoned
+INFO    2020-08-13 20:45:35,799 - end turn player 2
+INFO    2020-08-13 20:45:35,809 - draw card
+INFO    2020-08-13 20:45:39,155 - end turn player 1
+INFO    2020-08-13 20:45:39,189 - draw card
+INFO    2020-08-13 20:45:52,065 - play Assassin's Blade
+INFO    2020-08-13 20:45:52,068 - card summoned
+INFO    2020-08-13 20:45:57,874 - end turn player 2
+INFO    2020-08-13 20:45:57,900 - draw card
+INFO    2020-08-13 20:46:03,219 - drag_detected
+INFO    2020-08-13 20:46:04,578 - drag_ended
+INFO    2020-08-13 20:46:04,674 - play Bluegill Warrior
+INFO    2020-08-13 20:46:04,726 - card summoned
+INFO    2020-08-13 20:46:31,613 - drag_detected
+INFO    2020-08-13 20:46:32,555 - drag_ended
+INFO    2020-08-13 20:46:32,794 - play Voodoo Doctor
+INFO    2020-08-13 20:46:33,016 - card summoned
+INFO    2020-08-13 20:46:40,500 - end turn player 1
+INFO    2020-08-13 20:46:40,522 - draw card
+INFO    2020-08-13 20:46:46,628 - play Bluegill Warrior
+INFO    2020-08-13 20:46:46,654 - card summoned
+INFO    2020-08-13 20:46:53,406 - play Arena Patron
+INFO    2020-08-13 20:46:53,418 - card summoned
+INFO    2020-08-13 20:47:08,760 - exit

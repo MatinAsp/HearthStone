@@ -587,6 +587,11 @@
                            <Font size="64.0" />
                         </font>
                      </Label>
+                     <Pane prefHeight="200.0" prefWidth="200.0">
+                        <children>
+                           <Button layoutX="1120.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exit" styleClass="exitButton" />
+                        </children>
+                     </Pane>
                   </children>
                </StackPane>
                <StackPane fx:id="alertBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" visible="false">

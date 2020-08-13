@@ -180,6 +180,12 @@
                   <Font size="64.0" />
                </font>
             </Label>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="1189.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exit" styleClass="exitButton" />
+                  <Button layoutX="9.0" layoutY="17.0" mnemonicParsing="false" onAction="#backToMenu" styleClass="leftBackButton" />
+               </children>
+            </Pane>
          </children>
       </StackPane>
    </children>

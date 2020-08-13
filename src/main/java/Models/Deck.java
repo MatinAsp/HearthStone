@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Deck implements Comparable {
     private String name;
-    private int id = new SecureRandom().nextInt();
+    private int id = new SecureRandom().nextInt(), cup = 0;
     private ArrayList<Card> cards;
     private Hero hero;
     private int playsNumber, winsNumber;
@@ -189,4 +189,11 @@ public class Deck implements Comparable {
         return id;
     }
 
+    public int getCup() {
+        return cup;
+    }
+
+    public void setCup(int cup) {
+        this.cup = cup;
+    }
 }

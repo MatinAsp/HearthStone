@@ -4,6 +4,7 @@ import Data.DataManager;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
+import Logic.Game;
 import Logic.PlayersManager;
 import Models.Cards.Card;
 import Models.Deck;
@@ -115,7 +116,7 @@ public class ClientHandler extends Thread{
 
     public void sendException(Exception exception){
         if(exception instanceof GameOverException){
-            send(new String[]{"gameOver", gson.toJson(server.getGameForClient(this))});
+            server.endGame(this, true);
         }
         send(new String[]{"error", exception.getClass().getName(), gson.toJson(exception)});
         exception.printStackTrace();
@@ -172,5 +173,13 @@ public class ClientHandler extends Thread{
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void endGame(Game game) {
+        send(new String[]{"gameOver", gson.toJson(game)});
+    }
+
+    private void cancelGame(){
+        server.endGame(this, false);
     }
 }

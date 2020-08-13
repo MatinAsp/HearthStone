@@ -20,7 +20,6 @@ public class EndTurn extends Action{
             getActionRequest().setTurnEnded(true);
         }catch (GameOverException e){
             getActionRequest().setTurnEnded(true);
-            getActionRequest().getGame().engGame();
             throw e;
         }
     }

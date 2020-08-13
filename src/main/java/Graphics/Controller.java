@@ -751,6 +751,7 @@ public class Controller implements Initializable {
             navigateFromMenuToCollections();
             return;
         }
+        waitPane.setVisible(true);
         client.sendOnlinePlayRequest();
     }
 
@@ -762,6 +763,7 @@ public class Controller implements Initializable {
 
     private BattleGroundController battleGroundController = null;
     public void starGame(Game game){
+        waitPane.setVisible(false);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleGround.fxml"));
         StackPane gameBoard = null;
         try {
@@ -848,5 +850,9 @@ public class Controller implements Initializable {
     public void endGame() {
         battleGroundController.endGame();
         battleGroundController = null;
+    }
+
+    public void setWait(boolean isWait) {
+        waitPane.setVisible(isWait);
     }
 }

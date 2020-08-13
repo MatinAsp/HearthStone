@@ -13,6 +13,7 @@ import Models.Cards.HeroPower;
 import Models.Cards.Minion;
 import Models.Cards.Spell;
 import Models.Character;
+import Models.Deck;
 import Models.InfoPack;
 import Models.Passive;
 
@@ -92,14 +93,25 @@ public class Game {
         return competitor[index%2];
     }
 
-    public void engGame(){
+    private void setGameOverRecords(int winnerIndex){
+        winner = winnerIndex;
+        Deck deck1 = competitor[winnerIndex].getDeck(), deck2 = competitor[(winnerIndex + 1) % 2].getDeck();
+        deck1.setWinsNumber(deck1.getWinsNumber() + 1);
+        deck1.setCup(deck1.getCup() + 1);
+        deck2.setCup(Math.max(deck2.getCup() - 1, 0));
+    }
+
+    public void endGame(int winnerIndex){
         if(competitor[(turn+1)%2].getHero().getHp() <= 0){
-            winner = turn;
-            competitor[turn].getDeck().setWinsNumber(competitor[turn].getDeck().getWinsNumber() + 1);
+            setGameOverRecords(turn);
         }
         else {
-            winner = (turn+1)%2;
-            competitor[(turn+1)%2].getDeck().setWinsNumber(competitor[(turn+1)%2].getDeck().getWinsNumber() + 1);
+            if (competitor[turn].getHero().getHp() <= 0){
+                setGameOverRecords((turn+1)%2);
+            }
+            else {
+                setGameOverRecords(winnerIndex);
+            }
         }
         competitor[0].getDeck().setPlaysNumber(competitor[0].getDeck().getPlaysNumber() + 1);
         competitor[1].getDeck().setPlaysNumber(competitor[1].getDeck().getPlaysNumber() + 1);
