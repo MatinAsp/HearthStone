@@ -485,3 +485,11 @@ INFO    2020-08-14 02:30:03,738 - game over
 INFO    2020-08-14 02:30:03,787 - Voodoo Doctor attacked Mage
 INFO    2020-08-14 02:30:08,889 - back_to_menu
 INFO    2020-08-14 02:36:08,511 - exit
+INFO    2020-08-14 02:52:14,768 - navigate_from_log_in_to_menu
+INFO    2020-08-14 02:52:32,883 - start_a_game
+INFO    2020-08-14 02:52:38,616 - draw card
+INFO    2020-08-14 02:52:47,114 - passive selected
+INFO    2020-08-14 02:52:51,347 - draw card
+INFO    2020-08-14 02:53:09,359 - game over
+INFO    2020-08-14 02:53:11,018 - back_to_menu
+INFO    2020-08-14 02:53:12,271 - exit

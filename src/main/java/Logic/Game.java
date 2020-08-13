@@ -331,6 +331,7 @@ public class Game {
         Competitor tmp = competitor[0];
         competitor[0] = competitor[1];
         competitor[1] = tmp;
+        actionRequest.setDrawTurn((actionRequest.getDrawTurn() + 1) % 2);
         if(actionRequest.getPlayed() != null){
             InfoPack infoPack = actionRequest.getPlayed();
             infoPack.setSide((actionRequest.getPlayed().getSide() + 1) % 2);
