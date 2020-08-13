@@ -29,6 +29,7 @@ public class Game {
     private boolean isWithBot = false;
     private transient HashMap<Integer, InfoPack> infoPacksPool = new HashMap<>();
     private transient boolean isDraw[] = {false, false};
+    private transient boolean isUsePassive[] = {false, false};
 
     public Game(Competitor competitor1, Competitor competitor2, boolean isWithBot){
         this.isWithBot = isWithBot;
@@ -326,6 +327,9 @@ public class Game {
         this.isWithBot = isWithBot;
     }
 
-    public boolean usePassive() {
+    public boolean usePassive(int index) {
+        if(isUsePassive[index]) return true;
+        isUsePassive[index] = true;
+        return false;
     }
 }

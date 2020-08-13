@@ -159,7 +159,7 @@ public class Server extends Thread{
 
     public void performAction(ClientHandler clientHandler, ArrayList<InfoPack> infoPacks) throws GameOverException, SelectionNeededException, InvalidChoiceException {
         Game game = gameMap.get(clientHandler);
-        if(infoPacks.get(0).getCharacter() instanceof Passive && !game.usePassive()){
+        if(infoPacks.get(0).getCharacter() instanceof Passive && !game.usePassive(game.getCompetitorIndex(clientHandler.getPlayer().getUsername()))){
             game.getActionRequest().getPerformAction().execute((InfoPack[]) infoPacks.toArray());
         }
         if(game.getInfoPack(infoPacks.get(0).getCharacter().getId()).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
