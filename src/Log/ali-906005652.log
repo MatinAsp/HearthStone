@@ -505,3 +505,118 @@ INFO    2020-08-14 02:56:42,641 - draw card
 INFO    2020-08-14 02:56:47,534 - play Wisp
 INFO    2020-08-14 02:56:47,669 - card summoned
 INFO    2020-08-14 02:57:26,803 - exit
+INFO    2020-08-14 03:57:32,791 - navigate_from_log_in_to_menu
+INFO    2020-08-14 03:58:33,543 - exit
+INFO    2020-08-14 03:58:59,168 - navigate_from_log_in_to_menu
+INFO    2020-08-14 03:59:22,883 - start_a_game
+INFO    2020-08-14 03:59:31,823 - passive selected
+INFO    2020-08-14 04:00:00,116 - end turn player 2
+INFO    2020-08-14 04:00:00,270 - draw card
+INFO    2020-08-14 04:00:11,798 - end turn player 1
+INFO    2020-08-14 04:00:11,815 - draw card
+INFO    2020-08-14 04:00:11,820 - draw card
+ERROR   2020-08-14 04:00:20,526 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:00:29,335 - end turn player 2
+INFO    2020-08-14 04:00:29,447 - draw card
+INFO    2020-08-14 04:00:38,449 - end turn player 1
+INFO    2020-08-14 04:00:38,514 - draw card
+INFO    2020-08-14 04:00:38,522 - draw card
+INFO    2020-08-14 04:01:02,297 - back_to_menu
+INFO    2020-08-14 04:01:15,515 - exit
+INFO    2020-08-14 04:08:44,636 - navigate_from_log_in_to_menu
+INFO    2020-08-14 04:08:49,257 - start_a_game
+INFO    2020-08-14 04:08:58,658 - passive selected
+INFO    2020-08-14 04:09:03,191 - passive selected
+ERROR   2020-08-14 04:09:03,385 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:09:14,834 - draw card
+INFO    2020-08-14 04:09:21,823 - draw card
+INFO    2020-08-14 04:09:26,295 - drag_detected
+INFO    2020-08-14 04:09:26,715 - drag_ended
+ERROR   2020-08-14 04:09:26,748 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:09:27,724 - drag_detected
+INFO    2020-08-14 04:09:30,220 - drag_ended
+ERROR   2020-08-14 04:09:30,295 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:09:31,130 - drag_detected
+INFO    2020-08-14 04:09:35,783 - drag_ended
+ERROR   2020-08-14 04:09:35,814 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:09:36,671 - drag_detected
+INFO    2020-08-14 04:09:51,062 - drag_ended
+ERROR   2020-08-14 04:09:51,076 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:09:52,198 - drag_detected
+INFO    2020-08-14 04:09:58,087 - drag_ended
+INFO    2020-08-14 04:10:01,129 - drag_detected
+INFO    2020-08-14 04:10:02,007 - drag_ended
+INFO    2020-08-14 04:10:02,063 - play Bluegill Warrior
+INFO    2020-08-14 04:10:02,064 - card summoned
+INFO    2020-08-14 04:10:05,463 - end turn player 1
+INFO    2020-08-14 04:10:05,465 - draw card
+INFO    2020-08-14 04:10:09,576 - drag_detected
+INFO    2020-08-14 04:10:10,431 - drag_ended
+ERROR   2020-08-14 04:10:10,445 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:10:14,372 - drag_detected
+INFO    2020-08-14 04:10:15,423 - drag_ended
+ERROR   2020-08-14 04:10:15,464 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:10:38,073 - drag_detected
+INFO    2020-08-14 04:10:41,110 - drag_ended
+ERROR   2020-08-14 04:10:41,116 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:10:42,425 - drag_detected
+INFO    2020-08-14 04:10:43,007 - drag_ended
+ERROR   2020-08-14 04:10:43,017 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-14 04:10:44,623 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-14 04:10:52,643 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-14 04:10:54,501 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-14 04:10:54,748 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-14 04:10:54,908 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-14 04:10:55,128 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:12:32,703 - back_to_menu
+INFO    2020-08-14 04:20:24,808 - exit
+INFO    2020-08-14 04:21:12,510 - navigate_from_log_in_to_menu
+INFO    2020-08-14 04:21:18,426 - start_a_game
+INFO    2020-08-14 04:21:25,649 - passive selected
+ERROR   2020-08-14 04:21:25,792 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:22:39,711 - passive selected
+ERROR   2020-08-14 04:22:39,929 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 04:23:40,149 - draw card
+INFO    2020-08-14 04:23:45,800 - drag_detected
+INFO    2020-08-14 04:23:45,849 - drag_ended
+INFO    2020-08-14 04:23:45,930 - drag_detected
+INFO    2020-08-14 04:23:46,576 - drag_ended
+INFO    2020-08-14 04:23:46,657 - play Voodoo Doctor
+INFO    2020-08-14 04:23:46,664 - card summoned
+INFO    2020-08-14 04:23:48,421 - end turn player 1
+INFO    2020-08-14 04:23:48,423 - draw card
+INFO    2020-08-14 04:23:53,017 - drag_detected
+INFO    2020-08-14 04:23:53,672 - drag_ended
+INFO    2020-08-14 04:23:53,729 - play Voodoo Doctor
+INFO    2020-08-14 04:23:53,731 - card summoned
+INFO    2020-08-14 04:23:59,571 - end turn player 2
+INFO    2020-08-14 04:23:59,573 - draw card
+INFO    2020-08-14 04:24:08,201 - end turn player 1
+INFO    2020-08-14 04:24:08,204 - draw card
+ERROR   2020-08-14 04:24:11,096 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-14 04:24:11,651 - Voodoo Doctor attacked Voodoo Doctor
+INFO    2020-08-14 04:24:15,242 - drag_detected
+INFO    2020-08-14 04:24:15,688 - drag_ended
+INFO    2020-08-14 04:24:15,740 - play Bluegill Warrior
+INFO    2020-08-14 04:24:15,743 - card summoned
+INFO    2020-08-14 04:24:20,128 - end turn player 2
+INFO    2020-08-14 04:24:20,131 - draw card
+ERROR   2020-08-14 04:24:23,006 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-14 04:24:23,691 - hero power used
+INFO    2020-08-14 04:24:29,360 - end turn player 1
+INFO    2020-08-14 04:24:29,389 - draw card
+INFO    2020-08-14 04:24:34,848 - back_to_menu
+INFO    2020-08-14 04:26:20,635 - exit
+INFO    2020-08-14 04:27:03,211 - navigate_from_log_in_to_menu
+INFO    2020-08-14 04:27:07,244 - start_a_game
+INFO    2020-08-14 04:27:09,608 - passive selected
+INFO    2020-08-14 04:27:12,512 - passive selected
+INFO    2020-08-14 04:27:17,191 - draw card
+INFO    2020-08-14 04:27:26,193 - drag_detected
+INFO    2020-08-14 04:27:27,227 - drag_ended
+INFO    2020-08-14 04:27:27,288 - play Wisp
+INFO    2020-08-14 04:27:27,290 - card summoned
+INFO    2020-08-14 04:27:29,506 - end turn player 1
+INFO    2020-08-14 04:27:29,512 - draw card
+INFO    2020-08-14 04:27:34,120 - back_to_menu
+INFO    2020-08-14 04:27:35,357 - exit

@@ -592,3 +592,37 @@ INFO    2020-08-14 02:56:46,851 - drag_ended
 INFO    2020-08-14 02:56:46,963 - play Wisp
 INFO    2020-08-14 02:56:47,058 - card summoned
 INFO    2020-08-14 02:57:32,098 - exit
+INFO    2020-08-14 03:57:45,867 - navigate_from_log_in_to_menu
+INFO    2020-08-14 03:57:51,736 - start_a_game
+INFO    2020-08-14 03:58:16,022 - passive selected
+INFO    2020-08-14 03:58:19,238 - end turn player 1
+INFO    2020-08-14 03:58:19,240 - draw card
+ERROR   2020-08-14 03:58:22,468 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-14 03:58:24,099 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-14 03:58:24,309 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 03:58:25,758 - back_to_menu
+INFO    2020-08-14 03:58:25,838 - set_alert
+INFO    2020-08-14 03:58:26,919 - alert_dismissed
+INFO    2020-08-14 03:58:40,615 - exit
+INFO    2020-08-14 03:59:15,328 - navigate_from_log_in_to_menu
+INFO    2020-08-14 03:59:21,138 - start_a_game
+INFO    2020-08-14 03:59:54,598 - passive selected
+INFO    2020-08-14 04:00:00,112 - end turn player 1
+INFO    2020-08-14 04:00:00,120 - draw card
+INFO    2020-08-14 04:00:11,794 - end turn player 2
+INFO    2020-08-14 04:00:11,815 - draw card
+INFO    2020-08-14 04:00:11,823 - draw card
+INFO    2020-08-14 04:00:29,333 - end turn player 1
+INFO    2020-08-14 04:00:29,345 - draw card
+INFO    2020-08-14 04:00:38,449 - end turn player 2
+INFO    2020-08-14 04:00:38,516 - draw card
+INFO    2020-08-14 04:00:38,550 - draw card
+INFO    2020-08-14 04:01:02,968 - game over
+INFO    2020-08-14 04:01:04,439 - back_to_menu
+INFO    2020-08-14 04:01:21,065 - start_a_game
+INFO    2020-08-14 04:01:31,366 - passive selected
+INFO    2020-08-14 04:01:33,473 - draw card
+INFO    2020-08-14 04:02:12,742 - back_to_menu
+INFO    2020-08-14 04:02:12,777 - set_alert
+INFO    2020-08-14 04:02:13,680 - alert_dismissed
+INFO    2020-08-14 04:02:14,431 - exit

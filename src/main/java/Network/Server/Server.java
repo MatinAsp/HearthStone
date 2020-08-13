@@ -142,10 +142,13 @@ public class Server extends Thread{
                 deck2,
                 isWithBot
         );
-        gameKindMap.put(game, "online");
+        gameKindMap.put(game, kind);
         gameMap.put(clientHandler1, game);
-        clientHandler1.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
-        if(sendForBoth){
+        if(!sendForBoth){
+            clientHandler1.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(game)});
+        }
+        else {
+            clientHandler2.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
             gameMap.put(clientHandler2, game);
             clientHandler2.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game))});
         }
@@ -167,16 +170,25 @@ public class Server extends Thread{
     public void performAction(ClientHandler clientHandler, ArrayList<InfoPack> infoPacks) throws GameOverException, SelectionNeededException, InvalidChoiceException {
         Game game = gameMap.get(clientHandler);
         try {
-            if(game.getInfoPack(infoPacks.get(0).getCharacter().getId()).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
+            if(game.getInfoPack(infoPacks.get(0).getCharacter().getId()).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername()) && gameKindMap.get(game).equals("online")){
                 throw new InvalidChoiceException();
             }
         } catch (NullPointerException e){
             Passive passive = DataManager.getInstance().getObject(Passive.class, infoPacks.get(0).getCharacter().getName());
             InfoPack[] passiveInfoPack = {new InfoPack(passive, infoPacks.get(0).getSide(), infoPacks.get(0).isOnGround())};
-            if(!game.usePassive(game.getCompetitorIndex(clientHandler.getPlayer().getUsername()))){
-                game.getActionRequest().getPerformAction().execute(passiveInfoPack);
-                sendGameStateToClients(game);
-                return;
+            if(gameKindMap.get(game).equals("online")){
+                if(!game.usePassive(game.getCompetitorIndex(clientHandler.getPlayer().getUsername()))){
+                    game.getActionRequest().getPerformAction().execute(passiveInfoPack);
+                    sendGameStateToClients(game);
+                    return;
+                }
+            }
+            else {
+                if(!game.usePassive(infoPacks.get(0).getSide())){
+                    game.getActionRequest().getPerformAction().execute(passiveInfoPack);
+                    sendGameStateToClients(game);
+                    return;
+                }
             }
         }
         ArrayList<InfoPack> infoPacks1 = new ArrayList<>();
@@ -208,6 +220,7 @@ public class Server extends Thread{
                 else {
                     try {
                         clientHandler.send(new String[]{"updateGame", JacksonMapper.getNetworkMapper().writeValueAsString(game)});
+                        break;
                     } catch (JsonProcessingException e) {
                         e.printStackTrace();
                     }
@@ -219,7 +232,7 @@ public class Server extends Thread{
 
     public void endTurn(ClientHandler clientHandler) throws InvalidChoiceException, GameOverException {
         Game game = gameMap.get(clientHandler);
-        if(game.getTurn() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
+        if(gameKindMap.get(game).equals("online") && game.getTurn() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
             throw new InvalidChoiceException();
         }
         game.getActionRequest().getEndTurn().execute();
