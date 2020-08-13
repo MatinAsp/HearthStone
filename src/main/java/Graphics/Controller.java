@@ -755,7 +755,7 @@ public class Controller implements Initializable {
             this.battleGroundController= battleGroundController;
             battleGroundController.setClient(client);
             battleGroundController.setGame(game);
-            updateGame(game);
+            battleGroundController.gameRender();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -831,8 +831,10 @@ public class Controller implements Initializable {
     }
 
     public void endGame() {
-        Platform.runLater(() -> battleGroundController.endGame());
-        battleGroundController = null;
+        Platform.runLater(() ->{
+            battleGroundController.endGame();
+            battleGroundController = null;
+        });
     }
 
     public void setConnectionWait(boolean isWait) {

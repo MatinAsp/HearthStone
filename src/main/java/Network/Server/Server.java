@@ -216,10 +216,10 @@ public class Server extends Thread{
         Game game = gameMap.get(clientHandler);
         int index = game.getCompetitorIndex(clientHandler.getPlayer().getUsername());
         game.endGame((index+1)%2);
-        if(gameMap.get(clientHandler).equals("online")){
+        if(gameKindMap.get(game).equals("online")){
             ClientHandler clientHandler2 = null;
             for(ClientHandler clientHandler1:gameMap.keySet()){
-                if(gameMap.get(clientHandler1) == game){
+                if(gameMap.get(clientHandler1) == game && clientHandler1 != clientHandler){
                     clientHandler2 = clientHandler1;
                     break;
                 }
