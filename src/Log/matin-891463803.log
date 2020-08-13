@@ -409,3 +409,7 @@ INFO    2020-08-13 23:25:09,383 - back_to_menu
 INFO    2020-08-13 23:25:09,421 - set_alert
 INFO    2020-08-13 23:25:10,253 - alert_dismissed
 INFO    2020-08-13 23:25:18,389 - exit
+INFO    2020-08-14 00:18:23,825 - navigate_from_log_in_to_menu
+INFO    2020-08-14 00:18:26,841 - set_alert
+INFO    2020-08-14 00:24:52,133 - alert_dismissed
+INFO    2020-08-14 00:24:53,334 - exit

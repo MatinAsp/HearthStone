@@ -305,3 +305,5 @@ INFO    2020-08-13 23:21:37,516 - draw card
 ERROR   2020-08-13 23:23:40,471 - Exceptions.InvalidChoiceException: Invalid Choice
 INFO    2020-08-13 23:25:14,725 - back_to_menu
 INFO    2020-08-13 23:25:16,385 - exit
+INFO    2020-08-14 00:18:11,433 - navigate_from_log_in_to_menu
+INFO    2020-08-14 00:24:56,018 - exit

@@ -16,21 +16,23 @@ import Models.Character;
 import Models.Deck;
 import Models.InfoPack;
 import Models.Passive;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+@JsonIgnoreProperties(value = {"actions", "infoPacksPool", "isDraw", "isUsePassive"})
 public class Game {
     private Competitor[] competitor = new Competitor[2];
     private int turn, winner = 0;
-    private transient Actions actions;
+    private Actions actions;
     private ActionRequest actionRequest;
     private boolean isWithBot = false;
-    private transient HashMap<Integer, InfoPack> infoPacksPool = new HashMap<>();
-    private transient boolean isDraw[] = {false, false};
-    private transient boolean isUsePassive[] = {false, false};
+    private HashMap<Integer, InfoPack> infoPacksPool = new HashMap<>();
+    private boolean isDraw[] = {false, false};
+    private boolean isUsePassive[] = {false, false};
 
     public Game(Competitor competitor1, Competitor competitor2, boolean isWithBot){
         this.isWithBot = isWithBot;

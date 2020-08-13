@@ -5,10 +5,12 @@ import Exceptions.InvalidChoiceException;
 import Logic.ActionsType.*;
 import Models.Cards.Card;
 import Models.InfoPack;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
+@JsonIgnoreProperties(value = {"game", "botMove", "drawCard", "endTurn", "performAction", "summonMinion"})
 public class ActionRequest {
     private boolean useHeroPower;
     private int numberOfDraws;
@@ -18,12 +20,12 @@ public class ActionRequest {
     private String playedJson;
     private String playedType;
     private ArrayList<InfoPack> attackList;
-    private transient Game game;
-    private transient BotMove botMove;
-    private transient DrawCard drawCard;
-    private transient EndTurn endTurn;
-    private transient PerformAction performAction;
-    private transient SummonMinion summonMinion;
+    private Game game;
+    private BotMove botMove;
+    private DrawCard drawCard;
+    private EndTurn endTurn;
+    private PerformAction performAction;
+    private SummonMinion summonMinion;
 
     public ActionRequest(Game game){
         this.game = game;
