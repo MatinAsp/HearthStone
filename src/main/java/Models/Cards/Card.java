@@ -1,6 +1,5 @@
 package Models.Cards;
 
-import Interfaces.Cloneable;
 import Models.Character;
 
 public class Card extends Character {
@@ -66,5 +65,21 @@ public class Card extends Character {
 
     public void setMana(int mana) {
         this.mana = mana;
+    }
+
+    public void setRarity(String rarity) {
+        this.rarity = rarity;
+    }
+
+    public void setHeroClass(String heroClass) {
+        this.heroClass = heroClass;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

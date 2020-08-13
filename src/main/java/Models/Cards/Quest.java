@@ -1,6 +1,5 @@
 package Models.Cards;
 
-import Interfaces.Cloneable;
 
 public class Quest extends Card {
     public Quest(){}

@@ -30,4 +30,8 @@ public class Character implements Cloneable {
     public Character newOne() {
         return new Character(this.name);
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

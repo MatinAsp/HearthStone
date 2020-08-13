@@ -8,6 +8,8 @@ public class InfoPack {
     private int side, summonPlace;
     private boolean isOnGround;
 
+    public InfoPack() {}
+
     public int getSide() {
         return side;
     }
@@ -48,5 +50,13 @@ public class InfoPack {
 
     public void setCharacter(Card card) {
         character = card;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
+
+    public void setOnGround(boolean onGround) {
+        isOnGround = onGround;
     }
 }

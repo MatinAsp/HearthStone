@@ -64,4 +64,12 @@ public class Hero extends Character{
         }
         if(hp <= 0) throw new GameOverException();
     }
+
+    public void setDeckMax(int deckMax) {
+        this.deckMax = deckMax;
+    }
+
+    public void setHeroPower(HeroPower heroPower) {
+        this.heroPower = heroPower;
+    }
 }

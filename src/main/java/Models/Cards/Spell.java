@@ -1,6 +1,5 @@
 package Models.Cards;
 
-import Interfaces.Cloneable;
 
 public class Spell extends Card {
     public Spell(){}

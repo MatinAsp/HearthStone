@@ -3,9 +3,11 @@ package Models.Cards;
 import Interfaces.ActionHandler;
 import Interfaces.Cloneable;
 import Models.Character;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
 
+@JsonIgnoreProperties(value = {"actionHandlers"})
 public class Minion extends Card {
     private int hp,attack;
     private boolean rush, charge, divineShield, taunt, stealth;

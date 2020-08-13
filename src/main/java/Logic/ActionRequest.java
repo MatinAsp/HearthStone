@@ -27,6 +27,8 @@ public class ActionRequest {
     private PerformAction performAction;
     private SummonMinion summonMinion;
 
+    public ActionRequest() {}
+
     public ActionRequest(Game game){
         this.game = game;
         botMove = new BotMove(this);
@@ -175,5 +177,25 @@ public class ActionRequest {
 
     public SummonMinion getSummonMinion() {
         return summonMinion;
+    }
+
+    public String getPlayedJson() {
+        return playedJson;
+    }
+
+    public void setPlayedJson(String playedJson) {
+        this.playedJson = playedJson;
+    }
+
+    public String getPlayedType() {
+        return playedType;
+    }
+
+    public void setPlayedType(String playedType) {
+        this.playedType = playedType;
+    }
+
+    public void setAttackList(ArrayList<InfoPack> attackList) {
+        this.attackList = attackList;
     }
 }

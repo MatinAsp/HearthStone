@@ -34,6 +34,8 @@ public class Game {
     private boolean isDraw[] = {false, false};
     private boolean isUsePassive[] = {false, false};
 
+    public Game(){}
+
     public Game(Competitor competitor1, Competitor competitor2, boolean isWithBot){
         this.isWithBot = isWithBot;
         competitor[0] = competitor1;
@@ -347,5 +349,21 @@ public class Game {
         if(isUsePassive[index]) return true;
         isUsePassive[index] = true;
         return false;
+    }
+
+    public Competitor[] getCompetitor() {
+        return competitor;
+    }
+
+    public void setCompetitor(Competitor[] competitor) {
+        this.competitor = competitor;
+    }
+
+    public void setWinner(int winner) {
+        this.winner = winner;
+    }
+
+    public void setActionRequest(ActionRequest actionRequest) {
+        this.actionRequest = actionRequest;
     }
 }

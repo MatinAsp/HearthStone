@@ -38,6 +38,8 @@ public class Competitor{
         handAddActions.add(actionHandler);
     }
 
+    public Competitor() {}
+
     public Competitor(String username){
         this.username = username;
         drawNumber = GameConstants.getInstance().getInteger("drawNumber");
@@ -215,5 +217,21 @@ public class Competitor{
 
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setInDeckCards(ArrayList<Card> inDeckCards) {
+        this.inDeckCards = inDeckCards;
+    }
+
+    public void setInHandCards(ArrayList<Card> inHandCards) {
+        this.inHandCards = inHandCards;
+    }
+
+    public void setOnBoardCards(ArrayList<Minion> onBoardCards) {
+        this.onBoardCards = onBoardCards;
     }
 }
