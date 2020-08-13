@@ -177,10 +177,14 @@ public class Server extends Thread{
         for(InfoPack infoPack: infoPacks){
             InfoPack infoPack1 = game.getInfoPack(infoPack.getCharacter().getId());
             if(infoPack1 == null) throw new InvalidChoiceException();
-            infoPack1.setSummonPlace(infoPack1.getSummonPlace());
+            infoPack1.setSummonPlace(infoPack.getSummonPlace());
             infoPacks1.add(infoPack1);
         }
-        game.getActionRequest().getPerformAction().execute((InfoPack[]) infoPacks1.toArray());
+        InfoPack[] infoPacks2 = new InfoPack[infoPacks1.size()];
+        for(int i = 0; i < infoPacks2.length; i++){
+            infoPacks2[i] = infoPacks1.get(i);
+        }
+        game.getActionRequest().getPerformAction().execute(infoPacks2);
         sendGameStateToClients(game);
     }
 

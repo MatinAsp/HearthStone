@@ -49,3 +49,29 @@ INFO    2020-08-13 17:49:21,996 - draw card
 INFO    2020-08-13 17:49:36,993 - passive selected
 INFO    2020-08-13 17:51:28,762 - end turn player 2
 INFO    2020-08-13 17:51:46,011 - end turn player 1
+INFO    2020-08-13 17:54:50,988 - navigate_from_log_in_to_menu
+INFO    2020-08-13 17:55:04,754 - start_a_game
+INFO    2020-08-13 17:55:30,345 - draw card
+INFO    2020-08-13 17:56:19,113 - passive selected
+INFO    2020-08-13 17:56:25,961 - draw card
+ERROR   2020-08-13 17:56:36,204 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 17:56:38,064 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 17:56:38,199 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 17:56:38,335 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 17:56:40,428 - end turn player 2
+INFO    2020-08-13 17:56:40,437 - draw card
+INFO    2020-08-13 17:56:48,927 - exit
+INFO    2020-08-13 18:08:58,375 - navigate_from_log_in_to_menu
+INFO    2020-08-13 18:09:04,056 - start_a_game
+INFO    2020-08-13 18:09:09,937 - passive selected
+INFO    2020-08-13 18:09:14,813 - draw card
+INFO    2020-08-13 18:09:14,824 - draw card
+INFO    2020-08-13 18:09:21,537 - drag_detected
+INFO    2020-08-13 18:09:22,144 - drag_ended
+INFO    2020-08-13 18:11:15,599 - end turn player 1
+INFO    2020-08-13 18:11:15,625 - draw card
+ERROR   2020-08-13 18:13:16,221 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 18:15:16,803 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 18:17:18,200 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 18:19:21,756 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-13 18:21:26,293 - Exceptions.InvalidChoiceException: Invalid Choice
