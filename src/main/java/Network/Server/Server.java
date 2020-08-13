@@ -161,6 +161,8 @@ public class Server extends Thread{
         Game game = gameMap.get(clientHandler);
         if(infoPacks.get(0).getCharacter() instanceof Passive && !game.usePassive(game.getCompetitorIndex(clientHandler.getPlayer().getUsername()))){
             game.getActionRequest().getPerformAction().execute((InfoPack[]) infoPacks.toArray());
+            sendGameStateToClients(game);
+            return;
         }
         if(game.getInfoPack(infoPacks.get(0).getCharacter().getId()).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
             throw new InvalidChoiceException();

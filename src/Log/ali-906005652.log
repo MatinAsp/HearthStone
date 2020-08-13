@@ -33,3 +33,8 @@ INFO    2020-08-13 16:54:23,725 - navigate_from_log_in_to_menu
 INFO    2020-08-13 16:54:34,497 - start_a_game
 INFO    2020-08-13 16:59:32,126 - navigate_from_log_in_to_menu
 INFO    2020-08-13 17:00:30,316 - start_a_game
+INFO    2020-08-13 17:13:17,258 - navigate_from_log_in_to_menu
+INFO    2020-08-13 17:13:32,961 - start_a_game
+INFO    2020-08-13 17:13:37,038 - passive selected
+INFO    2020-08-13 17:13:37,562 - set_alert
+INFO    2020-08-13 17:13:38,865 - alert_dismissed

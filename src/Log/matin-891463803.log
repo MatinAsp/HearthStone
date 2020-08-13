@@ -32,3 +32,5 @@ INFO    2020-08-13 16:54:40,126 - passive selected
 INFO    2020-08-13 16:54:40,580 - set_alert
 INFO    2020-08-13 16:54:43,463 - alert_dismissed
 ERROR   2020-08-13 16:56:59,354 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-13 17:13:25,888 - navigate_from_log_in_to_menu
+INFO    2020-08-13 17:13:36,023 - start_a_game
