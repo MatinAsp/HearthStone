@@ -61,6 +61,8 @@ public class Controller implements Initializable {
     private StackPane status;
     @FXML
     private StackPane waitPane;
+    @FXML
+    private StackPane connectionPane;
 
     public Controller(){
     }
@@ -68,15 +70,6 @@ public class Controller implements Initializable {
     @FXML
     private void logInAction(){
         client.sendLogInRequest(usernameField.getText(), passwordField.getText());
-//        try{
-//            PlayersManager.getInstance().logIn(usernameField.getText(), passwordField.getText());
-//            client.logInfo("log_in");
-//            usernameField.clear();
-//            passwordField.clear();
-//            navigateFromLogInToMenu();
-//        }catch (Exception o){
-//            setAlert(o.getMessage());
-//        }
     }
 
     public void logInActionUpdate(){
@@ -88,16 +81,6 @@ public class Controller implements Initializable {
     @FXML
     private void signInAction(ActionEvent e) {
         client.sendSignInRequest(usernameField.getText(), passwordField.getText());
-//        try{
-//            PlayersManager.getInstance().signIn(usernameField.getText(), passwordField.getText());
-//            client.logInfo("sign_in");
-//            usernameField.clear();
-//            passwordField.clear();
-//            navigateFromLogInToMenu();
-//        }catch (Exception o){
-//            System.out.println(o);
-//            setAlert(o.getMessage());
-//        }
     }
 
     @FXML
@@ -852,7 +835,7 @@ public class Controller implements Initializable {
         battleGroundController = null;
     }
 
-    public void setWait(boolean isWait) {
-        waitPane.setVisible(isWait);
+    public void setConnectionWait(boolean isWait) {
+        connectionPane.setVisible(isWait);
     }
 }

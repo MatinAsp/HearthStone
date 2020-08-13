@@ -1,6 +1,7 @@
 package Network.Server;
 
 import Data.DataManager;
+import Data.JacksonMapper;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
@@ -11,9 +12,9 @@ import Models.Deck;
 import Models.Hero;
 import Models.InfoPack;
 import Models.Player;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.sun.prism.shader.Solid_TextureRGB_AlphaTest_Loader;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -177,7 +178,11 @@ public class ClientHandler extends Thread{
     }
 
     public void endGame(Game game) {
-        send(new String[]{"gameOver", gson.toJson(game)});
+        try {
+            send(new String[]{"gameOver", JacksonMapper.getNetworkMapper().writeValueAsString(game)});
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     private void cancelGame(){

@@ -1,6 +1,7 @@
 package Network.Server;
 
 import Data.DataManager;
+import Data.JacksonMapper;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
@@ -12,13 +13,11 @@ import Models.Cards.Card;
 import Models.InfoPack;
 import Models.Passive;
 import Models.Player;
-import Models.Character;
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.channels.CancelledKeyException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -115,12 +114,8 @@ public class Server extends Thread{
                 gameMap.put(clientHandler2, game);
                 waitingList.remove(clientHandler2);
                 gameKindMap.put(game, "online");
-                Gson gson = new Gson();
-             //   game = GameFactory.getInstance().makeJsonSafe(game);
-                System.out.println(111111);
-                clientHandler1.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
-                clientHandler2.send(new String[]{"startGame", gson.toJson(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game))});
-                System.out.println(222222);
+                clientHandler1.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
+                clientHandler2.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game))});
                 break;
             }
         }
@@ -171,17 +166,22 @@ public class Server extends Thread{
     }
 
     private void sendGameStateToClients(Game game) {
-        Gson gson = new Gson();
         Game finalGame = game;
         for(ClientHandler clientHandler: gameMap.keySet()){
             if(gameMap.get(clientHandler) == finalGame){
                 if(!gameKindMap.get(finalGame).equals("offline")){
-                //    game = GameFactory.getInstance().makeJsonSafe(finalGame);
-                    clientHandler.send(new String[]{"updateGame", gson.toJson(GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game))});
+                    try {
+                        clientHandler.send(new String[]{"updateGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game))});
+                    } catch (JsonProcessingException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else {
-            //        game = GameFactory.getInstance().makeJsonSafe(finalGame);
-                    clientHandler.send(new String[]{"updateGame", gson.toJson(game)});
+                    try {
+                        clientHandler.send(new String[]{"updateGame", JacksonMapper.getNetworkMapper().writeValueAsString(game)});
+                    } catch (JsonProcessingException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

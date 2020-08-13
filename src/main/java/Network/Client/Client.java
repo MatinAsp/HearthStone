@@ -1,11 +1,13 @@
 package Network.Client;
 
+import Data.JacksonMapper;
 import Graphics.Controller;
 import Log.LogCenter;
 import Logic.Game;
 import Models.Cards.Card;
 import Models.InfoPack;
 import Models.Player;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.application.Platform;
@@ -43,8 +45,8 @@ public class Client extends Thread{
         }
         receiver.start();
         while (receiver.isAlive()){
-            if(!socket.isConnected()) Platform.runLater(() -> controller.setWait(true));
-            else Platform.runLater(() -> controller.setWait(false));
+            if(!socket.isConnected()) Platform.runLater(() -> controller.setConnectionWait(true));
+            else Platform.runLater(() -> controller.setConnectionWait(false));
             try {
                 Thread.sleep(50);
             } catch (InterruptedException e) {
@@ -175,11 +177,21 @@ public class Client extends Thread{
     }
 
     private void startGame(String gameJson){
-        Platform.runLater(() -> controller.starGame(gson.fromJson(gameJson, Game.class)));
+        Platform.runLater(() -> {
+            try {
+                controller.starGame(JacksonMapper.getNetworkMapper().readValue(gameJson, Game.class));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void updateGame(String gameJson){
-        controller.updateGame(gson.fromJson(gameJson,Game.class));
+        try {
+            controller.updateGame(JacksonMapper.getNetworkMapper().readValue(gameJson, Game.class));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sendOnlinePlayRequest() {

@@ -2,9 +2,11 @@ package Logic;
 
 import Data.DataManager;
 import Data.GameConstants;
+import Data.JacksonMapper;
 import Models.Cards.Card;
 import Models.Deck;
 import Models.Hero;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -46,19 +48,17 @@ public class GameFactory {
     }
 
     public Game getPrivateGame(String username, Game game){
-       // Gson gson = GsonCenter.getInstance().getNewGson();
-        Gson gson = new Gson();
-        game = gson.fromJson(gson.toJson(game), Game.class);
-      //  System.out.println(3333333);
+        try {
+            game = JacksonMapper.getNetworkMapper().readValue(JacksonMapper.getNetworkMapper().writeValueAsString(game), Game.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
         game.setWithBot(true);
         if(game.getCompetitorIndex(username) != 0) game.changeSide();
-        //game.getCompetitor(1).setDeck(null);
         makeCardsPrivate(game.getCompetitor(1).getInDeckCards());
         makeCardsPrivate(game.getCompetitor(1).getInHandCards());
         return game;
     }
-
-
 
     private void makeCardsPrivate(ArrayList<Card> cards){
         int cnt = cards.size();
@@ -67,8 +67,4 @@ public class GameFactory {
             cards.add(new Card());
         }
     }
-
-//    public Game makeJsonSafe(Game game) {
-//        return new Game(game);
-//    }
 }
