@@ -442,13 +442,16 @@ public class BattleGroundController implements Initializable {
 
     @FXML
     private void backToMenu() {
+        client.sendCancelGame();
+    }
+
+    public void backFormGame(){
         client.logInfo("back_to_menu");
         thread = null;
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("battleGroundSound"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         root.setVisible(false);
         ((Pane) root.getParent()).getChildren().remove(root);
-        client.sendCancelGame();
     }
 
     @FXML

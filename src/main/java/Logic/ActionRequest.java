@@ -41,7 +41,6 @@ public class ActionRequest {
         attackList = new ArrayList<>();
         useHeroPower = false;
         turnEnded = false;
-        game.initialize();
     }
 
     public void selectCard(ArrayList<Card> cardsSelected, int competitorIndex) throws GameOverException, InvalidChoiceException {

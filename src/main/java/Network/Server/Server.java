@@ -276,9 +276,11 @@ public class Server extends Thread{
                 clientHandler2.getPlayer().setCup(clientHandler2.getPlayer().getCup() + 1);
                 clientHandler.getPlayer().setCup(Math.max(clientHandler.getPlayer().getCup() - 1, 0));
             }
+            clientHandler2.getPlayer().replaceDeck(game.getCompetitor(game.getCompetitorIndex(clientHandler2.getPlayer().getUsername())).getDeck());
             clientHandler2.endGame(GameFactory.getInstance().getPrivateGame(clientHandler2.getPlayer().getUsername(), game));
             gameMap.remove(clientHandler2);
         }
+        clientHandler.getPlayer().replaceDeck(game.getCompetitor(game.getCompetitorIndex(clientHandler.getPlayer().getUsername())).getDeck());
         if(sendForOwn){
             if(gameKindMap.get(game).equals("online")){
                 clientHandler.endGame(GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game));

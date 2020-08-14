@@ -15,7 +15,6 @@ import Models.Player;
 import Network.Client.Client;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -153,7 +152,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void navigateFromMenuToStatus() throws IOException {
+    private void navigateFromMenuToStatus() {
         client.logInfo("navigate_from_menu_to_status");
         loadStatus();
         navigate(menu, status);
@@ -210,7 +209,9 @@ public class Controller implements Initializable {
     private GridPane decksStatusBoard;
     private void loadStatus(){
         ArrayList<Node> nodes = new ArrayList<>();
-        for(Deck deck: client.getPlayer().getAllDecks()){
+        ArrayList<Deck> decks = client.getPlayer().getAllDecks();
+        for(int i = decks.size() - 1; i>=0; i--){
+            Deck deck = decks.get(i);
             boolean isUsing = (client.getPlayer().getCurrentDeckName().equals(deck.getName())) ? true : false;
             Pane decksStatusGraphics = GraphicRender.getInstance().buildDecksStatus(deck, isUsing);
             nodes.add(decksStatusGraphics);
@@ -325,6 +326,7 @@ public class Controller implements Initializable {
     }
 
     private void gridPaneRender(GridPane gridPane, List<Node> list){
+        gridPane.getChildren().clear();
         int counter = 0;
         for(Node node: list){
             GridPane.setConstraints(
@@ -866,5 +868,10 @@ public class Controller implements Initializable {
 
     public void setConnectionWait(boolean isWait) {
         connectionPane.setVisible(isWait);
+    }
+
+    public void backFormGame() {
+        battleGroundController.backFormGame();
+        battleGroundController = null;
     }
 }

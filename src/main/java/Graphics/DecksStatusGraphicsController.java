@@ -40,7 +40,6 @@ public class DecksStatusGraphicsController {
         hero.setText(deck.getHero().getName());
         manaAverage.setText(Double.toString(deck.getAverageMana()));
         mostPlayedCard.setText(deck.getMostPlayedCard());
-        System.out.println(deck.getCup());
         cup.setText(String.valueOf(deck.getCup()));
         if (isUsing){
             usingForBattle.setText("Yes");

@@ -43,6 +43,7 @@ public class Game {
         turn = 0;
         actionRequest = new ActionRequest(this);
         actions = new Actions(this);
+        initialize();
     }
 
     public ActionRequest getActionRequest(){

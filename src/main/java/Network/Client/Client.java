@@ -152,6 +152,7 @@ public class Client extends Thread{
     }
 
     public synchronized void logError(Exception massage){
+        massage.printStackTrace();
         if(player == null) return;
         LogCenter.getInstance().error(player, massage);
     }
@@ -233,5 +234,9 @@ public class Client extends Thread{
 
     private void updateRanking(String usernamesJson, String cupsJson, String ownRank){
         Platform.runLater(() -> controller.loadRanking(gson.fromJson(usernamesJson, new TypeToken<ArrayList<String>>(){}.getType()), gson.fromJson(cupsJson, new TypeToken<ArrayList<String>>(){}.getType()), Integer.parseInt(ownRank)));
+    }
+
+    private void backFormGame(){
+        Platform.runLater(() -> controller.backFormGame());
     }
 }

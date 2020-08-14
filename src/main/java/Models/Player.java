@@ -232,4 +232,14 @@ public class Player implements Comparable{
         if(cup < ((Player) o).getCup()) return -1;
         return 0;
     }
+
+    public void replaceDeck(Deck deck) {
+        for(Deck deck1: allDecks){
+            if(deck.getName().equals(deck1.getName())){
+                allDecks.remove(deck1);
+                allDecks.add(deck);
+                return;
+            }
+        }
+    }
 }

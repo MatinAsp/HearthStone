@@ -97,7 +97,15 @@ public class ClientHandler extends Thread{
                 }
             }
         }
-        if(player1.getWallet() != player.getWallet()) return false;
+        if(player1.getWallet() != player.getWallet()){
+            return false;
+        }
+        if(player1.getCup() != player.getCup()){
+            return false;
+        }
+        if(!player1.getUsername().equals(player.getUsername())){
+            return false;
+        }
         return true;
     }
 
@@ -195,6 +203,7 @@ public class ClientHandler extends Thread{
 
     private void cancelGame(){
         server.endGame(this, false);
+        send(new String[]{"backFormGame"});
     }
 
     private void getRanking(){
