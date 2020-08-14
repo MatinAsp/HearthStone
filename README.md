@@ -8,6 +8,7 @@ extra lib:
     javafx
     log4j
     gson
+    jackson
     
 sources:
 
@@ -15,6 +16,7 @@ sources:
     oracle
     blizzard sites
     and ...
+    ali tavasoly for jackson
 
 
 explain structure:
@@ -23,30 +25,38 @@ explain structure:
     using configs and json files to load and save data.
     using gradle.
     using hash for saving passwords.
-    saving logs with LogCenter Class.
+    saving logs.
     design graphics with fxml and css files and control them with controller classes.
     saving all data, even game settings like volume.
     tried to be based on clean code and solid principles.
-    can simply set alert box and confirmation box just by calling setAlert and setConfirmation methods. 
     having music, sound effects and animations.
     using exceptions for alerting and logic.
     being full screen.
     design some pics by my own.
     design and render all cards, heroes, decks and ... programmatically in GraphicsRender Class.
-    for playing, graphics part send some infoPacks with ActionRequest to Game and Game performs actions with Action class
-    and Action class find and invoke methods for the infoPacks and if needs selection or it was an invalid move, Action class
-    throws proper exception and graphics part get the problem.
+    for playing, client sends some infoPacks to server and server performs actions with Game class
+    and Actions class find and invoke methods for the infoPacks and if needs selection or it was an invalid move, Action class
+    throws proper exception and client gets the problem.
     ActionRequest records the actions and graphics part reads the records and show the actions with animations or ... .
+    send and get data between server and client with json.
+    clients have limit for getting data and change it in server.
+    do all logic part in server.
+    check the client connection.
+    show ranking and status and have cup parameter.
+    models and logic part are separated.
+    mvc and requset-response pattern.
     
 negative point:
 
-    graphics part has the game class for getting information. It would be better if graphics part gets the game state with
-    an interface. but we handle logic with an interface (ActionRequest). 
+     using dupricated method in JacksonMapper class.
+     dont have chat and game show for other people.
+     dont have a algorithm for matching players.
+     dont have reflection part.
     
 before compiling, please install the game's font form the following address:
 
     src/main/resources/Font
     
-git link for full version (branch: faze-3):
+git link for full version (branch: phase-4):
 
     https://github.com/MatinAsp/Hearthstone.git
