@@ -237,4 +237,18 @@ public class GraphicRender {
         cardGraphicsController.setBorder(assetManager.getImage(card.getType().toLowerCase()+card.getRarity()));
         return graphicCard;
     }
+
+    public Pane buildRank(String username, int rank, int cup) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("rankGraphics.fxml"));
+        Pane rankGraphics = null;
+        try {
+            rankGraphics = fxmlLoader.load();
+            RankGraphicsController rankGraphicsController  = fxmlLoader.getController();
+            rankGraphicsController.loadRank(username, rank, cup);
+        } catch (IOException e) {
+            e.printStackTrace();
+//            LogCenter.getInstance().getLogger().error(e);
+        }
+        return rankGraphics;
+    }
 }

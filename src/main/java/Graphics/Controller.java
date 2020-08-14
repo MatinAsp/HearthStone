@@ -46,6 +46,8 @@ public class Controller implements Initializable {
     @FXML
     private StackPane collectionsPage;
     @FXML
+    private StackPane rankingPage;
+    @FXML
     private StackPane storePage;
     @FXML
     private StackPane alertBox;
@@ -105,6 +107,33 @@ public class Controller implements Initializable {
         client.logInfo("navigate_from_log_in_to_menu");
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         navigate(logInPage, menu);
+    }
+
+    @FXML
+    private void navigateFromMenuToRanking() {
+        client.logInfo("navigate_from_menu_to_ranking");
+
+        waitPane.setVisible(true);
+    }
+
+    @FXML
+    private GridPane rankingBoard;
+
+    public void loadRanking(ArrayList<String> usernames, ArrayList<Integer> cups, int ownRank){
+        waitPane.setVisible(false);
+        ArrayList<Node> nodes = new ArrayList<>();
+        for(int i = 0; i < usernames.size(); i++){
+            nodes.add(GraphicRender.getInstance().buildRank(usernames.get(i), i+1, cups.get(i)));
+        }
+        nodes.add(GraphicRender.getInstance().buildRank(client.getPlayer().getUsername(), ownRank, client.getPlayer().getCup()));
+        navigate(menu, rankingPage);
+    }
+
+    @FXML
+    private void navigateFromRankingToMenu() {
+        client.logInfo("navigate_from_ranking_to_menu");
+        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
+        navigate(rankingPage, menu);
     }
 
     @FXML
