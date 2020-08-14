@@ -232,8 +232,7 @@ public class Client extends Thread{
     }
 
     private void updateRanking(String usernamesJson, String cupsJson, String ownRank){
-
-        controller.loadRanking();
+        Platform.runLater(() -> controller.loadRanking(getListFromJson(usernamesJson, String.class), getListFromJson(cupsJson, String.class), Integer.parseInt(ownRank)));
     }
 
     private <T> ArrayList<T> getListFromJson(String listJson, Class<T> tClass){

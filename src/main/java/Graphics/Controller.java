@@ -119,13 +119,14 @@ public class Controller implements Initializable {
     @FXML
     private GridPane rankingBoard;
 
-    public void loadRanking(ArrayList<String> usernames, ArrayList<Integer> cups, int ownRank){
+    public void loadRanking(ArrayList<String> usernames, ArrayList<String> cups, int ownRank){
         waitPane.setVisible(false);
         ArrayList<Node> nodes = new ArrayList<>();
-        for(int i = 0; i < usernames.size(); i++){
-            nodes.add(GraphicRender.getInstance().buildRank(usernames.get(i), i+1, cups.get(i)));
+        for(int i = usernames.size() - 1; i >= 0; i--){
+            nodes.add(GraphicRender.getInstance().buildRank(usernames.get(i), i+1, Integer.parseInt(cups.get(i))));
         }
         nodes.add(GraphicRender.getInstance().buildRank(client.getPlayer().getUsername(), ownRank, client.getPlayer().getCup()));
+        gridPaneRender(rankingBoard, nodes);
         navigate(menu, rankingPage);
     }
 

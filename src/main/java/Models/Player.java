@@ -6,7 +6,7 @@ import Models.Cards.Card;
 import java.io.IOException;
 import java.util.*;
 
-public class Player {
+public class Player implements Comparable{
     private String username,password;
     private int wallet, id, cup;
     private ArrayList<Card> allCards;
@@ -224,5 +224,12 @@ public class Player {
 
     public void setCup(int cup) {
         this.cup = cup;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if(cup > ((Player) o).getCup()) return 1;
+        if(cup < ((Player) o).getCup()) return -1;
+        return 0;
     }
 }

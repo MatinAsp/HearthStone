@@ -1,6 +1,7 @@
 package Network.Server;
 
 import Data.DataManager;
+import Data.GameConstants;
 import Data.JacksonMapper;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -289,4 +291,21 @@ public class Server extends Thread{
         gameMap.remove(clientHandler);
     }
 
+    public synchronized void getRanking(ClientHandler clientHandler) {
+        ArrayList<Player> players = DataManager.getInstance().getAllPlayers();
+        Collections.sort(players);
+        ArrayList<String> usernames = new ArrayList<>();
+        ArrayList<String> cups = new ArrayList<>();
+        int ownRank = 0;
+        int cnt = 0;
+        for(Player player: players){
+            if(cnt < GameConstants.getInstance().getInteger("topRankNumber")){
+                usernames.add(player.getUsername());
+                cups.add(String.valueOf(player.getCup()));
+            }
+            cnt++;
+            if(player.getUsername().equals(clientHandler.getPlayer().getUsername())) ownRank = players.indexOf(player) + 1;
+        }
+        clientHandler.sendRanking(usernames, cups, ownRank);
+    }
 }

@@ -202,4 +202,12 @@ public class ClientHandler extends Thread{
         ArrayList<T> list = gson.fromJson(listJson, new TypeToken<ArrayList<T>>(){}.getType());
         return list;
     }
+
+    private void getRanking(){
+        server.getRanking(this);
+    }
+
+    public void sendRanking(ArrayList<String> usernames, ArrayList<String> cups, int ownRank){
+        send(new String[]{"updateRanking", gson.toJson(usernames), gson.toJson(cups), Integer.toString(ownRank)});
+    }
 }
