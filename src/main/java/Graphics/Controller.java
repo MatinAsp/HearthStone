@@ -7,7 +7,6 @@ import Data.MediaManager;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
 import Interfaces.ActionHandler;
-import Log.LogCenter;
 import Logic.*;
 import Models.Cards.Card;
 import Models.Deck;
@@ -25,8 +24,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.SingleSelectionModel;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
@@ -123,7 +120,7 @@ public class Controller implements Initializable {
         waitPane.setVisible(false);
         ArrayList<Node> nodes = new ArrayList<>();
         for(int i = usernames.size() - 1; i >= 0; i--){
-            nodes.add(GraphicRender.getInstance().buildRank(usernames.get(i), i+1, Integer.parseInt(cups.get(i))));
+            nodes.add(GraphicRender.getInstance().buildRank(usernames.get(i), usernames.size() - i, Integer.parseInt(cups.get(i))));
         }
         nodes.add(GraphicRender.getInstance().buildRank(client.getPlayer().getUsername(), ownRank, client.getPlayer().getCup()));
         gridPaneRender(rankingBoard, nodes);

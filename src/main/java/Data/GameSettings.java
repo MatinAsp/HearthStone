@@ -17,7 +17,7 @@ public class GameSettings {
         battleGroundArena = gameConstants.getString("battleGroundArena");
     }
 
-    static public GameSettings getInstance() {
+    static synchronized public GameSettings getInstance() {
         if(gameSettings == null){
             gameSettings = new GameSettings();
         }
@@ -25,31 +25,31 @@ public class GameSettings {
     }
 
 
-    public double getVolume() {
+    public synchronized double getVolume() {
         return volume;
     }
 
-    public void setVolume(double volume) {
+    public synchronized void setVolume(double volume) {
         this.volume = volume;
     }
 
-    public String getCardBack() {
+    public synchronized String getCardBack() {
         return cardBack;
     }
 
-    public void setCardBack(String cardBack) {
+    public synchronized void setCardBack(String cardBack) {
         this.cardBack = cardBack;
     }
 
-    public String getBattleGroundArena() {
+    public synchronized String getBattleGroundArena() {
         return battleGroundArena;
     }
 
-    public void setBattleGroundArena(String battleGroundArena) {
+    public synchronized void setBattleGroundArena(String battleGroundArena) {
         this.battleGroundArena = battleGroundArena;
     }
 
-    public void applySettings() throws IOException {
+    public synchronized void applySettings() throws IOException {
         MediaManager.getInstance().setVolume(volume);
         GameConstants gameConstants = GameConstants.getInstance();
         gameConstants.setProperty("volume", Double.toString(volume));
@@ -58,11 +58,11 @@ public class GameSettings {
         gameConstants.save();
     }
 
-    public List<String> getAllArenas() throws IOException {
+    public synchronized List<String> getAllArenas() throws IOException {
         return GameConstants.getInstance().getStingList("arenasList");
     }
 
-    public List<String> getAllCardBack() throws IOException {
+    public synchronized List<String> getAllCardBack() throws IOException {
         return GameConstants.getInstance().getStingList("cardsBackList");
     }
 }

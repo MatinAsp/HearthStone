@@ -18,6 +18,7 @@ public class DataManager {
     private String playersPath;
     private String generalPath;
     private Gson gson;
+    private Object lock = new Object();
 
     private DataManager(){
         GameConstants gameConstants = GameConstants.getInstance();
@@ -72,14 +73,14 @@ public class DataManager {
         return arr;
     }
 
-    public static DataManager getInstance() {
+    public synchronized static DataManager getInstance() {
         if(dataManager == null){
             dataManager = new DataManager();
         }
         return dataManager;
     }
 
-    public  <T extends Character> ArrayList<T> getAllCharacter(Class<T> tClass){
+    public  synchronized <T extends Character> ArrayList<T> getAllCharacter(Class<T> tClass){
         ArrayList<T> arr = new ArrayList<>();
         for(T t: (ArrayList<T>) dataMap.get(tClass)){
             arr.add((T) t.newOne());
@@ -87,7 +88,7 @@ public class DataManager {
         return arr;
     }
 
-    public <T extends Character> T getObject(Class<T> tClass, String name){
+    public synchronized <T extends Character> T getObject(Class<T> tClass, String name){
         for(T obj: (ArrayList<T>) dataMap.get(tClass)){
             if((obj.getName().trim()).equalsIgnoreCase(name))
                 return (T) obj.newOne();
@@ -95,28 +96,34 @@ public class DataManager {
         return null;
     }
 
-    public ArrayList<Player> getAllPlayers() {
-        return loadData(Player.class, playersPath);
-    }
-
-    public void deletePlayer(String username) {
-        (new File(playersPath+File.separator+username)).delete();
-    }
-
-    public void savePlayer(Player player) {
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(playersPath+ File.separator+player.getUsername());
-            gson.toJson(player,fileWriter);
-            fileWriter.flush();
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-//            LogCenter.getInstance().getLogger().error(e);
+    public synchronized ArrayList<Player> getAllPlayers() {
+        synchronized (lock){
+            return loadData(Player.class, playersPath);
         }
     }
 
-    public ArrayList<Card> getDefaultCards() {
+    public synchronized void deletePlayer(String username) {
+        synchronized (lock){
+            (new File(playersPath+File.separator+username)).delete();
+        }
+    }
+
+    public synchronized void savePlayer(Player player) {
+        synchronized (lock) {
+            FileWriter fileWriter = null;
+            try {
+                fileWriter = new FileWriter(playersPath + File.separator + player.getUsername());
+                gson.toJson(player, fileWriter);
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+//            LogCenter.getInstance().getLogger().error(e);
+            }
+        }
+    }
+
+    public synchronized ArrayList<Card> getDefaultCards() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File(generalPath+File.separator+"Default Cards"));
@@ -132,7 +139,7 @@ public class DataManager {
         return defaultCards;
     }
 
-    public ArrayList<Hero> getDefaultHeroes() {
+    public synchronized ArrayList<Hero> getDefaultHeroes() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File(generalPath+File.separator+"Default Heroes"));
@@ -148,7 +155,7 @@ public class DataManager {
         return defaultHeroes;
     }
 
-    public Deck getBot(){
+    public synchronized Deck getBot(){
         Random random = new Random();
         ArrayList<Hero> heroes = getAllCharacter(Hero.class);
         Deck deck = new Deck("", heroes.get(random.nextInt(heroes.size())));
@@ -188,7 +195,7 @@ public class DataManager {
         return deck;
     }
 
-    public ArrayList<Deck> getDeckReaderDecks(){
+    public synchronized ArrayList<Deck> getDeckReaderDecks(){
         FileReader fileReader = null;
         DeckReader deckReader = null;
         try {

@@ -21,11 +21,11 @@ public class GameConstants {
         }
     }
 
-    public static GameConstants getInstance() {
+    public synchronized static GameConstants getInstance() {
         return getInstance("default");
     }
 
-    public static GameConstants getInstance(String address) {
+    public synchronized static GameConstants getInstance(String address) {
         if(gameConstants == null){
             if(address.equals("default")){
                 address = defaultAddress;
@@ -36,35 +36,35 @@ public class GameConstants {
         return gameConstants;
     }
 
-    public int getInteger (String name){
+    public synchronized int getInteger (String name){
         return configs.readInteger(name);
     }
 
-    public boolean getBoolean (String name){
+    public synchronized boolean getBoolean (String name){
         return configs.readBoolean(name);
     }
 
-    public String getString (String name){
+    public synchronized String getString (String name){
         return configs.getProperty(name);
     }
 
-    public double getDouble(String name) {
+    public synchronized double getDouble(String name) {
         return configs.readDouble(name);
     }
 
-    public List<String> getStingList(String name) {
+    public synchronized List<String> getStingList(String name) {
         return configs.readStringList(name);
     }
 
-    public List<Integer> getIntegerList(String name) {
+    public synchronized List<Integer> getIntegerList(String name) {
         return configs.readIntegerList(name);
     }
 
-    public void setProperty(String key, String newValue){
+    public synchronized void setProperty(String key, String newValue){
         configs.setProperty(key, newValue);
     }
 
-    public void save() {
+    public synchronized void save() {
         try {
             configs.store(new FileOutputStream(defaultAddress), "");
         } catch (IOException e) {

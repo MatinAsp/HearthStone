@@ -647,3 +647,16 @@ INFO    2020-08-14 13:16:27,877 - navigate_from_menu_to_status
 INFO    2020-08-14 13:17:03,995 - navigate_from_status_to_menu
 INFO    2020-08-14 13:17:06,025 - navigate_from_menu_to_ranking
 INFO    2020-08-14 13:17:38,317 - exit
+INFO    2020-08-14 13:30:09,570 - navigate_from_log_in_to_menu
+INFO    2020-08-14 13:30:15,570 - navigate_from_menu_to_ranking
+INFO    2020-08-14 13:31:29,907 - navigate_from_ranking_to_menu
+INFO    2020-08-14 13:31:30,106 - log_out
+INFO    2020-08-14 13:31:33,885 - navigate_from_log_in_to_menu
+INFO    2020-08-14 13:31:34,985 - navigate_from_menu_to_ranking
+INFO    2020-08-14 13:31:36,098 - navigate_from_ranking_to_menu
+INFO    2020-08-14 13:31:37,726 - navigate_from_menu_to_status
+INFO    2020-08-14 13:34:19,156 - exit
+INFO    2020-08-14 13:35:06,273 - navigate_from_log_in_to_menu
+INFO    2020-08-14 13:35:09,510 - navigate_from_menu_to_ranking
+INFO    2020-08-14 13:35:15,176 - navigate_from_ranking_to_menu
+INFO    2020-08-14 13:35:16,875 - navigate_from_menu_to_status

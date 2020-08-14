@@ -14,21 +14,21 @@ public class AssetManager {
     private String assetsAddress = GameConstants.getInstance().getString("assetsAddress");
     private AssetManager() {}
 
-    public static AssetManager getInstance() {
+    public synchronized static AssetManager getInstance() {
         if(assetManager == null){
             assetManager = new AssetManager();
         }
         return assetManager;
     }
 
-    public Image getImage(String name){
+    public synchronized Image getImage(String name){
         if(!imageMap.containsKey(name)){
             imageMap.put(name, searchImage(name, assetsAddress));
         }
         return imageMap.get(name);
     }
 
-    public Image searchImage(String name, String address){
+    public synchronized Image searchImage(String name, String address){
         File dir = new File(address);
         for(File file: dir.listFiles()){
             if(file.isDirectory()){

@@ -18,21 +18,21 @@ public class MediaManager {
         audiosAddress = GameConstants.getInstance().getString("audiosAddress");
     }
 
-    static public MediaManager getInstance() {
+    static synchronized public MediaManager getInstance() {
         if(mediaManager == null){
             mediaManager = new MediaManager();
         }
         return mediaManager;
     }
 
-    public void setVolume(double volume){
+    public synchronized void setVolume(double volume){
         this.volume = volume;
         for(MyMediaPlayer mediaPlayer: mediaPlayers){
             mediaPlayer.setVolume(volume);
         }
     }
 
-    public void playMedia(String fileName, int cycleCount){
+    public synchronized void playMedia(String fileName, int cycleCount){
         Media media = new Media(Paths.get(audiosAddress + File.separator + fileName).toUri().toString());
         MyMediaPlayer mediaPlayer = new MyMediaPlayer(fileName, media);
         mediaPlayer.setCycleCount(cycleCount);
@@ -41,7 +41,7 @@ public class MediaManager {
         mediaPlayer.play();
     }
 
-    public void stopMedia(String fileName){
+    public synchronized void stopMedia(String fileName){
         for(MyMediaPlayer mediaPlayer: mediaPlayers){
             if (mediaPlayer.getFileName().equals(fileName)){
                 mediaPlayer.stop();
