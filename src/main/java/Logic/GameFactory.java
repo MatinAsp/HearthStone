@@ -3,12 +3,15 @@ package Logic;
 import Data.DataManager;
 import Data.GameConstants;
 import Data.JacksonMapper;
+import Data.JarLoader;
 import Models.Cards.Card;
 import Models.Deck;
 import Models.Hero;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
+import com.google.gson.internal.$Gson$Types;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
 public class GameFactory {
@@ -24,7 +27,14 @@ public class GameFactory {
     }
 
     public Game build(String username1, String username2, Deck deck1, Deck deck2, boolean isWithBot) throws Exception {
-        Game game = new Game(buildCompetitor(deck1, username1), buildCompetitor(deck2, username2), isWithBot);
+        Game game = null;
+        if(GameConstants.getInstance().getBoolean("isReflectionOn")){
+            Constructor constructor = JarLoader.loadClass("ReflectedGame").getConstructor(Competitor.class, Competitor.class, boolean.class);
+            game = (Game) constructor.newInstance(buildCompetitor(deck1, username1), buildCompetitor(deck2, username2), isWithBot);
+        }
+        else {
+            game = new Game(buildCompetitor(deck1, username1), buildCompetitor(deck2, username2), isWithBot);
+        }
         game.getCompetitor(0).setFullMana(GameConstants.getInstance().getInteger("manaForStart"));
         game.getCompetitor(0).setLeftMana(GameConstants.getInstance().getInteger("manaForStart"));
         game.getCompetitor(1).setFullMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
@@ -36,7 +46,14 @@ public class GameFactory {
     }
 
     private Competitor buildCompetitor(Deck deck, String username) throws Exception {
-        Competitor competitor = new Competitor(username);
+        Competitor competitor = null;
+        if(GameConstants.getInstance().getBoolean("isReflectionOn")){
+            Constructor constructor = JarLoader.loadClass("ReflectedCompetitor").getConstructor(String.class);
+            competitor = (Competitor) constructor.newInstance(username);
+        }
+        else {
+            competitor = new Competitor(username);
+        }
         competitor.setDeck(deck);
         for(Card card: deck.getCards()){
             competitor.getInDeckCards().add(DataManager.getInstance().getObject(Card.class, card.getName()));

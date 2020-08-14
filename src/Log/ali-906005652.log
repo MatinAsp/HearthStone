@@ -1130,3 +1130,17 @@ INFO    2020-08-15 01:18:26,460 - end turn player 1
 INFO    2020-08-15 01:18:26,487 - draw card
 INFO    2020-08-15 01:18:32,046 - end turn player 2
 INFO    2020-08-15 01:18:41,491 - exit
+INFO    2020-08-15 01:52:06,825 - navigate_from_log_in_to_menu
+INFO    2020-08-15 01:52:24,862 - start_a_game
+INFO    2020-08-15 01:52:30,182 - draw card
+INFO    2020-08-15 01:52:34,910 - passive selected
+ERROR   2020-08-15 01:52:37,613 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-15 01:52:39,010 - Exceptions.InvalidChoiceException: Invalid Choice
+ERROR   2020-08-15 01:52:39,139 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-15 01:52:40,888 - end turn player 2
+INFO    2020-08-15 01:52:46,830 - game over
+INFO    2020-08-15 01:52:48,746 - back_to_menu
+INFO    2020-08-15 01:52:49,920 - navigate_from_menu_to_settings
+INFO    2020-08-15 01:52:53,735 - navigate_from_settings_to_menu
+INFO    2020-08-15 01:52:53,740 - settings_applied
+INFO    2020-08-15 01:52:56,868 - exit

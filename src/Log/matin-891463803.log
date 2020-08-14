@@ -953,3 +953,14 @@ INFO    2020-08-15 01:18:32,312 - end turn player 1
 INFO    2020-08-15 01:18:42,358 - game over
 INFO    2020-08-15 01:18:44,568 - back_to_menu
 INFO    2020-08-15 01:18:45,478 - exit
+INFO    2020-08-15 01:52:17,525 - navigate_from_log_in_to_menu
+INFO    2020-08-15 01:52:22,317 - start_a_game
+INFO    2020-08-15 01:52:27,283 - passive selected
+INFO    2020-08-15 01:52:30,182 - draw card
+INFO    2020-08-15 01:52:40,692 - end turn player 1
+INFO    2020-08-15 01:52:46,204 - back_to_menu
+INFO    2020-08-15 01:53:00,610 - navigate_from_menu_to_settings
+INFO    2020-08-15 01:53:04,372 - navigate_from_settings_to_menu
+INFO    2020-08-15 01:53:04,374 - settings_applied
+INFO    2020-08-15 01:53:07,600 - navigate_from_menu_to_settings
+INFO    2020-08-15 01:53:11,469 - exit

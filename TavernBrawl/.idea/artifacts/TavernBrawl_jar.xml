@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TavernBrawl:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TavernBrawl_jar</output-path>
+    <root id="archive" name="TavernBrawl.jar">
+      <element id="module-output" name="TavernBrawl" />
+      <element id="library" level="project" name="Hearthstone" />
+    </root>
+  </artifact>
+</component>
