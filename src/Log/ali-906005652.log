@@ -1123,3 +1123,10 @@ INFO    2020-08-14 22:31:24,571 - back_to_menu
 INFO    2020-08-14 22:31:25,661 - navigate_from_menu_to_status
 INFO    2020-08-14 22:31:30,606 - navigate_from_status_to_menu
 INFO    2020-08-14 22:31:31,675 - exit
+INFO    2020-08-15 01:17:33,932 - navigate_from_log_in_to_menu
+INFO    2020-08-15 01:18:02,840 - start_a_game
+INFO    2020-08-15 01:18:10,966 - passive selected
+INFO    2020-08-15 01:18:26,460 - end turn player 1
+INFO    2020-08-15 01:18:26,487 - draw card
+INFO    2020-08-15 01:18:32,046 - end turn player 2
+INFO    2020-08-15 01:18:41,491 - exit

@@ -19,7 +19,7 @@ import java.util.Random;
 @JsonIgnoreProperties(value = {"deck", "questsInProgress", "spentMana", "deckAddActions", "handAddActions", "drawNumber"})
 public class Competitor{
     private String username;
-    private int fullMana = 0, leftMana = 0;
+    private int fullMana = 0, leftMana = 0, time = 0;
     private Deck deck;
     private Hero hero;
     private Weapon heroWeapon = null;
@@ -233,5 +233,13 @@ public class Competitor{
 
     public void setOnBoardCards(ArrayList<Minion> onBoardCards) {
         this.onBoardCards = onBoardCards;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 }

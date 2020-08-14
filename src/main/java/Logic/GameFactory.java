@@ -29,6 +29,9 @@ public class GameFactory {
         game.getCompetitor(0).setLeftMana(GameConstants.getInstance().getInteger("manaForStart"));
         game.getCompetitor(1).setFullMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
         game.getCompetitor(1).setLeftMana(GameConstants.getInstance().getInteger("manaForStart") - 1);
+        game.getCompetitor(0).setTime(GameConstants.getInstance().getInteger("timeToPlay"));
+        game.getCompetitor(1).setTime(GameConstants.getInstance().getInteger("timeToPlay"));
+        game.initialize();
         return game;
     }
 

@@ -269,7 +269,7 @@ public class Server extends Thread{
                 clientHandler = clientHandler1;
             }
         }
-        return new Timer(GameConstants.getInstance().getInteger("timeToPlay"), this, clientHandler, game);
+        return new Timer(game.getCompetitor(game.getTurn()).getTime(), this, clientHandler, game);
     }
 
     public void cardSelection(ClientHandler clientHandler, ArrayList<Card> cards) throws GameOverException, InvalidChoiceException {
