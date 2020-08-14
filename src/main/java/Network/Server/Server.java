@@ -150,7 +150,7 @@ public class Server extends Thread{
             clientHandler1.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(game)});
         }
         else {
-            clientHandler2.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
+            clientHandler1.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
             gameMap.put(clientHandler2, game);
             clientHandler2.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game))});
         }

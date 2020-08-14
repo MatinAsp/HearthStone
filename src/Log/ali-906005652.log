@@ -660,3 +660,64 @@ INFO    2020-08-14 13:35:06,273 - navigate_from_log_in_to_menu
 INFO    2020-08-14 13:35:09,510 - navigate_from_menu_to_ranking
 INFO    2020-08-14 13:35:15,176 - navigate_from_ranking_to_menu
 INFO    2020-08-14 13:35:16,875 - navigate_from_menu_to_status
+INFO    2020-08-14 14:34:58,675 - exit
+INFO    2020-08-14 17:13:55,153 - navigate_from_log_in_to_menu
+INFO    2020-08-14 17:14:53,511 - start_a_game
+INFO    2020-08-14 17:14:54,901 - start_a_game
+INFO    2020-08-14 17:17:17,441 - passive selected
+INFO    2020-08-14 17:17:17,557 - set_alert
+INFO    2020-08-14 17:17:18,641 - alert_dismissed
+INFO    2020-08-14 17:17:21,160 - exit
+INFO    2020-08-14 17:18:36,477 - navigate_from_log_in_to_menu
+INFO    2020-08-14 17:18:40,127 - start_a_game
+INFO    2020-08-14 17:18:57,793 - passive selected
+INFO    2020-08-14 17:18:57,930 - set_alert
+INFO    2020-08-14 17:19:32,752 - alert_dismissed
+INFO    2020-08-14 17:22:21,547 - set_alert
+INFO    2020-08-14 17:22:24,025 - alert_dismissed
+INFO    2020-08-14 17:22:24,945 - drag_detected
+INFO    2020-08-14 17:22:25,617 - drag_ended
+INFO    2020-08-14 17:22:25,628 - set_alert
+INFO    2020-08-14 17:22:27,489 - alert_dismissed
+INFO    2020-08-14 17:24:21,876 - end turn player 1
+INFO    2020-08-14 17:24:21,936 - draw card
+INFO    2020-08-14 17:26:14,051 - end turn player 2
+INFO    2020-08-14 17:26:14,084 - draw card
+INFO    2020-08-14 17:26:21,998 - end turn player 1
+INFO    2020-08-14 17:26:21,999 - draw card
+INFO    2020-08-14 17:28:14,429 - end turn player 2
+INFO    2020-08-14 17:28:14,432 - draw card
+INFO    2020-08-14 17:28:22,152 - end turn player 1
+INFO    2020-08-14 17:28:22,162 - draw card
+INFO    2020-08-14 17:30:14,522 - end turn player 2
+INFO    2020-08-14 17:30:14,545 - draw card
+INFO    2020-08-14 17:30:22,399 - end turn player 1
+INFO    2020-08-14 17:30:22,430 - draw card
+INFO    2020-08-14 17:32:14,842 - end turn player 2
+INFO    2020-08-14 17:32:14,844 - draw card
+INFO    2020-08-14 17:32:22,519 - end turn player 1
+INFO    2020-08-14 17:32:22,531 - draw card
+INFO    2020-08-14 17:34:14,994 - end turn player 2
+INFO    2020-08-14 17:34:14,997 - draw card
+INFO    2020-08-14 17:34:22,811 - end turn player 1
+INFO    2020-08-14 17:34:22,818 - draw card
+INFO    2020-08-14 17:36:15,537 - end turn player 2
+INFO    2020-08-14 17:36:15,541 - draw card
+INFO    2020-08-14 17:36:23,222 - end turn player 1
+INFO    2020-08-14 17:36:32,010 - drag_detected
+INFO    2020-08-14 17:36:32,618 - drag_ended
+INFO    2020-08-14 17:36:32,632 - set_alert
+INFO    2020-08-14 17:36:36,574 - alert_dismissed
+INFO    2020-08-14 17:36:38,773 - exit
+INFO    2020-08-14 17:43:33,182 - navigate_from_log_in_to_menu
+INFO    2020-08-14 17:44:14,284 - start_a_game
+INFO    2020-08-14 17:44:30,339 - passive selected
+INFO    2020-08-14 17:44:30,518 - set_alert
+INFO    2020-08-14 17:44:31,199 - alert_dismissed
+INFO    2020-08-14 17:44:37,618 - game over
+INFO    2020-08-14 17:45:08,812 - back_to_menu
+INFO    2020-08-14 17:45:10,035 - navigate_from_menu_to_ranking
+INFO    2020-08-14 17:45:22,123 - navigate_from_ranking_to_menu
+INFO    2020-08-14 17:45:24,867 - navigate_from_menu_to_status
+INFO    2020-08-14 17:45:27,067 - navigate_from_status_to_menu
+INFO    2020-08-14 17:45:33,915 - exit

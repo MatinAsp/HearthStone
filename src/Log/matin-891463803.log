@@ -626,3 +626,70 @@ INFO    2020-08-14 04:02:12,742 - back_to_menu
 INFO    2020-08-14 04:02:12,777 - set_alert
 INFO    2020-08-14 04:02:13,680 - alert_dismissed
 INFO    2020-08-14 04:02:14,431 - exit
+INFO    2020-08-14 17:14:27,991 - navigate_from_log_in_to_menu
+INFO    2020-08-14 17:17:25,813 - exit
+INFO    2020-08-14 17:18:32,203 - navigate_from_log_in_to_menu
+INFO    2020-08-14 17:18:41,354 - start_a_game
+INFO    2020-08-14 17:21:42,648 - passive selected
+INFO    2020-08-14 17:21:42,791 - set_alert
+INFO    2020-08-14 17:21:46,024 - alert_dismissed
+ERROR   2020-08-14 17:24:13,844 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 17:24:21,977 - end turn player 2
+INFO    2020-08-14 17:24:21,983 - draw card
+INFO    2020-08-14 17:26:14,083 - end turn player 1
+INFO    2020-08-14 17:26:14,086 - draw card
+INFO    2020-08-14 17:26:21,995 - end turn player 2
+INFO    2020-08-14 17:26:21,998 - draw card
+INFO    2020-08-14 17:28:14,432 - end turn player 1
+INFO    2020-08-14 17:28:14,436 - draw card
+INFO    2020-08-14 17:28:22,162 - end turn player 2
+INFO    2020-08-14 17:28:22,172 - draw card
+INFO    2020-08-14 17:30:14,550 - end turn player 1
+INFO    2020-08-14 17:30:14,643 - draw card
+INFO    2020-08-14 17:30:22,400 - end turn player 2
+INFO    2020-08-14 17:30:22,427 - draw card
+INFO    2020-08-14 17:32:14,843 - end turn player 1
+INFO    2020-08-14 17:32:14,845 - draw card
+INFO    2020-08-14 17:32:22,531 - end turn player 2
+INFO    2020-08-14 17:32:22,532 - draw card
+INFO    2020-08-14 17:34:14,997 - end turn player 1
+INFO    2020-08-14 17:34:15,002 - draw card
+INFO    2020-08-14 17:34:22,815 - end turn player 2
+INFO    2020-08-14 17:34:22,819 - draw card
+INFO    2020-08-14 17:36:15,538 - end turn player 1
+INFO    2020-08-14 17:36:15,542 - draw card
+INFO    2020-08-14 17:36:23,221 - end turn player 2
+INFO    2020-08-14 17:36:40,034 - game over
+INFO    2020-08-14 17:36:42,081 - back_to_menu
+INFO    2020-08-14 17:36:43,492 - navigate_from_menu_to_ranking
+INFO    2020-08-14 17:36:48,466 - navigate_from_ranking_to_menu
+INFO    2020-08-14 17:36:49,354 - navigate_from_menu_to_status
+INFO    2020-08-14 17:37:00,216 - navigate_from_status_to_menu
+INFO    2020-08-14 17:37:10,674 - navigate_from_menu_to_status
+INFO    2020-08-14 17:37:13,113 - navigate_from_status_to_menu
+INFO    2020-08-14 17:37:14,938 - navigate_from_menu_to_ranking
+INFO    2020-08-14 17:37:16,235 - navigate_from_ranking_to_menu
+INFO    2020-08-14 17:37:17,000 - exit
+INFO    2020-08-14 17:37:39,508 - navigate_from_log_in_to_menu
+INFO    2020-08-14 17:37:50,633 - navigate_from_menu_to_status
+INFO    2020-08-14 17:37:54,368 - navigate_from_status_to_menu
+INFO    2020-08-14 17:37:58,262 - navigate_from_menu_to_status
+INFO    2020-08-14 17:37:59,226 - navigate_from_status_to_menu
+INFO    2020-08-14 17:37:59,939 - navigate_from_menu_to_ranking
+INFO    2020-08-14 17:38:01,739 - navigate_from_ranking_to_menu
+INFO    2020-08-14 17:38:03,209 - exit
+INFO    2020-08-14 17:44:06,753 - navigate_from_log_in_to_menu
+INFO    2020-08-14 17:44:12,321 - start_a_game
+INFO    2020-08-14 17:44:22,003 - passive selected
+INFO    2020-08-14 17:44:22,156 - set_alert
+INFO    2020-08-14 17:44:23,547 - alert_dismissed
+INFO    2020-08-14 17:44:37,010 - back_to_menu
+INFO    2020-08-14 17:44:41,058 - navigate_from_menu_to_ranking
+INFO    2020-08-14 17:44:47,300 - navigate_from_ranking_to_menu
+INFO    2020-08-14 17:44:48,024 - navigate_from_menu_to_ranking
+INFO    2020-08-14 17:44:52,179 - navigate_from_ranking_to_menu
+INFO    2020-08-14 17:44:52,971 - navigate_from_menu_to_ranking
+INFO    2020-08-14 17:44:58,291 - navigate_from_ranking_to_menu
+INFO    2020-08-14 17:44:59,109 - navigate_from_menu_to_ranking
+INFO    2020-08-14 17:45:00,738 - navigate_from_ranking_to_menu
+INFO    2020-08-14 17:45:37,275 - exit
