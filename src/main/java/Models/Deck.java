@@ -156,7 +156,8 @@ public class Deck implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        o = (Deck) o;
+        if(getCup() > ((Deck) o).getCup()) return 1;
+        if(getCup() < ((Deck) o).getCup()) return -1;
         if(getWinsPercent() > ((Deck) o).getWinsPercent()) return 1;
         if(getWinsPercent() < ((Deck) o).getWinsPercent()) return -1;
         if(getWinsNumber() > ((Deck) o).getWinsNumber()) return 1;

@@ -28,6 +28,8 @@ public class DecksStatusGraphicsController {
     @FXML
     private Label usingForBattle;
     @FXML
+    private Label cup;
+    @FXML
     private StackPane heroPlace;
 
     public void loadDeck(Deck deck, boolean isUsing) {
@@ -38,6 +40,7 @@ public class DecksStatusGraphicsController {
         hero.setText(deck.getHero().getName());
         manaAverage.setText(Double.toString(deck.getAverageMana()));
         mostPlayedCard.setText(deck.getMostPlayedCard());
+        cup.setText(String.valueOf(deck.getCup()));
         if (isUsing){
             usingForBattle.setText("Yes");
         }
