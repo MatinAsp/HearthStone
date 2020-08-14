@@ -17,6 +17,8 @@ sources:
     blizzard sites
     and ...
     ali tavasoly for jackson
+    ali tavasoly and https://stackoverflow.com/questions/11016092/how-to-load-classes-at-runtime-from-a-folder-or-jar 
+    for JarLoader class
 
 
 explain structure:
@@ -45,14 +47,14 @@ explain structure:
     show ranking and status and have cup parameter.
     models and logic part are separated.
     mvc and requset-response pattern.
+    have reflection part.
     
 negative point:
 
      using dupricated method in JacksonMapper class.
      dont have chat and game show for other people.
      dont have a algorithm for matching players.
-     dont have reflection part.
-    
+         
 before compiling, please install the game's font form the following address:
 
     src/main/resources/Font
