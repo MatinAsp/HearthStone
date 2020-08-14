@@ -112,7 +112,7 @@ public class Controller implements Initializable {
     @FXML
     private void navigateFromMenuToRanking() {
         client.logInfo("navigate_from_menu_to_ranking");
-
+        client.sendRankingRequest();
         waitPane.setVisible(true);
     }
 

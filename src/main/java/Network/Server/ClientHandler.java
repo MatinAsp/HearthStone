@@ -41,7 +41,7 @@ public class ClientHandler extends Thread{
         while(!isInterrupted()){
             String string = scanner.nextLine();
             System.out.println("get: "+string);
-            ArrayList<String> massagesList = gson.fromJson(string, new TypeToken<ArrayList<String>>(){}.getType());
+            ArrayList<String> massagesList = getListFromJson(string, String.class);
             if(massagesList.get(0).equalsIgnoreCase("null")) player = null;
             else{
                 Player player1 = gson.fromJson(massagesList.get(0), Player.class);
@@ -160,7 +160,7 @@ public class ClientHandler extends Thread{
     }
 
     private void performAction(String parametersJson) throws SelectionNeededException, InvalidChoiceException, GameOverException {
-        server.performAction(this, gson.fromJson(parametersJson, new TypeToken<ArrayList<InfoPack>>(){}.getType()));
+        server.performAction(this, getListFromJson(parametersJson, InfoPack.class));
     }
 
     private void endTurn() throws GameOverException, InvalidChoiceException {
@@ -178,7 +178,7 @@ public class ClientHandler extends Thread{
     }
 
     private void cardSelection(String cardsJson) throws GameOverException, InvalidChoiceException {
-        server.cardSelection(this, gson.fromJson(cardsJson,new TypeToken<ArrayList<Card>>(){}.getType()));
+        server.cardSelection(this, getListFromJson(cardsJson, Card.class));
     }
 
     public Player getPlayer() {
@@ -195,5 +195,11 @@ public class ClientHandler extends Thread{
 
     private void cancelGame(){
         server.endGame(this, false);
+    }
+
+    private <T> ArrayList<T> getListFromJson(String listJson, Class<T> tClass){
+        Gson gson = new Gson();
+        ArrayList<T> list = gson.fromJson(listJson, new TypeToken<ArrayList<T>>(){}.getType());
+        return list;
     }
 }

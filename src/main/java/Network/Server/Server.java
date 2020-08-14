@@ -288,4 +288,5 @@ public class Server extends Thread{
         gameKindMap.remove(game);
         gameMap.remove(clientHandler);
     }
+
 }

@@ -117,7 +117,7 @@ public class Client extends Thread{
     }
 
     public void getMassage(String string) {
-        ArrayList<String> massagesList = gson.fromJson(string, new TypeToken<ArrayList<String>>(){}.getType());
+        ArrayList<String> massagesList = getListFromJson(string, String.class);
         if(massagesList.get(0).equalsIgnoreCase("null")) player = null;
         else player = gson.fromJson(massagesList.get(0), Player.class);
         String methodName = massagesList.get(1);
@@ -225,5 +225,19 @@ public class Client extends Thread{
 
     public void sendOfflinePlayRequest() {
         send(new String[]{"startOfflinePlay"});
+    }
+
+    public void sendRankingRequest() {
+        send(new String[]{"getRanking"});
+    }
+
+    private void updateRanking(String usernamesJson, String cupsJson, String ownRank){
+
+        controller.loadRanking();
+    }
+
+    private <T> ArrayList<T> getListFromJson(String listJson, Class<T> tClass){
+        ArrayList<T> list = gson.fromJson(listJson, new TypeToken<ArrayList<T>>(){}.getType());
+        return list;
     }
 }
