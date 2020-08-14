@@ -1054,3 +1054,72 @@ INFO    2020-08-14 20:40:22,197 - back_to_menu
 INFO    2020-08-14 20:40:23,005 - navigate_from_menu_to_status
 INFO    2020-08-14 20:40:36,166 - navigate_from_status_to_menu
 INFO    2020-08-14 20:40:40,286 - exit
+INFO    2020-08-14 22:26:32,577 - navigate_from_log_in_to_menu
+INFO    2020-08-14 22:26:44,525 - start_a_game
+INFO    2020-08-14 22:26:50,969 - draw card
+INFO    2020-08-14 22:26:55,484 - passive selected
+INFO    2020-08-14 22:27:06,916 - play Bluegill Warrior
+INFO    2020-08-14 22:27:06,920 - card summoned
+INFO    2020-08-14 22:27:14,967 - end turn player 2
+INFO    2020-08-14 22:27:14,979 - draw card
+INFO    2020-08-14 22:29:15,110 - end turn player 1
+INFO    2020-08-14 22:29:15,213 - draw card
+INFO    2020-08-14 22:29:20,825 - end turn player 2
+INFO    2020-08-14 22:29:23,421 - end turn player 1
+INFO    2020-08-14 22:29:23,434 - draw card
+INFO    2020-08-14 22:29:30,507 - game over
+INFO    2020-08-14 22:29:35,661 - back_to_menu
+INFO    2020-08-14 22:29:38,896 - start_a_game
+INFO    2020-08-14 22:29:42,213 - passive selected
+INFO    2020-08-14 22:29:43,237 - passive selected
+INFO    2020-08-14 22:29:48,269 - drag_detected
+INFO    2020-08-14 22:29:49,445 - drag_ended
+ERROR   2020-08-14 22:29:49,471 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-14 22:29:50,577 - end turn player 1
+INFO    2020-08-14 22:29:52,548 - drag_detected
+INFO    2020-08-14 22:29:53,025 - drag_ended
+INFO    2020-08-14 22:29:53,059 - play Bluegill Warrior
+INFO    2020-08-14 22:29:53,062 - card summoned
+INFO    2020-08-14 22:30:00,970 - end turn player 2
+INFO    2020-08-14 22:30:04,293 - drag_detected
+INFO    2020-08-14 22:30:04,775 - drag_ended
+INFO    2020-08-14 22:30:04,808 - play Bluegill Warrior
+INFO    2020-08-14 22:30:04,813 - card summoned
+INFO    2020-08-14 22:30:11,834 - end turn player 1
+INFO    2020-08-14 22:30:14,905 - back_to_menu
+INFO    2020-08-14 22:30:16,436 - navigate_from_menu_to_store
+INFO    2020-08-14 22:30:19,789 - navigate_from_store_to_menu
+INFO    2020-08-14 22:30:21,270 - navigate_from_menu_to_store
+INFO    2020-08-14 22:30:24,205 - click_card
+INFO    2020-08-14 22:30:24,207 - set_confirmation
+INFO    2020-08-14 22:30:25,032 - confirmed
+INFO    2020-08-14 22:30:25,065 - buy_card
+INFO    2020-08-14 22:30:27,109 - click_card
+INFO    2020-08-14 22:30:27,113 - set_confirmation
+INFO    2020-08-14 22:30:28,973 - confirm_dismissed
+INFO    2020-08-14 22:30:29,596 - click_card
+INFO    2020-08-14 22:30:29,597 - set_confirmation
+INFO    2020-08-14 22:30:30,198 - confirmed
+INFO    2020-08-14 22:30:30,211 - sell_card
+INFO    2020-08-14 22:30:32,229 - store_lock_filter_changed
+INFO    2020-08-14 22:30:32,949 - store_lock_filter_changed
+INFO    2020-08-14 22:30:34,805 - navigate_from_store_to_menu
+INFO    2020-08-14 22:30:40,806 - navigate_from_menu_to_ranking
+INFO    2020-08-14 22:30:45,221 - navigate_from_ranking_to_menu
+INFO    2020-08-14 22:30:46,405 - navigate_from_menu_to_ranking
+INFO    2020-08-14 22:30:47,573 - navigate_from_ranking_to_menu
+INFO    2020-08-14 22:30:54,700 - start_a_game
+INFO    2020-08-14 22:30:56,548 - passive selected
+INFO    2020-08-14 22:30:57,388 - passive selected
+INFO    2020-08-14 22:31:07,896 - back_to_menu
+INFO    2020-08-14 22:31:08,661 - navigate_from_menu_to_ranking
+INFO    2020-08-14 22:31:10,222 - navigate_from_ranking_to_menu
+INFO    2020-08-14 22:31:13,437 - navigate_from_menu_to_status
+INFO    2020-08-14 22:31:18,861 - navigate_from_status_to_menu
+INFO    2020-08-14 22:31:20,571 - start_a_game
+INFO    2020-08-14 22:31:21,880 - passive selected
+INFO    2020-08-14 22:31:22,765 - passive selected
+INFO    2020-08-14 22:31:24,571 - back_to_menu
+INFO    2020-08-14 22:31:25,661 - navigate_from_menu_to_status
+INFO    2020-08-14 22:31:30,606 - navigate_from_status_to_menu
+INFO    2020-08-14 22:31:31,675 - exit

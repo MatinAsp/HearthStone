@@ -927,3 +927,20 @@ INFO    2020-08-14 20:40:14,713 - card summoned
 INFO    2020-08-14 20:40:16,702 - back_to_menu
 INFO    2020-08-14 20:40:18,151 - navigate_from_menu_to_status
 INFO    2020-08-14 20:40:42,302 - exit
+INFO    2020-08-14 22:26:39,485 - navigate_from_log_in_to_menu
+INFO    2020-08-14 22:26:43,198 - start_a_game
+INFO    2020-08-14 22:26:48,956 - passive selected
+INFO    2020-08-14 22:26:51,074 - draw card
+INFO    2020-08-14 22:27:05,581 - drag_detected
+INFO    2020-08-14 22:27:06,765 - drag_ended
+INFO    2020-08-14 22:27:06,915 - play Bluegill Warrior
+INFO    2020-08-14 22:27:06,919 - card summoned
+INFO    2020-08-14 22:27:14,981 - end turn player 1
+INFO    2020-08-14 22:27:14,993 - draw card
+INFO    2020-08-14 22:29:15,542 - end turn player 2
+INFO    2020-08-14 22:29:15,543 - draw card
+INFO    2020-08-14 22:29:20,825 - end turn player 1
+INFO    2020-08-14 22:29:23,434 - end turn player 2
+INFO    2020-08-14 22:29:23,436 - draw card
+INFO    2020-08-14 22:29:30,317 - back_to_menu
+INFO    2020-08-14 22:31:33,573 - exit
