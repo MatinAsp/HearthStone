@@ -213,4 +213,24 @@ public class ClientHandler extends Thread{
     public void sendRanking(ArrayList<String> usernames, ArrayList<String> cups, int ownRank){
         send(new String[]{"updateRanking", gson.toJson(usernames), gson.toJson(cups), Integer.toString(ownRank)});
     }
+
+    public void sendGameStart(Game game, int time){
+        try {
+            send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(game), Integer.toString(time)});
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendGameUpdate(Game game, int time){
+        try {
+            send(new String[]{"updateGame", JacksonMapper.getNetworkMapper().writeValueAsString(game), Integer.toString(time)});
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendExit() {
+        send(new String[]{"exit"});
+    }
 }

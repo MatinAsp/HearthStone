@@ -32,6 +32,7 @@ public class Server extends Thread{
     private ServerSocket serverSocket;
     private HashMap<ClientHandler, Game> gameMap;
     private HashMap<Game, String> gameKindMap;
+    private HashMap<Game, Timer> timersMap;
 
     private Server(int serverPort) throws IOException {
         serverSocket = new ServerSocket(serverPort);
@@ -40,6 +41,7 @@ public class Server extends Thread{
         waitingList = new ArrayList<>();
         gameKindMap = new HashMap<>();
         deckReaderWaitingList = new ArrayList<>();
+        timersMap = new HashMap<>();
     }
 
     public synchronized static Server getInstance() throws IOException {
@@ -146,13 +148,16 @@ public class Server extends Thread{
         );
         gameKindMap.put(game, kind);
         gameMap.put(clientHandler1, game);
+        Timer timer = getTimer(game);
+        timersMap.put(game, timer);
+        timer.start();
         if(!sendForBoth){
-            clientHandler1.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(game)});
+            clientHandler1.sendGameStart(game, timersMap.get(game).getTime());
         }
         else {
-            clientHandler1.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game))});
+            clientHandler1.sendGameStart(GameFactory.getInstance().getPrivateGame(player1.getUsername(), game), timersMap.get(game).getTime());
             gameMap.put(clientHandler2, game);
-            clientHandler2.send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game))});
+            clientHandler2.sendGameStart(GameFactory.getInstance().getPrivateGame(player2.getUsername(), game), timersMap.get(game).getTime());
         }
     }
 
@@ -166,7 +171,7 @@ public class Server extends Thread{
             endGame(clientHandler, false);
         } catch (Exception e){}
         clientHandlers.remove(clientHandler);
-        clientHandler.send(new String[]{"exit"});
+        clientHandler.sendExit();
     }
 
     public void performAction(ClientHandler clientHandler, ArrayList<InfoPack> infoPacks) throws GameOverException, SelectionNeededException, InvalidChoiceException {
@@ -213,19 +218,11 @@ public class Server extends Thread{
         for(ClientHandler clientHandler: gameMap.keySet()){
             if(gameMap.get(clientHandler) == finalGame){
                 if(!gameKindMap.get(finalGame).equals("offline")){
-                    try {
-                        clientHandler.send(new String[]{"updateGame", JacksonMapper.getNetworkMapper().writeValueAsString(GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game))});
-                    } catch (JsonProcessingException e) {
-                        e.printStackTrace();
-                    }
+                    clientHandler.sendGameUpdate(GameFactory.getInstance().getPrivateGame(clientHandler.getPlayer().getUsername(), game), timersMap.get(finalGame).getTime());
                 }
                 else {
-                    try {
-                        clientHandler.send(new String[]{"updateGame", JacksonMapper.getNetworkMapper().writeValueAsString(game)});
-                        break;
-                    } catch (JsonProcessingException e) {
-                        e.printStackTrace();
-                    }
+                    clientHandler.sendGameUpdate(game, timersMap.get(finalGame).getTime());
+                    break;
                 }
             }
         }
@@ -237,8 +234,27 @@ public class Server extends Thread{
         if(gameKindMap.get(game).equals("online") && game.getTurn() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
             throw new InvalidChoiceException();
         }
+        executeEndTurn(game);
+    }
+
+    public synchronized void executeEndTurn(Game game) throws GameOverException {
         game.getActionRequest().getEndTurn().execute();
+        timersMap.get(game).setEnded(true);
+        timersMap.remove(game);
+        Timer timer = getTimer(game);
+        timersMap.put(game, timer);
+        timer.start();
         sendGameStateToClients(game);
+    }
+
+    private Timer getTimer(Game game){
+        ClientHandler clientHandler = null;
+        for(ClientHandler clientHandler1: gameMap.keySet()){
+            if(gameMap.get(clientHandler1) == game){
+                clientHandler = clientHandler1;
+            }
+        }
+        return new Timer(GameConstants.getInstance().getInteger("timeToPlay"), this, clientHandler, game);
     }
 
     public void cardSelection(ClientHandler clientHandler, ArrayList<Card> cards) throws GameOverException, InvalidChoiceException {
@@ -258,6 +274,8 @@ public class Server extends Thread{
 
     public void endGame(ClientHandler clientHandler, boolean sendForOwn){
         Game game = gameMap.get(clientHandler);
+        timersMap.get(game).setEnded(true);
+        timersMap.remove(game);
         int index = game.getCompetitorIndex(clientHandler.getPlayer().getUsername());
         game.endGame((index+1)%2);
         if(gameKindMap.get(game).equals("online")){

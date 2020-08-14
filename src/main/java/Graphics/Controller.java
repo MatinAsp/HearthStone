@@ -774,7 +774,7 @@ public class Controller implements Initializable {
     }
 
     private BattleGroundController battleGroundController = null;
-    public void starGame(Game game){
+    public void starGame(Game game, String time){
         waitPane.setVisible(false);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("battleGround.fxml"));
         StackPane gameBoard = null;
@@ -784,7 +784,7 @@ public class Controller implements Initializable {
             this.battleGroundController= battleGroundController;
             battleGroundController.setClient(client);
             battleGroundController.setGame(game);
-            updateGame(game);
+            updateGame(game, time);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -799,9 +799,10 @@ public class Controller implements Initializable {
         client.logInfo("start_a_game");
     }
 
-    public void updateGame(Game game) {
+    public void updateGame(Game game, String time) {
         battleGroundController.setGame(game);
         battleGroundController.makeGameOk();
+        battleGroundController.setTimer(time);
         Platform.runLater(() -> battleGroundController.renderActions());
     }
 
@@ -871,7 +872,7 @@ public class Controller implements Initializable {
     }
 
     public void backFormGame() {
-        battleGroundController.backFormGame();
+        battleGroundController.backFromGame();
         battleGroundController = null;
     }
 }

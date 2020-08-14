@@ -129,6 +129,8 @@ public class BattleGroundController implements Initializable {
         heroWeapon[0] = heroWeapon1;
         heroWeapon[1] = heroWeapon2;
         arena.setImage(AssetManager.getInstance().getImage(GameSettings.getInstance().getBattleGroundArena()));
+        timer = new Timer();
+        timer.start();
     }
     @FXML
     private StackPane waitPane;
@@ -332,7 +334,7 @@ public class BattleGroundController implements Initializable {
     private Button endTurnButton;
     @FXML
     private Label timeText;
-    private Thread thread = null;
+    private Timer timer = null;
     @FXML
     private Label turnShowingText;
 
@@ -341,9 +343,6 @@ public class BattleGroundController implements Initializable {
         clearSelections();
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("endTurnSound"), 1);
         changeTurn();
-        thread.interrupt();
-        thread = new Timer();
-        thread.start();
     }
 
     public void makeGameOk() {
@@ -376,24 +375,25 @@ public class BattleGroundController implements Initializable {
         return null;
     }
 
+    public synchronized void setTimer(String time) {
+        Platform.runLater(() -> timeText.setText(time));
+    }
+
     class Timer extends Thread{
+        boolean isEnded = false;
+
+        public void setEnded(boolean isEnded){
+            this.isEnded = isEnded;
+        }
+
         @Override
         public void run() {
-            int time = GameConstants.getInstance().getInteger("timeToPlay");
-            Platform.runLater(()->timeText.setText(""+time));
-            for(int i = 0; i < time && thread == this; i++){
+            while (!isEnded){
                 try {
                     Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    return;
-                }
-                if(isInterrupted()){
-                    return;
-                }
-                int finalI = i;
-                if(thread == this) Platform.runLater(()->timeText.setText(""+(time - finalI -1)));
+                } catch (InterruptedException e) { }
+                Platform.runLater(() -> timeText.setText(Integer.toString(Integer.parseInt(timeText.getText()) - 1)));
             }
-            if (thread == this) Platform.runLater(()->endTurn());
         }
     }
 
@@ -414,8 +414,7 @@ public class BattleGroundController implements Initializable {
         addGameLog("game over");
         isGameEnded = true;
         Platform.runLater(() -> renderActions());
-        thread.interrupt();
-        thread = null;
+        timer.setEnded(true);
     }
 
     private void setAlertBox(){
@@ -445,9 +444,9 @@ public class BattleGroundController implements Initializable {
         client.sendCancelGame();
     }
 
-    public void backFormGame(){
+    public void backFromGame(){
         client.logInfo("back_to_menu");
-        thread = null;
+        timer.setEnded(true);
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("battleGroundSound"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         root.setVisible(false);
@@ -457,7 +456,7 @@ public class BattleGroundController implements Initializable {
     @FXML
     private void backToMenuWithoutRequest() {
         client.logInfo("back_to_menu");
-        thread = null;
+        timer.setEnded(true);
         MediaManager.getInstance().stopMedia(GameConstants.getInstance().getString("battleGroundSound"));
         MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         root.setVisible(false);
@@ -536,8 +535,6 @@ public class BattleGroundController implements Initializable {
         else {
             passiveSelectionPane.setVisible(false);
             passiveSelectionPane.toBack();
-            thread = new Timer();
-            thread.start();
         }
     }
 

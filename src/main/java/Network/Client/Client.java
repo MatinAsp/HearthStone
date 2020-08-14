@@ -177,19 +177,19 @@ public class Client extends Thread{
         send(new String[]{"delete", password});
     }
 
-    private void startGame(String gameJson){
+    private void startGame(String gameJson, String time){
         Platform.runLater(() -> {
             try {
-                controller.starGame(JacksonMapper.getNetworkMapper().readValue(gameJson, Game.class));
+                controller.starGame(JacksonMapper.getNetworkMapper().readValue(gameJson, Game.class), time);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
         });
     }
 
-    private void updateGame(String gameJson){
+    private void updateGame(String gameJson, String time){
         try {
-            controller.updateGame(JacksonMapper.getNetworkMapper().readValue(gameJson, Game.class));
+            controller.updateGame(JacksonMapper.getNetworkMapper().readValue(gameJson, Game.class), time);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -212,7 +212,7 @@ public class Client extends Thread{
     }
 
     private void gameOver(String gameJson){
-        updateGame(gameJson);
+        updateGame(gameJson, String.valueOf(0));
         controller.endGame();
     }
 
