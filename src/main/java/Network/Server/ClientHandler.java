@@ -21,6 +21,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.Socket;
 import java.util.*;
 
 public class ClientHandler extends Thread{
@@ -28,8 +29,10 @@ public class ClientHandler extends Thread{
     private Player player = null;
     private Scanner scanner;
     private PrintStream printStream;
+    private Socket socket;
     private Gson gson;
-    public ClientHandler(InputStream inputStream, OutputStream outputStream, Server server){
+    public ClientHandler(Socket socket, InputStream inputStream, OutputStream outputStream, Server server){
+        this.socket = socket;
         this.server = server;
         scanner = new Scanner(inputStream);
         printStream = new PrintStream(outputStream);
@@ -232,5 +235,9 @@ public class ClientHandler extends Thread{
 
     public void sendExit() {
         send(new String[]{"exit"});
+    }
+
+    public Socket getSocket() {
+        return socket;
     }
 }

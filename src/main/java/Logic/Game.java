@@ -66,13 +66,17 @@ public class Game {
 
     public void changeTurn() throws GameOverException {
         turn = (turn+1)%2;
+        refreshMana();
+        for(int i = 0; i < competitor[turn].getDrawNumber(); i++){
+            actionRequest.getDrawCard().execute();
+        }
+    }
+
+    public void refreshMana() {
         if(competitor[turn].getFullMana() < GameConstants.getInstance().getInteger("manaMax")){
             competitor[turn].setFullMana(competitor[turn].getFullMana()+1);
         }
         competitor[turn].setLeftMana(competitor[turn].getFullMana());
-        for(int i = 0; i < competitor[turn].getDrawNumber(); i++){
-            actionRequest.getDrawCard().execute();
-        }
     }
 
     private void playCard(Card card, int side) {

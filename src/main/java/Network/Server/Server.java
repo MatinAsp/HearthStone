@@ -2,7 +2,6 @@ package Network.Server;
 
 import Data.DataManager;
 import Data.GameConstants;
-import Data.JacksonMapper;
 import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
@@ -14,7 +13,7 @@ import Models.Deck;
 import Models.InfoPack;
 import Models.Passive;
 import Models.Player;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import Network.Client.Client;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -65,6 +64,22 @@ public class Server extends Thread{
                 } catch (InterruptedException e) {
                     break;
                 }
+                for(ClientHandler clientHandler: clientHandlers){
+                    if(!clientHandler.getSocket().isConnected()){
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(!clientHandler.getSocket().isConnected()){
+                            if(gameMap.containsKey(clientHandler)){
+                                endGame(clientHandler, false);
+                            }
+                            clientHandler.interrupt();
+                            clientHandlers.remove(clientHandler);
+                        }
+                    }
+                }
                 PlayersManager.getInstance().save();
             }
         });
@@ -86,7 +101,7 @@ public class Server extends Thread{
         while(!isInterrupted() && !serverSocket.isClosed()){
             try {
                 Socket socket = serverSocket.accept();
-                ClientHandler  clientHandler = new ClientHandler(socket.getInputStream(), socket.getOutputStream(), this);
+                ClientHandler  clientHandler = new ClientHandler(socket, socket.getInputStream(), socket.getOutputStream(), this);
                 clientHandlers.add(clientHandler);
                 clientHandler.start();
             } catch (IOException e) {
