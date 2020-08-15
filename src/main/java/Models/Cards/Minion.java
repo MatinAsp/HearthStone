@@ -50,9 +50,24 @@ public class Minion extends Card {
         this.stealth = stealth;
     }
 
+//    @Override
+//    public String toString() {
+//        return super.toString()+" \u2665HP:"+hp+" \u26CFAttack:"+attack+"\n";
+//    }
+
+
     @Override
     public String toString() {
-        return super.toString()+" \u2665HP:"+hp+" \u26CFAttack:"+attack+"\n";
+        return super.toString()+" Minion{" +
+                "hp=" + hp +
+                ", attack=" + attack +
+                ", rush=" + rush +
+                ", charge=" + charge +
+                ", divineShield=" + divineShield +
+                ", taunt=" + taunt +
+                ", stealth=" + stealth +
+                ", actionHandlers=" + actionHandlers +
+                '}';
     }
 
     public int getHp() {

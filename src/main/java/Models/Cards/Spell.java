@@ -12,7 +12,7 @@ public class Spell extends Card {
 
     @Override
     public String toString() {
-        return super.toString()+"\n";
+        return super.toString()+" ";
     }
 
     @Override

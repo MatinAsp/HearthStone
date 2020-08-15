@@ -1,0 +1,53 @@
+USER: ali
+ID: 152822809
+CREATED_AT: 2020/08/15 22:29:58
+PASSWORD: 96670
+
+INFO    2020-08-15 22:29:58,041 - navigate_from_log_in_to_menu
+INFO    2020-08-15 22:30:08,923 - exit
+INFO    2020-08-15 22:31:17,786 - navigate_from_log_in_to_menu
+INFO    2020-08-15 22:31:24,752 - navigate_from_menu_to_settings
+INFO    2020-08-15 22:31:26,776 - navigate_from_settings_to_menu
+INFO    2020-08-15 22:31:26,777 - settings_applied
+DEBUG   2020-08-15 22:31:26,823 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 22:31:28,543 - navigate_from_menu_to_collections
+INFO    2020-08-15 22:31:31,880 - set_current_collections_deck
+INFO    2020-08-15 22:31:33,368 - remove_card_from_deck
+INFO    2020-08-15 22:31:33,751 - remove_card_from_deck
+INFO    2020-08-15 22:31:36,087 - navigate_from_collections_to_menu
+INFO    2020-08-15 22:31:51,823 - exit
+INFO    2020-08-15 22:32:53,241 - navigate_from_log_in_to_menu
+INFO    2020-08-15 22:32:55,303 - navigate_from_menu_to_collections
+DEBUG   2020-08-15 22:32:56,024 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 22:32:57,256 - set_current_collections_deck
+INFO    2020-08-15 22:33:02,947 - set_confirmation
+INFO    2020-08-15 22:33:04,615 - confirmed
+INFO    2020-08-15 22:33:04,616 - new_deck_created
+INFO    2020-08-15 22:33:04,617 - set_collections_current_deck
+INFO    2020-08-15 22:33:05,769 - change_deck's_hero
+INFO    2020-08-15 22:33:07,608 - click_card
+INFO    2020-08-15 22:33:07,609 - add_card_to_deck
+INFO    2020-08-15 22:33:08,047 - click_card
+INFO    2020-08-15 22:33:08,048 - add_card_to_deck
+INFO    2020-08-15 22:33:09,183 - set_collections_current_deck_null
+INFO    2020-08-15 22:33:11,056 - set_current_collections_deck
+INFO    2020-08-15 22:33:11,840 - set_collections_current_deck_null
+INFO    2020-08-15 22:33:13,152 - navigate_from_collections_to_menu
+INFO    2020-08-15 22:33:13,984 - navigate_from_menu_to_collections
+INFO    2020-08-15 22:33:27,312 - navigate_from_collections_to_menu
+INFO    2020-08-15 22:33:29,680 - navigate_from_menu_to_settings
+INFO    2020-08-15 22:33:31,082 - set_confirmation
+INFO    2020-08-15 22:33:34,328 - confirmed
+INFO    2020-08-15 22:33:34,364 - set_alert
+INFO    2020-08-15 22:33:42,727 - alert_dismissed
+INFO    2020-08-15 22:35:08,113 - navigate_from_settings_to_menu
+INFO    2020-08-15 22:35:08,113 - settings_applied
+INFO    2020-08-15 22:35:10,720 - navigate_from_menu_to_store
+INFO    2020-08-15 22:35:19,423 - navigate_from_menu_to_store
+INFO    2020-08-15 22:36:27,256 - navigate_from_menu_to_status
+INFO    2020-08-15 22:36:30,191 - navigate_from_status_to_menu
+INFO    2020-08-15 22:36:30,992 - navigate_from_menu_to_ranking
+INFO    2020-08-15 22:36:36,656 - navigate_from_ranking_to_menu
+INFO    2020-08-15 22:36:43,504 - navigate_from_menu_to_ranking
+INFO    2020-08-15 22:36:44,368 - navigate_from_ranking_to_menu
+INFO    2020-08-15 22:36:53,054 - exit

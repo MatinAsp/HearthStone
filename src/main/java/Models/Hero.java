@@ -85,4 +85,14 @@ public class Hero extends Character{
     public void setHeroPower(HeroPower heroPower) {
         this.heroPower = heroPower;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Hero{" +
+                "hp=" + hp +
+                ", deckMax=" + deckMax +
+                ", heroPower=" + heroPower +
+                ", divineShield=" + divineShield +
+                '}';
+    }
 }

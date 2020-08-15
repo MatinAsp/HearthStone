@@ -1,11 +1,8 @@
 package Models;
 
-import Data.Converter;
 import Data.DataManager;
 import Data.GameConstants;
 import Models.Cards.Card;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.security.SecureRandom;
@@ -223,5 +220,20 @@ public class Deck implements Comparable {
 
     public void setCup(int cup) {
         this.cup = cup;
+    }
+
+    @Override
+    public String toString() {
+        return "Deck{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", cup=" + cup +
+                ", cards=" + cards +
+                ", hero=" + hero +
+                ", playsNumber=" + playsNumber +
+                ", winsNumber=" + winsNumber +
+                ", inOrder=" + inOrder +
+                ", cardsPlaysNumber=" + cardsPlaysNumber +
+                '}';
     }
 }

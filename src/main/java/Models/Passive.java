@@ -23,4 +23,11 @@ public class Passive extends Character{
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Passive{" +
+                "description='" + description + '\'' +
+                '}';
+    }
 }

@@ -2,9 +2,6 @@ package Data;
 
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Enumeration;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 public class JarLoader {
     public static Class loadClass(String className){

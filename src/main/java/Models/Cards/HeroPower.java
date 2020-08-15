@@ -18,7 +18,9 @@ public class HeroPower extends Card implements Cloneable{
 
     @Override
     public String toString() {
-        return super.toString()+"\n";
+        return super.toString()+" HeroPower{" +
+                "charge=" + charge +
+                '}';
     }
 
     @Override

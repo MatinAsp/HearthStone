@@ -24,9 +24,11 @@ public class Player implements Comparable{
     @Column
     private int cup;
     @ManyToMany
+    @JoinTable(name="player_card")
   //  @Cascade(CascadeType.ALL)
     private List<Card> allCards;
     @ManyToMany
+    @JoinTable(name="player_hero")
  //   @Cascade(CascadeType.ALL)
     private List<Hero> allHeroes;
     @OneToMany

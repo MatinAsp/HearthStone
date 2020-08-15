@@ -43,4 +43,12 @@ public class Character implements Cloneable {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

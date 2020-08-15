@@ -20,9 +20,19 @@ public class Weapon extends Card {
         charge = weapon.isCharge();
     }
 
+//    @Override
+//    public String toString() {
+//        return super.toString()+" \u26CADurability:"+durability+" \u26CFAttack:"+attack+"\n";
+//    }
+
+
     @Override
     public String toString() {
-        return super.toString()+" \u26CADurability:"+durability+" \u26CFAttack:"+attack+"\n";
+        return super.toString() + " Weapon{" +
+                "durability=" + durability +
+                ", attack=" + attack +
+                ", charge=" + charge +
+                '}';
     }
 
     public int getDurability() {

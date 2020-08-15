@@ -41,14 +41,27 @@ public class Card extends Character {
         return price;
     }
 
+//    @Override
+//    public String toString(){
+//        String answer="";
+//        answer+="\u26AB "+super.getName()+": ";
+//        answer+=description+"\n";
+//        answer+=" \u2606Type:"+type+" \u2605Rarity:"+rarity+" \u26AAMana:"+mana+" \u26C2Price:"+price+
+//                " \u26C9Class:"+heroClass;
+//        return answer;
+//    }
+
+
     @Override
-    public String toString(){
-        String answer="";
-        answer+="\u26AB "+super.getName()+": ";
-        answer+=description+"\n";
-        answer+=" \u2606Type:"+type+" \u2605Rarity:"+rarity+" \u26AAMana:"+mana+" \u26C2Price:"+price+
-                " \u26C9Class:"+heroClass;
-        return answer;
+    public String toString() {
+        return super.toString() + " Card{" +
+                "rarity='" + rarity + '\'' +
+                ", heroClass='" + heroClass + '\'' +
+                ", type='" + type + '\'' +
+                ", description='" + description + '\'' +
+                ", mana=" + mana +
+                ", price=" + price +
+                '}';
     }
 
     public String getRarity() {

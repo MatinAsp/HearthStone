@@ -121,11 +121,11 @@ public class DataManager {
         }
     }
 
-    public synchronized void deletePlayer(int id) {
+    public synchronized void deletePlayer(Player player) {
         synchronized (lock){
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-            session.delete(String.valueOf(id), Player.class);
+            session.delete(player);
             session.getTransaction().commit();
             session.close();
             //(new File(playersPath+File.separator+username)).delete();
@@ -137,7 +137,13 @@ public class DataManager {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
             session.saveOrUpdate(player);
-            session.getTransaction().commit();
+            try {
+                session.getTransaction().commit();
+            } catch (Exception e){
+                System.out.println(player);
+                e.printStackTrace();
+                throw new RuntimeException();
+            }
             session.close();
 //            FileWriter fileWriter = null;
 //            try {
