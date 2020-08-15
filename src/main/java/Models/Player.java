@@ -5,10 +5,7 @@ import Models.Cards.Card;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAnyAttribute;
 import java.io.IOException;
 import java.util.*;
@@ -37,6 +34,13 @@ public class Player implements Comparable{
     private List<Deck> allDecks;
     @Column
     private String currentDeckName;
+
+    @PostLoad
+    private void postLoad() {
+        this.allDecks = new ArrayList<>(this.allDecks);
+        this.allHeroes = new ArrayList<>(this.allHeroes);
+        this.allCards = new ArrayList<>(this.allCards);
+    }
 
     public Player(
             String username,

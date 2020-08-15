@@ -39,6 +39,12 @@ public class Deck implements Comparable {
     @Cascade(CascadeType.ALL)
     private Map<String, Integer> cardsPlaysNumber;
 
+    @PostLoad
+    private void postLoad() {
+        this.cardsPlaysNumber = new HashMap<>(this.cardsPlaysNumber);
+        this.cards = new ArrayList<>(this.cards);
+    }
+
     public Deck() {
     }
 
