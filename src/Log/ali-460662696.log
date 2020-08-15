@@ -67,3 +67,36 @@ INFO    2020-08-15 23:28:32,730 - navigate_from_menu_to_store
 INFO    2020-08-15 23:30:30,477 - exit
 INFO    2020-08-15 23:31:15,872 - navigate_from_log_in_to_menu
 INFO    2020-08-15 23:31:19,186 - navigate_from_menu_to_store
+DEBUG   2020-08-15 23:31:23,901 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:43:25,853 - exit
+INFO    2020-08-15 23:43:59,385 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:44:01,250 - navigate_from_menu_to_store
+INFO    2020-08-15 23:44:05,659 - store_lock_filter_changed
+INFO    2020-08-15 23:44:06,424 - store_lock_filter_changed
+INFO    2020-08-15 23:44:10,326 - click_card
+INFO    2020-08-15 23:44:10,330 - set_confirmation
+INFO    2020-08-15 23:44:11,042 - confirmed
+INFO    2020-08-15 23:44:11,070 - buy_card
+INFO    2020-08-15 23:44:13,522 - store_lock_filter_changed
+INFO    2020-08-15 23:44:14,122 - store_lock_filter_changed
+DEBUG   2020-08-15 23:44:15,258 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:44:16,914 - click_card
+INFO    2020-08-15 23:44:16,917 - set_confirmation
+INFO    2020-08-15 23:44:17,586 - confirmed
+INFO    2020-08-15 23:44:17,589 - sell_card
+INFO    2020-08-15 23:44:19,482 - click_card
+INFO    2020-08-15 23:44:19,483 - set_confirmation
+INFO    2020-08-15 23:44:20,194 - confirmed
+INFO    2020-08-15 23:44:20,227 - buy_card
+INFO    2020-08-15 23:44:23,090 - navigate_from_store_to_menu
+INFO    2020-08-15 23:44:23,730 - navigate_from_menu_to_collections
+INFO    2020-08-15 23:44:25,138 - hero_filter_changed
+INFO    2020-08-15 23:44:25,564 - hero_filter_changed
+INFO    2020-08-15 23:44:26,443 - hero_filter_changed
+INFO    2020-08-15 23:44:26,471 - hero_filter_changed
+INFO    2020-08-15 23:44:27,731 - hero_filter_changed
+INFO    2020-08-15 23:44:27,760 - hero_filter_changed
+INFO    2020-08-15 23:44:28,834 - hero_filter_changed
+INFO    2020-08-15 23:44:28,859 - hero_filter_changed
+INFO    2020-08-15 23:44:29,866 - navigate_from_collections_to_menu
+INFO    2020-08-15 23:48:46,186 - exit
