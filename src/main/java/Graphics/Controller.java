@@ -129,7 +129,6 @@ public class Controller implements Initializable {
     @FXML
     private void navigateFromRankingToMenu() {
         client.logInfo("navigate_from_ranking_to_menu");
-        MediaManager.getInstance().playMedia(GameConstants.getInstance().getString("menuSound"), -1);
         navigate(rankingPage, menu);
     }
 
