@@ -80,7 +80,7 @@ public class PlayersManager {
         if (password.hashCode() == Integer.parseInt(player.getPassword())) {
             allPlayers.remove(player);
             DataManager dataManager = DataManager.getInstance();
-            dataManager.deletePlayer(player.getUsername());
+            dataManager.deletePlayer(player.getId());
             return;
         }
         else throw new Exception("Wrong Password");

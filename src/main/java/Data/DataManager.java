@@ -11,16 +11,13 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class DataManager {
     static private DataManager dataManager = null;
     private SessionFactory sessionFactory;
     private HashMap<Class, ArrayList> dataMap;
-    private String playersPath;
+//    private String playersPath;
     private String generalPath;
     private Gson gson;
     private Object lock = new Object();
@@ -28,7 +25,7 @@ public class DataManager {
     private DataManager(){
         GameConstants gameConstants = GameConstants.getInstance();
         sessionFactory = buildSessionFactory();
-        playersPath = gameConstants.getString("playerPath");
+      //  playersPath = gameConstants.getString("playerPath");
         generalPath = gameConstants.getString("generalPath");
         gson = new Gson();
         dataMap = new HashMap<>();
@@ -43,12 +40,12 @@ public class DataManager {
                 String className = scanner.next();
                 dataMap.put(
                     Class.forName(className),
-                    loadData(Class.forName(className),gameConstants.getString(Class.forName(className).getSimpleName().toLowerCase()+"Path"))
+                    //loadData(Class.forName(className),gameConstants.getString(Class.forName(className).getSimpleName().toLowerCase()+"Path"))
+                    loadData(Class.forName(className))
                 );
             }
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
-//            LogCenter.getInstance().getLogger().error(e);
         }
     }
 
@@ -58,39 +55,41 @@ public class DataManager {
         return sessionFactory;
     }
 
-    private <T> ArrayList<T> loadData(Class<T> tClass, String address) {
+    private synchronized <T> ArrayList<T> loadData(Class<T> tClass) {
        // System.out.println(address);
-        ArrayList<T> arr = new ArrayList<>();
-        File[] dir = (new File(address)).listFiles();
-        for(File file: dir){
-            if(file.isDirectory()){
-                try {
-                    arr.addAll((ArrayList<T>) loadData(Class.forName(GameConstants.getInstance().getString(file.getName()+"Class")), file.getAbsolutePath()));
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-//                    LogCenter.getInstance().getLogger().error(e);
-                }
-            }
-                else{
-                FileReader fileReader = null;
-                try {
-                    fileReader = new FileReader(file);
-                    T t = gson.fromJson(fileReader,tClass);
-                    Session session = sessionFactory.openSession();
-                    session.beginTransaction();
-                  //  System.out.println(t.getClass() + " " + t.getClass());
-                    session.saveOrUpdate(t);
-                    session.getTransaction().commit();
-                    session.close();
-                    arr.add(t);
-                    fileReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-//                    LogCenter.getInstance().getLogger().error(e);
-                }
-            }
-        }
-        return arr;
+//        ArrayList<T> arr = new ArrayList<>();
+//        File[] dir = (new File(address)).listFiles();
+//        for(File file: dir){
+//            if(file.isDirectory()){
+//                try {
+//                    arr.addAll((ArrayList<T>) loadData(Class.forName(GameConstants.getInstance().getString(file.getName()+"Class")), file.getAbsolutePath()));
+//                } catch (ClassNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//                else{
+//                FileReader fileReader = null;
+//                try {
+//                    fileReader = new FileReader(file);
+//                    T t = gson.fromJson(fileReader,tClass);
+//                    Session session = sessionFactory.openSession();
+//                    session.beginTransaction();
+//                  //  System.out.println(t.getClass() + " " + t.getClass());
+//                    session.saveOrUpdate(t);
+//                    session.getTransaction().commit();
+//                    session.close();
+//                    arr.add(t);
+//                    fileReader.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//        return arr;
+        Session session = sessionFactory.openSession();
+        List<T> list = session.createQuery("from " + tClass.getName(), tClass).getResultList();
+        session.close();
+        return new ArrayList<>(list);
     }
 
     public synchronized static DataManager getInstance() {
@@ -118,28 +117,37 @@ public class DataManager {
 
     public synchronized ArrayList<Player> getAllPlayers() {
         synchronized (lock){
-            return loadData(Player.class, playersPath);
+            return loadData(Player.class);
         }
     }
 
-    public synchronized void deletePlayer(String username) {
+    public synchronized void deletePlayer(int id) {
         synchronized (lock){
-            (new File(playersPath+File.separator+username)).delete();
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.delete(String.valueOf(id), Player.class);
+            session.getTransaction().commit();
+            session.close();
+            //(new File(playersPath+File.separator+username)).delete();
         }
     }
 
     public synchronized void savePlayer(Player player) {
         synchronized (lock) {
-            FileWriter fileWriter = null;
-            try {
-                fileWriter = new FileWriter(playersPath + File.separator + player.getUsername());
-                gson.toJson(player, fileWriter);
-                fileWriter.flush();
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-//            LogCenter.getInstance().getLogger().error(e);
-            }
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.saveOrUpdate(player);
+            session.getTransaction().commit();
+            session.close();
+//            FileWriter fileWriter = null;
+//            try {
+//                fileWriter = new FileWriter(playersPath + File.separator + player.getUsername());
+//                gson.toJson(player, fileWriter);
+//                fileWriter.flush();
+//                fileWriter.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 
@@ -149,7 +157,6 @@ public class DataManager {
             scanner = new Scanner(new File(generalPath+File.separator+"Default Cards"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-//            LogCenter.getInstance().getLogger().error(e);
         }
         ArrayList<Card> defaultCards = new ArrayList<>();
         while (scanner.hasNext()){
@@ -165,7 +172,6 @@ public class DataManager {
             scanner = new Scanner(new File(generalPath+File.separator+"Default Heroes"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-//            LogCenter.getInstance().getLogger().error(e);
         }
         ArrayList<Hero> defaultHeroes = new ArrayList<>();
         while (scanner.hasNext()){
@@ -208,7 +214,6 @@ public class DataManager {
                 deck.addCard(card);
                 cards.remove(card);
             } catch (Exception e) {
-//                LogCenter.getInstance().getLogger().error(e);
                 e.printStackTrace();
             }
         }
