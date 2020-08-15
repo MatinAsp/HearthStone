@@ -4,13 +4,23 @@ import Exceptions.GameOverException;
 import Interfaces.Cloneable;
 import Models.Cards.Card;
 import Models.Cards.HeroPower;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Hero extends Character{
-    private int hp,deckMax;
+    @Column
+    private int hp;
+    @Column
+    private int deckMax;
+    @OneToOne
+    @Cascade(CascadeType.ALL)
     private HeroPower heroPower;
+    @Column
     private boolean divineShield;
 
     public Hero(){ }
