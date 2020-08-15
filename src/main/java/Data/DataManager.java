@@ -5,6 +5,10 @@ import Models.*;
 import Models.Cards.*;
 import Models.Character;
 import com.google.gson.Gson;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,6 +18,7 @@ import java.util.Scanner;
 
 public class DataManager {
     static private DataManager dataManager = null;
+    private SessionFactory sessionFactory;
     private HashMap<Class, ArrayList> dataMap;
     private String playersPath;
     private String generalPath;
@@ -22,6 +27,7 @@ public class DataManager {
 
     private DataManager(){
         GameConstants gameConstants = GameConstants.getInstance();
+        sessionFactory = buildSessionFactory();
         playersPath = gameConstants.getString("playerPath");
         generalPath = gameConstants.getString("generalPath");
         gson = new Gson();
@@ -44,6 +50,12 @@ public class DataManager {
             e.printStackTrace();
 //            LogCenter.getInstance().getLogger().error(e);
         }
+    }
+
+    private SessionFactory buildSessionFactory() {
+        final ServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+        SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        return sessionFactory;
     }
 
     private <T> ArrayList<T> loadData(Class<T> tClass, String address) {
