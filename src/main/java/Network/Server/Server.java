@@ -123,6 +123,7 @@ public class Server extends Thread{
     }
 
     public synchronized void startOnlineGame(ClientHandler clientHandler1) throws Exception {
+        if(waitingList.contains(clientHandler1)) return;
         checkForDeck(clientHandler1);
         boolean check = false;
         for(ClientHandler clientHandler2: waitingList){
@@ -139,6 +140,7 @@ public class Server extends Thread{
     }
 
     public synchronized void startDeckReaderGame(ClientHandler clientHandler1) throws Exception {
+        if (deckReaderWaitingList.contains(clientHandler1)) return;
         boolean check = false;
         for(ClientHandler clientHandler2: deckReaderWaitingList){
             if(isOkForPlay(clientHandler1, clientHandler2)){

@@ -769,6 +769,7 @@ public class Controller implements Initializable {
     @FXML
     private void startDeckReader(){
         ArrayList<Deck> decks = DataManager.getInstance().getDeckReaderDecks();
+        waitPane.setVisible(true);
         client.sendDeckReaderPlayRequest();
     }
 
