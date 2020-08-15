@@ -102,6 +102,7 @@ public class DataManager {
     public  synchronized <T extends Character> ArrayList<T> getAllCharacter(Class<T> tClass){
         ArrayList<T> arr = new ArrayList<>();
         for(T t: (ArrayList<T>) dataMap.get(tClass)){
+            if(t instanceof Card && t instanceof HeroPower) continue;
             arr.add((T) t.newOne());
         }
         return arr;

@@ -1,0 +1,18 @@
+USER: matin
+ID: 1907753075
+CREATED_AT: 2020/08/15 23:04:51
+PASSWORD: 103668357
+
+INFO    2020-08-15 23:04:51,232 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:04:52,546 - navigate_from_menu_to_settings
+INFO    2020-08-15 23:04:54,483 - navigate_from_settings_to_menu
+INFO    2020-08-15 23:04:54,484 - settings_applied
+DEBUG   2020-08-15 23:05:03,438 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:13:05,388 - exit
+INFO    2020-08-15 23:15:43,301 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:18:27,925 - exit
+INFO    2020-08-15 23:25:39,279 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:25:40,538 - set_alert
+INFO    2020-08-15 23:25:47,418 - alert_dismissed
+DEBUG   2020-08-15 23:25:55,551 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:27:46,717 - exit

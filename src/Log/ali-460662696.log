@@ -1,0 +1,69 @@
+USER: ali
+ID: 460662696
+CREATED_AT: 2020/08/15 22:58:55
+PASSWORD: 96670
+
+INFO    2020-08-15 22:58:55,325 - navigate_from_log_in_to_menu
+INFO    2020-08-15 22:58:57,186 - navigate_from_menu_to_collections
+INFO    2020-08-15 22:58:58,905 - set_current_collections_deck
+INFO    2020-08-15 22:59:01,017 - click_card
+INFO    2020-08-15 22:59:01,018 - add_card_to_deck
+INFO    2020-08-15 22:59:02,025 - click_card
+INFO    2020-08-15 22:59:02,026 - add_card_to_deck
+INFO    2020-08-15 22:59:03,817 - hero_filter_changed
+INFO    2020-08-15 22:59:04,308 - hero_filter_changed
+INFO    2020-08-15 22:59:04,985 - hero_filter_changed
+INFO    2020-08-15 22:59:08,466 - hero_filter_changed
+INFO    2020-08-15 23:00:41,417 - hero_filter_changed
+INFO    2020-08-15 23:00:42,546 - navigate_from_collections_to_menu
+INFO    2020-08-15 23:00:43,306 - navigate_from_menu_to_collections
+INFO    2020-08-15 23:00:43,307 - hero_filter_changed
+INFO    2020-08-15 23:01:00,025 - navigate_from_collections_to_menu
+INFO    2020-08-15 23:01:01,001 - navigate_from_menu_to_collections
+INFO    2020-08-15 23:03:20,625 - navigate_from_collections_to_menu
+INFO    2020-08-15 23:03:27,227 - start_a_game
+INFO    2020-08-15 23:03:32,019 - passive selected
+INFO    2020-08-15 23:03:33,537 - passive selected
+INFO    2020-08-15 23:03:37,547 - draw card
+INFO    2020-08-15 23:03:45,281 - drag_detected
+INFO    2020-08-15 23:03:45,706 - drag_ended
+INFO    2020-08-15 23:03:45,740 - play Voodoo Doctor
+INFO    2020-08-15 23:03:45,741 - card summoned
+INFO    2020-08-15 23:03:47,833 - end turn player 1
+INFO    2020-08-15 23:03:47,834 - draw card
+INFO    2020-08-15 23:03:50,777 - drag_detected
+INFO    2020-08-15 23:03:51,161 - drag_ended
+ERROR   2020-08-15 23:03:51,170 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-15 23:03:51,993 - play Polymorph
+INFO    2020-08-15 23:03:57,582 - end turn player 2
+INFO    2020-08-15 23:03:57,585 - draw card
+INFO    2020-08-15 23:04:04,109 - back_to_menu
+INFO    2020-08-15 23:04:05,433 - navigate_from_menu_to_status
+INFO    2020-08-15 23:04:20,481 - navigate_from_status_to_menu
+INFO    2020-08-15 23:04:33,001 - navigate_from_menu_to_ranking
+INFO    2020-08-15 23:04:34,273 - navigate_from_ranking_to_menu
+INFO    2020-08-15 23:05:00,552 - set_alert
+INFO    2020-08-15 23:05:30,130 - alert_dismissed
+INFO    2020-08-15 23:13:08,329 - exit
+INFO    2020-08-15 23:15:35,418 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:15:47,945 - set_alert
+INFO    2020-08-15 23:15:48,890 - alert_dismissed
+INFO    2020-08-15 23:18:25,868 - exit
+INFO    2020-08-15 23:18:53,136 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:18:56,930 - start_a_game
+DEBUG   2020-08-15 23:19:06,105 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:20:55,258 - end turn player 1
+INFO    2020-08-15 23:20:55,259 - draw card
+INFO    2020-08-15 23:22:55,332 - end turn player 2
+INFO    2020-08-15 23:22:55,334 - draw card
+INFO    2020-08-15 23:23:07,561 - passive selected
+INFO    2020-08-15 23:23:08,322 - passive selected
+INFO    2020-08-15 23:23:12,027 - exit
+INFO    2020-08-15 23:25:17,098 - navigate_from_log_in_to_menu
+DEBUG   2020-08-15 23:25:33,002 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:27:44,626 - exit
+INFO    2020-08-15 23:28:28,508 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:28:32,730 - navigate_from_menu_to_store
+INFO    2020-08-15 23:30:30,477 - exit
+INFO    2020-08-15 23:31:15,872 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:31:19,186 - navigate_from_menu_to_store

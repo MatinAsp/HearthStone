@@ -45,6 +45,8 @@ public class GraphicRender {
             e.printStackTrace();
         }
         CardGraphicsController cardGraphicsController = fxmlLoader.getController();
+        System.out.println(card);
+        System.out.println(cardGraphicsController);
         cardGraphicsController.priceVisible(priceTag);
         cardGraphicsController.lockVisible(lock);
         ImageView imageView = new ImageView(AssetManager.getInstance().getImage("X"));

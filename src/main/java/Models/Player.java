@@ -37,6 +37,8 @@ public class Player implements Comparable{
     @Column
     private String currentDeckName;
 
+    @PostUpdate
+    @PostPersist
     @PostLoad
     private void postLoad() {
         this.allDecks = new ArrayList<>(this.allDecks);
