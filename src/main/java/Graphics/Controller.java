@@ -208,7 +208,7 @@ public class Controller implements Initializable {
     private GridPane decksStatusBoard;
     private void loadStatus(){
         ArrayList<Node> nodes = new ArrayList<>();
-        ArrayList<Deck> decks = client.getPlayer().getAllDecks();
+        List<Deck> decks = client.getPlayer().getAllDecks();
         for(int i = decks.size() - 1; i>=0; i--){
             Deck deck = decks.get(i);
             boolean isUsing = (client.getPlayer().getCurrentDeckName().equals(deck.getName())) ? true : false;

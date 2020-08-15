@@ -107,7 +107,7 @@ public class Player implements Comparable{
 
     public boolean usingCard(String card){
         for(Deck deck: allDecks){
-            ArrayList<Card> heroCards = deck.getCards();
+            List<Card> heroCards = deck.getCards();
             for(Card playerCard: heroCards){
                 if(playerCard.getName().equals(card)){
                     return true;
@@ -197,16 +197,16 @@ public class Player implements Comparable{
         return wallet;
     }
 
-    public ArrayList<Hero> getAllHeroes(){
-        return (ArrayList<Hero>) allHeroes;
+    public List<Hero> getAllHeroes(){
+        return allHeroes;
     }
 
     public int getId(){
         return id;
     }
 
-    public ArrayList<Card> getAllCards(){
-        return (ArrayList<Card>) allCards;
+    public List<Card> getAllCards(){
+        return allCards;
     }
 
     public String getCurrentDeckName(){
@@ -245,9 +245,9 @@ public class Player implements Comparable{
         return ans;
     }
 
-    public ArrayList<Deck> getAllDecks() {
+    public List<Deck> getAllDecks() {
         Collections.sort(allDecks);
-        return (ArrayList<Deck>) allDecks;
+        return allDecks;
     }
 
     public int getCup() {

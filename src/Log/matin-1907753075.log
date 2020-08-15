@@ -16,3 +16,17 @@ INFO    2020-08-15 23:25:40,538 - set_alert
 INFO    2020-08-15 23:25:47,418 - alert_dismissed
 DEBUG   2020-08-15 23:25:55,551 - Connection pool now considered primed; min-size will be maintained
 INFO    2020-08-15 23:27:46,717 - exit
+INFO    2020-08-15 23:55:21,837 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:55:23,206 - set_alert
+INFO    2020-08-15 23:55:34,098 - alert_dismissed
+DEBUG   2020-08-15 23:55:40,507 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:57:04,484 - exit
+INFO    2020-08-15 23:57:31,980 - navigate_from_log_in_to_menu
+DEBUG   2020-08-15 23:57:47,124 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:58:32,166 - exit
+INFO    2020-08-15 23:59:23,741 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:59:31,601 - start_a_game
+INFO    2020-08-15 23:59:42,938 - end turn player 2
+INFO    2020-08-15 23:59:42,940 - draw card
+INFO    2020-08-15 23:59:47,667 - passive selected
+INFO    2020-08-16 00:00:14,774 - draw card

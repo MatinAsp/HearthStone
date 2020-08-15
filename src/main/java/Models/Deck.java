@@ -162,8 +162,8 @@ public class Deck implements Comparable {
         return name;
     }
 
-    public ArrayList<Card> getCards() {
-        return (ArrayList<Card>) cards;
+    public List<Card> getCards() {
+        return cards;
     }
 
     public int getPlaysNumber() {

@@ -100,3 +100,53 @@ INFO    2020-08-15 23:44:28,834 - hero_filter_changed
 INFO    2020-08-15 23:44:28,859 - hero_filter_changed
 INFO    2020-08-15 23:44:29,866 - navigate_from_collections_to_menu
 INFO    2020-08-15 23:48:46,186 - exit
+INFO    2020-08-15 23:54:20,816 - navigate_from_log_in_to_menu
+INFO    2020-08-15 23:54:29,234 - navigate_from_menu_to_store
+INFO    2020-08-15 23:54:32,746 - navigate_from_store_to_menu
+INFO    2020-08-15 23:54:33,521 - navigate_from_menu_to_collections
+INFO    2020-08-15 23:54:36,906 - hero_filter_changed
+INFO    2020-08-15 23:54:37,609 - hero_filter_changed
+DEBUG   2020-08-15 23:54:39,273 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:54:40,707 - hero_filter_changed
+INFO    2020-08-15 23:54:40,743 - hero_filter_changed
+INFO    2020-08-15 23:54:41,834 - set_current_collections_deck
+INFO    2020-08-15 23:54:45,098 - remove_card_from_deck
+INFO    2020-08-15 23:54:46,658 - remove_card_from_deck
+INFO    2020-08-15 23:54:47,362 - remove_card_from_deck
+INFO    2020-08-15 23:54:47,619 - remove_card_from_deck
+INFO    2020-08-15 23:54:49,722 - click_card
+INFO    2020-08-15 23:54:49,723 - add_card_to_deck
+INFO    2020-08-15 23:54:50,099 - click_card
+INFO    2020-08-15 23:54:50,099 - add_card_to_deck
+INFO    2020-08-15 23:54:50,330 - click_card
+INFO    2020-08-15 23:54:50,331 - add_card_to_deck
+INFO    2020-08-15 23:54:50,547 - click_card
+ERROR   2020-08-15 23:54:50,548 - java.lang.Exception: You can't add more of this card.
+INFO    2020-08-15 23:54:50,549 - set_alert
+INFO    2020-08-15 23:54:52,491 - alert_dismissed
+INFO    2020-08-15 23:54:53,034 - click_card
+INFO    2020-08-15 23:54:53,034 - add_card_to_deck
+INFO    2020-08-15 23:54:53,603 - click_card
+INFO    2020-08-15 23:54:53,603 - add_card_to_deck
+INFO    2020-08-15 23:54:56,306 - click_card
+INFO    2020-08-15 23:54:56,306 - add_card_to_deck
+INFO    2020-08-15 23:54:56,642 - click_card
+INFO    2020-08-15 23:54:56,643 - add_card_to_deck
+INFO    2020-08-15 23:54:57,570 - click_card
+ERROR   2020-08-15 23:54:57,571 - java.lang.Exception: You can't add more of this card.
+INFO    2020-08-15 23:54:57,572 - set_alert
+INFO    2020-08-15 23:54:58,378 - alert_dismissed
+INFO    2020-08-15 23:54:59,267 - navigate_from_collections_to_menu
+INFO    2020-08-15 23:57:02,507 - exit
+INFO    2020-08-15 23:57:38,422 - navigate_from_log_in_to_menu
+DEBUG   2020-08-15 23:57:41,762 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:57:55,759 - set_alert
+INFO    2020-08-15 23:58:01,538 - alert_dismissed
+INFO    2020-08-15 23:58:30,348 - exit
+INFO    2020-08-15 23:59:10,162 - navigate_from_log_in_to_menu
+DEBUG   2020-08-15 23:59:26,570 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-15 23:59:30,671 - start_a_game
+INFO    2020-08-15 23:59:38,738 - passive selected
+INFO    2020-08-15 23:59:42,937 - end turn player 1
+INFO    2020-08-15 23:59:42,939 - draw card
+INFO    2020-08-16 00:00:14,707 - draw card
