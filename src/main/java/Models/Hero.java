@@ -5,6 +5,9 @@ import Interfaces.Cloneable;
 import Models.Cards.Card;
 import Models.Cards.HeroPower;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Hero extends Character{
     private int hp,deckMax;
     private HeroPower heroPower;

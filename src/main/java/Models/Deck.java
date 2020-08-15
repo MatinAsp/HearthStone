@@ -1,22 +1,40 @@
 package Models;
 
+import Data.Converter;
 import Data.DataManager;
 import Data.GameConstants;
 import Models.Cards.Card;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
+import javax.persistence.*;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+@Entity
 public class Deck implements Comparable {
+    @Id
     private String name;
-    private int id = new SecureRandom().nextInt(), cup = 0;
-    private ArrayList<Card> cards;
+    @Convert(converter = Converter.class)
+    private int id = new SecureRandom().nextInt();
+    @Column
+    private int cup = 0;
+    @OneToMany
+    @Cascade(CascadeType.ALL)
+    private List<Card> cards;
+    @OneToOne
     private Hero hero;
-    private int playsNumber, winsNumber;
+    @Column
+    private int playsNumber;
+    @Column
+    private int winsNumber;
+    @Column
     private boolean inOrder;
-    private HashMap<String, Integer> cardsPlaysNumber;
+    
+    private Map<String, Integer> cardsPlaysNumber;
 
     public Deck() {
     }
@@ -137,7 +155,7 @@ public class Deck implements Comparable {
     }
 
     public ArrayList<Card> getCards() {
-        return cards;
+        return (ArrayList<Card>) cards;
     }
 
     public int getPlaysNumber() {

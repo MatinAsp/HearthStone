@@ -1,8 +1,10 @@
 package Models;
 
+import Data.Converter;
 import Interfaces.Cloneable;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.security.SecureRandom;
@@ -12,7 +14,7 @@ public class Character implements Cloneable {
     @Id
     @Column
     private String name;
-
+    @Convert(converter = Converter.class)
     private int id = new SecureRandom().nextInt();
 
     public Character(){ }
