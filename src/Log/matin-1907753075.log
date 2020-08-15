@@ -125,3 +125,201 @@ INFO    2020-08-16 00:31:10,903 - hero power used
 INFO    2020-08-16 00:31:23,247 - back_to_menu
 INFO    2020-08-16 00:32:04,011 - navigate_from_menu_to_ranking
 INFO    2020-08-16 00:32:32,746 - navigate_from_ranking_to_menu
+INFO    2020-08-16 00:34:45,658 - exit
+INFO    2020-08-16 00:36:01,305 - navigate_from_log_in_to_menu
+DEBUG   2020-08-16 00:36:02,336 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 00:36:03,882 - navigate_from_menu_to_ranking
+INFO    2020-08-16 00:36:05,907 - navigate_from_ranking_to_menu
+INFO    2020-08-16 00:36:08,923 - navigate_from_menu_to_status
+INFO    2020-08-16 00:36:12,179 - navigate_from_status_to_menu
+INFO    2020-08-16 00:36:31,813 - start_a_game
+INFO    2020-08-16 00:36:38,410 - passive selected
+INFO    2020-08-16 00:36:40,467 - draw card
+INFO    2020-08-16 00:36:46,252 - draw card
+INFO    2020-08-16 00:36:52,467 - drag_detected
+INFO    2020-08-16 00:36:52,733 - drag_ended
+INFO    2020-08-16 00:36:52,797 - play Bloodclaw
+INFO    2020-08-16 00:36:52,816 - card summoned
+INFO    2020-08-16 00:36:54,557 - end turn player 1
+INFO    2020-08-16 00:36:54,559 - draw card
+INFO    2020-08-16 00:37:00,252 - play Book of Specters
+INFO    2020-08-16 00:37:06,904 - game over
+INFO    2020-08-16 00:37:08,187 - back_to_menu
+INFO    2020-08-16 00:37:13,245 - start_a_game
+INFO    2020-08-16 00:37:22,187 - passive selected
+INFO    2020-08-16 00:37:32,645 - draw card
+INFO    2020-08-16 00:37:32,646 - draw card
+INFO    2020-08-16 00:37:43,814 - draw card
+INFO    2020-08-16 00:37:51,741 - play Strength in Numbers
+INFO    2020-08-16 00:38:25,698 - end turn player 2
+INFO    2020-08-16 00:38:25,700 - draw card
+INFO    2020-08-16 00:38:25,702 - draw card
+INFO    2020-08-16 00:38:38,763 - drag_detected
+INFO    2020-08-16 00:38:39,602 - drag_ended
+INFO    2020-08-16 00:38:39,699 - play Book of Specters
+INFO    2020-08-16 00:38:39,701 - draw card
+INFO    2020-08-16 00:40:26,043 - end turn player 1
+INFO    2020-08-16 00:40:26,044 - draw card
+INFO    2020-08-16 00:41:25,319 - end turn player 2
+INFO    2020-08-16 00:41:25,322 - draw card
+INFO    2020-08-16 00:41:25,324 - draw card
+INFO    2020-08-16 00:41:32,448 - end turn player 1
+INFO    2020-08-16 00:41:32,452 - draw card
+INFO    2020-08-16 00:41:38,256 - end turn player 2
+INFO    2020-08-16 00:41:38,260 - draw card
+INFO    2020-08-16 00:41:38,275 - draw card
+INFO    2020-08-16 00:41:51,029 - end turn player 1
+INFO    2020-08-16 00:41:51,031 - draw card
+INFO    2020-08-16 00:41:59,946 - end turn player 2
+INFO    2020-08-16 00:41:59,947 - draw card
+INFO    2020-08-16 00:41:59,949 - draw card
+INFO    2020-08-16 00:42:06,835 - drag_detected
+INFO    2020-08-16 00:42:07,586 - drag_ended
+ERROR   2020-08-16 00:42:07,599 - Exceptions.SelectionNeededException: Selection Needed
+ERROR   2020-08-16 00:42:10,680 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-16 00:42:17,810 - drag_detected
+INFO    2020-08-16 00:42:18,563 - drag_ended
+INFO    2020-08-16 00:42:18,629 - play Bluegill Warrior
+INFO    2020-08-16 00:42:18,632 - card summoned
+INFO    2020-08-16 00:42:22,626 - drag_detected
+INFO    2020-08-16 00:42:23,090 - drag_ended
+ERROR   2020-08-16 00:42:23,096 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 00:42:23,781 - play Polymorph
+INFO    2020-08-16 00:42:26,200 - end turn player 1
+INFO    2020-08-16 00:42:26,203 - draw card
+INFO    2020-08-16 00:42:29,525 - end turn player 2
+INFO    2020-08-16 00:42:29,530 - draw card
+INFO    2020-08-16 00:42:29,532 - draw card
+INFO    2020-08-16 00:42:38,451 - drag_detected
+INFO    2020-08-16 00:42:38,842 - drag_ended
+ERROR   2020-08-16 00:42:38,847 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 00:42:39,592 - play Gnomish Army Knife
+ERROR   2020-08-16 00:42:44,470 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 00:42:45,234 - Sheep attacked Mage
+INFO    2020-08-16 00:42:50,659 - drag_detected
+INFO    2020-08-16 00:42:51,162 - drag_ended
+ERROR   2020-08-16 00:42:51,167 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-16 00:42:56,150 - end turn player 1
+INFO    2020-08-16 00:42:56,151 - draw card
+INFO    2020-08-16 00:43:01,615 - play Sheep
+INFO    2020-08-16 00:43:01,617 - card summoned
+INFO    2020-08-16 00:43:03,716 - end turn player 2
+INFO    2020-08-16 00:43:03,719 - draw card
+INFO    2020-08-16 00:43:03,731 - draw card
+INFO    2020-08-16 00:43:12,466 - drag_detected
+INFO    2020-08-16 00:43:13,091 - drag_ended
+ERROR   2020-08-16 00:43:13,106 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 00:43:14,595 - play Mortal Coil
+INFO    2020-08-16 00:43:14,596 - draw card
+INFO    2020-08-16 00:43:20,483 - drag_detected
+INFO    2020-08-16 00:43:21,194 - drag_ended
+INFO    2020-08-16 00:43:21,287 - play Locust
+INFO    2020-08-16 00:43:21,288 - card summoned
+INFO    2020-08-16 00:43:23,877 - end turn player 1
+INFO    2020-08-16 00:43:23,879 - draw card
+INFO    2020-08-16 00:43:26,912 - end turn player 2
+INFO    2020-08-16 00:43:26,914 - draw card
+INFO    2020-08-16 00:43:26,915 - draw card
+INFO    2020-08-16 00:43:36,067 - drag_detected
+INFO    2020-08-16 00:43:36,563 - drag_ended
+INFO    2020-08-16 00:43:36,596 - play Psychic Conjurer
+INFO    2020-08-16 00:43:36,609 - card summoned
+INFO    2020-08-16 00:43:40,635 - drag_detected
+INFO    2020-08-16 00:43:41,092 - drag_ended
+INFO    2020-08-16 00:43:41,145 - play High Priest Amet
+INFO    2020-08-16 00:43:41,146 - card summoned
+INFO    2020-08-16 00:43:43,784 - end turn player 1
+INFO    2020-08-16 00:43:43,786 - draw card
+INFO    2020-08-16 00:43:50,815 - play Sathrovarr
+INFO    2020-08-16 00:43:50,826 - card summoned
+INFO    2020-08-16 00:43:53,867 - end turn player 2
+INFO    2020-08-16 00:43:53,872 - draw card
+INFO    2020-08-16 00:43:53,877 - draw card
+INFO    2020-08-16 00:43:59,843 - drag_detected
+INFO    2020-08-16 00:44:00,251 - drag_ended
+INFO    2020-08-16 00:44:00,310 - play Wisp
+INFO    2020-08-16 00:44:00,312 - card summoned
+INFO    2020-08-16 00:44:04,427 - drag_detected
+INFO    2020-08-16 00:44:04,939 - drag_ended
+ERROR   2020-08-16 00:44:04,944 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 00:44:06,266 - play Pharaoh's Blessing
+INFO    2020-08-16 00:44:10,704 - end turn player 1
+INFO    2020-08-16 00:44:10,712 - draw card
+INFO    2020-08-16 00:44:14,481 - end turn player 2
+INFO    2020-08-16 00:44:16,676 - end turn player 1
+INFO    2020-08-16 00:44:16,681 - draw card
+INFO    2020-08-16 00:44:22,020 - game over
+INFO    2020-08-16 00:44:23,539 - back_to_menu
+INFO    2020-08-16 00:44:25,834 - navigate_from_menu_to_status
+INFO    2020-08-16 00:44:30,147 - navigate_from_status_to_menu
+INFO    2020-08-16 00:44:31,290 - navigate_from_menu_to_ranking
+INFO    2020-08-16 00:44:55,459 - navigate_from_ranking_to_menu
+INFO    2020-08-16 00:44:58,451 - start_a_game
+INFO    2020-08-16 00:45:00,780 - passive selected
+INFO    2020-08-16 00:45:02,207 - back_to_menu
+INFO    2020-08-16 00:45:03,219 - navigate_from_menu_to_ranking
+INFO    2020-08-16 00:45:24,738 - navigate_from_ranking_to_menu
+INFO    2020-08-16 00:45:26,843 - start_a_game
+INFO    2020-08-16 00:45:29,227 - passive selected
+INFO    2020-08-16 00:45:35,363 - drag_detected
+INFO    2020-08-16 00:45:35,908 - drag_ended
+INFO    2020-08-16 00:45:35,989 - play Strength in Numbers
+INFO    2020-08-16 00:47:25,572 - end turn player 1
+INFO    2020-08-16 00:47:25,597 - draw card
+INFO    2020-08-16 00:49:25,957 - end turn player 2
+INFO    2020-08-16 00:49:25,964 - draw card
+INFO    2020-08-16 00:51:26,096 - end turn player 1
+INFO    2020-08-16 00:51:26,099 - draw card
+INFO    2020-08-16 00:52:03,818 - exit
+INFO    2020-08-16 00:54:15,530 - navigate_from_log_in_to_menu
+INFO    2020-08-16 00:54:27,523 - navigate_from_menu_to_ranking
+INFO    2020-08-16 00:54:28,603 - navigate_from_ranking_to_menu
+DEBUG   2020-08-16 00:54:31,982 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 01:09:05,348 - exit
+INFO    2020-08-16 01:20:17,749 - navigate_from_log_in_to_menu
+DEBUG   2020-08-16 01:20:27,962 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 01:20:32,187 - start_a_game
+INFO    2020-08-16 01:20:43,235 - passive selected
+INFO    2020-08-16 01:20:51,478 - drag_detected
+INFO    2020-08-16 01:20:54,547 - drag_ended
+INFO    2020-08-16 01:20:54,986 - play Strength in Numbers
+INFO    2020-08-16 01:21:10,705 - end turn player 1
+INFO    2020-08-16 01:21:10,722 - draw card
+INFO    2020-08-16 01:21:14,776 - end turn player 2
+INFO    2020-08-16 01:21:14,802 - draw card
+INFO    2020-08-16 01:21:21,007 - end turn player 1
+INFO    2020-08-16 01:21:21,048 - draw card
+INFO    2020-08-16 01:21:24,008 - end turn player 2
+INFO    2020-08-16 01:21:24,024 - draw card
+INFO    2020-08-16 01:21:33,014 - drag_detected
+INFO    2020-08-16 01:21:33,675 - drag_ended
+INFO    2020-08-16 01:21:33,924 - play Dreadscale
+INFO    2020-08-16 01:21:33,967 - card summoned
+INFO    2020-08-16 01:21:38,032 - end turn player 1
+INFO    2020-08-16 01:21:38,034 - draw card
+INFO    2020-08-16 01:21:42,777 - end turn player 2
+INFO    2020-08-16 01:21:42,789 - draw card
+INFO    2020-08-16 01:21:48,121 - end turn player 1
+INFO    2020-08-16 01:21:48,123 - draw card
+INFO    2020-08-16 01:21:57,587 - play Learn Draconic
+INFO    2020-08-16 01:22:02,769 - end turn player 2
+INFO    2020-08-16 01:22:03,054 - draw card
+INFO    2020-08-16 01:22:07,713 - drag_detected
+INFO    2020-08-16 01:22:08,710 - drag_ended
+INFO    2020-08-16 01:22:08,975 - play Sheep
+INFO    2020-08-16 01:22:09,032 - card summoned
+INFO    2020-08-16 01:22:12,740 - end turn player 1
+INFO    2020-08-16 01:22:12,750 - draw card
+INFO    2020-08-16 01:22:26,529 - play WANTED!
+INFO    2020-08-16 01:22:29,270 - end turn player 2
+INFO    2020-08-16 01:22:29,281 - draw card
+INFO    2020-08-16 01:22:42,204 - end turn player 1
+INFO    2020-08-16 01:22:42,207 - draw card
+INFO    2020-08-16 01:22:45,389 - end turn player 2
+INFO    2020-08-16 01:22:45,408 - draw card
+INFO    2020-08-16 01:22:51,256 - drag_detected
+INFO    2020-08-16 01:22:51,648 - drag_ended
+INFO    2020-08-16 01:22:51,849 - play Stormwind Champion
+INFO    2020-08-16 01:22:52,060 - card summoned
+INFO    2020-08-16 01:22:59,888 - back_to_menu
+INFO    2020-08-16 01:23:00,758 - exit

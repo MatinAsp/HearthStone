@@ -25,6 +25,8 @@ public class Competitor{
     private Weapon heroWeapon = null;
     private ArrayList<Card> inDeckCards, inHandCards;
     private ArrayList<Minion> onBoardCards;
+    private ArrayList<Quest> quests;
+    private ArrayList<Double> questsProgresses;
     private HashMap<Quest, QuestActionHandler> questsInProgress = new HashMap<>();
     private HashMap<Class, Integer> spentMana = new HashMap<>();
     private ArrayList<ActionHandler> deckAddActions = new ArrayList<>(), handAddActions = new ArrayList<>();
@@ -46,6 +48,8 @@ public class Competitor{
         inDeckCards = new ArrayList<>();
         inHandCards = new ArrayList<>();
         onBoardCards = new ArrayList<>();
+        questsProgresses = new ArrayList<>();
+        quests = new ArrayList<>();
         spentMana.put(Minion.class, 0);
         spentMana.put(Weapon.class, 0);
         spentMana.put(Spell.class, 0);
@@ -176,18 +180,24 @@ public class Competitor{
     public void runQuestRewards() {
         ArrayList<Quest> quests = new ArrayList<>();
         quests.addAll(questsInProgress.keySet());
+        questsProgresses.clear();
         for (Quest quest: quests){
             if(questsInProgress.get(quest).getQuestPercent() >= 1){
                 QuestActionHandler questActionHandler = questsInProgress.get(quest);
                 questsInProgress.remove(quest);
+                this.quests.remove(quest);
                 try {
                     questActionHandler.runAction();
                 } catch (Exception e) { }
+            }
+            else {
+                questsProgresses.add(questsInProgress.get(quest).getQuestPercent());
             }
         }
     }
 
     public void addQuest(Quest quest, QuestActionHandler questActionHandler){
+        quests.add(quest);
         questsInProgress.put(quest, questActionHandler);
     }
 
@@ -209,10 +219,6 @@ public class Competitor{
         }
         hero.getHeroPower().setCharge(false);
         leftMana -= hero.getHeroPower().getMana();
-    }
-
-    public HashMap<Quest, QuestActionHandler> getQuestsInProgress() {
-        return questsInProgress;
     }
 
     public String getUsername() {
@@ -241,5 +247,21 @@ public class Competitor{
 
     public void setTime(int time) {
         this.time = time;
+    }
+
+    public ArrayList<Quest> getQuests() {
+        return quests;
+    }
+
+    public void setQuests(ArrayList<Quest> quests) {
+        this.quests = quests;
+    }
+
+    public ArrayList<Double> getQuestsProgresses() {
+        return questsProgresses;
+    }
+
+    public void setQuestsProgresses(ArrayList<Double> questsProgresses) {
+        this.questsProgresses = questsProgresses;
     }
 }

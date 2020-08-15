@@ -568,10 +568,10 @@ public class BattleGroundController implements Initializable {
         logScroll.setVisible(false);
         questsStatus.getChildren().clear();
         questScroll.setVisible(true);
-        HashMap<Quest, QuestActionHandler> map = game.getCompetitor(side).getQuestsInProgress();
+        ArrayList<Quest> quests = game.getCompetitor(side).getQuests();
         int cnt = 0;
-        for(Quest quest: map.keySet()){
-            Parent parent = GraphicRender.getInstance().buildQuestStatus(quest, map.get(quest));
+        for(Quest quest: quests){
+            Parent parent = GraphicRender.getInstance().buildQuestStatus(quest, game.getCompetitor(side).getQuestsProgresses().get(quests.indexOf(quest)));
             showCardOnBoard(parent, side, quest);
             GridPane.setConstraints(parent, 0, cnt++);
             questsStatus.getChildren().add(parent);

@@ -9,6 +9,8 @@ extra lib:
     log4j
     gson
     jackson
+    hibernate
+    postgresql
     
 sources:
 
@@ -48,6 +50,7 @@ explain structure:
     models and logic part are separated.
     mvc and requset-response pattern.
     have reflection part.
+    using database
     
 negative point:
 

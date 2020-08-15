@@ -205,13 +205,13 @@ public class GraphicRender {
         return graphicCard;
     }
 
-    public Pane buildQuestStatus(Quest quest, QuestActionHandler questActionHandler) {
+    public Pane buildQuestStatus(Quest quest, Double percent) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("questStatus.fxml"));
         Pane questStatusGraphics = null;
         try {
             questStatusGraphics = fxmlLoader.load();
             QuestStatusController questStatusController = fxmlLoader.getController();
-            questStatusController.setPercent("Percent: "+String.format("%.2f", questActionHandler.getQuestPercent()*100));
+            questStatusController.setPercent("Percent: "+String.format("%.2f", percent*100));
             questStatusController.setQuestPic(AssetManager.getInstance().getImage(quest.getName()));
         } catch (IOException e) {
             e.printStackTrace();
