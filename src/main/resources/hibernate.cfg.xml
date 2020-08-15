@@ -1,0 +1,27 @@
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection setting -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hearthstone</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">amatina</property>
+        <!-- SQl dialect -->
+        <property name="dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
+        <!-- update the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+
+
+        <mapping class="Models.Player"/>
+        <mapping class="Models.Character"/>
+        <mapping class="Models.Hero"/>
+        <mapping class="Models.Deck"/>
+        <mapping class="Models.Cards.Card"/>
+        <mapping class="Models.Cards.Spell"/>
+        <mapping class="Models.Cards.Weapon"/>
+        <mapping class="Models.Cards.Quest"/>
+        <mapping class="Models.Cards.Minion"/>
+        <mapping class="Models.Cards.HeroPower"/>
+        <mapping class="Models.Passive"/>
+
+    </session-factory>
+</hibernate-configuration>
