@@ -35,6 +35,7 @@ public class Deck implements Comparable {
     private int winsNumber;
     @Column
     private boolean inOrder;
+    @ElementCollection
     @Cascade(CascadeType.ALL)
     private Map<String, Integer> cardsPlaysNumber;
 
