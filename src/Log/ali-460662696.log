@@ -412,3 +412,9 @@ INFO    2020-08-16 01:22:52,370 - card summoned
 INFO    2020-08-16 01:23:00,409 - game over
 INFO    2020-08-16 01:23:03,507 - back_to_menu
 INFO    2020-08-16 01:23:04,111 - exit
+INFO    2020-08-16 01:51:45,036 - navigate_from_log_in_to_menu
+INFO    2020-08-16 01:51:47,037 - navigate_from_menu_to_settings
+INFO    2020-08-16 01:51:49,037 - navigate_from_settings_to_menu
+INFO    2020-08-16 01:51:49,038 - settings_applied
+DEBUG   2020-08-16 01:52:00,599 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 01:52:11,024 - exit

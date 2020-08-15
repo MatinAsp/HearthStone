@@ -323,3 +323,8 @@ INFO    2020-08-16 01:22:51,849 - play Stormwind Champion
 INFO    2020-08-16 01:22:52,060 - card summoned
 INFO    2020-08-16 01:22:59,888 - back_to_menu
 INFO    2020-08-16 01:23:00,758 - exit
+INFO    2020-08-16 01:35:46,532 - navigate_from_log_in_to_menu
+INFO    2020-08-16 01:35:51,598 - set_alert
+DEBUG   2020-08-16 01:35:56,661 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 01:36:00,108 - alert_dismissed
+INFO    2020-08-16 01:38:52,113 - exit
