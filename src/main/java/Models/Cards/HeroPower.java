@@ -1,6 +1,11 @@
 package Models.Cards;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class HeroPower extends Card implements Cloneable{
+    @Column
     private boolean charge;
 
     public HeroPower(){}

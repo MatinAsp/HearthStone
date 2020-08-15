@@ -8,9 +8,17 @@ import javax.persistence.Entity;
 @Entity
 public class Card extends Character {
     @Column
-    private String rarity,heroClass,type;
+    private String rarity;
+    @Column
+    private String heroClass;
+    @Column
+    private String type;
+    @Column
     private String description;
-    private int mana,price;
+    @Column
+    private int mana;
+    @Column
+    private int price;
 
     public Card(){
 

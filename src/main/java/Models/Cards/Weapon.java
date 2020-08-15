@@ -1,7 +1,15 @@
 package Models.Cards;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Weapon extends Card {
-    private int durability,attack;
+    @Column
+    private int durability;
+    @Column
+    private int attack;
+    @Column
     private boolean charge;
     public Weapon(){ }
 

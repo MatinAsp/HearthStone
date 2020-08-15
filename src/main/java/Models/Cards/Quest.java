@@ -1,6 +1,8 @@
 package Models.Cards;
 
+import javax.persistence.Entity;
 
+@Entity
 public class Quest extends Card {
     public Quest(){}
 

@@ -5,12 +5,29 @@ import Interfaces.Cloneable;
 import Models.Character;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 
+@Entity
 @JsonIgnoreProperties(value = {"actionHandlers"})
 public class Minion extends Card {
-    private int hp,attack;
-    private boolean rush, charge, divineShield, taunt, stealth;
+    @Column
+    private int hp;
+    @Column
+    private int attack;
+    @Column
+    private boolean rush;
+    @Column
+    private boolean charge;
+    @Column
+    private boolean divineShield;
+    @Column
+    private boolean taunt;
+    @Column
+    private boolean stealth;
+    @Transient
     private ArrayList<ActionHandler> actionHandlers = new ArrayList<>();
     public Minion(){ }
 
