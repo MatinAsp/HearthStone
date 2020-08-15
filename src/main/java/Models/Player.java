@@ -23,10 +23,10 @@ public class Player implements Comparable{
     private int wallet;
     @Column
     private int cup;
-    @OneToMany
+    @ManyToMany
     @Cascade(CascadeType.ALL)
     private List<Card> allCards;
-    @OneToMany
+    @ManyToMany
     @Cascade(CascadeType.ALL)
     private List<Hero> allHeroes;
     @OneToMany

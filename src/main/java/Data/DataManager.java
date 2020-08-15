@@ -1,10 +1,10 @@
 package Data;
 
-import Log.LogCenter;
 import Models.*;
 import Models.Cards.*;
 import Models.Character;
 import com.google.gson.Gson;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -59,6 +59,7 @@ public class DataManager {
     }
 
     private <T> ArrayList<T> loadData(Class<T> tClass, String address) {
+       // System.out.println(address);
         ArrayList<T> arr = new ArrayList<>();
         File[] dir = (new File(address)).listFiles();
         for(File file: dir){
@@ -74,7 +75,14 @@ public class DataManager {
                 FileReader fileReader = null;
                 try {
                     fileReader = new FileReader(file);
-                    arr.add(gson.fromJson(fileReader,tClass));
+                    T t = gson.fromJson(fileReader,tClass);
+                    Session session = sessionFactory.openSession();
+                    session.beginTransaction();
+                  //  System.out.println(t.getClass() + " " + t.getClass());
+                    session.saveOrUpdate(t);
+                    session.getTransaction().commit();
+                    session.close();
+                    arr.add(t);
                     fileReader.close();
                 } catch (IOException e) {
                     e.printStackTrace();

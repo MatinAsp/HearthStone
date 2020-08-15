@@ -25,7 +25,7 @@ import java.util.Scanner;
 
 public class Server extends Thread{
     private static Server server;
-    private static int defaultPort = 8080;
+    private static int defaultPort = 9090;
     private ArrayList<ClientHandler> clientHandlers;
     private ArrayList<ClientHandler>  waitingList, deckReaderWaitingList;
     private ServerSocket serverSocket;

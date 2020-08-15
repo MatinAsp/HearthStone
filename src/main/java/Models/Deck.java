@@ -16,17 +16,17 @@ import java.util.Map;
 
 @Entity
 public class Deck implements Comparable {
-    @Id
     @Column
     private String name;
-    @Convert(converter = Converter.class)
+    @Id
+    @Column
     private int id = new SecureRandom().nextInt();
     @Column
     private int cup = 0;
-    @OneToMany
+    @ManyToMany
     @Cascade(CascadeType.ALL)
     private List<Card> cards;
-    @OneToOne
+    @ManyToOne
     @Cascade(CascadeType.ALL)
     private Hero hero;
     @Column
