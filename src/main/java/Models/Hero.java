@@ -18,7 +18,7 @@ public class Hero extends Character{
     @Column
     private int deckMax;
     @OneToOne
-    @Cascade(CascadeType.ALL)
+  //  @Cascade(CascadeType.ALL)
     private HeroPower heroPower;
     @Column
     private boolean divineShield;

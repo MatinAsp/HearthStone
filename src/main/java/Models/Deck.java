@@ -24,10 +24,10 @@ public class Deck implements Comparable {
     @Column
     private int cup = 0;
     @ManyToMany
-    @Cascade(CascadeType.ALL)
+ //   @Cascade(CascadeType.ALL)
     private List<Card> cards;
     @ManyToOne
-    @Cascade(CascadeType.ALL)
+  //  @Cascade(CascadeType.ALL)
     private Hero hero;
     @Column
     private int playsNumber;
@@ -36,7 +36,7 @@ public class Deck implements Comparable {
     @Column
     private boolean inOrder;
     @ElementCollection
-    @Cascade(CascadeType.ALL)
+ //   @Cascade(CascadeType.ALL)
     private Map<String, Integer> cardsPlaysNumber;
 
     @PostLoad

@@ -24,10 +24,10 @@ public class Player implements Comparable{
     @Column
     private int cup;
     @ManyToMany
-    @Cascade(CascadeType.ALL)
+  //  @Cascade(CascadeType.ALL)
     private List<Card> allCards;
     @ManyToMany
-    @Cascade(CascadeType.ALL)
+ //   @Cascade(CascadeType.ALL)
     private List<Hero> allHeroes;
     @OneToMany
     @Cascade(CascadeType.ALL)

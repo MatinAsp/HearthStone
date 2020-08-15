@@ -790,7 +790,7 @@ true posixrules
     <database id="2" parent="1" name="hearthstone">
       <ObjectId>16974</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>715</IntrospectionStateNumber>
+      <IntrospectionStateNumber>722</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -847,7 +847,7 @@ true posixrules
       <Comment>standard public schema</Comment>
       <StateNumber>276</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>716</IntrospectionStateNumber>
+      <IntrospectionStateNumber>723</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="2" name="heap">
