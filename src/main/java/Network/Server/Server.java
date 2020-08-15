@@ -13,8 +13,8 @@ import Models.Deck;
 import Models.InfoPack;
 import Models.Passive;
 import Models.Player;
-import Network.Client.Client;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -193,6 +193,14 @@ public class Server extends Thread{
 
     public void performAction(ClientHandler clientHandler, ArrayList<InfoPack> infoPacks) throws GameOverException, SelectionNeededException, InvalidChoiceException {
         Game game = gameMap.get(clientHandler);
+        if(gameKindMap.get(game).equals("online") && infoPacks.get(0).getSide() != 0){
+            throw new InvalidChoiceException();
+        }
+        if(infoPacks.get(0).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
+            for(InfoPack infoPack: infoPacks){
+                infoPack.setSide((infoPack.getSide() + 1) %2);
+            }
+        }
         try {
             if(game.getInfoPack(infoPacks.get(0).getCharacter().getId()).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername()) && gameKindMap.get(game).equals("online")){
                 throw new InvalidChoiceException();
@@ -341,7 +349,7 @@ public class Server extends Thread{
                 cups.add(String.valueOf(player.getCup()));
             }
             cnt++;
-            if(player.getUsername().equals(clientHandler.getPlayer().getUsername())) ownRank = players.indexOf(player) + 1;
+            if(player.getUsername().equals(clientHandler.getPlayer().getUsername())) ownRank = players.size() - players.indexOf(player);
         }
         clientHandler.sendRanking(usernames, cups, ownRank);
     }

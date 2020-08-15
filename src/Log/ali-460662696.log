@@ -170,3 +170,71 @@ INFO    2020-08-16 00:02:27,826 - passive selected
 INFO    2020-08-16 00:02:30,818 - set_alert
 INFO    2020-08-16 00:02:31,626 - alert_dismissed
 INFO    2020-08-16 00:02:33,282 - exit
+INFO    2020-08-16 00:07:09,666 - navigate_from_log_in_to_menu
+INFO    2020-08-16 00:07:23,162 - navigate_from_menu_to_settings
+DEBUG   2020-08-16 00:07:23,919 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 00:07:24,994 - navigate_from_settings_to_menu
+INFO    2020-08-16 00:07:24,995 - settings_applied
+INFO    2020-08-16 00:07:31,915 - start_a_game
+INFO    2020-08-16 00:07:37,403 - passive selected
+INFO    2020-08-16 00:08:12,275 - draw card
+INFO    2020-08-16 00:08:15,035 - drag_detected
+INFO    2020-08-16 00:08:15,442 - drag_ended
+INFO    2020-08-16 00:08:15,906 - drag_detected
+INFO    2020-08-16 00:08:16,306 - drag_ended
+INFO    2020-08-16 00:08:16,492 - play Bloodclaw
+INFO    2020-08-16 00:08:16,495 - card summoned
+ERROR   2020-08-16 00:08:19,226 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 00:08:19,845 - Bloodclaw attacked Mage
+INFO    2020-08-16 00:08:22,016 - end turn player 1
+INFO    2020-08-16 00:08:22,023 - draw card
+INFO    2020-08-16 00:08:29,062 - end turn player 2
+INFO    2020-08-16 00:08:29,063 - draw card
+INFO    2020-08-16 00:08:35,698 - back_to_menu
+INFO    2020-08-16 00:08:40,179 - navigate_from_menu_to_settings
+INFO    2020-08-16 00:08:41,907 - navigate_from_settings_to_menu
+INFO    2020-08-16 00:08:41,908 - settings_applied
+INFO    2020-08-16 00:08:54,531 - exit
+INFO    2020-08-16 00:14:03,855 - navigate_from_log_in_to_menu
+DEBUG   2020-08-16 00:14:12,069 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 00:14:30,553 - start_a_game
+INFO    2020-08-16 00:14:58,010 - passive selected
+INFO    2020-08-16 00:15:01,946 - draw card
+INFO    2020-08-16 00:16:03,826 - end turn player 1
+INFO    2020-08-16 00:16:03,899 - draw card
+INFO    2020-08-16 00:16:15,825 - game over
+INFO    2020-08-16 00:16:18,610 - back_to_menu
+INFO    2020-08-16 00:16:20,299 - exit
+INFO    2020-08-16 00:28:44,972 - navigate_from_log_in_to_menu
+DEBUG   2020-08-16 00:29:00,153 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 00:30:19,515 - start_a_game
+INFO    2020-08-16 00:30:23,531 - passive selected
+INFO    2020-08-16 00:30:30,509 - draw card
+INFO    2020-08-16 00:30:33,865 - draw card
+INFO    2020-08-16 00:30:37,298 - drag_detected
+INFO    2020-08-16 00:30:37,851 - drag_ended
+INFO    2020-08-16 00:30:37,990 - play Voodoo Doctor
+INFO    2020-08-16 00:30:37,991 - card summoned
+INFO    2020-08-16 00:30:43,661 - end turn player 1
+INFO    2020-08-16 00:30:43,676 - draw card
+INFO    2020-08-16 00:30:48,399 - play Wisp
+INFO    2020-08-16 00:30:48,401 - card summoned
+INFO    2020-08-16 00:30:51,388 - end turn player 2
+INFO    2020-08-16 00:30:51,390 - draw card
+ERROR   2020-08-16 00:30:54,301 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 00:30:54,762 - Voodoo Doctor attacked Wisp
+ERROR   2020-08-16 00:30:58,841 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 00:30:59,691 - hero power used
+INFO    2020-08-16 00:31:06,226 - end turn player 1
+INFO    2020-08-16 00:31:06,228 - draw card
+INFO    2020-08-16 00:31:10,936 - hero power used
+INFO    2020-08-16 00:31:23,452 - game over
+INFO    2020-08-16 00:31:25,011 - back_to_menu
+INFO    2020-08-16 00:31:27,034 - navigate_from_menu_to_ranking
+INFO    2020-08-16 00:31:29,139 - navigate_from_ranking_to_menu
+INFO    2020-08-16 00:31:30,290 - navigate_from_menu_to_ranking
+INFO    2020-08-16 00:31:37,755 - navigate_from_ranking_to_menu
+INFO    2020-08-16 00:31:40,003 - navigate_from_menu_to_status
+INFO    2020-08-16 00:31:51,323 - navigate_from_status_to_menu
+INFO    2020-08-16 00:31:52,594 - navigate_from_menu_to_ranking
+INFO    2020-08-16 00:32:01,731 - navigate_from_ranking_to_menu
