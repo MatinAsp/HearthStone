@@ -2,7 +2,12 @@ package Models.Cards;
 
 import Models.Character;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Card extends Character {
+    @Column
     private String rarity,heroClass,type;
     private String description;
     private int mana,price;

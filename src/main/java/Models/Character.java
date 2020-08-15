@@ -2,10 +2,17 @@ package Models;
 
 import Interfaces.Cloneable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.security.SecureRandom;
 
+@Entity
 public class Character implements Cloneable {
+    @Id
+    @Column
     private String name;
+
     private int id = new SecureRandom().nextInt();
 
     public Character(){ }

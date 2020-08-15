@@ -42,5 +42,8 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.1'
 
+    compile 'org.postgresql:postgresql:42.2.14'
+
+    compile 'org.hibernate:hibernate-core:5.4.12.Final'
 
 }
