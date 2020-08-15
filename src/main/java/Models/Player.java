@@ -2,16 +2,40 @@ package Models;
 
 import Data.DataManager;
 import Models.Cards.Card;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAnyAttribute;
 import java.io.IOException;
 import java.util.*;
 
+@Entity
 public class Player implements Comparable{
-    private String username,password;
-    private int wallet, id, cup;
-    private ArrayList<Card> allCards;
-    private ArrayList<Hero> allHeroes;
-    private ArrayList<Deck> allDecks;
+    @Id
+    @Column
+    private int id;
+    @Column
+    private String username;
+    @Column
+    private String password;
+    @Column
+    private int wallet;
+    @Column
+    private int cup;
+    @OneToMany
+    @Cascade(CascadeType.ALL)
+    private List<Card> allCards;
+    @OneToMany
+    @Cascade(CascadeType.ALL)
+    private List<Hero> allHeroes;
+    @OneToMany
+    @Cascade(CascadeType.ALL)
+    private List<Deck> allDecks;
+    @Column
     private String currentDeckName;
 
     public Player(
@@ -166,7 +190,7 @@ public class Player implements Comparable{
     }
 
     public ArrayList<Hero> getAllHeroes(){
-        return allHeroes;
+        return (ArrayList<Hero>) allHeroes;
     }
 
     public int getId(){
@@ -174,7 +198,7 @@ public class Player implements Comparable{
     }
 
     public ArrayList<Card> getAllCards(){
-        return allCards;
+        return (ArrayList<Card>) allCards;
     }
 
     public String getCurrentDeckName(){
@@ -215,7 +239,7 @@ public class Player implements Comparable{
 
     public ArrayList<Deck> getAllDecks() {
         Collections.sort(allDecks);
-        return allDecks;
+        return (ArrayList<Deck>) allDecks;
     }
 
     public int getCup() {

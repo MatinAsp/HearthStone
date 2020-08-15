@@ -17,6 +17,7 @@ import java.util.Map;
 @Entity
 public class Deck implements Comparable {
     @Id
+    @Column
     private String name;
     @Convert(converter = Converter.class)
     private int id = new SecureRandom().nextInt();

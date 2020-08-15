@@ -1,7 +1,11 @@
 package Models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
+@Entity
 public class Passive extends Character{
+    @Column
     private String description;
 
     private Passive(Passive passive){
