@@ -21,7 +21,11 @@ sources:
     ali tavasoly for jackson
     ali tavasoly and https://stackoverflow.com/questions/11016092/how-to-load-classes-at-runtime-from-a-folder-or-jar 
     for JarLoader class
+    amirmohammad sadat shoukohi for database
+    
+database source code:
 
+    http://GitHub.com/samssh/hamAfzayi
 
 explain structure:
 
@@ -50,7 +54,7 @@ explain structure:
     models and logic part are separated.
     mvc and requset-response pattern.
     have reflection part.
-    using database
+    using database.
     
 negative point:
 
