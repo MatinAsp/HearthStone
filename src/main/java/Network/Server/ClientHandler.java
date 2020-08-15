@@ -6,6 +6,7 @@ import Exceptions.GameOverException;
 import Exceptions.InvalidChoiceException;
 import Exceptions.SelectionNeededException;
 import Logic.Game;
+import Logic.GameFactory;
 import Logic.PlayersManager;
 import Models.Cards.Card;
 import Models.Deck;
@@ -198,6 +199,7 @@ public class ClientHandler extends Thread{
 
     public void endGame(Game game) {
         try {
+            game = GameFactory.getInstance().getSafeGame(game);
             send(new String[]{"gameOver", JacksonMapper.getNetworkMapper().writeValueAsString(game)});
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -219,6 +221,7 @@ public class ClientHandler extends Thread{
 
     public void sendGameStart(Game game, int time){
         try {
+            game = GameFactory.getInstance().getSafeGame(game);
             send(new String[]{"startGame", JacksonMapper.getNetworkMapper().writeValueAsString(game), Integer.toString(time)});
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -227,6 +230,7 @@ public class ClientHandler extends Thread{
 
     public void sendGameUpdate(Game game, int time){
         try {
+            game = GameFactory.getInstance().getSafeGame(game);
             send(new String[]{"updateGame", JacksonMapper.getNetworkMapper().writeValueAsString(game), Integer.toString(time)});
         } catch (JsonProcessingException e) {
             e.printStackTrace();

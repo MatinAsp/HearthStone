@@ -60,7 +60,7 @@ negative point:
 
      using dupricated method in JacksonMapper class.
      dont have chat and game show for other people.
-     dont have a algorithm for matching players.
+     have a weak algorithm for matching players.
          
 before compiling, please install the game's font form the following address:
 

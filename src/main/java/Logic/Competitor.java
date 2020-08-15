@@ -32,6 +32,20 @@ public class Competitor{
     private ArrayList<ActionHandler> deckAddActions = new ArrayList<>(), handAddActions = new ArrayList<>();
     private int drawNumber;
 
+    public Competitor(Competitor competitor) {
+        username = competitor.username;
+        fullMana = competitor.fullMana;
+        leftMana = competitor.leftMana;
+        time = competitor.time;
+        hero = competitor.hero;
+        heroWeapon = competitor.heroWeapon;
+        inDeckCards = competitor.inDeckCards;
+        inHandCards = competitor.inHandCards;
+        onBoardCards = competitor.onBoardCards;
+        quests = competitor.quests;
+        questsProgresses = competitor.questsProgresses;
+    }
+
     public void addDeckAddActions(ActionHandler actionHandler){
         deckAddActions.add(actionHandler);
     }

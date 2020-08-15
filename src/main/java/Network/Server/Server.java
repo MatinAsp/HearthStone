@@ -14,7 +14,6 @@ import Models.InfoPack;
 import Models.Passive;
 import Models.Player;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -179,8 +178,10 @@ public class Server extends Thread{
     }
 
     private boolean isOkForPlay(ClientHandler clientHandler1, ClientHandler clientHandler2) {
-        //todo
-        return true;
+        double cup1 = clientHandler1.getPlayer().getCup();
+        double cup2 = clientHandler2.getPlayer().getCup();
+        if(GameConstants.getInstance().getInteger("cupGap") >= Math.abs(cup1 - cup2)) return true;
+        return false;
     }
 
     public void exitClient(ClientHandler clientHandler) {
@@ -196,7 +197,7 @@ public class Server extends Thread{
         if(gameKindMap.get(game).equals("online") && infoPacks.get(0).getSide() != 0){
             throw new InvalidChoiceException();
         }
-        if(infoPacks.get(0).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
+        if(gameKindMap.get(game).equals("online") && infoPacks.get(0).getSide() != game.getCompetitorIndex(clientHandler.getPlayer().getUsername())){
             for(InfoPack infoPack: infoPacks){
                 infoPack.setSide((infoPack.getSide() + 1) %2);
             }

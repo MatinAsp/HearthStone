@@ -418,3 +418,106 @@ INFO    2020-08-16 01:51:49,037 - navigate_from_settings_to_menu
 INFO    2020-08-16 01:51:49,038 - settings_applied
 DEBUG   2020-08-16 01:52:00,599 - Connection pool now considered primed; min-size will be maintained
 INFO    2020-08-16 01:52:11,024 - exit
+INFO    2020-08-16 02:07:31,485 - navigate_from_log_in_to_menu
+INFO    2020-08-16 02:07:35,911 - set_alert
+ERROR   2020-08-16 02:07:35,916 - java.lang.NullPointerException
+INFO    2020-08-16 02:07:35,978 - start_a_game
+DEBUG   2020-08-16 02:07:45,495 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 02:07:51,364 - alert_dismissed
+INFO    2020-08-16 02:07:53,181 - passive selected
+INFO    2020-08-16 02:07:55,636 - passive selected
+ERROR   2020-08-16 02:07:56,294 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-16 02:08:17,925 - back_to_menu
+INFO    2020-08-16 02:08:22,421 - exit
+INFO    2020-08-16 02:10:51,522 - navigate_from_log_in_to_menu
+INFO    2020-08-16 02:10:56,587 - start_a_game
+DEBUG   2020-08-16 02:10:58,799 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 02:11:11,012 - passive selected
+INFO    2020-08-16 02:11:13,972 - passive selected
+ERROR   2020-08-16 02:11:14,444 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-16 02:11:20,691 - draw card
+INFO    2020-08-16 02:11:20,693 - draw card
+INFO    2020-08-16 02:11:37,215 - drag_detected
+INFO    2020-08-16 02:11:37,739 - drag_ended
+INFO    2020-08-16 02:11:39,399 - drag_detected
+INFO    2020-08-16 02:11:39,900 - drag_ended
+ERROR   2020-08-16 02:11:39,934 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-16 02:11:42,409 - drag_detected
+INFO    2020-08-16 02:11:43,139 - drag_ended
+ERROR   2020-08-16 02:11:43,174 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-16 02:11:44,207 - end turn player 1
+INFO    2020-08-16 02:11:44,209 - draw card
+INFO    2020-08-16 02:11:48,090 - end turn player 2
+INFO    2020-08-16 02:11:48,091 - draw card
+INFO    2020-08-16 02:11:54,113 - drag_detected
+INFO    2020-08-16 02:11:55,981 - drag_ended
+ERROR   2020-08-16 02:11:56,001 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-16 02:11:59,639 - back_to_menu
+INFO    2020-08-16 02:12:00,929 - exit
+INFO    2020-08-16 02:14:12,120 - navigate_from_log_in_to_menu
+INFO    2020-08-16 02:14:19,728 - start_a_game
+DEBUG   2020-08-16 02:14:19,795 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 02:14:24,869 - passive selected
+INFO    2020-08-16 02:14:27,061 - passive selected
+ERROR   2020-08-16 02:14:27,254 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-16 02:14:33,013 - draw card
+INFO    2020-08-16 02:14:40,037 - draw card
+INFO    2020-08-16 02:14:44,351 - drag_detected
+INFO    2020-08-16 02:14:45,965 - drag_ended
+INFO    2020-08-16 02:14:46,059 - play Wisp
+INFO    2020-08-16 02:14:46,061 - card summoned
+INFO    2020-08-16 02:14:48,203 - end turn player 1
+INFO    2020-08-16 02:14:48,206 - draw card
+INFO    2020-08-16 02:14:51,914 - drag_detected
+INFO    2020-08-16 02:14:52,436 - drag_ended
+INFO    2020-08-16 02:14:52,600 - play Voodoo Doctor
+INFO    2020-08-16 02:14:52,603 - card summoned
+INFO    2020-08-16 02:14:56,635 - end turn player 2
+INFO    2020-08-16 02:14:56,638 - draw card
+INFO    2020-08-16 02:14:56,640 - draw card
+ERROR   2020-08-16 02:15:02,058 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 02:15:04,352 - Wisp attacked Mage
+INFO    2020-08-16 02:15:08,285 - end turn player 1
+INFO    2020-08-16 02:15:08,290 - draw card
+INFO    2020-08-16 02:15:11,330 - back_to_menu
+INFO    2020-08-16 02:15:14,189 - start_a_game
+INFO    2020-08-16 02:15:16,620 - passive selected
+INFO    2020-08-16 02:15:32,452 - passive selected
+ERROR   2020-08-16 02:15:32,547 - Exceptions.InvalidChoiceException: Invalid Choice
+INFO    2020-08-16 02:16:43,331 - exit
+INFO    2020-08-16 02:18:06,162 - navigate_from_log_in_to_menu
+DEBUG   2020-08-16 02:18:19,017 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 02:18:34,302 - start_a_game
+INFO    2020-08-16 02:18:42,813 - draw card
+INFO    2020-08-16 02:18:49,091 - passive selected
+INFO    2020-08-16 02:18:53,143 - draw card
+INFO    2020-08-16 02:18:57,844 - play Bluegill Warrior
+INFO    2020-08-16 02:18:57,859 - card summoned
+INFO    2020-08-16 02:19:00,628 - end turn player 2
+INFO    2020-08-16 02:19:00,656 - draw card
+INFO    2020-08-16 02:19:07,074 - drag_detected
+INFO    2020-08-16 02:19:07,476 - drag_ended
+ERROR   2020-08-16 02:19:07,531 - Exceptions.SelectionNeededException: Selection Needed
+INFO    2020-08-16 02:19:08,333 - play Polymorph
+INFO    2020-08-16 02:19:15,882 - back_to_menu
+INFO    2020-08-16 02:19:48,441 - exit
+INFO    2020-08-16 02:31:12,504 - navigate_from_log_in_to_menu
+DEBUG   2020-08-16 02:31:26,695 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 02:31:30,970 - start_a_game
+INFO    2020-08-16 02:31:33,166 - passive selected
+INFO    2020-08-16 02:31:39,438 - draw card
+INFO    2020-08-16 02:31:46,033 - end turn player 1
+INFO    2020-08-16 02:31:46,036 - draw card
+INFO    2020-08-16 02:31:46,040 - draw card
+INFO    2020-08-16 02:31:53,329 - play Voodoo Doctor
+INFO    2020-08-16 02:31:53,345 - card summoned
+INFO    2020-08-16 02:31:59,198 - end turn player 2
+INFO    2020-08-16 02:31:59,199 - draw card
+INFO    2020-08-16 02:32:02,462 - end turn player 1
+INFO    2020-08-16 02:32:02,465 - draw card
+INFO    2020-08-16 02:32:02,468 - draw card
+INFO    2020-08-16 02:32:16,767 - game over
+INFO    2020-08-16 02:32:23,469 - back_to_menu
+INFO    2020-08-16 02:32:24,293 - navigate_from_menu_to_ranking
+INFO    2020-08-16 02:32:26,237 - navigate_from_ranking_to_menu
+INFO    2020-08-16 02:32:27,366 - exit

@@ -45,6 +45,15 @@ public class Game {
         actions = new Actions(this);
     }
 
+    public Game(Game game) {
+        competitor[0]= new Competitor(game.getCompetitor(0));
+        competitor[1]= new Competitor(game.getCompetitor(1));
+        turn = game.getTurn();
+        winner = game.getWinner();
+        isWithBot = game.isWithBot();
+        actionRequest = game.getActionRequest();
+    }
+
     public ActionRequest getActionRequest(){
         return actionRequest;
     }

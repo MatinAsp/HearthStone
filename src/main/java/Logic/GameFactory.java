@@ -69,6 +69,7 @@ public class GameFactory {
 
     public Game getPrivateGame(String username, Game game){
         try {
+            game = getSafeGame(game);
             game = JacksonMapper.getNetworkMapper().readValue(JacksonMapper.getNetworkMapper().writeValueAsString(game), Game.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -86,5 +87,9 @@ public class GameFactory {
         while (cnt-- > 0){
             cards.add(new Card());
         }
+    }
+
+    public Game getSafeGame(Game game) {
+        return new Game(game);
     }
 }

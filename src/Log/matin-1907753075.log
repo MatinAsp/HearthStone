@@ -328,3 +328,51 @@ INFO    2020-08-16 01:35:51,598 - set_alert
 DEBUG   2020-08-16 01:35:56,661 - Connection pool now considered primed; min-size will be maintained
 INFO    2020-08-16 01:36:00,108 - alert_dismissed
 INFO    2020-08-16 01:38:52,113 - exit
+INFO    2020-08-16 02:18:26,563 - navigate_from_log_in_to_menu
+DEBUG   2020-08-16 02:18:31,731 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 02:18:32,363 - start_a_game
+INFO    2020-08-16 02:18:37,677 - passive selected
+INFO    2020-08-16 02:18:42,882 - draw card
+INFO    2020-08-16 02:18:53,067 - draw card
+INFO    2020-08-16 02:18:57,080 - drag_detected
+INFO    2020-08-16 02:18:57,571 - drag_ended
+INFO    2020-08-16 02:18:57,840 - play Bluegill Warrior
+INFO    2020-08-16 02:18:57,859 - card summoned
+INFO    2020-08-16 02:19:00,624 - end turn player 1
+INFO    2020-08-16 02:19:00,655 - draw card
+INFO    2020-08-16 02:19:10,126 - play Polymorph
+INFO    2020-08-16 02:19:16,202 - game over
+INFO    2020-08-16 02:19:17,812 - back_to_menu
+INFO    2020-08-16 02:19:20,323 - start_a_game
+INFO    2020-08-16 02:19:25,132 - passive selected
+INFO    2020-08-16 02:19:26,956 - passive selected
+INFO    2020-08-16 02:19:30,612 - draw card
+INFO    2020-08-16 02:19:34,120 - draw card
+INFO    2020-08-16 02:19:37,607 - end turn player 1
+INFO    2020-08-16 02:19:37,609 - draw card
+INFO    2020-08-16 02:19:40,404 - end turn player 2
+INFO    2020-08-16 02:19:40,405 - draw card
+INFO    2020-08-16 02:19:44,413 - back_to_menu
+INFO    2020-08-16 02:19:45,789 - exit
+INFO    2020-08-16 02:31:21,747 - navigate_from_log_in_to_menu
+INFO    2020-08-16 02:31:32,668 - start_a_game
+DEBUG   2020-08-16 02:31:34,031 - Connection pool now considered primed; min-size will be maintained
+INFO    2020-08-16 02:31:37,445 - passive selected
+INFO    2020-08-16 02:31:39,440 - draw card
+INFO    2020-08-16 02:31:46,033 - end turn player 2
+INFO    2020-08-16 02:31:46,036 - draw card
+INFO    2020-08-16 02:31:46,040 - draw card
+INFO    2020-08-16 02:31:52,588 - drag_detected
+INFO    2020-08-16 02:31:52,904 - drag_ended
+INFO    2020-08-16 02:31:53,314 - play Voodoo Doctor
+INFO    2020-08-16 02:31:53,342 - card summoned
+INFO    2020-08-16 02:31:59,451 - end turn player 1
+INFO    2020-08-16 02:31:59,469 - draw card
+INFO    2020-08-16 02:32:02,464 - end turn player 2
+INFO    2020-08-16 02:32:02,468 - draw card
+INFO    2020-08-16 02:32:02,563 - draw card
+INFO    2020-08-16 02:32:16,327 - back_to_menu
+INFO    2020-08-16 02:32:17,405 - navigate_from_menu_to_status
+INFO    2020-08-16 02:32:19,380 - navigate_from_status_to_menu
+INFO    2020-08-16 02:32:20,197 - navigate_from_menu_to_ranking
+INFO    2020-08-16 02:32:34,292 - exit
