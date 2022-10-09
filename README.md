@@ -66,6 +66,4 @@ before compiling, please install the game's font form the following address:
 
     src/main/resources/Font
     
-git link for full version (branch: phase-4):
-
-    https://github.com/MatinAsp/Hearthstone.git
+to play with robot checkout to phase-3 branch.
